@@ -1,9 +1,9 @@
 const Staff = () => {
-  return(
-    <div>
-      StaffPage
-    </div>
-  )
+	return(
+		<div>
+			StaffPage
+		</div>
+	)
 }
 
 export default Staff;

@@ -1,9 +1,9 @@
 const Admin = () => {
-  return(
-    <div>
-      AdminPage
-    </div>
-  )
+	return(
+		<div>
+			AdminPage
+		</div>
+	)
 }
 
 export default Admin;
