@@ -9,6 +9,16 @@ export const login = createAsyncThunk("loginState", async (_:void, {rejectWithVa
     }
 })
 
+export const postLogin = createAsyncThunk("loginPostState", async(_:void, {rejectWithValue})=>{
+    try {
+        const userData = (await axios.post("/api/postLogin",{email:"abcd",password:"defg"})).data;
+        console.log(userData);
+        return userData;
+    } catch (error) {
+
+    }
+})
+
 const userSlice = createSlice({
     name: 'user',
     initialState:{
