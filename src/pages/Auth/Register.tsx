@@ -1,9 +1,7 @@
 import { useState } from "react";
-import MemberRegister from "./MemberRegiser";
-import StaffRegister from "./StaffRegiser";
 import logoImg from "../../img/logo_icon.png";
-import PartTimeRegister from "./PartTimeRegiser";
 import RegisterHeader from "../../components/Header/RegisterHeader";
+import RegisterForm from "./RegisterForm";
 
 const Register = () => {
     const [role, setRole] = useState("");
@@ -37,7 +35,7 @@ const Register = () => {
                             고객 (Member)
                         </p>
                     </div>
-                    <div className="w-[375px] h-[50px] absolute left-0 top-0 overflow-hidden text-white hover:text-black">
+                    <div className="w-[375px] h-[50px] absolute left-0 top-0 overflow-hidden text-white">
                         <p className="w-[373px] h-[50px] absolute left-0 top-0 text-2xl font-bold text-center">
                             계정 유형을 선택해주세요.
                         </p>
@@ -46,9 +44,7 @@ const Register = () => {
                 <RegisterHeader />
             </div>
         )}
-        {role=="member"&&(<MemberRegister />)}
-        {role=="staff"&&(<StaffRegister />)}
-        {role=="part"&&(<PartTimeRegister />)}
+        {role!=""&&(<RegisterForm role={role} init={()=>setRole("")} />)}
         </>
     )
 };
