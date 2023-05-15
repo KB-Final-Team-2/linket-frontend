@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Login from "../Auth";
 import axios from "axios";
-import { login, postLogin } from "../../redux/slice/userSilce";
+import { login, postLogin } from "../../redux/slice/authSilce";
 import { AppDispatch } from "../../redux/store";
 
 const Member = () => {

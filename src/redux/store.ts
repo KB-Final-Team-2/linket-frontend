@@ -1,17 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit'
-import userSlice from './slice/userSilce'
-import eventSlice from './slice/eventSlice'
-import ticketSlice from './slice/ticketSlice'
-import reviewSlice from './slice/reviewSlice'
-import attendSlice from './slice/attendSlice'
+import userReducer from './slice/userSilce'
+import authReducer from './slice/authSilce'
+import eventReducer from './slice/eventSlice'
+import ticketReducer from './slice/ticketSlice'
+import reviewReducer from './slice/reviewSlice'
+import attendReducer from './slice/attendSlice'
 
 const store = configureStore({
   reducer: {
-    user: userSlice,
-    event: eventSlice,
-    ticket: ticketSlice,
-    review: reviewSlice,
-    attend: attendSlice
+    auth: authReducer,
+    user: userReducer,
+    event: eventReducer,
+    ticket: ticketReducer,
+    review: reviewReducer,
+    attend: attendReducer
   },
 })
 
