@@ -17,7 +17,17 @@ export const postLogin = createAsyncThunk("loginPostState", async(_:void, {rejec
         console.log(userData);
         return userData;
     } catch (error) {
+        rejectWithValue(error);
+    }
+})
 
+export const register = createAsyncThunk("registerUser", async(data:User, {rejectWithValue})=>{
+    try {
+        const userData = (await axios.post("/api/auth/register", data)).data;
+        console.log(userData);
+        return userData;
+    } catch (error) {
+        rejectWithValue(error);
     }
 })
 
@@ -59,6 +69,13 @@ const authSlice = createSlice({
         });
         builder.addCase(logout.fulfilled, (state)=>{
             state.data = {};
+            state.loading = false;
+        });
+        builder.addCase(register.pending, (state)=>{
+            state.loading = true;
+        });
+        builder.addCase(register.fulfilled, (state, action)=>{
+            state.data = action.payload;
             state.loading = false;
         })
     }

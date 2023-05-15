@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Button from "../../components/Button";
 import SelectButton from "../../components/SelectButton";
+import { User } from "../../interface/User";
+import { register } from "../../redux/slice/authSilce";
 
 interface props {
     role: string,
@@ -16,16 +18,17 @@ const RegisterForm = (props: props) => {
     const [duplicate, setDuplicate] = useState(false);
     const [password, setPassword] = useState("");
     const [passwordCheck, setPasswordCheck] = useState("");
-    const [name, setName] = useState("");
+    const [userName, setName] = useState("");
     const [phone, setPhone] = useState("");
-    const [company, setCompany] = useState("");
+    const [companyId, setCompanyId] = useState("");
     const [gender, setGender] = useState("");
 
     const auth = useSelector((state:any)=> state.auth.data);
-    const dispatch = useDispatch();
+    const dispatch : any = useDispatch();
 
     const sendData = () => {
-        console.log(email, password, name, phone);
+        const registData : User = {email, password, userName, phone, gender, birthDate:"12345678", role:props.role, companyId};
+        dispatch(register(registData));
     }
 
     return(
@@ -48,25 +51,9 @@ const RegisterForm = (props: props) => {
                     </p>
                 </div>
                 <div className="w-[375px] h-[532px] absolute left-0 top-[50px] overflow-hidden">
-                    {props.role=="staff"&&(
-                        <div className="w-[330px] h-[37px] absolute left-[23px] top-[484px] overflow-hidden">
-                            <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                기업 코드
-                            </p>
-                            <input
-                                type="text"
-                                className="
-                                    w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                    focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                                "
-                                onChange={(e)=>{setCompany(e.target.value)}}
-                                value={company}
-                            />
-                        </div>
-                    )}
-                    <div className="w-[330px] h-[37px] absolute left-[23px] top-[433px] overflow-hidden">
+                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[25px] overflow-hidden">
                         <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                        개인정보동의
+                            email
                         </p>
                         <input
                             type="text"
@@ -74,11 +61,13 @@ const RegisterForm = (props: props) => {
                                 w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
                                 focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
                             "
+                            onChange={(e)=>{setEmail(e.target.value)}}
+                            value={email}
                         />
                     </div>
-                    <div className="w-[330px] h-[37px] absolute left-[23px] top-[382px] overflow-hidden">
+                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[76px] overflow-hidden">
                         <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                        연락처
+                            email 인증
                         </p>
                         <input
                             type="text"
@@ -86,23 +75,51 @@ const RegisterForm = (props: props) => {
                                 w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
                                 focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
                             "
-                            onChange={(e)=>{setPhone(e.target.value)}}
-                            value={phone}
+                            onChange={(e)=>{setEmailCode(e.target.value)}}
+                            value={emailCode}
                         />
                     </div>
-                    <div className="w-[330px] h-[37px] absolute left-[23px] top-[331px] overflow-hidden">
+                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[127px] overflow-hidden">
                         <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                        성별
+                            비밀번호
                         </p>
-                        <div className="w-[215px] h-[37px] relative flex justify-between px-5 left-[115px] top-0 overflow-hidden">
-                            {/* <div className="w-[70px] h-[30px] absolute left-[120px] top-1 overflow-hidden rounded-[15px] bg-[#ff9f0e]">
-                                <p className="w-20 h-10 absolute left-[-5px] top-[-5px] text-[15px] font-bold text-center text-black">
-                                Woman
-                                </p>
-                            </div> */}
-                            <SelectButton title="Man" func={()=>setGender("Man")} state={gender=="Man"} />
-                            <SelectButton title="Woman" func={()=>setGender("Woman")} state={gender=="Woman"}/>
-                        </div>
+                        <input
+                            type="text"
+                            className="
+                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
+                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
+                            "
+                            onChange={(e)=>{setPassword(e.target.value)}}
+                            value={password}
+                        />
+                    </div>
+                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[178px] overflow-hidden">
+                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
+                            비밀번호 확인
+                        </p>
+                        <input
+                            type="text"
+                            className="
+                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
+                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
+                            "
+                            onChange={(e)=>{setPasswordCheck(e.target.value)}}
+                            value={passwordCheck}
+                        />
+                    </div>
+                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[229px] overflow-hidden">
+                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
+                            이름
+                        </p>
+                        <input
+                            type="text"
+                            className="
+                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
+                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
+                            "
+                            onChange={(e)=>{setName(e.target.value)}}
+                            value={userName}
+                        />
                     </div>
                     <div className="w-[330px] h-[37px] absolute left-[23px] top-[280px] overflow-hidden">
                         <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
@@ -126,9 +143,23 @@ const RegisterForm = (props: props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[229px] overflow-hidden">
+                    <div className="w-[330px] h-[37px] absolute left-[23px] top-[331px] overflow-hidden">
                         <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            이름
+                        성별
+                        </p>
+                        <div className="w-[215px] h-[37px] relative flex justify-between px-5 left-[115px] top-0 overflow-hidden">
+                            {/* <div className="w-[70px] h-[30px] absolute left-[120px] top-1 overflow-hidden rounded-[15px] bg-[#ff9f0e]">
+                                <p className="w-20 h-10 absolute left-[-5px] top-[-5px] text-[15px] font-bold text-center text-black">
+                                Woman
+                                </p>
+                            </div> */}
+                            <SelectButton title="Man" func={()=>setGender("M")} state={gender=="M"} />
+                            <SelectButton title="Woman" func={()=>setGender("W")} state={gender=="W"}/>
+                        </div>
+                    </div>
+                    <div className="w-[330px] h-[37px] absolute left-[23px] top-[382px] overflow-hidden">
+                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
+                        연락처
                         </p>
                         <input
                             type="text"
@@ -136,13 +167,13 @@ const RegisterForm = (props: props) => {
                                 w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
                                 focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
                             "
-                            onChange={(e)=>{setName(e.target.value)}}
-                            value={name}
+                            onChange={(e)=>{setPhone(e.target.value)}}
+                            value={phone}
                         />
                     </div>
-                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[178px] overflow-hidden">
+                    <div className="w-[330px] h-[37px] absolute left-[23px] top-[433px] overflow-hidden">
                         <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            비밀번호 확인
+                        개인정보동의
                         </p>
                         <input
                             type="text"
@@ -150,52 +181,24 @@ const RegisterForm = (props: props) => {
                                 w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
                                 focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
                             "
-                            onChange={(e)=>{setPasswordCheck(e.target.value)}}
-                            value={passwordCheck}
                         />
                     </div>
-                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[127px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            비밀번호
-                        </p>
-                        <input
-                            type="text"
-                            className="
-                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                            "
-                            onChange={(e)=>{setPassword(e.target.value)}}
-                            value={password}
-                        />
-                    </div>
-                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[76px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            email 인증
-                        </p>
-                        <input
-                            type="text"
-                            className="
-                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                            "
-                            onChange={(e)=>{setEmailCode(e.target.value)}}
-                            value={emailCode}
-                        />
-                    </div>
-                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[25px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            email
-                        </p>
-                        <input
-                            type="text"
-                            className="
-                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                            "
-                            onChange={(e)=>{setEmail(e.target.value)}}
-                            value={email}
-                        />
-                    </div>
+                    {props.role=="staff"&&(
+                        <div className="w-[330px] h-[37px] absolute left-[23px] top-[484px] overflow-hidden">
+                            <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
+                                기업 코드
+                            </p>
+                            <input
+                                type="text"
+                                className="
+                                    w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
+                                    focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
+                                "
+                                onChange={(e)=>{setCompanyId(e.target.value)}}
+                                value={companyId}
+                            />
+                        </div>
+                    )}
                 </div>
                 <div className="w-full h-20 relative left-0 top-[582px] overflow-hidden flex justify-between items-center px-16">
                     <Button title="회원가입" func={sendData} type="default"/>
