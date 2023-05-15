@@ -3,7 +3,7 @@ import { useState } from "react";
 import {AiOutlineRight} from "react-icons/ai"
 import { useDispatch, useSelector } from "react-redux";
 import { User } from "../../interface/User";
-import { setUser } from "../../redux/slice/authSilce";
+import { logout, setUser } from "../../redux/slice/authSilce";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const auth = useSelector((state:any)=>(state.auth.data));
-	const dispatch = useDispatch();
+	const dispatch : any = useDispatch();
 
 	const handleLogin = () => {
 		axios.post("/api/auth/login",{email:email, password:password})
@@ -19,11 +19,17 @@ const Login = () => {
 			const userData : User = res.data;
 			if(userData.email) {
 				console.log(userData);
-				// dispatch(setUser(userData));
+				dispatch(setUser(userData));
 			} else {
 				console.log("wrong");
 			}
 		})
+	}
+
+	const testAuth = async () => {
+		console.log(auth);
+		await dispatch(logout());
+		console.log("logout");
 	}
 
 	return(
@@ -58,18 +64,14 @@ const Login = () => {
 					로그인
 				</p>
 			</div>
-			<Link
-				className="
-					w-[327px] h-[39px] absolute left-[23px] top-[466px]
-					text-[#a0a0a0] hover:text-white
-				"
-				to={"/register"}
-			>
-				<p className="w-[327px] h-[39px] absolute left-0 top-0 text-xs font-light text-right ">
-				아직 회원이 아니신가요?
-				</p>
-			</Link>
-			<div className="w-[327px] h-[39px] absolute left-6 top-[505px]">
+			<div className="
+				w-[327px] h-[39px] absolute left-[23px] top-[466px] flex justify-end items-center
+			">
+				<Link className="w-fit h-fit text-[#a0a0a0] hover:text-white text-xs font-light text-right" to={"/register"} >
+					아직 회원이 아니신가요?
+				</Link>
+			</div>
+			<div className="w-[327px] h-[39px] absolute left-6 top-[505px]" onClick={()=>{testAuth()}}>
 				<p className="w-[327px] h-[39px] absolute left-0 top-0 text-xs font-light text-right text-[#a0a0a0]">
 				로그인에 문제가 있으신가요?
 				</p>
