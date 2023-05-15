@@ -1,11 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { User } from '../../interface/User';
 
 export const login = createAsyncThunk("loginState", async (_:void, {rejectWithValue})=>{
     try {
-        const userData = (await axios.get("/api/login",{data:{userId:"abcd", password:"defg"}})).data;
+        const userData: User = (await axios.get(`/api/login/`)).data;
         return userData;
     } catch (error) {
+        rejectWithValue(error);
     }
 })
 
@@ -33,11 +35,15 @@ const userSlice = createSlice({
     extraReducers: (builder)=>{
         builder.addCase(login.pending,(state, action)=>{
             state.loading = true;
-        })
-        builder.addCase(login.fulfilled,(state, action)=>{
-            state.data = action.payload;
-            state.loading = false;
         });
+        builder.addCase(login.fulfilled,(state, action)=>{
+            state.data = action.payload as User;
+            state.loading= false;
+        });
+        builder.addCase(login.rejected, (state)=>{
+            state.data={};
+            state.loading=false;
+        })
     }
 })
 
