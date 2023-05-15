@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Member from './pages/Member/Member';
-import Staff from './pages/Staff/Staff';
+import Member from './pages/Member';
+import Staff from './pages/Staff';
 import PartTime from './pages/PartTime/PartTime';
-import Admin from './pages/Admin/Admin';
-import Login from './pages/Login';
+import Admin from './pages/Admin';
+import Login from './pages/Auth';
+import Register from './pages/Auth/Register';
 
 function App() {
 	return (
@@ -14,11 +15,21 @@ function App() {
 		<header className="App-header">
 			<BrowserRouter>
 				<Routes>
-					<Route path="/member" element={<Member />}></Route>
-					<Route path="/staff" element={<Staff />}></Route>
-					<Route path="/partTime" element={<PartTime />}></Route>
-					<Route path="/admin" element={<Admin />}></Route>
-					<Route path="*" element={<Login />}></Route>
+					{/* Member Router */}
+					<Route path="/member" element={<Member />} />
+
+					{/* Staff Router */}
+					<Route path="/staff" element={<Staff />} />
+
+					{/* PartTime Router */}
+					<Route path="/partTime" element={<PartTime />} />
+
+					{/* Admin Router */}
+					<Route path="/admin" element={<Admin />} />
+
+					{/* Auth Router */}
+					<Route path="/register" element={<Register />} />
+					<Route path="*" element={<Login />} />
 				</Routes>
 			</BrowserRouter>
 		</header>
