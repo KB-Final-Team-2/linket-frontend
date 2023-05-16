@@ -2,8 +2,8 @@ import { useState } from "react";
 import RegisterHeader from "../../components/Header/RegisterHeader";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import Button from "../../components/Button";
-import SelectButton from "../../components/SelectButton";
+import Button from "../../components/Button/Button";
+import SelectButton from "../../components/Button/SelectButton";
 import { User } from "../../interface/User";
 import { register } from "../../redux/slice/authSilce";
 
