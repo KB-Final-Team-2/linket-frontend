@@ -1,4 +1,5 @@
 import IndexHeader from "../../components/Header/IndexHeader";
+import NavBar from "../../components/NavBar/NavBar";
 
 const Info = () => {
     return (
@@ -128,41 +129,7 @@ const Info = () => {
                     </svg>
                 </div>
             </div>
-            <svg
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6 absolute left-[35px] top-72"
-                preserveAspectRatio="none"
-            >
-                <path
-                    d="M9.5 11C10.3284 11 11 10.3284 11 9.5C11 8.67157 10.3284 8 9.5 8C8.67157 8 8 8.67157 8 9.5C8 10.3284 8.67157 11 9.5 11Z"
-                    fill="white"
-                />
-                <path
-                    d="M14.5 11C15.3284 11 16 10.3284 16 9.5C16 8.67157 15.3284 8 14.5 8C13.6716 8 13 8.67157 13 9.5C13 10.3284 13.6716 11 14.5 11Z"
-                    fill="white"
-                />
-                <path
-                    d="M12 2C6.486 2 2 5.589 2 10C2 12.908 3.897 15.515 7 16.934V22L12.34 17.996C17.697 17.852 22 14.32 22 10C22 5.589 17.514 2 12 2ZM12 16H11.667L9 18V15.583L8.359 15.336C5.671 14.301 4 12.256 4 10C4 6.691 7.589 4 12 4C16.411 4 20 6.691 20 10C20 13.309 16.411 16 12 16Z"
-                    fill="white"
-                />
-            </svg>
-            <div className="w-[375px] h-[53px] absolute left-0 top-[759px] overflow-hidden bg-[#454545]">
-                <div className="w-[125px] h-[53px] absolute left-[249px] top-[-1px] bg-[#454545]" />
-                <div className="w-[125px] h-[53px] absolute left-[124px] top-[-1px] rounded-tr-[20px] bg-[#d9d9d9]" />
-                <div className="w-[125px] h-[53px] absolute left-[-1px] top-[-1px] bg-[#d9d9d9]" />
-                <div className="w-6 h-6 absolute left-[301px] top-3" />
-                <div className="w-[23px] h-[39.26px]">
-                    <div className="absolute left-[198.5px] top-[5.5px]" />
-                    <img
-                        className="w-[23.82px] h-[39px] absolute left-[198.5px] top-[5.5px]"
-                        src="small_logo.png"
-                    />
-                </div>
-            </div>
+			<NavBar state="3"/>
         </div>
     )
 }

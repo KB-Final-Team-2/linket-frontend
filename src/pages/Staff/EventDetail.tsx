@@ -1,5 +1,6 @@
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
+import NavBar from "../../components/NavBar/NavBar";
 
 const EventDetail = () => {
     const list = [{ title: "행사명", content: "KB IT's Your Life" }, { title: "행사 분류", content: "Concert" }, { title: "행사 기간", content: "2023.03.02 ~ 2023.05.31" }, { title: "행사명", content: "멀티캠퍼스 선롱" }, { title: "행사 코드", content: "1234567890" }, { title: "행사 포스터", content: "event_poster.jpg" }, { title: "행사 정보 이미지", content: "event_info.jpg" }]
@@ -45,18 +46,7 @@ const EventDetail = () => {
                 </div>
 
             </div>
-            <div className="w-[375px] h-[53px] absolute left-0 top-[759px] overflow-hidden bg-[#454545]">
-                <div className="w-[125px] h-[53px] absolute left-[249px] top-[-1px] rounded-tl-[20px] bg-[#d9d9d9]" />
-                <div className="w-[125px] h-[53px] absolute left-[124px] top-[-1px] bg-[#454545]" />
-                <div className="w-[125px] h-[53px] absolute left-[-1px] top-[-1px] rounded-tr-[20px] bg-[#d9d9d9]" />
-                <div className="w-[23px] h-[39.26px]">
-                    <div className="absolute left-[198.5px] top-[5.5px]" />
-                    <img
-                        className="w-[23.82px] h-[39px] absolute left-[198.5px] top-[5.5px]"
-                        src="small_logo.png"
-                    />
-                </div>
-            </div>
+			<NavBar state="1"/>
         </div>
     )
 }
