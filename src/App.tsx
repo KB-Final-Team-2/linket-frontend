@@ -89,7 +89,7 @@ function App() {
 						<Route path="/staff/info/updatephone" element={<StaffUpdatePhone />} />	
 						<Route path="/staff/info/userinfo" element={<StaffUserInfo />} />	
 						<Route path="/staff/info/check" element={<StaffInfoCheck />} />	
-						<Route path="/staff/info/home" element={<StaffInfo />} />	
+						<Route path="/staff/info" element={<StaffInfo />} />	
 						<Route path="/staff/event/attend/detail" element={<AttendDetail />} />	
 						<Route path="/staff/event/attend" element={<StaffAttend />} />	
 						<Route path="/staff/event/delete" element={<EventDelete />} />	
