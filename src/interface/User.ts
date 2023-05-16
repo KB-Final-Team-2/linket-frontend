@@ -8,5 +8,5 @@ export interface User {
     phone: string;
     gender: string;
     role: string;
-    companyId: String;
+    companyId: String | undefined;
 }

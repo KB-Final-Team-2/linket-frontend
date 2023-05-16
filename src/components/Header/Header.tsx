@@ -1,6 +1,10 @@
-const Header = () => {
+interface props {
+    title: string
+}
+
+const Header = ({title}:props) => {
     return (
-        <div className="w-[331px] h-[125px] relative">
+        <div className="w-full h-[125px] relative">
             <div className="w-[331px] h-[125px] absolute left-0 top-0 overflow-hidden">
                 <div className="w-[331px] h-[30px] absolute left-0 top-0 overflow-hidden" />
                 <div className="w-[331px] h-[95px] absolute left-0 top-[30px] overflow-hidden">
@@ -19,7 +23,7 @@ const Header = () => {
                     </svg>
                     <div className="w-[183px] h-[95px] absolute left-[74px] top-0 overflow-hidden">
                         <p className="w-[183px] h-[95px] absolute left-0 top-0 text-[23px] text-center text-white">
-                            User name
+                            {title}
                         </p>
                     </div>
                     <svg
@@ -44,3 +48,5 @@ const Header = () => {
         </div>
     )
 }
+
+export default Header;

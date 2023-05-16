@@ -1,14 +1,14 @@
 interface props {
-    content: string
+    title: string
 }
 
-const NextList = ({ content }: props) => {
+const NextList = ({ title }: props) => {
     return (
         <div className="w-[331px] h-[37px] relative overflow-hidden">
             <div className="w-[331px] h-[37px] absolute left-0 top-0 overflow-hidden">
                 <div className="w-[331px] h-[37px] absolute left-0 top-0 overflow-hidden">
                     <p className="w-[331px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-left text-white">
-                        {content}
+                        {title}
                     </p>
                 </div>
                 <svg
