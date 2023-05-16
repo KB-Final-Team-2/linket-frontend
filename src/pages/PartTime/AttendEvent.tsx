@@ -25,7 +25,7 @@ const AttendEvent = () => {
             <div className="w-[331px] h-[622px] absolute left-[22px] top-[125px] overflow-hidden">
                 <div className="w-[330px] h-[580px] absolute left-0 top-0 overflow-hidden border border-white">
                     {list.map((el) => {
-                        return (<NextList content={el.content} />)
+                        return (<NextList title={el.content} />)
                     })}
                 </div>
             </div>

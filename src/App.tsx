@@ -58,46 +58,45 @@ import StaffInfoFAQContent from './pages/Staff/InfoFAQContents';
 function App() {
 	return (
 		<div className="App">
+			<header className="App-header">
+				<BrowserRouter>
+					<Routes>
+						{/* Member Router */}
+						<Route path="/member/info/faq/content" element={<MemberInfoFAQContent />}/>
+						<Route path="/member/info/faq" element={<MemberInfoFAQ />} />
+						<Route path="/member/info/notice/content" element={<MemberInfoNoticeContent />} />
+						<Route path="/member/info/notice" element={<MemberInfoNotice />} />
+						<Route path="/member/info/password" element={<MemberInfoUpdatePassword />} />
+						<Route path="/member/info/phone" element={<MemberInfoUpdatePhone />} />
+						<Route path="/member/info/user" element={<MemberUserInfo />} />
+						<Route path="/member/info/check" element={<MemberInfoCheck />} />
+						<Route path="/member/info" element={<MemberInfo />} />
+						<Route path="/member/event/:eventId/review" element={<EventReview />} />
+						<Route path="/member/event/:eventId" element={<MemberEventDetail />} />
+						<Route path="/member/event/search" element={<EventSearch />} />
+						<Route path="/member/event" element={<MemberEvent />} />
+						<Route path="/member/ticket/delete" element={<TicketDelete />} />
+						<Route path="/member/ticket/:ticketId" element={<TicketDetail />} />
+						<Route path="/member/register" element={<TicketRegister />} />
+						<Route path="/member/*" element={<Member />} />
 
-		<header className="App-header">
-			<BrowserRouter>
-				<Routes>
-					{/* Member Router */}
-					<Route path="/member/info/faq/content" element={<MemberInfoFAQContent />}/>
-					<Route path="/member/info/faq" element={<MemberInfoFAQ />} />
-					<Route path="/member/info/notice/content" element={<MemberInfoNoticeContent />} />
-					<Route path="/member/info/notice" element={<MemberInfoNotice />} />
-					<Route path="/member/info/password" element={<MemberInfoUpdatePassword />} />
-					<Route path="/member/info/phone" element={<MemberInfoUpdatePhone />} />
-					<Route path="/member/info/user" element={<MemberUserInfo />} />
-					<Route path="/member/info/check" element={<MemberInfoCheck />} />
-					<Route path="/member/info" element={<MemberInfo />} />
-					<Route path="/member/event/:eventId/review" element={<EventReview />} />
-					<Route path="/member/event/:eventId" element={<MemberEventDetail />} />
-					<Route path="/member/event/search" element={<EventSearch />} />
-					<Route path="/member/event" element={<MemberEvent />} />
-					<Route path="/member/ticket/delete" element={<TicketDelete />} />
-					<Route path="/member/ticket/:ticketId" element={<TicketDetail />} />
-					<Route path="/member/register" element={<TicketRegister />} />
-					<Route path="/member/*" element={<Member />} />
-
-					{/* Staff Router */}
-					<Route path="/staff/info/faq/contents" element={<StaffInfoFAQContent />} />	
-					<Route path="/staff/info/faq" element={<StaffInfoFAQ />} />	
-					<Route path="/staff/info/notice/content" element={<StaffInfoNoticeContent />} />	
-					<Route path="/staff/info/notice" element={<StaffInfoNotice />} />	
-					<Route path="/staff/info/updatepassword" element={<StaffUpdatePassword />} />	
-					<Route path="/staff/info/updatephone" element={<StaffUpdatePhone />} />	
-					<Route path="/staff/info/userinfo" element={<StaffUserInfo />} />	
-					<Route path="/staff/info/check" element={<StaffInfoCheck />} />	
-					<Route path="/staff/info/home" element={<StaffInfo />} />	
-					<Route path="/staff/event/attend/detail" element={<AttendDetail />} />	
-					<Route path="/staff/event/attend" element={<StaffAttend />} />	
-					<Route path="/staff/event/delete" element={<EventDelete />} />	
-					<Route path="/staff/event/update" element={<EventUpdate />} />								
-					<Route path="/staff/event/detail" element={<StaffEventDetail />} />						
-					<Route path="/staff/event/register" element={<EventRegister />} />					
-					<Route path="/staff/events/home" element={<Staff />} />
+						{/* Staff Router */}
+						<Route path="/staff/info/faq/contents" element={<StaffInfoFAQContent />} />	
+						<Route path="/staff/info/faq" element={<StaffInfoFAQ />} />	
+						<Route path="/staff/info/notice/content" element={<StaffInfoNoticeContent />} />	
+						<Route path="/staff/info/notice" element={<StaffInfoNotice />} />	
+						<Route path="/staff/info/updatepassword" element={<StaffUpdatePassword />} />	
+						<Route path="/staff/info/updatephone" element={<StaffUpdatePhone />} />	
+						<Route path="/staff/info/userinfo" element={<StaffUserInfo />} />	
+						<Route path="/staff/info/check" element={<StaffInfoCheck />} />	
+						<Route path="/staff/info/home" element={<StaffInfo />} />	
+						<Route path="/staff/event/attend/detail" element={<AttendDetail />} />	
+						<Route path="/staff/event/attend" element={<StaffAttend />} />	
+						<Route path="/staff/event/delete" element={<EventDelete />} />	
+						<Route path="/staff/event/update" element={<EventUpdate />} />								
+						<Route path="/staff/event/detail" element={<StaffEventDetail />} />						
+						<Route path="/staff/event/register" element={<EventRegister />} />					
+						<Route path="/staff" element={<Staff />} />
 
 						{/* PartTime Router */}
 						<Route path="/partTime" element={<PartTime />} />
