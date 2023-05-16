@@ -18,7 +18,11 @@ import MemberInfo from './pages/Member/Info';
 import MemberInfoCheck from './pages/Member/InfoCheck';
 import MemberUserInfo from './pages/Member/InfoUserInfo';
 import MemberInfoUpdatePhone from './pages/Member/InfoUpdatePhone';
-import InfoUpdatePassword from './pages/Member/InfoUpdatePassword';
+import MemberInfoUpdatePassword from './pages/Member/InfoUpdatePassword';
+import MemberInfoNotice from './pages/Member/InfoNotice';
+import MemberInfoNoticeContent from './pages/Member/InfoNoticeContent';
+import MemberInfoFAQ from './pages/Member/InfoFAQ';
+import MemberInfoFAQContent from './pages/Member/InfoFAQContent';
 
 function App() {
 	return (
@@ -28,7 +32,11 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					{/* Member Router */}
-					<Route path="/member/info/password" element={<InfoUpdatePassword />} />
+					<Route path="/member/info/faq/content" element={<MemberInfoFAQContent />}/>
+					<Route path="/member/info/faq" element={<MemberInfoFAQ />} />
+					<Route path="/member/info/notice/content" element={<MemberInfoNoticeContent />} />
+					<Route path="/member/info/notice" element={<MemberInfoNotice />} />
+					<Route path="/member/info/password" element={<MemberInfoUpdatePassword />} />
 					<Route path="/member/info/phone" element={<MemberInfoUpdatePhone />} />
 					<Route path="/member/info/user" element={<MemberUserInfo />} />
 					<Route path="/member/info/check" element={<MemberInfoCheck />} />
