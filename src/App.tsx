@@ -2,11 +2,25 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Member from './pages/Member';
-import StaffEvent from './pages/Staff';
-import PartTime from './pages/PartTime/PartTime';
+import Staff from './pages/Staff';
+import PartTime from './pages/PartTime';
 import Admin from './pages/Admin';
 import Login from './pages/Auth';
 import Register from './pages/Auth/Register';
+import PartTimeAttendRegister from './pages/PartTime/AttendRegister';
+import PartTimeAttendEvent from './pages/PartTime/AttendEvent';
+import PartTimeEventDetail from './pages/PartTime/EventDetail';
+import PartTimeAttendDetail from './pages/PartTime/AttendDetail';
+import PartTimeInfo from './pages/PartTime/Info';
+import PartTimeInfoCheck from './pages/PartTime/InfoCheck';
+import PartTimeUserInfo from './pages/PartTime/UserInfo';
+import PartTimeInfoUpdatePhone from './pages/PartTime/InfoUpdatePhone';
+import PartTimeInfoUpdatePassword from './pages/PartTime/InfoUpdatePassword';
+import PartTimeInfoNotice from './pages/PartTime/InfoNotice';
+import PartTimeInfoNoticeContent from './pages/PartTime/InfoNoticeContent';
+import PartTimeInfoFAQ from './pages/PartTime/InfoFAQ';
+import PartTimeInfoFAQContents from './pages/PartTime/InfoFAQContents';
+
 // Member Import
 import TicketRegister from './pages/Member/TicketRegister';
 import TicketDetail from './pages/Member/TicketDetail';
@@ -41,7 +55,6 @@ import StaffInfoNotice from './pages/Staff/InfoNotice';
 import StaffInfoNoticeContent from './pages/Staff/InfoNoticeContent';
 import StaffInfoFAQ from './pages/Staff/InfoFAQ';
 import StaffInfoFAQContent from './pages/Staff/InfoNoticeContent';
-
 function App() {
 	return (
 		<div className="App">
@@ -84,20 +97,36 @@ function App() {
 					<Route path="/staff/event/update" element={<EventUpdate />} />								
 					<Route path="/staff/event/detail" element={<StaffEventDetail />} />						
 					<Route path="/staff/event/register" element={<EventRegister />} />					
-					<Route path="/staff/events/home" element={<StaffEvent />} />
+					<Route path="/staff/events/home" element={<Staff />} />
 
-					{/* PartTime Router */}
-					<Route path="/partTime" element={<PartTime />} />
+						{/* PartTime Router */}
+						<Route path="/partTime" element={<PartTime />} />
+						<Route path="/partTime/attendRegister" element={<PartTimeAttendRegister />} />
+						<Route path="/partTime/eventDetail" element={<PartTimeEventDetail />} />
+						<Route path="/PartTime/attendEvent" element={<PartTimeAttendEvent />} />
+						<Route path="/PartTime/attendDetail" element={<PartTimeAttendDetail />} />
 
-					{/* Admin Router */}
-					<Route path="/admin" element={<Admin />} />
+						<Route path="/PartTime/info" element={<PartTimeInfo />} />
+						<Route path="/PartTime/infoCheck" element={<PartTimeInfoCheck />} />
+						<Route path="/PartTime/userInfo" element={<PartTimeUserInfo />} />
+						<Route path="/PartTime/infoUpdatePhone" element={<PartTimeInfoUpdatePhone />} />
+						<Route path="/PartTime/infoUpdatePassword" element={<PartTimeInfoUpdatePassword />} />
 
-					{/* Auth Router */}
-					<Route path="/register" element={<Register />} />
-					<Route path="*" element={<Login />} />
-				</Routes>
-			</BrowserRouter>
-		</header>
+						<Route path="/PartTime/infoNotice" element={<PartTimeInfoNotice />} />
+						<Route path="/PartTime/infoNoticeContent" element={<PartTimeInfoNoticeContent />} />
+						<Route path="/PartTime/infoFAQ" element={<PartTimeInfoFAQ />} />
+						<Route path="/PartTime/infoFAQContents" element={<PartTimeInfoFAQContents />} />
+
+
+						{/* Admin Router */}
+						<Route path="/admin" element={<Admin />} />
+
+						{/* Auth Router */}
+						<Route path="/register" element={<Register />} />
+						<Route path="*" element={<Login />} />
+					</Routes>
+				</BrowserRouter>
+			</header>
 		</div>
 	);
 }
