@@ -10,6 +10,10 @@ import Register from './pages/Auth/Register';
 import TicketRegister from './pages/Member/TicketRegister';
 import TicketDetail from './pages/Member/TicketDetail';
 import TicketDelete from './pages/Member/TicketDelete';
+import MemberEvent from './pages/Member/Event';
+import EventSearch from './pages/Member/EventSearch';
+import EventDetail from './pages/Member/EventDetail';
+import EventReview from './pages/Member/EventReview';
 
 function App() {
 	return (
@@ -19,6 +23,10 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					{/* Member Router */}
+					<Route path="/member/event/:eventId/review" element={<EventReview />} />
+					<Route path="/member/event/:eventId" element={<EventDetail />} />
+					<Route path="/member/event/search" element={<EventSearch />} />
+					<Route path="/member/event" element={<MemberEvent />} />
 					<Route path="/member/ticket/delete" element={<TicketDelete />} />
 					<Route path="/member/ticket/:ticketId" element={<TicketDetail />} />
 					<Route path="/member/register" element={<TicketRegister />} />
