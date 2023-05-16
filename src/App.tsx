@@ -54,7 +54,7 @@ import StaffUpdatePhone from './pages/Staff/InfoUpdatePhone';
 import StaffInfoNotice from './pages/Staff/InfoNotice';
 import StaffInfoNoticeContent from './pages/Staff/InfoNoticeContent';
 import StaffInfoFAQ from './pages/Staff/InfoFAQ';
-import StaffInfoFAQContent from './pages/Staff/InfoNoticeContent';
+import StaffInfoFAQContent from './pages/Staff/InfoFAQContents';
 function App() {
 	return (
 		<div className="App">
