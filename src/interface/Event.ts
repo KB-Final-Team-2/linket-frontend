@@ -11,5 +11,5 @@ export interface Event {
     startDate: string;
     endDate: string;
     regDate: string;
-    company: Company;
+    company: Company | undefined;
 }

@@ -6,10 +6,10 @@ const NavBar = ({ state }: props) => {
     return (
         <>
             {state == '1' && (
-                <div className="w-[375px] h-[53px] relative overflow-hidden bg-[#454545]">
-                    <div className="w-[125px] h-[53px] absolute left-[249px] top-[-1px] bg-[#d9d9d9]" />
-                    <div className="w-[125px] h-[53px] absolute left-[124px] top-[-1px] rounded-tl-[20px] bg-[#d9d9d9]" />
-                    <div className="w-[125px] h-[53px] absolute left-[-1px] top-[-1px] bg-[#454545]" />
+                <div className="w-[375px] h-[53px] overflow-hidden bg-[#454545] bottom-0 absolute">
+                    <div className="w-[125px] h-[53px] absolute left-[250px] bg-[#d9d9d9]" />
+                    <div className="w-[125px] h-[53px] absolute left-[125px] rounded-tl-[20px] bg-[#d9d9d9]" />
+                    <div className="w-[125px] h-[53px] absolute bg-[#454545]" />
                     <svg
                         width={27}
                         height={27}
@@ -34,10 +34,10 @@ const NavBar = ({ state }: props) => {
                 </div>
             )}
             {state == '2' && (
-                <div className="w-[375px] h-[53px] relative overflow-hidden bg-[#454545]">
-                    <div className="w-[125px] h-[53px] absolute left-[249px] top-[-1px] rounded-tl-[20px] bg-[#d9d9d9]" />
-                    <div className="w-[125px] h-[53px] absolute left-[124px] top-[-1px] bg-[#454545]" />
-                    <div className="w-[125px] h-[53px] absolute left-[-1px] top-[-1px] rounded-tr-[20px] bg-[#d9d9d9]" />
+                <div className="w-[375px] h-[53px] overflow-hidden bg-[#454545] bottom-0 absolute">
+                    <div className="w-[125px] h-[53px] absolute left-[250px] rounded-tl-[20px] bg-[#d9d9d9]" />
+                    <div className="w-[125px] h-[53px] absolute left-[125px] bg-[#454545]" />
+                    <div className="w-[125px] h-[53px] absolute rounded-tr-[20px] bg-[#d9d9d9]" />
                     <div className="w-[23px] h-[39.26px]">
                         <div className="absolute left-[198.5px] top-[5.5px]" />
                         <img
@@ -48,10 +48,10 @@ const NavBar = ({ state }: props) => {
                 </div>
             )}
             {state == '3' && (
-                <div className="w-[375px] h-[53px] relative overflow-hidden bg-[#454545]">
-                    <div className="w-[125px] h-[53px] absolute left-[249px] top-[-1px] bg-[#454545]" />
-                    <div className="w-[125px] h-[53px] absolute left-[124px] top-[-1px] rounded-tr-[20px] bg-[#d9d9d9]" />
-                    <div className="w-[125px] h-[53px] absolute left-[-1px] top-[-1px] bg-[#d9d9d9]" />
+                <div className="w-[375px] h-[53px] overflow-hidden bg-[#454545] bottom-0 absolute">
+                    <div className="w-[125px] h-[53px] absolute left-[250px] top-[-1px] bg-[#454545]" />
+                    <div className="w-[125px] h-[53px] absolute left-[125px] top-[-1px] rounded-tr-[20px] bg-[#d9d9d9]" />
+                    <div className="w-[125px] h-[53px] absolute bg-[#d9d9d9]" />
                     <div className="w-[23px] h-[39.26px]">
                         <div className="absolute left-[198.5px] top-[5.5px]" />
                         <img
@@ -64,3 +64,5 @@ const NavBar = ({ state }: props) => {
         </>
     )
 }
+
+export default NavBar;
