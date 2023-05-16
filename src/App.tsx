@@ -7,6 +7,9 @@ import PartTime from './pages/PartTime/PartTime';
 import Admin from './pages/Admin';
 import Login from './pages/Auth';
 import Register from './pages/Auth/Register';
+import TicketRegister from './pages/Member/TicketRegister';
+import TicketDetail from './pages/Member/TicketDetail';
+import TicketDelete from './pages/Member/TicketDelete';
 
 function App() {
 	return (
@@ -16,7 +19,10 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					{/* Member Router */}
-					<Route path="/member" element={<Member />} />
+					<Route path="/member/ticket/delete" element={<TicketDelete />} />
+					<Route path="/member/ticket/:ticketId" element={<TicketDetail />} />
+					<Route path="/member/register" element={<TicketRegister />} />
+					<Route path="/member/*" element={<Member />} />
 
 					{/* Staff Router */}
 					<Route path="/staff" element={<Staff />} />
