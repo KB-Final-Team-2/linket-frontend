@@ -1,49 +1,29 @@
+import { BiDotsVertical } from "react-icons/bi";
+import { BsArrowLeft } from "react-icons/bs"
+import { useNavigate } from "react-router-dom";
+
 interface props {
-    title: string
+    title: string,
+    func?: Function
 }
 
-const Header = ({title}:props) => {
+const Header = (props: props) => {
+
+    const navigate = useNavigate();
     return (
-        <div className="w-full h-[125px] relative">
-            <div className="w-[331px] h-[125px] absolute left-0 top-0 overflow-hidden">
-                <div className="w-[331px] h-[30px] absolute left-0 top-0 overflow-hidden" />
-                <div className="w-[331px] h-[95px] absolute left-0 top-[30px] overflow-hidden">
-                    <svg
-                        width={74}
-                        height={95}
-                        viewBox="0 0 74 95"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-[74px] h-[95px] absolute left-[257px] top-0"
-                        preserveAspectRatio="none"
-                    >
-                        <circle cx={37} cy={48} r={3} fill="#FF6000" />
-                        <circle cx={28} cy={48} r={3} fill="#FF6000" />
-                        <circle cx={46} cy={48} r={3} fill="#FF6000" />
-                    </svg>
-                    <div className="w-[183px] h-[95px] absolute left-[74px] top-0 overflow-hidden">
-                        <p className="w-[183px] h-[95px] absolute left-0 top-0 text-[23px] text-center text-white">
-                            {title}
-                        </p>
-                    </div>
-                    <svg
-                        width={74}
-                        height={95}
-                        viewBox="0 0 74 95"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-[74px] h-[95px] absolute left-0 top-0"
-                        preserveAspectRatio="none"
-                    >
-                        <path
-                            d="M35 55L28 48M28 48L35 41M28 48L46 48"
-                            stroke="white"
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
+        <div className="w-full h-[125px] flex flex-col justify-center items-center">
+            <div className="w-[331px] h-[30px] overflow-hidden" />
+            <div className="w-[331px] h-[95px] overflow-hidden flex items-center px-5 gap-5 text-[30px]">
+                <div
+                    className="w-10 h-10 rounded-md bg-background-light/30 flex flex-shrink-0 justify-center items-center"
+                    onClick={()=>{props.func ? props.func() : navigate(-1)}}
+                >
+                    <BsArrowLeft />
                 </div>
+                <p className="w-full h-[95px] text-2xl text-center text-white flex justify-center items-center">
+                    {props.title}
+                </p>
+                <BiDotsVertical className="w-10 h-10 text-primary" />
             </div>
         </div>
     )
