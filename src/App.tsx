@@ -14,6 +14,11 @@ import MemberEvent from './pages/Member/Event';
 import EventSearch from './pages/Member/EventSearch';
 import EventDetail from './pages/Member/EventDetail';
 import EventReview from './pages/Member/EventReview';
+import MemberInfo from './pages/Member/Info';
+import MemberInfoCheck from './pages/Member/InfoCheck';
+import MemberUserInfo from './pages/Member/InfoUserInfo';
+import MemberInfoUpdatePhone from './pages/Member/InfoUpdatePhone';
+import InfoUpdatePassword from './pages/Member/InfoUpdatePassword';
 
 function App() {
 	return (
@@ -23,6 +28,11 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					{/* Member Router */}
+					<Route path="/member/info/password" element={<InfoUpdatePassword />} />
+					<Route path="/member/info/phone" element={<MemberInfoUpdatePhone />} />
+					<Route path="/member/info/user" element={<MemberUserInfo />} />
+					<Route path="/member/info/check" element={<MemberInfoCheck />} />
+					<Route path="/member/info" element={<MemberInfo />} />
 					<Route path="/member/event/:eventId/review" element={<EventReview />} />
 					<Route path="/member/event/:eventId" element={<EventDetail />} />
 					<Route path="/member/event/search" element={<EventSearch />} />
