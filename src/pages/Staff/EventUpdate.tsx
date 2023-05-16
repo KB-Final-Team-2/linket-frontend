@@ -1,138 +1,112 @@
+import { useRef } from "react";
 import Header from "../../components/Header/Header";
 import NavBar from "../../components/NavBar/NavBar";
+import InputList from "../../components/List/InputList";
+import Button from "../../components/Button/Button";
 
 const EventUpdate = () => {
+    const eventNameRef = useRef<HTMLInputElement>(null);
+    const eventPlaceRef = useRef<HTMLInputElement>(null);
+    const eventPosterRef = useRef<HTMLInputElement>(null);
+    const eventImgRef = useRef<HTMLInputElement>(null);
+
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-white">
-            <svg
-                width={375}
-                height={812}
-                viewBox="0 0 375 812"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-[375px] h-[812px] absolute left-0 top-0"
-                preserveAspectRatio="none"
-            >
-                <path d="M0 0H375V812H0V0Z" fill="#454545" />
-            </svg>
-            <Header title="행사 수정"/>
-            <div className="w-[331px] h-[622px] absolute left-[22px] top-[125px]" />
-            <div className="w-[330px] h-[571px] absolute left-[23px] top-[125px] overflow-hidden border border-white">
-                <div className="w-[330px] h-[532px] absolute left-0 top-5 overflow-hidden">
-                    <div className="w-[330px] h-[175px] absolute left-0 top-[357px] overflow-hidden">
-                        <p className="w-[115px] h-[175px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            행사 설명
-                        </p>
-                        <div className="w-[215px] h-[175px] absolute left-[115px] top-0 overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31]" />
-                    </div>
-                    <div className="w-[330px] h-[37px] absolute left-0 top-[306px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            행사 정보 이미지
-                        </p>
-                        <div className="w-[215px] h-[37px] absolute left-[115px] top-0 overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31]" />
-                    </div>
-                    <div className="w-[330px] h-[37px] absolute left-0 top-[255px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            행사 포스터
-                        </p>
-                        <div className="w-[215px] h-[37px] absolute left-[115px] top-0 overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31]" />
-                    </div>
-                    <div className="w-[330px] h-[37px] absolute left-0 top-[204px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            행사 장소
-                        </p>
-                        <div className="w-[215px] h-[37px] absolute left-[115px] top-0 overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31]" />
-                    </div>
-                    <div className="w-[330px] h-[37px] absolute left-0 top-[153px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            행사 종료일시
-                        </p>
-                        <div className="w-[215px] h-[37px] absolute left-[115px] top-0 overflow-hidden rounded-[20px]">
-                            <div className="w-[60px] h-[37px] absolute left-[155px] top-0 overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                <p className="w-[60px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                    10시
-                                </p>
-                            </div>
-                            <div className="w-[46px] h-[37px] absolute left-[59px] top-0 overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                <p className="w-[46px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                    01.
-                                </p>
-                            </div>
-                            <div className="w-[46px] h-[37px] absolute left-[107px] top-0 overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                <p className="w-[46px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                    01.
-                                </p>
-                            </div>
-                            <div className="w-[57px] h-[37px] absolute left-0 top-0 overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                <p className="w-[57px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                    2023.
-                                </p>
+        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
+            <Header title="행사 수정" />
+            <div className="w-[331px] h-full flex flex-col">
+                <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white py-2 flex flex-col justify-center items-center">
+                    <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2">
+                        <InputList title={"행사명"} ref={eventNameRef} value="1234"/>
+                        <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
+                            <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
+                                행사 분류
+                            </p>
+                            <div className="w-[215px] h-[37px] overflow-hidden flex">
+                                <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-[#ff9f0e]">
+                                    <p className="w-20 h-10 text-[15px] font-bold text-center text-black">
+                                        Festival
+                                    </p>
+                                </div>
+                                <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-[#ff9f0e]">
+                                    <p className="w-20 h-10 text-[15px] font-bold text-center text-black">
+                                        Concert
+                                    </p>
+                                </div>
+                                <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-[#ff9f0e]">
+                                    <p className="w-20 h-10 text-[15px] font-bold text-center text-black">
+                                        etc
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="w-[330px] h-[37px] absolute left-0 top-[102px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            행사 시작일시
-                        </p>
-                        <div className="w-[215px] h-[37px] absolute left-[115px] top-0 overflow-hidden rounded-[20px]">
-                            <div className="w-[60px] h-[37px] absolute left-[155px] top-0 overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                <p className="w-[60px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                    10시
-                                </p>
-                            </div>
-                            <div className="w-[46px] h-[37px] absolute left-[59px] top-0 overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                <p className="w-[46px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                    01.
-                                </p>
-                            </div>
-                            <div className="w-[46px] h-[37px] absolute left-[107px] top-0 overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                <p className="w-[46px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                    01.
-                                </p>
-                            </div>
-                            <div className="w-[57px] h-[37px] absolute left-0 top-0 overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                <p className="w-[57px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                    2023.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="w-[330px] h-[37px] absolute left-0 top-[51px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            행사 분류
-                        </p>
-                        <div className="w-[215px] h-[37px] absolute left-[115px] top-0 overflow-hidden">
-                            <div className="w-[70px] h-[30px] absolute left-[73px] top-1 overflow-hidden rounded-[15px] bg-[#ff9f0e]">
-                                <p className="w-20 h-10 absolute left-[-5px] top-[-5px] text-[15px] font-bold text-center text-black">
-                                    Festival
-                                </p>
-                            </div>
-                            <div className="w-[70px] h-[30px] absolute left-0 top-1 overflow-hidden rounded-[15px] bg-[#ff9f0e]">
-                                <p className="w-20 h-10 absolute left-[-5px] top-[-5px] text-[15px] font-bold text-center text-black">
-                                    Concert
-                                </p>
-                            </div>
-                            <div className="w-[70px] h-[30px] absolute left-[145px] top-1 overflow-hidden rounded-[15px] bg-[#ff9f0e]">
-                                <p className="w-20 h-10 absolute left-[-5px] top-[-5px] text-[15px] font-bold text-center text-black">
-                                    etc
-                                </p>
+                        <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
+                            <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
+                                행사 시작일시
+                            </p>
+                            <div className="w-[215px] h-[37px] top-0 overflow-hidden rounded-[20px] flex">
+                                <div className="w-[60px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
+                                    <p className="w-[60px] h-[37px] text-[15px] font-bold text-center text-white">
+                                        10시
+                                    </p>
+                                </div>
+                                <div className="w-[46px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
+                                    <p className="w-[46px] h-[37px] text-[15px] font-bold text-center text-white">
+                                        01.
+                                    </p>
+                                </div>
+                                <div className="w-[46px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
+                                    <p className="w-[46px] h-[37px] text-[15px] font-bold text-center text-white">
+                                        01.
+                                    </p>
+                                </div>
+                                <div className="w-[57px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
+                                    <p className="w-[57px] h-[37px] text-[15px] font-bold text-center text-white">
+                                        2023.
+                                    </p>
+                                </div>
                             </div>
                         </div>
+                        <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
+                            <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
+                                행사 종료일시
+                            </p>
+                            <div className="w-[215px] h-[37px] overflow-hidden rounded-[20px] flex">
+                                <div className="w-[60px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
+                                    <p className="w-[60px] h-[37px] text-[15px] font-bold text-center text-white">
+                                        10시
+                                    </p>
+                                </div>
+                                <div className="w-[46px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
+                                    <p className="w-[46px] h-[37px] text-[15px] font-bold text-center text-white">
+                                        01.
+                                    </p>
+                                </div>
+                                <div className="w-[46px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
+                                    <p className="w-[46px] h-[37px] text-[15px] font-bold text-center text-white">
+                                        01.
+                                    </p>
+                                </div>
+                                <div className="w-[57px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
+                                    <p className="w-[57px] h-[37px] text-[15px] font-bold text-center text-white">
+                                        2023.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <InputList title={"행사 장소"} ref={eventPlaceRef} />
+                        <InputList title={"행사 포스터"} ref={eventPosterRef} />
+                        <InputList title={"행사 정보 이미지"} ref={eventImgRef} />
+                        <div className="w-[330px] h-full overflow-hidden flex">
+                            <p className="w-[115px] h-[175px] text-[15px] font-bold text-center text-white">
+                                행사 설명
+                            </p>
+                            <div className="w-[215px] h-[175px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31]" />
+                        </div>
                     </div>
-                    <div className="w-[330px] h-[37px] absolute left-0 top-0 overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            행사명
-                        </p>
-                        <div className="w-[215px] h-[37px] absolute left-[115px] top-0 overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31]" />
-                    </div>
+                    <Button title={"Create"} type={"default"} func={()=>{console.log(eventNameRef.current?.value)}} />
                 </div>
             </div>
-            <div className="w-20 h-10 absolute left-[148px] top-[702px] overflow-hidden rounded-[15px] bg-[#ff9f0e]">
-                <p className="w-20 h-10 absolute left-0 top-0 text-[15px] font-bold text-center text-black">
-                    Update
-                </p>
-            </div>
-			<NavBar state="1"/>
+            <NavBar state="1" />
         </div>
     )
 }
