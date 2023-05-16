@@ -2,7 +2,7 @@ interface props {
     content: string
 }
 
-const ListComponent = ({ content }: props) => {
+const NextList = ({ content }: props) => {
     return (
         <div className="w-[331px] h-[37px] relative overflow-hidden">
             <div className="w-[331px] h-[37px] absolute left-0 top-0 overflow-hidden">
@@ -45,4 +45,4 @@ const ListComponent = ({ content }: props) => {
     )
 }
 
-export default ListComponent;
+export default NextList;

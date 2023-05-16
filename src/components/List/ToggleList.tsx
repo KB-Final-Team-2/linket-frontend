@@ -45,3 +45,5 @@ const ToggleList = ({ title, content }: props) => {
         </div>
     )
 }
+
+export default ToggleList;

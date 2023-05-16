@@ -3,7 +3,7 @@ interface props {
     content: string
 }
 
-const LargeListComponent = ({title, content} : props) => {
+const LargeList = ({title, content} : props) => {
     return (
         <div className="w-[331px] h-[50px] relative overflow-hidden border-t-0 border-r-0 border-b border-l-0 border-white">
             <div className="w-[100px] h-[50px] absolute left-0 top-0 overflow-hidden">
@@ -20,4 +20,4 @@ const LargeListComponent = ({title, content} : props) => {
     )
 }
 
-export default LargeListComponent;
+export default LargeList;
