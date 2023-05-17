@@ -2,7 +2,7 @@ import { ForwardedRef, forwardRef } from "react";
 
 interface props {
     title: string,
-    placeholder: string
+    placeholder?: string
 }
 
 const InfoInput = forwardRef((props: props, ref: ForwardedRef<HTMLInputElement>) => {
@@ -12,7 +12,7 @@ const InfoInput = forwardRef((props: props, ref: ForwardedRef<HTMLInputElement>)
             <p className="w-[330px] h-10 text-[15px] font-bold text-white flex justify-center items-center flex-shrink-0">
                 {props.title}
             </p>
-            <input className="w-[330px] h-[49px] overflow-hidden bg-[#b1b1b1] text-center placeholder:text-black/50" placeholder={props.placeholder} />
+            <input ref={ref} className="w-[330px] h-[49px] overflow-hidden bg-[#b1b1b1] text-center placeholder:text-black/50" placeholder={props.placeholder} />
         </div>
     )
 })

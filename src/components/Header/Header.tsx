@@ -1,5 +1,4 @@
-import { BiDotsVertical } from "react-icons/bi";
-import { BsArrowLeft } from "react-icons/bs"
+import { BsArrowLeft, BsThreeDots } from "react-icons/bs"
 import { useNavigate } from "react-router-dom";
 
 interface props {
@@ -23,7 +22,7 @@ const Header = (props: props) => {
                 <p className="w-full h-[95px] text-2xl text-center text-white flex justify-center items-center">
                     {props.title}
                 </p>
-                <BiDotsVertical className="w-10 h-10 text-primary" />
+                <BsThreeDots className="w-10 h-10 text-primary" />
             </div>
         </div>
     )

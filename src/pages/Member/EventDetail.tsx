@@ -57,9 +57,7 @@ const EventDetail = () => {
                             {event1.eventDesc}
                         </p>
                     </div>
-                    <div onClick={()=>{navigate(`/member/event/${1234}/review`)}}>
-                        <NextList title="리뷰 더보기"/>   
-                    </div>
+                    <NextList title="리뷰 더보기" link={`/member/event/${1234}/review`} />
                 </div>
             </div>
             <NavBar role="member" state="1" />

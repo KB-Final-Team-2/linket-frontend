@@ -16,7 +16,7 @@ const AttendEvent = () => {
                     <div className="w-[330px] h-[580px] overflow-hidden border-y border-white">
                         <TableInfo title="행사명" content="KB IT’s Your Life" />
                         {list.map((el) => {
-                            return (<NextList title={el.content} />)
+                            return (<NextList title={el.content} link={`/part/event/${1234}/attend/${1234}`}/>)
                         })}
                     </div>
                 </div>

@@ -17,7 +17,7 @@ const EventAttend = () => {
                     <Link to="/staff/event/attend/detail">
                         <div className="w-[331px] h-[580px] overflow-hidden">
                             {list.map((el) => {
-                                return (<NextList title={el.title} />)
+                                return (<NextList title={el.title} link={`/staff/event/${1234}/attend/${1234}`}/>)
                             })}
                         </div>
                     </Link>

@@ -9,18 +9,10 @@ import { Link } from "react-router-dom";
 
 const Info = () => {
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
+        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center flex-grow-0 flex-shrink-0">
             <IndexHeader title="내 정보" />
             <div className="w-[331px] h-full">
                 <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white">
-                    <div className="w-[331px] h-[100px] overflow-hidden border-b border-white">
-                        <InfoList title="FAQ">
-                            <FaRegCommentDots />
-                        </InfoList>
-                        <InfoList title="공지사항">
-                            <AiOutlineNotification />
-                        </InfoList>
-                    </div>
                     <div className="w-[331px] h-[100px] overflow-hidden border-y-2 border-white">
                         <Link to="/staff/info/userinfo">
                             <InfoList title="내 정보">
@@ -31,8 +23,16 @@ const Info = () => {
                             <MdOutlineChat />
                         </InfoList>
                     </div>
+                    <div className="w-[331px] h-[100px] overflow-hidden border-b border-white">
+                        <InfoList title="FAQ">
+                            <FaRegCommentDots />
+                        </InfoList>
+                        <InfoList title="공지사항">
+                            <AiOutlineNotification />
+                        </InfoList>
+                    </div>
                     <div className="w-[331px] h-[50px] overflow-hidden border-y">
-                        <InfoList title="리뷰 관리">
+                        <InfoList title="로그아웃">
                             <AiOutlinePoweroff />
                         </InfoList>
                     </div>

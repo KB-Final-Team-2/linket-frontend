@@ -1,26 +1,45 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import IndexHeader from "../../components/Header/IndexHeader";
-import ConcertList from "../../components/List/ConcertList";
+import EventList from "../../components/List/EventList";
 import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
+import { Company } from "../../interface/Company";
 
 const Staff = () => {
 
-	const event: Event = {
-		eventId: "123456",
-		eventName: "KB HarryPotter Magic Show",
-		eventType: "magic show",
-		place: "Hogwarts School",
-		eventInq: "01063248609",
-		eventDesc: "호구와트 최대의 마술쇼",
-		eventStatus: "Y",
-		startDate: "2023-05-17",
-		endDate: "2023-05-18",
-		regDate: "2023-05-16",
-		company: undefined
-	}
-	const list = [event, event, event, event];
+	const company: Company = {
+        companyId: "00001",
+        companyName: "Multi"
+    }
+    const event1: Event = {
+        eventId: "12345",
+        eventName: "KB Killing Boys Concert",
+        eventType: "Concert",
+        place: "잠실 올림픽 경기장",
+        eventInq: "02-123-456",
+        eventDesc: "대세 남자 아이돌 콘서트",
+        eventStatus: "Y",
+        startDate: "2023.05.17",
+        endDate: "2023.05.17",
+        regDate: "2023.05.17",
+        company: company
+    }
+    const event2: Event = {
+        eventId: "12345",
+        eventName: "호구와트 마술쇼",
+        eventType: "Concert",
+        place: "잠실 올림픽 경기장",
+        eventInq: "02-123-456",
+        eventDesc: "마술쇼",
+        eventStatus: "Y",
+        startDate: "2023.05.14",
+        endDate: "2023.05.14",
+        regDate: "2023.05.14",
+        company: company
+    }
+    
+    const eventList = [event1, event2]
 
 	return (
 		<div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
@@ -32,7 +51,7 @@ const Staff = () => {
 					</p>
 					<Link to="/staff/event/detail" >
 						<div className="w-[331px] h-full overflow-hidden flex flex-col border-t">
-							{list.map((v, i) => (<ConcertList key={i} title={v.eventName} type={v.eventType} id={123456} />))}
+							{eventList.map((event, i) => (<EventList key={i} event={event} />))}
 						</div>
 					</Link>
 

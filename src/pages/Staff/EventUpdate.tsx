@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import Header from "../../components/Header/Header";
 import NavBar from "../../components/NavBar/NavBar";
-import InputList from "../../components/List/InputList";
+import InputList from "../../components/Input/RegisterInput";
 import Button from "../../components/Button/Button";
 
 const EventUpdate = () => {
