@@ -53,7 +53,7 @@ const InfoFAQContent = () => {
                     {list.map((v, i) => (<ToggleList key={i} title={v} content="i" />))}
                 </div>
             </div>
-            <NavBar state="3" />
+            <NavBar role="staff" state="3" />
         </div>
     )
 }

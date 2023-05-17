@@ -29,8 +29,7 @@ const PartTime = () => {
 					</div>
 				</div>
 			</div>
-			<NavBar state="1" />
-
+			<NavBar role="part" state="1" />
 		</div>
 	)
 }

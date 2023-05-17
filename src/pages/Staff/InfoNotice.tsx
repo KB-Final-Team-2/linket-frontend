@@ -15,7 +15,7 @@ const InfoNotice = () => {
                     })}
                 </div>
             </div>
-            <NavBar state="3" />
+            <NavBar role="staff" state="3" />
         </div>
     )
 }

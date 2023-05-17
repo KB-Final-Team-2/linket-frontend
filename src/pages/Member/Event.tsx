@@ -63,7 +63,7 @@ const Event = () => {
                     </div>
                 </div>
             </div>
-            <NavBar state="1" />
+            <NavBar role="member" state="1" />
         </div>
     )
 }
