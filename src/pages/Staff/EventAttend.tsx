@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import NextList from "../../components/List/NextList";
 import NavBar from "../../components/NavBar/NavBar";
@@ -13,14 +14,16 @@ const EventAttend = () => {
                     <div className="w-[331px] h-[37px] overflow-hidden">
                         <TableInfo title={"행사명"} content={"KB IT's Your Life"} />
                     </div>
-                    <div className="w-[331px] h-[580px] overflow-hidden">
-                        {list.map((el) => {
-                            return (<NextList title={el.title} />)
-                        })}
-                    </div>
+                    <Link to="/staff/event/attend/detail">
+                        <div className="w-[331px] h-[580px] overflow-hidden">
+                            {list.map((el) => {
+                                return (<NextList title={el.title} />)
+                            })}
+                        </div>
+                    </Link>
                 </div>
             </div>
-			<NavBar role="staff" state="1"/>
+            <NavBar role="staff" state="1" />
         </div>
     )
 }
