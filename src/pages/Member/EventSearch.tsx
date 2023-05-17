@@ -61,7 +61,7 @@ const EventSearch = () => {
                             </div>
                         </div>
                         <div className="w-full flex justify-center items-center">
-                            <Button title="Search" type="default" func={() => {navigate(`/member/event/search/result`)}} />
+                            <Button title="Search" type="default" func={() => {navigate(`/member/event/searchResult`)}} />
                         </div>
                     </div>
                 </div>
