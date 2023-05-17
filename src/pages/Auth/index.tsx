@@ -4,7 +4,7 @@ import {AiOutlineRight} from "react-icons/ai"
 import { useDispatch, useSelector } from "react-redux";
 import { User } from "../../interface/User";
 import { logout, setUser } from "../../redux/slice/authSilce";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -12,24 +12,42 @@ const Login = () => {
 	const [password, setPassword] = useState("");
 	const auth = useSelector((state:any)=>(state.auth.data));
 	const dispatch : any = useDispatch();
+	const navigate = useNavigate();
+
+	const staff = {
+		email: "staff",
+		password: "1234",
+		role: "staff"
+	};
+
+	const member = {
+		email: "member",
+		password: "1234",
+		role: "member"
+	}
+
+	const user = [staff, member];
 
 	const handleLogin = () => {
-		axios.post("/api/auth/login",{email:email, password:password})
-		.then((res)=>{
-			const userData : User = res.data;
-			if(userData.email) {
-				console.log(userData);
-				dispatch(setUser(userData));
-			} else {
-				console.log("wrong");
-			}
+		user.map((v,i)=>{
+			if(email===v.email&&password===v.password) navigate(`/${v.role}`)
 		})
+		// axios.post("/api/auth/login",{email:email, password:password})
+		// .then((res)=>{
+		// 	const userData : User = res.data;
+		// 	if(userData.email) {
+		// 		console.log(userData);
+		// 		dispatch(setUser(userData));
+		// 	} else {
+		// 		console.log("wrong");
+		// 	}
+		// })
 	}
 
 	const testAuth = async () => {
-		console.log(auth);
-		await dispatch(logout());
-		console.log("logout");
+		// console.log(auth);
+		// await dispatch(logout());
+		// console.log("logout");
 	}
 
 	return(
