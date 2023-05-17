@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
-import InputList from "../../components/List/InputList";
+import InputList from "../../components/Input/RegisterInput";
 import NavBar from "../../components/NavBar/NavBar";
 
 const EventRegister = () => {
