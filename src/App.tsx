@@ -13,7 +13,7 @@ import PartTimeEventDetail from './pages/PartTime/EventDetail';
 import PartTimeAttendDetail from './pages/PartTime/AttendDetail';
 import PartTimeInfo from './pages/PartTime/Info';
 import PartTimeInfoCheck from './pages/PartTime/InfoCheck';
-import PartTimeUserInfo from './pages/PartTime/UserInfo';
+import PartTimeUserInfo from './pages/PartTime/InfoUserInfo';
 import PartTimeInfoUpdatePhone from './pages/PartTime/InfoUpdatePhone';
 import PartTimeInfoUpdatePassword from './pages/PartTime/InfoUpdatePassword';
 import PartTimeInfoNotice from './pages/PartTime/InfoNotice';
@@ -102,19 +102,19 @@ function App() {
 						<Route path="/partTime" element={<PartTime />} />
 						<Route path="/partTime/attendRegister" element={<PartTimeAttendRegister />} />
 						<Route path="/partTime/eventDetail" element={<PartTimeEventDetail />} />
-						<Route path="/PartTime/attendEvent" element={<PartTimeAttendEvent />} />
-						<Route path="/PartTime/attendDetail" element={<PartTimeAttendDetail />} />
+						<Route path="/partTime/attendEvent" element={<PartTimeAttendEvent />} />
+						<Route path="/partTime/attendDetail" element={<PartTimeAttendDetail />} />
 
-						<Route path="/PartTime/info" element={<PartTimeInfo />} />
-						<Route path="/PartTime/infoCheck" element={<PartTimeInfoCheck />} />
-						<Route path="/PartTime/userInfo" element={<PartTimeUserInfo />} />
-						<Route path="/PartTime/infoUpdatePhone" element={<PartTimeInfoUpdatePhone />} />
-						<Route path="/PartTime/infoUpdatePassword" element={<PartTimeInfoUpdatePassword />} />
+						<Route path="/partTime/info" element={<PartTimeInfo />} />
+						<Route path="/partTime/infoCheck" element={<PartTimeInfoCheck />} />
+						<Route path="/partTime/userInfo" element={<PartTimeUserInfo />} />
+						<Route path="/partTime/infoUpdatePhone" element={<PartTimeInfoUpdatePhone />} />
+						<Route path="/partTime/infoUpdatePassword" element={<PartTimeInfoUpdatePassword />} />
 
-						<Route path="/PartTime/infoNotice" element={<PartTimeInfoNotice />} />
-						<Route path="/PartTime/infoNoticeContent" element={<PartTimeInfoNoticeContent />} />
-						<Route path="/PartTime/infoFAQ" element={<PartTimeInfoFAQ />} />
-						<Route path="/PartTime/infoFAQContents" element={<PartTimeInfoFAQContents />} />
+						<Route path="/partTime/infoNotice" element={<PartTimeInfoNotice />} />
+						<Route path="/partTime/infoNoticeContent" element={<PartTimeInfoNoticeContent />} />
+						<Route path="/partTime/infoFAQ" element={<PartTimeInfoFAQ />} />
+						<Route path="/partTime/infoFAQContents" element={<PartTimeInfoFAQContents />} />
 
 
 						{/* Admin Router */}

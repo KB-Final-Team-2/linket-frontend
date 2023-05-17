@@ -5,13 +5,13 @@ interface props {
 const NextList = ({ title }: props) => {
     return (
         <div className="w-[331px] h-[37px] overflow-hidden flex flex-shrink-0 border-b">
-            <div className="w-[331px] h-[37px] overflow-hidden relative flex">
+            <div className="w-[331px] h-[37px] overflow-hidden relative flex justify-between">
                 <div className="w-[331px] h-[37px] overflow-hidden">
-                    <p className="w-full h-[37px] text-[15px] font-bold text-left text-white flex justify-center items-center">
+                    <p className="w-full h-[37px] text-[15px] font-bold text-left text-white flex justify-start items-center pl-5">
                         {title}
                     </p>
                 </div>
-                <div className="w-10 h-full absolute right-0 flex flex-shrink-0 justify-center items-center">
+                <div className="w-10 h-full flex flex-shrink-0 justify-center items-center">
                     <svg
                         width={16}
                         height={20}
