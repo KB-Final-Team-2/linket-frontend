@@ -5,6 +5,7 @@ import { MdOutlineChat } from "react-icons/md"
 import IndexHeader from "../../components/Header/IndexHeader";
 import InfoList from "../../components/List/InfoList";
 import NavBar from "../../components/NavBar/NavBar";
+import { Link } from "react-router-dom";
 
 const Info = () => {
     return (
@@ -13,23 +14,31 @@ const Info = () => {
             <div className="w-[331px] h-full">
                 <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white">
                     <div className="w-[331px] h-[100px] overflow-hidden border-b border-white">
-                        <InfoList title="FAQ">
-                            <FaRegCommentDots />
-                        </InfoList>
-                        <InfoList title="공지사항">
-                            <AiOutlineNotification />
-                        </InfoList>
+                        <Link to="/member/info/FAQ">
+                            <InfoList title="FAQ">
+                                <FaRegCommentDots />
+                            </InfoList>
+                        </Link>
+
+                        <Link to="/member/info/notice">
+                            <InfoList title="공지사항">
+                                <AiOutlineNotification />
+                            </InfoList>
+                        </Link>
                     </div>
                     <div className="w-[331px] h-[100px] overflow-hidden border-y-2 border-white">
-                        <InfoList title="내 정보">
-                            <IoMdHappy />
-                        </InfoList>
+                        <Link to="/member/info/user">
+                            <InfoList title="내 정보">
+                                <IoMdHappy />
+                            </InfoList>
+                        </Link>
+
                         <InfoList title="리뷰 관리">
                             <MdOutlineChat />
                         </InfoList>
                     </div>
                     <div className="w-[331px] h-[50px] overflow-hidden border-y">
-                        <InfoList title="리뷰 관리">
+                        <InfoList title="로그아웃">
                             <AiOutlinePoweroff />
                         </InfoList>
                     </div>

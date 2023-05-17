@@ -6,11 +6,11 @@ import NavBar from "../../components/NavBar/NavBar";
 
 const TicketDelete = () => {
     const ticket = {
-        eventTitle: "KB It's your life",
+        eventTitle: "KB Killing Boys Concert",
         eventType: "Concert",
-        startDate: "2023.03.02",
-        endDate: "2023.05.31",
-        place: "멀티캠퍼스 선릉",
+        startDate: "2023.05.17",
+        endDate: "2023.05.17",
+        place: "잠실 올림픽 경기장",
         url: "http://linket.io/event/12345",
     }
     const navigate = useNavigate();

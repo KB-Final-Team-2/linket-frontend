@@ -7,8 +7,8 @@ const UserInfo = () => {
     const user: User = {
         email: "test@gmail.com",
         password: "123456",
-        userName: "Tom",
-        birthDate: "2022.02.02",
+        userName: "유비신",
+        birthDate: "2000.02.02",
         phone: "01012345678",
         gender: "M",
         role: "member",

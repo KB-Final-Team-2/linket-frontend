@@ -3,14 +3,47 @@ import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
+import { Event } from "../../interface/Event";
+import { Company } from "../../interface/Company";
 
 const TicketDetail = () => {
+    const event1: Event = {
+        eventId: "12345",
+        eventName: "KB Killing Boys Concert",
+        eventType: "concert",
+        place: "잠실 올림픽 경기장",
+        eventInq: "02-123-456",
+        eventDesc: "대세 남자 아이돌 콘서트",
+        eventStatus: "Y",
+        startDate: "2023.05.17",
+        endDate: "2023.05.17",
+        regDate: "2023.05.17",
+        company: undefined
+    }
+    const event2: Event = {
+        eventId: "12345",
+        eventName: "호구와트 마술쇼",
+        eventType: "concert",
+        place: "잠실 올림픽 경기장",
+        eventInq: "02-123-456",
+        eventDesc: "마술쇼",
+        eventStatus: "Y",
+        startDate: "2023.05.14",
+        endDate: "2023.05.14",
+        regDate: "2023.05.14",
+        company: undefined
+    }
+    const company: Company = {
+        companyId: "00001",
+        companyName: "Multi"
+    }
+
     const ticket = {
-        eventTitle: "KB It's your life",
+        eventTitle: "KB Killing Boys Concert",
         eventType: "Concert",
-        startDate: "2023.03.02",
-        endDate: "2023.05.31",
-        place: "멀티캠퍼스 선릉",
+        startDate: "2023.05.17",
+        endDate: "2023.05.17",
+        place: "잠실 올림픽 경기장",
         url: "http://linket.io/event/12345",
     }
 	const navigate = useNavigate();
@@ -31,8 +64,7 @@ const TicketDetail = () => {
                                 행사 설명
                             </p>
                             <p className="w-[215px] h-[161px] text-[15px] font-bold text-center text-white">
-                                주니어 개발자들의 실력 행사가 시작된다! 새로 개발자가 되고 싶은 꿈나무부터 숨겨진
-                                고인물까지 모두 모이는 이 곳!
+                                {event1.eventDesc}
                             </p>
                         </div>
                     </div>
@@ -43,7 +75,7 @@ const TicketDetail = () => {
                             </p>
                         </div>
                         <div className="w-[153px] h-[156px] overflow-hidden flex flex-col justify-center items-center gap-5">
-                            <Button title="Review" type="default" func={() => {navigate(`/member/event/${1234}/review`)}} />
+                            <Button title="Review" type="default" func={() => { }} />
                             <Button title="Notice" type="default" func={() => { }} />
                             <Button title="Delete" type="delete" func={() => {navigate("/member/ticket/delete")}} />
                         </div>
