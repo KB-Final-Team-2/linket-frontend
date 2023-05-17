@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NextList from "../../components/List/NextList";
@@ -19,6 +20,7 @@ const EventDetail = () => {
         company: undefined
     }
 
+    const navigate = useNavigate();
     return (
         <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
             <Header title="이벤트 상세" />
@@ -37,7 +39,9 @@ const EventDetail = () => {
                             모두 모이는 이 곳!
                         </p>
                     </div>
-                    <NextList title="리뷰 더보기" />
+                    <div onClick={()=>{navigate(`/member/event/${1234}/review`)}}>
+                        <NextList title="리뷰 더보기"/>   
+                    </div>
                 </div>
             </div>
             <NavBar state="1" />

@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import SelectButton from "../../components/Button/SelectButton";
 import Header from "../../components/Header/Header";
 import NavBar from "../../components/NavBar/NavBar";
 
 const EventSearch = () => {
+    const navigate = useNavigate();
     return (
         <div className="w-[375px] h-[812px] overflow-hidden bg-background-dark flex flex-col justify-center items-center">
             <Header title="행사 검색" />
@@ -59,7 +61,7 @@ const EventSearch = () => {
                             </div>
                         </div>
                         <div className="w-full flex justify-center items-center">
-                            <Button title="Search" type="default" func={() => { }} />
+                            <Button title="Search" type="default" func={() => {navigate(`/member/event/search/result`)}} />
                         </div>
                     </div>
                 </div>

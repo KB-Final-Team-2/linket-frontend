@@ -23,7 +23,7 @@ const TicketRegister = () => {
                     </div>
                     <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-between items-center px-10">
                         <Button title="Return" type="delete" func={() => {navigate("/member")}} />
-                        <Button title="Send" type="default" func={() => { }} />
+                        <Button title="Send" type="default" func={() => {navigate(`/member/ticket/${1234}`)}} />
                     </div>
                 </div>
             </div>
