@@ -11,7 +11,7 @@ const InfoNotice = () => {
             <div className="w-[331px] h-full flex flex-col">
                 <div className="w-[331px] h-[580px] overflow-hidden border-y border-white">
                     {list.map((v,i) => {
-                        return (<NextList key={i} title={v.content} />)
+                        return (<NextList key={i} title={v.content} link={`/member/info/notice/${1234}`}/>)
                     })}
                 </div>
             </div>
