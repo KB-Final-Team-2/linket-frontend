@@ -65,16 +65,16 @@ function App() {
 						{/* Member Router */}
 						<Route path="/member/info/faq/content" element={<MemberInfoFAQContent />}/>
 						<Route path="/member/info/faq" element={<MemberInfoFAQ />} />
-						<Route path="/member/info/notice/content" element={<MemberInfoNoticeContent />} />
+						<Route path="/member/info/notice/:noticeId" element={<MemberInfoNoticeContent />} />
 						<Route path="/member/info/notice" element={<MemberInfoNotice />} />
-						<Route path="/member/info/password" element={<MemberInfoUpdatePassword />} />
-						<Route path="/member/info/phone" element={<MemberInfoUpdatePhone />} />
+						<Route path="/member/info/user/password" element={<MemberInfoUpdatePassword />} />
+						<Route path="/member/info/user/phone" element={<MemberInfoUpdatePhone />} />
 						<Route path="/member/info/user" element={<MemberUserInfo />} />
 						<Route path="/member/info/check" element={<MemberInfoCheck />} />
 						<Route path="/member/info" element={<MemberInfo />} />
 						<Route path="/member/event/:eventId/review" element={<EventReview />} />
 						<Route path="/member/event/:eventId" element={<MemberEventDetail />} />
-						<Route path="/member/event/searchResult" element={<EventSearchResult />} />
+						<Route path="/member/event/search/result" element={<EventSearchResult />} />
 						<Route path="/member/event/search" element={<EventSearch />} />
 						<Route path="/member/event" element={<MemberEvent />} />
 						<Route path="/member/ticket/delete" element={<TicketDelete />} />
@@ -85,14 +85,14 @@ function App() {
 						{/* Staff Router */}
 						<Route path="/staff/info/faq/contents" element={<StaffInfoFAQContent />} />	
 						<Route path="/staff/info/faq" element={<StaffInfoFAQ />} />	
-						<Route path="/staff/info/notice/content" element={<StaffInfoNoticeContent />} />	
+						<Route path="/staff/info/notice/:noticeId" element={<StaffInfoNoticeContent />} />	
 						<Route path="/staff/info/notice" element={<StaffInfoNotice />} />	
-						<Route path="/staff/info/updatepassword" element={<StaffUpdatePassword />} />	
-						<Route path="/staff/info/updatephone" element={<StaffUpdatePhone />} />	
-						<Route path="/staff/info/userinfo" element={<StaffUserInfo />} />	
+						<Route path="/staff/info/user/password" element={<StaffUpdatePassword />} />	
+						<Route path="/staff/info/user/phone" element={<StaffUpdatePhone />} />	
+						<Route path="/staff/info/user" element={<StaffUserInfo />} />	
 						<Route path="/staff/info/check" element={<StaffInfoCheck />} />	
 						<Route path="/staff/info" element={<StaffInfo />} />	
-						<Route path="/staff/event/attend/detail" element={<AttendDetail />} />	
+						<Route path="/staff/event/attend/:date" element={<AttendDetail />} />	
 						<Route path="/staff/event/attend" element={<StaffAttend />} />	
 						<Route path="/staff/event/delete" element={<EventDelete />} />	
 						<Route path="/staff/event/update" element={<EventUpdate />} />								
@@ -108,15 +108,15 @@ function App() {
 						<Route path="/part/event/attend/detail" element={<PartTimeAttendDetail />} />
 
 						<Route path="/part/info" element={<PartTimeInfo />} />
-						<Route path="/part/infoCheck" element={<PartTimeInfoCheck />} />
-						<Route path="/part/userInfo" element={<PartTimeUserInfo />} />
-						<Route path="/part/infoUpdatePhone" element={<PartTimeInfoUpdatePhone />} />
-						<Route path="/part/infoUpdatePassword" element={<PartTimeInfoUpdatePassword />} />
+						<Route path="/part/info/check" element={<PartTimeInfoCheck />} />
+						<Route path="/part/info/user" element={<PartTimeUserInfo />} />
+						<Route path="/part/info/user/phone" element={<PartTimeInfoUpdatePhone />} />
+						<Route path="/part/info/user/password" element={<PartTimeInfoUpdatePassword />} />
 
-						<Route path="/part/infoNotice" element={<PartTimeInfoNotice />} />
-						<Route path="/part/infoNoticeContent" element={<PartTimeInfoNoticeContent />} />
-						<Route path="/part/infoFAQ" element={<PartTimeInfoFAQ />} />
-						<Route path="/part/infoFAQContents" element={<PartTimeInfoFAQContents />} />
+						<Route path="/part/info/notice" element={<PartTimeInfoNotice />} />
+						<Route path="/part/info/notice/:noticeId" element={<PartTimeInfoNoticeContent />} />
+						<Route path="/part/info/faq" element={<PartTimeInfoFAQ />} />
+						<Route path="/part/info/faq/contents" element={<PartTimeInfoFAQContents />} />
 
 
 						{/* Admin Router */}
