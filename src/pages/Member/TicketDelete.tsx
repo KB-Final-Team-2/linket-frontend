@@ -26,12 +26,12 @@ const TicketDelete = () => {
                         <List title="행사 장소" content={ticket.place} />
                     </div>
                     <div className="w-[330px] h-full overflow-hidden">
-                        <p className="w-[330px] h-full font-bold text-center text-[20px] text-white flex flex-col justify-center items-center">
+                        <div className="w-[330px] h-full font-bold text-center text-[20px] text-white flex flex-col justify-center items-center">
                             <p>해당 행사를 삭제하시겠습니까?</p>
                             <p>삭제된 행사는 복구할 수 없으며,</p>
                             <p>기존에 등록된 리뷰 및 이미지가</p>
                             <p> 모두 삭제됩니다.</p>
-                        </p>
+                        </div>
                     </div>
                     <div className="w-[337px] h-[202px] overflow-hidden flex flex-shrink-0 justify-between items-center px-10">
                         <Button title="Delete" type="delete" func={() => {navigate("/member")}} />
