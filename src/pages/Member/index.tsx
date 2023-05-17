@@ -26,7 +26,7 @@ const Member = () => {
 					새 티켓 등록하기
 				</p>
 			</Link>
-			<NavBar state="2" />
+			<NavBar role="member" state="2" />
 		</div>
 	)
 }

@@ -25,7 +25,7 @@ const InfoUpdatePassword = () => {
                     </div>
                 </div>
             </div>
-            <NavBar state="3" />
+            <NavBar role="part" state="3" />
         </div>
     )
 }

@@ -106,7 +106,7 @@ const EventRegister = () => {
                     <Button title={"Create"} type={"default"} func={()=>{console.log(eventNameRef.current?.value)}} />
                 </div>
             </div>
-            <NavBar state="1" />
+            <NavBar role="staff" state="1" />
         </div>
     )
 }

@@ -35,7 +35,7 @@ const AttendDetail = () => {
                     </div>
                 </div>
             </div>
-            <NavBar state="1" />
+            <NavBar role="staff" state="1" />
         </div>
     )
 }

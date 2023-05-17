@@ -24,7 +24,7 @@ const AttendRegister = () => {
                     </div>
                 </div>
             </div>
-            <NavBar state="2" />
+            <NavBar role="part" state="2" />
         </div>
     )
 }

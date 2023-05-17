@@ -15,8 +15,6 @@ const Staff = () => {
 					<p className="w-[85px] h-[30px] text-sm font-bold text-center text-secondary">
 						등록 행사
 					</p>
-
-					<Button title="Review" type="default" func={() => { }} />
 					<div className="w-[331px] h-full overflow-hidden flex flex-col border-t">
 						{list.map((v, i) => (<ConcertList key={i} title={v.title} type={v.type} id={12345} />))}
 					</div>
@@ -31,7 +29,7 @@ const Staff = () => {
 					</div>
 				</div>
 			</div>
-			<NavBar state="1" />
+			<NavBar role="staff" state="1" />
 		</div>
 	)
 }

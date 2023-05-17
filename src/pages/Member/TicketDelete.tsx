@@ -39,7 +39,7 @@ const TicketDelete = () => {
                     </div>
                 </div>
             </div>
-            <NavBar state="2" />
+            <NavBar role="member" state="2" />
         </div>
     )
 }

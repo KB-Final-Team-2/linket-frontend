@@ -27,7 +27,7 @@ const UserInfo = () => {
                     <LargeList title="연락처" content={user.phone} />
                 </div>
             </div>
-            <NavBar state="3" />
+            <NavBar role="staff" state="3" />
         </div>
     )
 }
