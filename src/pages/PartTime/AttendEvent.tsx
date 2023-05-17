@@ -1,6 +1,7 @@
 import Header from "../../components/Header/Header";
 import NextList from "../../components/List/NextList";
 import NavBar from "../../components/NavBar/NavBar";
+import TableInfo from "../../components/Table/TableInfo";
 
 const AttendEvent = () => {
     const list = [{ title: "안녕하세요", content: "반갑습니다." },
@@ -20,10 +21,12 @@ const AttendEvent = () => {
             >
                 <path d="M0 0H375V812H0V0Z" fill="#454545" />
             </svg>
+
             <div className="w-[331px] h-[622px] absolute left-[22px] top-[125px]" />
 
             <div className="w-[331px] h-[622px] absolute left-[22px] top-[125px] overflow-hidden">
                 <div className="w-[330px] h-[580px] absolute left-0 top-0 overflow-hidden border border-white">
+                    <TableInfo title="행사명" content="KB IT’s Your Life" />
                     {list.map((el) => {
                         return (<NextList title={el.content} />)
                     })}
