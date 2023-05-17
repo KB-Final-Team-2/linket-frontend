@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import IndexHeader from "../../components/Header/IndexHeader";
 import NavBar from "../../components/NavBar/NavBar";
 
 const Event = () => {
+	const navigate = useNavigate();
+	const list = [{title:"KB 콘서트",content:"poster.jpg"},{title:"멀캠 강연",content:"poster.jpg"}]
+
+
     return (
         <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
             <IndexHeader title="Event" />
@@ -29,7 +34,9 @@ const Event = () => {
                         </svg>
                         <div className="w-full h-full overflow-scroll flex flex-row flex-shrink-0">
                             <div className="w-[300px] h-[400px] overflow-hidden block">
-                                <div className="w-[237px] h-[356px] overflow-hidden bg-white">
+                                <div
+                                    className="w-[237px] h-[356px] overflow-hidden bg-white" 
+                                    onClick={()=>{navigate(`/member/event/${1234}`)}}>
                                     <p className="w-[237px] h-[356px] text-[40px] font-bold text-center text-[#ff9f0e]">
                                         Linket
                                     </p>
