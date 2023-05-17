@@ -1,7 +1,10 @@
 import IndexHeader from "../../components/Header/IndexHeader";
+import ConcertList from "../../components/List/ConcertList";
 import NavBar from "../../components/NavBar/NavBar";
 
 const PartTime = () => {
+	const list = [{type:"콘서트", title:"KB IT's your life1"}, {type:"콘서트", title:"KB IT's your life2"}, {type:"콘서트", title:"KB IT's your life3"}, {type:"콘서트", title:"KB IT's your life4"}];
+
 	return (
 		<div className="w-[375px] h-[812px] relative overflow-hidden bg-white">
 			<svg
@@ -55,142 +58,9 @@ const PartTime = () => {
 				>
 					<line y1="0.5" x2={330} y2="0.5" stroke="white" />
 				</svg>
-				<div className="w-[330px] h-[60px] absolute left-0 top-px overflow-hidden">
-					<div className="w-[60px] h-[60px] absolute left-0 top-0 overflow-hidden">
-						<p className="absolute left-[9px] top-1 text-[15px] font-bold text-center text-[#ffa559]">
-							콘서트
-						</p>
-					</div>
-					<div className="w-[260px] h-[60px] absolute left-[70px] top-0 overflow-hidden">
-						<p className="w-[249px] h-[60px] absolute left-0 top-0 text-[15px] font-bold text-left text-[#ffa559]">
-							KB IT’s Your LIfe
-						</p>
-					</div>
-					<svg
-						width={330}
-						height={1}
-						viewBox="0 0 330 1"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						className="w-[330px] h-0 absolute left-0 top-[60px]"
-						preserveAspectRatio="none"
-					>
-						<line y1="0.5" x2={330} y2="0.5" stroke="white" />
-					</svg>
-					<svg
-						width={1}
-						height={60}
-						viewBox="0 0 1 60"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						className="absolute left-[59px] top-[-1px]"
-						preserveAspectRatio="none"
-					>
-						<line x1="0.5" y1="2.80143e-10" x2="0.5" y2={60} stroke="white" />
-					</svg>
-				</div>
-				<div className="w-[330px] h-[60px] absolute left-0 top-[61px] overflow-hidden">
-					<div className="w-[60px] h-[60px] absolute left-0 top-0 overflow-hidden">
-						<p className="absolute left-[9px] top-1 text-[15px] font-bold text-center text-[#ffa559]">
-							콘서트
-						</p>
-					</div>
-					<div className="w-[260px] h-[60px] absolute left-[70px] top-0 overflow-hidden">
-						<p className="w-[249px] h-[60px] absolute left-0 top-0 text-[15px] font-bold text-left text-[#ffa559]">
-							KB IT’s Your LIfe2
-						</p>
-					</div>
-					<svg
-						width={330}
-						height={1}
-						viewBox="0 0 330 1"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						className="w-[330px] h-0 absolute left-0 top-[60px]"
-						preserveAspectRatio="none"
-					>
-						<line y1="0.5" x2={330} y2="0.5" stroke="white" />
-					</svg>
-					<svg
-						width={1}
-						height={60}
-						viewBox="0 0 1 60"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						className="absolute left-[59px] top-[-1px]"
-						preserveAspectRatio="none"
-					>
-						<line x1="0.5" y1="2.80143e-10" x2="0.5" y2={60} stroke="white" />
-					</svg>
-				</div>
-				<div className="w-[330px] h-[60px] absolute left-0 top-[121px] overflow-hidden">
-					<div className="w-[60px] h-[60px] absolute left-0 top-0 overflow-hidden">
-						<p className="absolute left-[9px] top-1 text-[15px] font-bold text-center text-[#ffa559]">
-							콘서트
-						</p>
-					</div>
-					<div className="w-[260px] h-[60px] absolute left-[70px] top-0 overflow-hidden">
-						<p className="w-[249px] h-[60px] absolute left-0 top-0 text-[15px] font-bold text-left text-[#ffa559]">
-							KB IT’s Your LIfe3
-						</p>
-					</div>
-					<svg
-						width={330}
-						height={1}
-						viewBox="0 0 330 1"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						className="w-[330px] h-0 absolute left-0 top-[60px]"
-						preserveAspectRatio="none"
-					>
-						<line y1="0.5" x2={330} y2="0.5" stroke="white" />
-					</svg>
-					<svg
-						width={1}
-						height={60}
-						viewBox="0 0 1 60"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						className="absolute left-[59px] top-[-1px]"
-						preserveAspectRatio="none"
-					>
-						<line x1="0.5" y1="2.80143e-10" x2="0.5" y2={60} stroke="white" />
-					</svg>
-				</div>
-				<div className="w-[330px] h-[60px] absolute left-0 top-[181px] overflow-hidden">
-					<div className="w-[60px] h-[60px] absolute left-0 top-0 overflow-hidden">
-						<p className="absolute left-[9px] top-1 text-[15px] font-bold text-center text-[#ffa559]">
-							콘서트
-						</p>
-					</div>
-					<div className="w-[260px] h-[60px] absolute left-[70px] top-0 overflow-hidden">
-						<p className="w-[249px] h-[60px] absolute left-0 top-0 text-[15px] font-bold text-left text-[#ffa559]">
-							KB IT’s Your LIfe
-						</p>
-					</div>
-					<svg
-						width={330}
-						height={1}
-						viewBox="0 0 330 1"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						className="w-[330px] h-0 absolute left-0 top-[60px]"
-						preserveAspectRatio="none"
-					>
-						<line y1="0.5" x2={330} y2="0.5" stroke="white" />
-					</svg>
-					<svg
-						width={1}
-						height={60}
-						viewBox="0 0 1 60"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						className="absolute left-[59px] top-[-1px]"
-						preserveAspectRatio="none"
-					>
-						<line x1="0.5" y1="2.80143e-10" x2="0.5" y2={60} stroke="white" />
-					</svg>
-				</div>
+				{list.map((v,i)=>(
+					<ConcertList key={i} title={v.title} type={v.type} id={i} />
+				))}
 			</div>
 			<NavBar state="1" />
 

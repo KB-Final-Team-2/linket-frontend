@@ -23,7 +23,7 @@ const InfoNotice = () => {
             <div className="w-[331px] h-[622px] absolute left-[22px] top-[125px]" />
             <div className="w-[331px] h-[580px] absolute left-[22px] top-[125px] overflow-hidden border border-white">
                 {list.map((el) => {
-                    return (<NextList content={el.content} />)
+                    return (<NextList title={el.content} />)
                 })}
             </div>
             <NavBar state="3" />

@@ -5,11 +5,11 @@ interface props {
 
 const List = ({title, content}:props) => {
     return (
-        <div className="w-[331px] h-[37px] relative overflow-hidden border-t-0 border-r-0 border-b border-l-0 border-white">
-            <p className="w-[115.35px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
+        <div className="w-[331px] h-[37px] overflow-hidden border-b border-white flex flex-shrink-0">
+            <p className=" w-[115px] h-[37px] text-[15px] font-bold text-center text-white mx-3 flex justify-center items-center">
                 {title}
             </p>
-            <p className="w-[215.65px] h-[37px] absolute left-[115.35px] top-0 text-[15px] font-bold text-center text-white">
+            <p className="w-full h-[37px] text-[15px] font-bold text-center text-white">
                 {content}
             </p>
         </div>

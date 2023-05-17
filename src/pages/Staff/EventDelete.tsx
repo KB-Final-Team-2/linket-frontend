@@ -1,3 +1,4 @@
+import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
@@ -5,58 +6,38 @@ import NavBar from "../../components/NavBar/NavBar";
 const EventDelete = () => {
     const list = [{ title: "행사명", content: "KB IT's Your Life" }, { title: "행사분류", content: "Concert" }, { title: "행사 기간", content: "2023.03.02~2023.05.31" }, { title: "행사 장소", content: "멀티캠퍼스 선릉" }]
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-white">
-            <svg
-                width={375}
-                height={812}
-                viewBox="0 0 375 812"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-[375px] h-[812px] absolute left-0 top-0"
-                preserveAspectRatio="none"
-            >
-                <path d="M0 0H375V812H0V0Z" fill="#454545" />
-            </svg>
+        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
             <Header title="행사 삭제" />
-            <div className="w-[331px] h-[622px] absolute left-[22px] top-[125px]" />
-            <div className="w-[330px] h-[622px] absolute left-[22px] top-[125px] overflow-hidden">
-                <div className="w-[330px] h-[148px] absolute left-0 top-0 overflow-hidden border border-white">
-                    {list.map((el) => {
-                        return (<List title={el.title} content={el.content} />)
-                    })}
-                </div>
-                <div className="w-[330px] h-[445px] absolute left-0 top-[177px] overflow-hidden">
-                    <div className="w-[330px] h-[244px] absolute left-0 top-[-1px] overflow-hidden">
-                        <p className="w-[330px] absolute left-0 top-[60px] font-bold text-center text-white">
-                            <span className="w-[330px] text-xl font-bold text-center text-white">
-                                해당 행사를 삭제하시겠습니까?
-                            </span>
-                            <br />
-                            <span className="w-[330px] text-[15px] font-bold text-center text-white">
-                                삭제된 행사는 복구할 수 없으며,
-                            </span>
-                            <br />
-                            <span className="w-[330px] text-[15px] font-bold text-center text-white">
-                                기존에 등록된 리뷰 및 이미지가 모두 삭제됩니다.
-                            </span>
-                        </p>
+            <div className="w-[331px] h-full">
+                <div className="w-[331px] h-[580] overflow-hidden">
+                    <div className="w-[331px] h-fit overflow-hidden border border-white">
+                        {list.map((el) => {
+                            return (<List title={el.title} content={el.content} />)
+                        })}
                     </div>
-                    <div className="w-[337px] h-[202px] absolute left-0 top-[243px] overflow-hidden">
-                        <div className="w-20 h-10 absolute left-[204px] top-[81px] overflow-hidden rounded-[15px] bg-[#ff9f0e]">
-                            <p className="w-20 h-10 absolute left-0 top-0 text-[15px] font-bold text-center text-black">
-                                return
+                    <div className="w-[331px] h-full top-[177px] overflow-hidden">
+                        <div className="w-[331px] h-[244px] overflow-hidden flex flex-col justify-center items-center">
+                            <p className="w-[331px] text-xl font-bold text-center text-white flex flex-col gap-3">
+                                <span className="w-[330px] text-xl font-bold text-center text-white">
+                                    해당 행사를 삭제하시겠습니까?
+                                </span>
+                                <br />
+                                <span className="w-[331px] text-[16px] font-bold text-center text-white">
+                                    삭제된 행사는 복구할 수 없으며,
+                                </span>
+                                <span className="w-[331px] text-[16px] font-bold text-center text-white">
+                                    기존에 등록된 리뷰 및 이미지가 모두 삭제됩니다.
+                                </span>
                             </p>
                         </div>
-                        <div className="w-20 h-10 absolute left-[53px] top-[81px]">
-                            <div className="w-20 h-10 absolute left-[-1px] top-[-1px] rounded-[15px] bg-[#fd3030]" />
-                            <p className="w-20 h-10 absolute left-0 top-0 text-[15px] font-bold text-center text-black">
-                                Delete
-                            </p>
+                        <div className="w-[331px] h-[202px] overflow-hidden flex justify-between items-center px-10">
+                            <Button title={"return"} type={"default"} func={()=>{}} />
+                            <Button title={"Delete"} type={"delete"} func={()=>{}} />
                         </div>
                     </div>
                 </div>
             </div>
-			<NavBar state="1"/>
+            <NavBar state="1" />
         </div>
     )
 }
