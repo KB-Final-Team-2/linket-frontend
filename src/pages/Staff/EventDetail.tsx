@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
@@ -10,7 +11,7 @@ const EventDetail = () => {
             <div className="w-[331px] h-full flex">
                 <div className="w-full h-[580px] flex flex-col border-t border-b pb-5">
                     <div className="w-[331px] h-[580px] overflow-hidden">
-                        {list.map((v,i) => {
+                        {list.map((v, i) => {
                             return (<List key={i} title={v.title} content={v.content} />)
                         })}
                         <div className="w-[330px] h-[207px] overflow-hidden border-b flex">
@@ -24,12 +25,12 @@ const EventDetail = () => {
                         </div>
                     </div>
                     <div className="w-full h-[158px] flex flex-shrink-0 justify-between">
-                        <div className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-[15px] font-bold text-left text-black flex flex-shrink-0 justify-center items-center">
+                        <Link to="/staff/event/attend" className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-[15px] font-bold text-left text-black flex flex-shrink-0 justify-center items-center">
                             출결 관리
-                        </div>
-                        <div className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-[15px] font-bold text-left text-black flex flex-shrink-0 justify-center items-center">
+                        </Link>
+                        <Link to="#" className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-[15px] font-bold text-left text-black flex flex-shrink-0 justify-center items-center">
                             리뷰 보기
-                        </div>
+                        </Link>
                     </div>
                 </div>
             </div>
