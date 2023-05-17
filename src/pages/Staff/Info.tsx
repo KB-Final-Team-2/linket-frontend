@@ -5,6 +5,7 @@ import { MdOutlineChat } from "react-icons/md"
 import IndexHeader from "../../components/Header/IndexHeader";
 import InfoList from "../../components/List/InfoList";
 import NavBar from "../../components/NavBar/NavBar";
+import { Link } from "react-router-dom";
 
 const Info = () => {
     return (
@@ -21,9 +22,11 @@ const Info = () => {
                         </InfoList>
                     </div>
                     <div className="w-[331px] h-[100px] overflow-hidden border-y-2 border-white">
-                        <InfoList title="내 정보">
-                            <IoMdHappy />
-                        </InfoList>
+                        <Link to="/staff/info/userinfo">
+                            <InfoList title="내 정보">
+                                <IoMdHappy />
+                            </InfoList>
+                        </Link>
                         <InfoList title="리뷰 관리">
                             <MdOutlineChat />
                         </InfoList>
