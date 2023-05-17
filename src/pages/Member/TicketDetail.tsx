@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
@@ -12,7 +13,7 @@ const TicketDetail = () => {
         place: "멀티캠퍼스 선릉",
         url: "http://linket.io/event/12345",
     }
-
+	const navigate = useNavigate();
     return (
         <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center">
             <Header title="티켓 상세" />
@@ -42,9 +43,9 @@ const TicketDetail = () => {
                             </p>
                         </div>
                         <div className="w-[153px] h-[156px] overflow-hidden flex flex-col justify-center items-center gap-5">
-                            <Button title="Review" type="default" func={() => { }} />
+                            <Button title="Review" type="default" func={() => {navigate(`/member/event/${1234}/review`)}} />
                             <Button title="Notice" type="default" func={() => { }} />
-                            <Button title="Delete" type="delete" func={() => { }} />
+                            <Button title="Delete" type="delete" func={() => {navigate("/member/ticket/delete")}} />
                         </div>
                     </div>
                 </div>
