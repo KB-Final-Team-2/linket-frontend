@@ -14,7 +14,7 @@ export const getAttend = createAsyncThunk('getAttend',async (attendId:string, {r
 const attendSlice = createSlice({
     name:"attend",
     initialState: {
-        data:{},
+        data:[],
         loading:false,
     },
     reducers:{
@@ -31,7 +31,7 @@ const attendSlice = createSlice({
             state.loading = false;
         })
         builder.addCase(getAttend.rejected,(state)=>{
-            state.data = {};
+            state.loading = false;
         })
     }
 })

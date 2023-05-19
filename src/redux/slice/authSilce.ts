@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { User } from '../../interface/User';
+import { INIT_USER, RegistUser, User } from '../../interface/User';
 
 export const login = createAsyncThunk("loginState", async (_:void, {rejectWithValue})=>{
     try {
@@ -21,7 +21,7 @@ export const postLogin = createAsyncThunk("loginPostState", async(_:void, {rejec
     }
 })
 
-export const register = createAsyncThunk("registerUser", async(data:User, {rejectWithValue})=>{
+export const register = createAsyncThunk("registerUser", async(data:RegistUser, {rejectWithValue})=>{
     try {
         const userData = (await axios.post("/api/auth/register", data)).data;
         console.log(userData);
@@ -44,7 +44,7 @@ export const logout = createAsyncThunk("logout", async(_:void,{rejectWithValue})
 const authSlice = createSlice({
     name: 'auth',
     initialState:{
-        data: {},
+        data: INIT_USER,
         loading: false
     },
     reducers: {
@@ -61,14 +61,13 @@ const authSlice = createSlice({
             state.loading= false;
         });
         builder.addCase(login.rejected, (state)=>{
-            state.data={};
             state.loading=false;
         });
         builder.addCase(logout.pending, (state)=>{
             state.loading=true;
         });
         builder.addCase(logout.fulfilled, (state)=>{
-            state.data = {};
+            state.data = INIT_USER;
             state.loading = false;
         });
         builder.addCase(register.pending, (state)=>{

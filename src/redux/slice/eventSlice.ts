@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { INIT_EVENT } from "../../interface/Event";
 
 export const getEvent =  createAsyncThunk("getEventState", async (eventId: string, {rejectWithValue})=>{
     try {
@@ -13,12 +14,13 @@ export const getEvent =  createAsyncThunk("getEventState", async (eventId: strin
 const eventSlice = createSlice({
     name:"event",
     initialState: {
-        data:{},
+        event:INIT_EVENT,
+        eventList:[],
         loading:false,
     },
     reducers:{
         setEvent: (state, action)=>{
-            state.data = action.payload;
+            state.event = action.payload;
         }
     },
     extraReducers:(builder)=>{
@@ -26,11 +28,10 @@ const eventSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(getEvent.fulfilled, (state, action) => {
-            state.data = action.payload;
+            state.eventList = action.payload;
             state.loading = false;
         });
         builder.addCase(getEvent.rejected, (state) => {
-            state.data = {};
             state.loading = false;
         })
     }
