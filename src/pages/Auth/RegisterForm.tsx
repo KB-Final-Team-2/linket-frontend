@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import SelectButton from "../../components/Button/SelectButton";
-import { User } from "../../interface/User";
+import { RegistUser, User } from "../../interface/User";
 import { register } from "../../redux/slice/authSilce";
 import { useNavigate } from "react-router-dom";
 
@@ -30,7 +30,7 @@ const RegisterForm = (props: props) => {
     const navigate = useNavigate();
 
     const sendData = () => {
-        const registData : User = {email, password, userName, phone, gender, birthDate:"12345678", role:props.role, companyId};
+        const registData : RegistUser = {email, password, userName, phone, gender, birthDate:"12345678", role:props.role, companyId};
         dispatch(register(registData));
     }
 

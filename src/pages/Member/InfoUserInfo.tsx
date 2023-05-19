@@ -1,6 +1,7 @@
 import Header from "../../components/Header/Header";
 import LargeList from "../../components/List/LargeList";
 import NavBar from "../../components/NavBar/NavBar";
+import { DUMMY_COMPANY } from "../../interface/Company";
 import { User } from "../../interface/User";
 
 const UserInfo = () => {
@@ -12,7 +13,7 @@ const UserInfo = () => {
         phone: "01012345678",
         gender: "M",
         role: "member",
-        companyId: "123456"
+        company: DUMMY_COMPANY
     }
 
     return (
