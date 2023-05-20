@@ -5,6 +5,8 @@ import eventReducer from './slice/eventSlice'
 import ticketReducer from './slice/ticketSlice'
 import reviewReducer from './slice/reviewSlice'
 import attendReducer from './slice/attendSlice'
+import hireReducer from "./slice/hireSlice"
+import modalReducer from './slice/modalSlice'
 
 const store = configureStore({
   reducer: {
@@ -13,7 +15,9 @@ const store = configureStore({
     event: eventReducer,
     ticket: ticketReducer,
     review: reviewReducer,
-    attend: attendReducer
+    attend: attendReducer,
+    hire: hireReducer,
+    modal: modalReducer
   },
 })
 
