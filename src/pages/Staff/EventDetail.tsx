@@ -3,21 +3,10 @@ import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
+import { useSelector } from "react-redux";
 
 const EventDetail = () => {
-    const event: Event = {
-        eventId: "123456",
-        eventName: "KB HarryPotter Magic Show",
-        eventType: "magic show",
-        place: "Hogwarts School",
-        eventInq: "01063248609",
-        eventDesc: "호구와트 최대의 마술쇼",
-        eventStatus: "Y",
-        startDate: "2023-05-17",
-        endDate: "2023-05-18",
-        regDate: "2023-05-16",
-        company: undefined
-    }
+    const event: Event = useSelector((state:any)=>state.event.event);
     const list = [{ title: "행사명", content: event.eventName }, { title: "행사 분류", content: event.eventType }, { title: "행사 기간", content: `${event.startDate} ~ ${event.endDate}` }, { title: "행사장소", content: event.place }, { title: "행사 코드", content: event.eventId }, { title: "행사 포스터", content: "event_poster.jpg" }, { title: "행사 정보 이미지", content: "event_info.jpg" }]
 
     return (

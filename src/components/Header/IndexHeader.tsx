@@ -12,7 +12,7 @@ const IndexHeader = ({title}:props) => {
                 <p className="w-[257px] h-[95px] text-[40px] font-medium text-left text-white flex items-center">
                     {title}
                 </p>
-                <BiDotsVertical className="w-10 h-10 text-[#ff9f0e]"/>
+                <BiDotsVertical className="w-10 h-10 text-secondary"/>
             </div>
         </div>
     )

@@ -72,7 +72,7 @@ const Login = () => {
 				</div>
 			</div>
 			<div
-				className="w-12 h-12 rounded-full bg-[#FF6000] absolute left-[297px] top-[389px] text-[24px] flex justify-center items-center text-black"
+				className="w-12 h-12 rounded-full bg-primary absolute left-[297px] top-[389px] text-[24px] flex justify-center items-center text-black"
 				onClick={handleLogin}
 			>
 				<AiOutlineRight/>
@@ -95,7 +95,7 @@ const Login = () => {
 				</p>
 			</div>
 			<div className="w-[238px] h-[58px] absolute left-[68px] top-[178px]">
-				<p className="w-[238px] h-[58px] absolute left-0 top-0 text-5xl font-bold text-center text-[#ff6000]">
+				<p className="w-[238px] h-[58px] absolute left-0 top-0 text-5xl font-bold text-center text-primary">
 				Linket
 				</p>
 			</div>

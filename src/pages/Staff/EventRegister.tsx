@@ -22,17 +22,17 @@ const EventRegister = () => {
                                 행사 분류
                             </p>
                             <div className="w-[215px] h-[37px] overflow-hidden flex">
-                                <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-[#ff9f0e]">
+                                <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-secondary">
                                     <p className="w-20 h-10 text-[15px] font-bold text-center text-black">
                                         Festival
                                     </p>
                                 </div>
-                                <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-[#ff9f0e]">
+                                <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-secondary">
                                     <p className="w-20 h-10 text-[15px] font-bold text-center text-black">
                                         Concert
                                     </p>
                                 </div>
-                                <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-[#ff9f0e]">
+                                <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-secondary">
                                     <p className="w-20 h-10 text-[15px] font-bold text-center text-black">
                                         etc
                                     </p>
