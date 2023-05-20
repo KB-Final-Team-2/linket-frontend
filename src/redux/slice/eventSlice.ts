@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { INIT_EVENT } from "../../interface/Event";
+import { DUMMY_EVENT1, DUMMY_EVENT2, INIT_EVENT } from "../../interface/Event";
 
 export const getEvent =  createAsyncThunk("getEventState", async (eventId: string, {rejectWithValue})=>{
     try {
@@ -14,8 +14,8 @@ export const getEvent =  createAsyncThunk("getEventState", async (eventId: strin
 const eventSlice = createSlice({
     name:"event",
     initialState: {
-        event:INIT_EVENT,
-        eventList:[],
+        event:DUMMY_EVENT1,
+        eventList:[DUMMY_EVENT1, DUMMY_EVENT2],
         loading:false,
     },
     reducers:{

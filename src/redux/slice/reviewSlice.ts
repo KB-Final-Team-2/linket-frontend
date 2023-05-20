@@ -13,12 +13,13 @@ export const getReview = createAsyncThunk("getReview", async (reviewId: string, 
 const reviewSlice = createSlice({
     name:"review",
     initialState: {
-        data:{},
+        review:{},
+        reviewList:[],
         loading:false
     },
     reducers:{
         setReview: (state,action) => {
-            state.data = action.payload;
+            state.review = action.payload;
         }
     },
     extraReducers:(builder)=>{
@@ -26,11 +27,10 @@ const reviewSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(getReview.fulfilled, (state, action)=>{
-            state.data=action.payload;
+            state.reviewList=action.payload;
             state.loading = false;
         });
         builder.addCase(getReview.rejected, (state)=>{
-            state.data = {};
             state.loading = false;
         })
     }
