@@ -3,17 +3,13 @@ import Modal from "./Modal"
 import { ForwardedRef, forwardRef, useRef, useState } from "react";
 import DatePicker from "../Input/DatePicker";
 import { AiOutlineClose } from "react-icons/ai";
-import WebSelectButton from "../Button/WebSelectButton";
+import WebSelectButton from "../Button/Web/WebSelectButton";
 import { Event, RegistEvent } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../Button/Button";
 import { closeModal } from "../../redux/slice/modalSlice";
 import { User } from "../../interface/User";
-
-interface ListProps {
-    title: string;
-    content?: string;
-}
+import { ListProps } from "../../interface/ListProps";
 
 const InputList = forwardRef(({ title, content }: ListProps, ref: ForwardedRef<HTMLInputElement>) => {
     return (

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { User } from "../../interface/User";
+import { User } from "../../../interface/User";
 import { BsTools } from "react-icons/bs";
 import { AiOutlinePoweroff } from "react-icons/ai";
-import { setUpdaateUserModal } from "../../redux/slice/modalSlice";
+import { setUpdaateUserModal } from "../../../redux/slice/modalSlice";
 
 interface Info {
     title: string;

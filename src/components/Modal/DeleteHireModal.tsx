@@ -5,11 +5,7 @@ import { closeModal } from "../../redux/slice/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Event } from "../../interface/Event";
 import { Hire } from "../../interface/Hire";
-
-interface ListProps {
-    title: string;
-    content: string;
-}
+import { ListProps } from "../../interface/ListProps";
 
 const ModalInfoList = ({ title, content }: ListProps) => {
     return (

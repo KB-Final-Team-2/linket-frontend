@@ -4,9 +4,12 @@ import EventList from "../../components/List/EventList";
 import NavBar from "../../components/NavBar/NavBar";
 import { Company } from "../../interface/Company";
 import { Event } from "../../interface/Event";
+import { Link } from "react-router-dom";
+import { Hire } from "../../interface/Hire";
+import HireList from "../../components/List/HiretList";
 
 const PartTime = () => {
-    const eventList : Event[] = useSelector((state:any)=>state.event.eventList);
+	const hireList : Hire[] = useSelector((state:any)=>state.hire.hireList);
 
 	return (
 		<div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
@@ -14,21 +17,20 @@ const PartTime = () => {
 			<div className="w-[331px] h-full flex flex-col">
 				<div className="w-[331px] h-[580px] overflow-hidden flex flex-col flex-grow-0 flex-shrink-0">
 					<p className="w-full h-10 text-sm font-bold text-left align-middle text-secondary border-b">
-						등록 행사
+						등록 공고
 					</p>
 					<div className="w-[331px] h-full overflow-hidden">
-						{eventList.map((event, i) => (
-							<EventList key={i} event={event} />
+						{hireList.map((hire, i) => (
+							<HireList key={i} hire={hire} />
 						))}
 					</div>
 					<div className="w-full h-[156px] flex justify-between">
-						<div className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9]">
-						</div>
-						<div className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9]">
-							<p className="text-sm font-bold text-center text-black">
-								새 행사 등록하기
-							</p>
-						</div>
+						<Link to={`/part/search`} className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] flex justify-center items-center text-lg font-bold text-black">
+							공고 검색
+						</Link>
+						<Link to={`/part/register`} className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] flex justify-center items-center text-lg font-bold text-black">
+							새 공고 등록하기
+						</Link>
 					</div>
 				</div>
 			</div>

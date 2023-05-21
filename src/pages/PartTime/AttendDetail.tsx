@@ -3,24 +3,37 @@ import Header from "../../components/Header/Header";
 import NavBar from "../../components/NavBar/NavBar";
 import TableInfo from "../../components/Table/TableInfo";
 import List from "../../components/List/List";
+import { useSelector } from "react-redux";
+import { ListProps } from "../../interface/ListProps";
+import { User } from "../../interface/User";
+import { Attendance } from "../../interface/Attendance";
+import Button from "../../components/Button/Button";
 
 const AttendDetail = () => {
-    const list = [{ title: "안녕하세요", content: "반갑습니다." },
-    { title: "이름", content: "김근태" },
-    { title: "출근일시", content: "12:00:00" },
-    { title: "퇴근일시", content: "18:30:00" }];
+    const user: User = useSelector((state: any) => state.auth.data);
+    const attend: Attendance = useSelector((state: any) => state.attend.attend);
+
+    const infoList: ListProps[] = [{ title: "안녕하세요", content: "반갑습니다." },
+    { title: "이름", content: user.userName },
+    { title: "출근일시", content: attend.attStartDatetime },
+    { title: "퇴근일시", content: attend.attEndDatetime }];
 
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
+        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center box-content">
             <Header title="근태 관리" />
             <div className="w-[331px] h-full flex flex-col">
                 <div className="w-[330px] h-[580px] overflow-hidden border-y border-white">
-                    <TableInfo title="행사명" content="KB IT’s Your Life" />
-                    <TableInfo title="행사일" content="2023년 3월 2일" />
-                    {list.map((el) => {
-                        return (<List title={el.title} content={el.content} />)
-                    })}
-
+                    <div className="w-full h-[500px]">
+                        <TableInfo title="행사명" content="KB IT’s Your Life" />
+                        <TableInfo title="행사일" content="2023년 3월 2일" />
+                        {infoList.map((v, i) => {
+                            return (<List key={i} title={v.title} content={v.content || "x"} />)
+                        })}
+                    </div>
+                    <div className="w-full h-20 flex justify-between px-10 items-center">
+                        <Button title="출근" type={attend.attStartBnt ? "default" : "unable"} func={() => { }} />
+                        <Button title="퇴근" type={attend.attStartBnt ? "default" : "unable"} func={() => { }} />
+                    </div>
                 </div>
             </div>
             <NavBar role="part" state="1" />
