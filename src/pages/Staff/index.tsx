@@ -5,41 +5,12 @@ import EventList from "../../components/List/EventList";
 import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
 import { Company } from "../../interface/Company";
+import { useSelector } from "react-redux";
 
 const Staff = () => {
 
-	const company: Company = {
-        companyId: "00001",
-        companyName: "Multi"
-    }
-    const event1: Event = {
-        eventId: "12345",
-        eventName: "KB Killing Boys Concert",
-        eventType: "Concert",
-        place: "잠실 올림픽 경기장",
-        eventInq: "02-123-456",
-        eventDesc: "대세 남자 아이돌 콘서트",
-        eventStatus: "Y",
-        startDate: "2023.05.17",
-        endDate: "2023.05.17",
-        regDate: "2023.05.17",
-        company: company
-    }
-    const event2: Event = {
-        eventId: "12345",
-        eventName: "호구와트 마술쇼",
-        eventType: "Concert",
-        place: "잠실 올림픽 경기장",
-        eventInq: "02-123-456",
-        eventDesc: "마술쇼",
-        eventStatus: "Y",
-        startDate: "2023.05.14",
-        endDate: "2023.05.14",
-        regDate: "2023.05.14",
-        company: company
-    }
     
-    const eventList = [event1, event2]
+    const eventList : Event[] = useSelector((state:any)=>state.event.eventList);
 
 	return (
 		<div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">

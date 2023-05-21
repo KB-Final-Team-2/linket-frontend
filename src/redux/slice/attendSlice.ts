@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { DUMMY_ATTD, INIT_ATTD } from "../../interface/Attendance";
 
 export const getAttend = createAsyncThunk('getAttend',async (attendId:string, {rejectWithValue}) => {
     try {
@@ -14,12 +15,21 @@ export const getAttend = createAsyncThunk('getAttend',async (attendId:string, {r
 const attendSlice = createSlice({
     name:"attend",
     initialState: {
-        data:[],
+        attend:INIT_ATTD,
+        attendList: [DUMMY_ATTD, DUMMY_ATTD, DUMMY_ATTD],
+        startState: false,
+        endState: false,
         loading:false,
     },
     reducers:{
         setAttend:(state, action)=>{
-            state.data = action.payload;
+            state.attend = action.payload;
+        },
+        updateStart:(state, action)=>{
+            state.startState = action.payload;
+        },
+        updateEnd:(state, action)=>{
+            state.endState = action.payload;
         }
     },
     extraReducers:(builder)=>{
@@ -27,7 +37,7 @@ const attendSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(getAttend.fulfilled, (state, action) => {
-            state.data = action.payload;
+            state.attendList = action.payload;
             state.loading = false;
         })
         builder.addCase(getAttend.rejected,(state)=>{
@@ -37,7 +47,9 @@ const attendSlice = createSlice({
 })
 
 export const {
-    setAttend
+    setAttend,
+    updateStart,
+    updateEnd
 } = attendSlice.actions;
 
 export default attendSlice.reducer;

@@ -151,7 +151,7 @@ const RegisterForm = (props: props) => {
                         성별
                         </p>
                         <div className="w-[215px] h-[37px] relative flex justify-between px-5 left-[115px] top-0 overflow-hidden">
-                            {/* <div className="w-[70px] h-[30px] absolute left-[120px] top-1 overflow-hidden rounded-[15px] bg-[#ff9f0e]">
+                            {/* <div className="w-[70px] h-[30px] absolute left-[120px] top-1 overflow-hidden rounded-[15px] bg-secondary">
                                 <p className="w-20 h-10 absolute left-[-5px] top-[-5px] text-[15px] font-bold text-center text-black">
                                 Woman
                                 </p>

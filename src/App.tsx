@@ -53,6 +53,7 @@ import StaffInfoNotice from './pages/Staff/InfoNotice';
 import StaffInfoNoticeContent from './pages/Staff/InfoNoticeContent';
 import StaffInfoFAQ from './pages/Staff/InfoFAQ';
 import EventSearchResult from './pages/Member/EventSearchResult';
+import WebView from './pages/Staff/WebView';
 function App() {
 	return (
 		<div className="App">
@@ -94,6 +95,9 @@ function App() {
 						<Route path="/staff/event/:eventId" element={<StaffEventDetail />} />						
 						<Route path="/staff/event/register" element={<EventRegister />} />					
 						<Route path="/staff/*" element={<Staff />} />
+
+						{/* Staff Web Router */}
+						<Route path="/staff/web" element={<WebView />} />
 
 						{/* PartTime Router */}
 						<Route path="/part/*" element={<PartTime />} />
