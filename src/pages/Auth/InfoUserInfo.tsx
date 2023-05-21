@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import Header from "../../components/Header/Header";
 import LargeList from "../../components/List/LargeList";
 import NavBar from "../../components/NavBar/NavBar";
@@ -5,16 +6,7 @@ import { DUMMY_COMPANY } from "../../interface/Company";
 import { User } from "../../interface/User";
 
 const UserInfo = () => {
-    const user: User = {
-        email: "test@gmail.com",
-        password: "123456",
-        userName: "Tom",
-        birthDate: "2022.02.02",
-        phone: "01012345678",
-        gender: "M",
-        role: "member",
-        company: DUMMY_COMPANY
-    }
+    const user: User = useSelector((state:any)=>state.auth.data);
 
     return (
         <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
@@ -28,7 +20,7 @@ const UserInfo = () => {
                     <LargeList title="연락처" content={user.phone} />
                 </div>
             </div>
-            <NavBar role="part" state="3" />
+            <NavBar role="member" state="3" />
         </div>
     )
 }

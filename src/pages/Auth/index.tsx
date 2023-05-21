@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import {AiOutlineRight} from "react-icons/ai"
 import { useDispatch, useSelector } from "react-redux";
-import { User } from "../../interface/User";
+import { DUMMY_MEMBER, DUMMY_PART, DUMMY_STAFF, User } from "../../interface/User";
 import { logout, setUser } from "../../redux/slice/authSilce";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -26,12 +26,22 @@ const Login = () => {
 		role: "member"
 	}
 
+	const part = {
+		email: "part",
+		password: "1234",
+		role: "part"
+	}
+
 	const user = [staff, member];
 
 	const handleLogin = () => {
-		user.map((v,i)=>{
-			if(email===v.email&&password===v.password) navigate(`/${v.role}`)
-		})
+		let user : User = {} as User;
+		if(staff.email===email && staff.password===password) user=DUMMY_STAFF;
+		else if(member.email===email && member.password===password) user=DUMMY_MEMBER;
+		else if(part.email===email && part.password===password) user=DUMMY_PART;
+
+		dispatch(setUser(user));
+		navigate(`/${user.role}`)
 		// axios.post("/api/auth/login",{email:email, password:password})
 		// .then((res)=>{
 		// 	const userData : User = res.data;

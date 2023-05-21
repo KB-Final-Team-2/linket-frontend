@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { DUMMY_PART, INIT_USER, RegistUser, User } from '../../interface/User';
 import { DUMMY_STAFF } from '../../interface/User';
+import { useNavigate } from 'react-router-dom';
 
 export const login = createAsyncThunk("loginState", async (_:void, {rejectWithValue})=>{
     try {
@@ -34,9 +35,10 @@ export const register = createAsyncThunk("registerUser", async(data:RegistUser, 
 
 export const logout = createAsyncThunk("logout", async(_:void,{rejectWithValue})=>{
     try {
-        const res = (await axios.get("/api/auth/logout")).data;
-        console.log(res);
-        return res;
+        // const res = (await axios.get("/api/auth/logout")).data;
+        // console.log(res);
+        // return res;
+        return 0;
     } catch (error) {
 
     }
