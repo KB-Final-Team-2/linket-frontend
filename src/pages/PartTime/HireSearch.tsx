@@ -22,6 +22,8 @@ const HireSearch = () => {
         const searchTitle = titleRef.current?.value || "";
         const searchType = type;
         const searchMonth = months;
+
+        navigate("/part/search/result");
     }
     
     return (
@@ -76,7 +78,7 @@ const HireSearch = () => {
                                 {typeList.map((v,i)=>(<SelectButton key={i} state={type===v} title={v} func={() => { setType(v)}} />))}
                             </div>
                         </div>
-                        <div className="w-full flex justify-center items-center">
+                        <div className="w-full h-[100px] flex justify-center items-center">
                             <Button title="Search" type="default" func={() => { handleSearch() }} />
                         </div>
                     </div>

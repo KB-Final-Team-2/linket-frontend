@@ -1,9 +1,16 @@
+import { useSelector } from "react-redux";
 import Header from "../../components/Header/Header";
 import NextList from "../../components/List/NextList";
 import NavBar from "../../components/NavBar/NavBar";
 import TableInfo from "../../components/Table/TableInfo";
+import { Attendance } from "../../interface/Attendance";
+import { useParams } from "react-router-dom";
 
-const AttendEvent = () => {
+const AttendHire = () => {
+    const attendList : Attendance[] = useSelector((state:any)=>state.attend.attendList);
+
+    const {hireId} = useParams();
+
     const list = [{ title: "안녕하세요", content: "반갑습니다." },
     { title: "안녕하세요", content: "반갑습니다." },
     { title: "안녕하세요", content: "반갑습니다." },
@@ -15,8 +22,8 @@ const AttendEvent = () => {
                 <div className="w-[331px] h-[622px] overflow-hidden">
                     <div className="w-[330px] h-[580px] overflow-hidden border-y border-white">
                         <TableInfo title="행사명" content="KB IT’s Your Life" />
-                        {list.map((el) => {
-                            return (<NextList title={el.content} link={`/part/event/${1234}/attend/${1234}`}/>)
+                        {attendList.map((v, i) => {
+                            return (<NextList title={v.attDate} link={`/part/${hireId}/attend/${v.attId}`}/>)
                         })}
                     </div>
                 </div>
@@ -27,4 +34,4 @@ const AttendEvent = () => {
     )
 }
 
-export default AttendEvent;
+export default AttendHire;

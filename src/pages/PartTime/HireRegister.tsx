@@ -2,15 +2,15 @@ import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import NavBar from "../../components/NavBar/NavBar";
 
-const AttendRegister = () => {
+const HireRegister = () => {
     return (
         <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
-            <Header title="행사 등록" />
+            <Header title="공고 등록" />
             <div className="w-[331px] h-full left-[22px] top-[125px]">
                 <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white flex flex-col">
                     <div className="w-[330px] h-full overflow-hidden px-5">
                         <p className="w-full h-10 text-[15px] font-bold text-left text-white flex items-center my-3 border-b">
-                            사전 공지된 행사번호를 입력해주세요.
+                            공지된 공고 등록번호를 입력해주세요.
                         </p>
                         <div className="w-full h-[49px] overflow-hidden bg-[#b1b1b1] flex">
                             <p className="w-[330px] h-[50px] text-[15px] font-bold text-center text-white/[0.72]">
@@ -24,9 +24,9 @@ const AttendRegister = () => {
                     </div>
                 </div>
             </div>
-            <NavBar role="part" state="2" />
+            <NavBar role="part" state="1" />
         </div>
     )
 }
 
-export default AttendRegister;
+export default HireRegister;
