@@ -11,6 +11,7 @@ import CreateEventModal from "../../../components/Modal/CreateEventModal";
 import DeleteEventModal from "../../../components/Modal/DeleteEventModal";
 import CreateHireModal from "../../../components/Modal/CreateHireModal";
 import DeleteHireModal from "../../../components/Modal/DeleteHireModal";
+import UpdateUserModal from "../../../components/Modal/UpdateUserModal";
 
 interface buttonInfo {
     text: string;
@@ -66,6 +67,7 @@ const WebView = () => {
             {modal==="deleteEvent"&&<DeleteEventModal />}
             {modal==="createHire"&&<CreateHireModal />}
             {modal==="deleteHire"&&<DeleteHireModal />}
+            {modal==="updateUser"&&<UpdateUserModal />}
         </>
     )
 }

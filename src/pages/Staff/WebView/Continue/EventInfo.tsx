@@ -56,13 +56,19 @@ const EventInfo = () => {
                 </div>
                 {state === 0 && <div className="w-[140px] h-[50px] overflow-hidden flex">
                     <div
-                        className="w-[70px] h-10 overflow-hidden text-xl font-bold text-center text-white cursor-pointer"
+                        className="
+                            w-[70px] h-full overflow-hidden text-xl font-bold text-center text-white cursor-pointer flex justify-center items-center
+                            hover:bg-secondary
+                        "
                         onClick={() => { dispatch(setUpdateEventModal()) }}
                     >
                         수정
                     </div>
                     <div
-                        className="w-[70px] h-10 overflow-hidden text-xl font-bold text-center text-white cursor-pointer"
+                        className="
+                            w-[70px] h-full overflow-hidden text-xl font-bold text-center text-white cursor-pointer flex justify-center items-center
+                            hover:bg-red-600
+                        "
                         onClick={()=>{dispatch(setDeleteEventModal())}}
                     >
                         삭제

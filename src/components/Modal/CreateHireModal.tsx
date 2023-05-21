@@ -48,41 +48,41 @@ const CreateHireModal = () => {
 
     return (
                 <Modal>
-                    <div className="w-[600px] h-[800px] relaitve overflow-hidden rounded-[49px] bg-[#454545] border-[10px] border-white flex flex-col">
-                        <div className="w-[600px] h-[100px] overflow-hidden flex flex-shrink-0 justify-center items-center text-[40px] font-bold text-center text-white">
+                    <div className="w-[600px] h-[800px] relative overflow-hidden rounded-[49px] bg-[#454545] border-[10px] border-white flex flex-col box-content">
+                        <div className="w-full h-[100px] overflow-hidden flex flex-shrink-0 justify-center items-center text-[40px] font-bold text-center text-white">
                             공고 등록
                         </div>
-                        <div className="w-[600px] h-[600px] overflow-hidden border-y border-white">
-                            <div className="w-[560px] h-[562.75px] overflow-hidden flex flex-col py-5 justify-between">
+                        <div className="w-full h-full overflow-hidden border-y border-white">
+                            <div className="w-full h-full overflow-hidden flex flex-col py-5 justify-between gap-3">
                                 <WebInfoInput title={"공고명"} ref={nameRef} />
-                                <div className="w-[558.31px] h-[39.14px] overflow-hidden flex items-center">
-                                    <p className="w-[194.56px] h-[39.14px] text-[15px] font-bold text-center text-white">
-                                        행사 시작일시
+                                <div className="w-full h-10 overflow-hidden flex items-center justify-center flex-shrink-0">
+                                    <p className="w-48 h-fit text-[15px] font-bold text-center text-white">
+                                        근무 시작일시
                                     </p>
                                     <DatePicker title="" date={startDate} setDate={setStartDate} />
                                 </div>
-                                <div className="w-[558.31px] h-[39.14px] overflow-hidden flex items-center">
-                                    <p className="w-[194.56px] h-[39.14px] text-[15px] font-bold text-center text-white">
-                                        행사 종료일시
+                                <div className="w-full h-10 overflow-hidden flex items-center flex-shrink-0">
+                                    <p className="w-48 h-full text-[15px] font-bold text-center text-white">
+                                        근무 종료일시
                                     </p>
                                     <DatePicker title="" date={endDate} setDate={setEndDate} />
                                 </div>
                                 <WebInfoInput title={"근무 시간"} ref={workHourRef} />
                                 <WebInfoInput title={"시급"} ref={payRef} type="number"/>
                                 <WebInfoInput title={"대표 문의처"} ref={imgRef} />
-                                <div className="w-[558.31px] h-[185.11px] overflow-hidden flex flex-shrink-0 flex-grow-0">
-                                    <p className="w-[194.56px] h-[185.11px] text-[15px] font-bold text-center text-white">
+                                <div className="w-full h-[200px] overflow-hidden flex flex-shrink-0 flex-grow-0 px-5">
+                                    <p className="w-48 h-full text-[15px] font-bold text-center text-white">
                                         사전 교육 정보
                                     </p>
                                     <textarea
                                         ref={eduRef}
-                                        className="w-[363.75px] h-[185.11px] overflow-hidden rounded-[9px] text-[15px] bg-[#c4c4c4]/[0.31] focus:outline-none focus:bg-[#c4c4c4]/[0.50] px-4 py-2"
+                                        className="mx-5 w-full h-full overflow-hidden rounded-[9px] text-[15px] bg-[#c4c4c4]/[0.31] focus:outline-none focus:bg-[#c4c4c4]/[0.50] px-4 py-2"
                                     />
                                 </div>
                             </div>
 
                         </div>
-                        <div className="w-[600px] h-[100px] overflow-hidden flex flex-shrink-0 flex-grow-0 justify-center items-center">
+                        <div className="w-full h-24 overflow-hidden flex flex-shrink-0 flex-grow-0 justify-center items-center">
                             <Button title="등록" type={"default"} func={handleRegist} />
                         </div>
                         <AiOutlineClose className="absolute right-8 top-8 text-3xl" onClick={() => { dispatch(closeModal()) }} />

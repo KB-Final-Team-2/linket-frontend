@@ -85,7 +85,7 @@ const EventHire = () => {
                     <div className="w-[720px] h-full overflow-hidden">
                         <div className="w-[720px] h-[300px]">
                             <div
-                                className="w-[720px] h-[50px] overflow-hidden bg-white/[0.12] hover:bg-white/50 flex flex-shrink-0 flex-grow-0 justify-center items-center"
+                                className="w-[720px] h-[50px] overflow-hidden bg-white/[0.12] hover:bg-white/50 flex flex-shrink-0 flex-grow-0 justify-center items-center cursor-pointer"
                                 onClick={()=>{ dispatch(setCreateHireModal())}}
                             >
                                 <p className="text-xl font-bold text-center text-white">
@@ -100,7 +100,10 @@ const EventHire = () => {
                 ) : (
                     <div className="w-[790px] h-full overflow-hidden border-y border-white flex">
                         <div className="w-[200px] h-[730px] overflow-hidden">
-                            <div className="w-[200px] h-[50px] overflow-hidden bg-white/[0.12] hover:bg-white/50 flex flex-shrink-0 flex-grow-0 justify-center items-center">
+                            <div
+                                className="w-[200px] h-[50px] overflow-hidden bg-white/[0.12] hover:bg-white/50 flex flex-shrink-0 flex-grow-0 justify-center items-center cursor-pointer"
+                                onClick={()=>{dispatch(setCreateHireModal())}}
+                            >
                                 <p className="text-xl font-bold text-center text-white">
                                     + 새 공고 추가
                                 </p>
