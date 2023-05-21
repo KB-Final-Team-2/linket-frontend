@@ -9,11 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../Button/Button";
 import { closeModal } from "../../redux/slice/modalSlice";
 import { User } from "../../interface/User";
-
-interface ListProps {
-    title: string;
-    content?: string;
-}
+import { ListProps } from "../../interface/ListProps";
 
 const InputList = forwardRef(({ title, content }: ListProps, ref: ForwardedRef<HTMLInputElement>) => {
     return (

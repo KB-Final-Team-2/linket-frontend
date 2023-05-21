@@ -7,9 +7,9 @@ import PartTime from './pages/PartTime';
 import Admin from './pages/Admin';
 import Login from './pages/Auth';
 import Register from './pages/Auth/Register';
-import PartTimeAttendRegister from './pages/PartTime/AttendRegister';
-import PartTimeAttendEvent from './pages/PartTime/AttendEvent';
-import PartTimeEventDetail from './pages/PartTime/EventDetail';
+import PartTimeHireRegister from './pages/PartTime/HireRegister';
+import PartTimeAttendHire from './pages/PartTime/AttendHire';
+import PartTimeHireDetail from './pages/PartTime/HireDetail';
 import PartTimeAttendDetail from './pages/PartTime/AttendDetail';
 import PartTimeInfo from './pages/PartTime/Info';
 import PartTimeInfoCheck from './pages/PartTime/InfoCheck';
@@ -56,6 +56,7 @@ import EventSearchResult from './pages/Member/EventSearchResult';
 import WebView from './pages/Staff/WebView';
 import HireSearch from './pages/PartTime/HireSearch';
 import HireSearchResult from './pages/PartTime/HireSearchResult';
+import HireSearchDetail from './pages/PartTime/HireSearchDetail';
 function App() {
 	return (
 		<div className="App">
@@ -103,12 +104,14 @@ function App() {
 
 						{/* PartTime Router */}
 						<Route path="/part/*" element={<PartTime />} />
-						<Route path="/part/event/register" element={<PartTimeAttendRegister />} />
-						<Route path="/part/event/:eventId" element={<PartTimeEventDetail />} />
-						<Route path="/part/event/:eventId/attend" element={<PartTimeAttendEvent />} />
-						<Route path="/part/event/:eventId/attend/:attendId" element={<PartTimeAttendDetail />} />
-						<Route path='/part/hire/search' element={<HireSearch />}/>
-						<Route path='/part/hire/search/result' element={<HireSearchResult />}/>
+						<Route path="/part/register" element={<PartTimeHireRegister />} />
+						<Route path="/part/:hireId" element={<PartTimeHireDetail />} />
+						<Route path="/part/:hireId/attend" element={<PartTimeAttendHire />} />
+						<Route path="/part/:hireId/attend/:attendId" element={<PartTimeAttendDetail />} />
+						<Route path="/part/:hireId" element={<HireSearchDetail />} />
+						<Route path='/part/search' element={<HireSearch />}/>
+						<Route path='/part/search/result' element={<HireSearchResult />}/>
+						<Route path="/part/search/:hireId" element={<HireSearchDetail />} />
 
 						<Route path="/part/info" element={<PartTimeInfo />} />
 						<Route path="/part/info/check" element={<PartTimeInfoCheck />} />
