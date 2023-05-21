@@ -4,7 +4,7 @@ import Modal from "./Modal"
 import { useRef, useState } from "react";
 import DatePicker from "../Input/DatePicker";
 import { AiOutlineClose } from "react-icons/ai";
-import WebSelectButton from "../Button/WebSelectButton";
+import WebSelectButton from "../Button/Web/WebSelectButton";
 import { RegistEvent } from "../../interface/Event";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";

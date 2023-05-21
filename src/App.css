@@ -36,3 +36,15 @@
         transform: rotate(360deg);
     }
 }
+
+input {
+    outline: 0;
+    background-color: rgb(196 196 196 / 0.31);
+    padding-left: 16px;
+    font-size: 18px;
+    line-height: 28px
+}
+
+input:focus {
+    background-color: rgb(196 196 196 / 0.50);
+}

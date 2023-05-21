@@ -3,7 +3,6 @@ import ContinueEvent from "./ContinueEvent";
 import NavButton from "../../../components/NavBar/WebNavButton";
 import EndedEvent from "./EndedEvent";
 
-import WebUserButton from "../../../components/Button/WebUserButton";
 import UpdateEventModal from "../../../components/Modal/UpdateEventModal";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../../redux/slice/modalSlice";
@@ -12,6 +11,7 @@ import DeleteEventModal from "../../../components/Modal/DeleteEventModal";
 import CreateHireModal from "../../../components/Modal/CreateHireModal";
 import DeleteHireModal from "../../../components/Modal/DeleteHireModal";
 import UpdateUserModal from "../../../components/Modal/UpdateUserModal";
+import WebUserButton from "../../../components/Button/Web/WebUserButton";
 
 interface buttonInfo {
     text: string;

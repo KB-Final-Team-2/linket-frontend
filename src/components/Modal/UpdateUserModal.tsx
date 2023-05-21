@@ -3,7 +3,7 @@ import Modal from "./Modal"
 import { ForwardedRef, forwardRef, useRef, useState } from "react";
 import DatePicker from "../Input/DatePicker";
 import { AiOutlineClose } from "react-icons/ai";
-import WebSelectButton from "../Button/WebSelectButton";
+import WebSelectButton from "../Button/Web/WebSelectButton";
 import { Event, RegistEvent } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../Button/Button";

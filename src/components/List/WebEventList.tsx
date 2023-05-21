@@ -8,9 +8,9 @@ interface props {
 
 const WebEventList = ({ event, state, func }: props) => {
     return (
-        <div 
-        className={`w-[300px] h-[100px] overflow-hidden flex flex-col flex-shrink-0 border-b cursor-pointer ${state && "bg-black/25"}`}
-        onClick={()=>{func()}}
+        <div
+            className={`w-[300px] h-[100px] overflow-hidden flex flex-col flex-shrink-0 border-b cursor-pointer ${state && "bg-black/25"}`}
+            onClick={() => { func() }}
         >
             <div className={`w-[250px] h-[35px] overflow-hidden`}>
                 <p className="w-[300px] text-2xl font-bold text-left text-secondary truncate">
