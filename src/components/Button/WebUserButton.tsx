@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { User } from "../../interface/User";
 import { BsTools } from "react-icons/bs";
 import { AiOutlinePoweroff } from "react-icons/ai";
-import Modal from "react-modal";
+import { setUpdaateUserModal } from "../../redux/slice/modalSlice";
 
 interface Info {
     title: string;
@@ -26,7 +26,6 @@ const WebInfoList = ({ title, content }: Info) => {
 
 const WebUserButton = () => {
     const [openPage, setOpenPage] = useState(false);
-    const [openUpdateModal, setOpenUpdateModal] = useState(false);
     const user: User = useSelector((state: any) => state.auth.data);
     const dispatch = useDispatch();
     const infoList: Info[] = [
@@ -56,7 +55,7 @@ const WebUserButton = () => {
                         <div>
                             <div
                                 className="w-[260px] h-10 border-b border-black cursor-pointer hover:bg-white/20 flex items-center justify-center gap-2 text-black"
-                                onClick={()=>{setOpenUpdateModal(true)}}
+                                onClick={()=>{dispatch(setUpdaateUserModal())}}
                             >
                                 <BsTools className="w-5 h-5" />
                                 <div className="w-fit h-fit inline align-middle overflow-hidden text-base font-bold ">
@@ -76,15 +75,6 @@ const WebUserButton = () => {
                     </div>
                 )}
             </div>
-            <Modal
-                isOpen={openUpdateModal}
-                onRequestClose={()=>{setOpenUpdateModal(false)}}
-                className={"z-50 w-fit h-fit bg-white"}
-            >
-                <div className="">
-                    update modal
-                </div>
-            </Modal>
         </>
     )
 }
