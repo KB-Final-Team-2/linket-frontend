@@ -3,7 +3,7 @@ import NavBar from "../../components/NavBar/NavBar";
 
 const InfoNoticeContent = () => {
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
+        <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
             <Header title="공지사항" />
             <div className="w-[331px] h-full flex flex-col">
                 <div className="w-[331px] h-[580px] overflow-hidden border-y border-white">

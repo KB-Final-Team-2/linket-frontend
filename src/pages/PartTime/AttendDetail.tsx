@@ -8,6 +8,7 @@ import { ListProps } from "../../interface/ListProps";
 import { User } from "../../interface/User";
 import { Attendance } from "../../interface/Attendance";
 import Button from "../../components/Button/Button";
+import Templete from "../Templete";
 
 const AttendDetail = () => {
     const user: User = useSelector((state: any) => state.auth?.data);
@@ -19,25 +20,27 @@ const AttendDetail = () => {
     { title: "퇴근일시", content: attend.attEndDatetime }];
 
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center box-content">
-            <Header title="근태 관리" />
-            <div className="w-[331px] h-full flex flex-col">
-                <div className="w-[330px] h-[580px] overflow-hidden border-y border-white">
-                    <div className="w-full h-[500px]">
-                        <TableInfo title="행사명" content="KB IT’s Your Life" />
-                        <TableInfo title="행사일" content="2023년 3월 2일" />
-                        {infoList.map((v, i) => {
-                            return (<List key={i} title={v.title} content={v.content || "x"} />)
-                        })}
-                    </div>
-                    <div className="w-full h-20 flex justify-between px-10 items-center">
-                        <Button title="출근" type={attend.attStartBnt ? "default" : "unable"} func={() => { }} />
-                        <Button title="퇴근" type={attend.attStartBnt ? "default" : "unable"} func={() => { }} />
+        <Templete>
+            <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center box-content">
+                <Header title="근태 관리" />
+                <div className="w-[331px] h-full flex flex-col">
+                    <div className="w-[330px] h-[580px] overflow-hidden border-y border-white">
+                        <div className="w-full h-[500px]">
+                            <TableInfo title="행사명" content="KB IT’s Your Life" />
+                            <TableInfo title="행사일" content="2023년 3월 2일" />
+                            {infoList.map((v, i) => {
+                                return (<List key={i} title={v.title} content={v.content || "x"} />)
+                            })}
+                        </div>
+                        <div className="w-full h-20 flex justify-between px-10 items-center">
+                            <Button title="출근" type={attend.attStartBnt ? "default" : "unable"} func={() => { }} />
+                            <Button title="퇴근" type={attend.attStartBnt ? "default" : "unable"} func={() => { }} />
+                        </div>
                     </div>
                 </div>
+                <NavBar role="part" state="1" />
             </div>
-            <NavBar role="part" state="1" />
-        </div>
+        </Templete>
     )
 }
 export default AttendDetail;

@@ -6,6 +6,7 @@ import { Hire } from "../../interface/Hire";
 import { User } from "../../interface/User";
 import { Link } from "react-router-dom";
 import { setHire } from "../../redux/slice/hireSlice";
+import Templete from "../Templete";
 
 interface props {
     hire: Hire;
@@ -24,17 +25,19 @@ const HireList = ({ hire, idx, func }: props) => {
     }
 
     return (
-        <div
-            className="w-[331px] h-[60px] overflow-hidden flex border-b"
-            onClick={() => { handleHire(hire) }}
-        >
-            <div className="w-[60px] h-[60px] overflow-hidden flex-shrink-0 border-r text-[15px] font-bold text-center text-secondary flex justify-center items-center">
-                {idx + 1}
+        <Templete>
+            <div
+                className="w-[331px] h-[60px] overflow-hidden flex border-b"
+                onClick={() => { handleHire(hire) }}
+            >
+                <div className="w-[60px] h-[60px] overflow-hidden flex-shrink-0 border-r text-[15px] font-bold text-center text-secondary flex justify-center items-center">
+                    {idx + 1}
+                </div>
+                <div className="w-[260px] h-[60px] overflow-hidden flex-shrink-0 text-[15px] font-bold text-center text-secondary flex justify-start items-center px-5">
+                    {hire.workName}
+                </div>
             </div>
-            <div className="w-[260px] h-[60px] overflow-hidden flex-shrink-0 text-[15px] font-bold text-center text-secondary flex justify-start items-center px-5">
-                {hire.workName}
-            </div>
-        </div>
+        </Templete>
     )
 }
 
@@ -44,7 +47,7 @@ const HireSearchResult = () => {
     const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
 
     return (
-        <div className="w-[375px] h-[812px] overflow-hidden bg-background-dark flex flex-col justify-center items-center">
+        <div className="w-[375px] h-[812px] overflow-hidden flex flex-col justify-center items-center">
             <Header title="공고 검색 결과" />
 
             <div className="w-[331px] h-full">

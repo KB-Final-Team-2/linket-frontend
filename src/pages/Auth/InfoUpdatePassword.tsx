@@ -10,7 +10,7 @@ const InfoUpdatePassword = () => {
     const checkRef = useRef<HTMLInputElement>(null);
 
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
+        <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
             <Header title="연락처 수정" />
             <div className="w-[331px] h-full">
                 <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white flex flex-col">

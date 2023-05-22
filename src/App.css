@@ -48,3 +48,7 @@ input {
 input:focus {
     background-color: rgb(196 196 196 / 0.50);
 }
+
+.templete {
+    background : linear-gradient(to bottom, #454545 0%, rgba(106,106,106,0.93) 51.04%, rgba(33,33,33,0.97) 100%);
+}

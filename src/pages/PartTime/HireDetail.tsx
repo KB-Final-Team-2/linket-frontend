@@ -6,6 +6,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { ListProps } from "../../interface/ListProps";
 import { Hire } from "../../interface/Hire";
 import { Link } from "react-router-dom";
+import Templete from "../Templete";
 
 const HireDetail = () => {
     const hire : Hire = useSelector((state:any)=>state.hire?.data);
@@ -18,7 +19,8 @@ const HireDetail = () => {
         {title:"문의처", content:hire?.edu},
     ];
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
+        <Templete>
+        <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
             <Header title="공고 상세" />
             <div className="w-[331px] h-full flex flex-col">
                 <div className="w-[331px] h-[580px] flex flex-col border-y">
@@ -40,7 +42,7 @@ const HireDetail = () => {
             </div>
             <NavBar role="part" state="1" />
         </div>
+        </Templete>
     )
-
 }
 export default HireDetail;
