@@ -1,35 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const modalSlice = createSlice({
-    name:"modal",
-    initialState:{
-        current:""
+    name: "modal",
+    initialState: {
+        current: ""
     },
-    reducers:{
-        setCreateEventModal:(state)=>{
-            state.current="createEvent";
+    reducers: {
+        setCreateEventModal: (state) => {
+            state.current = "createEvent";
         },
-        setUpdateEventModal:(state)=>{
-            state.current="updateEvent";
+        setUpdateEventModal: (state) => {
+            state.current = "updateEvent";
         },
-        setDeleteEventModal:(state)=>{
-            state.current="deleteEvent"
+        setDeleteEventModal: (state) => {
+            state.current = "deleteEvent"
         },
-        setCreateHireModal:(state)=>{
-            state.current="createHire"
+        setCreateHireModal: (state) => {
+            state.current = "createHire"
         },
-        setDeleteHireModal:(state)=>{
-            state.current="deleteHire"
+        setDeleteHireModal: (state) => {
+            state.current = "deleteHire"
         },
-        setUpdaateUserModal:(state)=>{
-            state.current="updateUser"
+        setUpdaateUserModal: (state) => {
+            state.current = "updateUser"
         },
-        closeModal:(state)=>{
-            state.current="";
+        closeModal: (state) => {
+            state.current = "";
         }
     },
-    extraReducers:(builder=>{
-        
+    extraReducers: (builder => {
+
     })
 })
 
