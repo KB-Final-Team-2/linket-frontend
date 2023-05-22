@@ -20,7 +20,7 @@ const NavBar = (props: props) => {
     }
 
     const handleRight = () => {
-        const url = `/${user.role}/info`;
+        const url = `/info`;
         navigate(url);
     }
 

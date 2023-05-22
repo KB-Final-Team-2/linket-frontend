@@ -15,7 +15,7 @@ const Info = () => {
 
     const handleLogout = () => {
         dispatch(logout());
-        navigate("/");
+        navigate("/login");
     }
 
     return (
@@ -24,7 +24,7 @@ const Info = () => {
             <div className="w-[331px] h-full">
                 <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white">
                     <div className="w-[331px] h-[100px] overflow-hidden border-y-2 border-white">
-                        <Link to="/member/info/user">
+                        <Link to="/info/user">
                             <InfoList title="내 정보">
                                 <IoMdHappy />
                             </InfoList>
@@ -35,13 +35,13 @@ const Info = () => {
                         </InfoList>
                     </div>
                     <div className="w-[331px] h-[100px] overflow-hidden border-b border-white">
-                        <Link to="/member/info/FAQ">
+                        <Link to="/info/FAQ">
                             <InfoList title="FAQ">
                                 <FaRegCommentDots />
                             </InfoList>
                         </Link>
 
-                        <Link to="/member/info/notice">
+                        <Link to="/info/notice">
                             <InfoList title="공지사항">
                                 <AiOutlineNotification />
                             </InfoList>

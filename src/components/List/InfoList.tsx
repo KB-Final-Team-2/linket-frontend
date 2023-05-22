@@ -9,20 +9,9 @@ interface props {
 
 
 const InfoList = ({ title, children }: props) => {
-    const user = useSelector((state: any) => state.auth.data);
-    const navigate = useNavigate();
-    const doNavigate = (dest: string) => {
-        navigate(`/${user.role}/${dest}`)
-    }
-
-    const handleLogout = () => {
-        console.log("logout");
-    }
-
     return (
         <div
             className="w-full h-[50px] overflow-hidden border-b border-white flex"
-            onClick={()=>{title==="로그아웃"?handleLogout():doNavigate("info")}}
         >
             <div className="w-[50px] h-[50px] flex flex-shrink-0 items-center justify-center text-2xl">
                 {children}
