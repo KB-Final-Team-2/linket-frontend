@@ -4,28 +4,27 @@ import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
+import { Ticket } from "../../interface/Ticket";
+import { useSelector } from "react-redux";
 
-const TicketDelete = () => {
-    const ticket = {
-        eventTitle: "KB Killing Boys Concert",
-        eventType: "Concert",
-        startDate: "2023.05.17",
-        endDate: "2023.05.17",
-        place: "잠실 올림픽 경기장",
-        url: "http://linket.io/event/12345",
-    }
+interface props {
+    onRequestReturn : Function;
+}
+
+const TicketDelete = ({onRequestReturn}:props) => {
+    const ticket : Ticket = useSelector((state:any)=>state.ticket.data);
     const navigate = useNavigate();
     return (
         <Templete>
             <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-                <Header title="티켓 삭제" />
+                <Header title="티켓 삭제" func={()=>{onRequestReturn()}} />
                 <div className="w-[331px] h-full">
                     <div className="w-[331px] h-[580px] overflow-hidden border-b border-t  flex flex-col">
                         <div className="w-[330px] h-[148px] overflow-hidden">
-                            <List title="행사명" content={ticket.eventTitle} />
-                            <List title="행사 분류" content={ticket.eventType} />
-                            <List title="행사 기간" content={`${ticket.startDate} ~ ${ticket.endDate}`} />
-                            <List title="행사 장소" content={ticket.place} />
+                            <List title="행사명" content={`ticket.eventTitle`} />
+                            <List title="행사 분류" content={`ticket.eventType`} />
+                            <List title="행사 기간" content={`ticket.startDate ~ ticket.endDate`} />
+                            <List title="행사 장소" content={`ticket.place`} />
                         </div>
                         <div className="w-[330px] h-full overflow-hidden">
                             <div className="w-[330px] h-full font-bold text-center text-[20px] text-white flex flex-col justify-center items-center">
@@ -37,11 +36,10 @@ const TicketDelete = () => {
                         </div>
                         <div className="w-[337px] h-[202px] overflow-hidden flex flex-shrink-0 justify-between items-center px-10">
                             <Button title="Delete" type="delete" func={() => { navigate("/member") }} />
-                            <Button title="return" type="default" func={() => { navigate(-1) }} />
+                            <Button title="return" type="default" func={() => { onRequestReturn() }} />
                         </div>
                     </div>
                 </div>
-                <NavBar role="member" state="2" />
             </div>
         </Templete>
     )

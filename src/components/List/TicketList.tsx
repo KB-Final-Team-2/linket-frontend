@@ -1,11 +1,10 @@
 
-
 interface props {
     title: string,
     func: Function,
 }
 
-const Ticket = (props : props) => {
+const TicketList = (props : props) => {
     return(
         <div
             className="w-[330px] h-20 overflow-hidden border-[5px] border-[#ffa559]"
@@ -18,4 +17,4 @@ const Ticket = (props : props) => {
     )
 };
 
-export default Ticket;
+export default TicketList;

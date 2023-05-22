@@ -45,7 +45,9 @@ import InfoFAQ from './pages/Auth/InfoFAQ';
 import Admin from './pages/Admin';
 import Login from './pages/Auth';
 import Register from './pages/Auth/Register';
+import { useSelector } from 'react-redux';
 function App() {
+
 	return (
 		<div className="App">
 			<header className="App-header">
@@ -57,10 +59,8 @@ function App() {
 						<Route path="/member/event/search/result" element={<EventSearchResult />} />
 						<Route path="/member/event/search" element={<EventSearch />} />
 						<Route path="/member/event" element={<MemberEvent />} />
-						<Route path="/member/ticket/delete" element={<TicketDelete />} />
-						<Route path="/member/ticket/:ticketId" element={<TicketDetail />} />
 						<Route path="/member/register" element={<TicketRegister />} />
-						<Route path="/member/*" element={<Member />} />
+						<Route path="/*" element={<Member />} />
 
 						{/* Staff Router */}
 						<Route path="/staff/event/:eventId/attend/:date" element={<AttendDetail />} />	
@@ -90,7 +90,7 @@ function App() {
 
 						{/* Auth Router */}
 						<Route path="/register" element={<Register />} />
-						<Route path="/login" element={<Login />} />
+						<Route path={"/login"} element={<Login />} />
 						<Route path="/info/faq" element={<InfoFAQ />} />
 						<Route path="/info/notice/:noticeId" element={<InfoNoticeContent />} />
 						<Route path="/info/notice" element={<InfoNotice />} />

@@ -9,6 +9,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/slice/authSilce";
 import Templete from "../Templete";
+import { initAttend } from "../../redux/slice/attendSlice";
+import { initHire } from "../../redux/slice/hireSlice";
+import { initEvent } from "../../redux/slice/eventSlice";
+import { initReview } from "../../redux/slice/reviewSlice";
+import { initTicket } from "../../redux/slice/ticketSlice";
 
 const Info = () => {
     const dispatch: any = useDispatch();
@@ -16,6 +21,11 @@ const Info = () => {
 
     const handleLogout = () => {
         dispatch(logout());
+        dispatch(initAttend());
+		dispatch(initHire());
+		dispatch(initEvent());
+		dispatch(initReview());
+		dispatch(initTicket());
         navigate("/login");
     }
 

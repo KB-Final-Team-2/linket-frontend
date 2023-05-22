@@ -6,7 +6,7 @@ interface props {
     func?: Function
 }
 
-const Header = (props: props) => {
+const Header = ({title, func}: props) => {
 
     const navigate = useNavigate();
     return (
@@ -15,12 +15,12 @@ const Header = (props: props) => {
             <div className="w-[331px] h-[95px] overflow-hidden flex items-center px-5 gap-5 text-[30px]">
                 <div
                     className="w-10 h-10 rounded-md bg-background-light/30 flex flex-shrink-0 justify-center items-center"
-                    onClick={()=>{props.func ? props.func() : navigate(-1)}}
+                    onClick={()=>{func===undefined ? navigate(-1) :func()}}
                 >
                     <BsArrowLeft />
                 </div>
                 <p className="w-full h-[95px] text-2xl text-center text-white flex justify-center items-center">
-                    {props.title}
+                    {title}
                 </p>
                 <BsThreeDots className="w-10 h-10 text-primary" />
             </div>

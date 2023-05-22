@@ -33,8 +33,6 @@ const Login = () => {
 		role: "part"
 	}
 
-	const user = [staff, member];
-
 	const handleLogin = () => {
 		let user: User = {} as User;
 		if (staff.email === email && staff.password === password) user = DUMMY_STAFF;
