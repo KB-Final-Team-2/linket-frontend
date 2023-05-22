@@ -4,21 +4,24 @@ import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Templete from "../Templete";
-import { DUMMY_TICKET1, Ticket } from "../../interface/Ticket";
+import { DUMMY_TICKET1, INIT_TICKET, Ticket } from "../../interface/Ticket";
 import { useState } from "react";
 import TicketDelete from "./TicketDelete";
+import { setTicket } from "../../redux/slice/ticketSlice";
 
 interface props {
     onRequestReturn : Function
 }
 
 const TicketDetail = ({onRequestReturn}:props) => {
-    const ticket: Ticket = useSelector((state: any) => state.ticket.data);
     const [doDelete, setDoDelete] = useState(false);
 
+    const ticket: Ticket = useSelector((state: any) => state.ticket.data);
     const eventList: Event[] = useSelector((state: any) => state.event.list);
+    const dispatch = useDispatch();
+
     const navigate = useNavigate();
     return (
         <>
@@ -27,7 +30,7 @@ const TicketDetail = ({onRequestReturn}:props) => {
                 <TicketDelete onRequestReturn={()=>{setDoDelete(false)}}/>
                 :
                 <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center">
-                    <Header title="티켓 상세" func={()=>onRequestReturn()}/>
+                    <Header title="티켓 상세" func={()=>dispatch(setTicket(INIT_TICKET))}/>
                     <div className="w-full h-full flex flex-col justify-center items-center">
                         <div className="w-[331px] h-[580px] overflow-hidden ">
                             <div className="w-[331px] h-[383px] overflow-hidden">

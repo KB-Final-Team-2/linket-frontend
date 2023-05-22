@@ -16,7 +16,6 @@ const HireList = ({ hire }: props) => {
 
     const handleHire = () => {
         dispatch(setHire(hire));
-        navigate(`/part/${hire.hireId}`);
     }
 
     return (

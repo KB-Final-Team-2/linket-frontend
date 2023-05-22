@@ -60,7 +60,7 @@ function App() {
 						<Route path="/member/event/search" element={<EventSearch />} />
 						<Route path="/member/event" element={<MemberEvent />} />
 						<Route path="/member/register" element={<TicketRegister />} />
-						<Route path="/*" element={<Member />} />
+						<Route path="/member" element={<Member />} />
 
 						{/* Staff Router */}
 						<Route path="/staff/event/:eventId/attend/:date" element={<AttendDetail />} />	
@@ -90,7 +90,7 @@ function App() {
 
 						{/* Auth Router */}
 						<Route path="/register" element={<Register />} />
-						<Route path={"/login"} element={<Login />} />
+						<Route path="/*" element={<Login />} />
 						<Route path="/info/faq" element={<InfoFAQ />} />
 						<Route path="/info/notice/:noticeId" element={<InfoNoticeContent />} />
 						<Route path="/info/notice" element={<InfoNotice />} />

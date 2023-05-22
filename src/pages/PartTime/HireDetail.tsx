@@ -1,15 +1,17 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import { ListProps } from "../../interface/ListProps";
-import { Hire } from "../../interface/Hire";
+import { Hire, INIT_HIRE } from "../../interface/Hire";
 import { Link } from "react-router-dom";
 import Templete from "../Templete";
+import { setHire } from "../../redux/slice/hireSlice";
 
 const HireDetail = () => {
     const hire : Hire = useSelector((state:any)=>state.hire?.data);
+    const dispatch = useDispatch();
 
     const infoList : ListProps[] = [
         {title:"공고명", content:hire?.workName},
@@ -19,9 +21,8 @@ const HireDetail = () => {
         {title:"문의처", content:hire?.edu},
     ];
     return (
-        <Templete>
         <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-            <Header title="공고 상세" />
+            <Header title="공고 상세" func={()=>{dispatch(setHire(INIT_HIRE))}}/>
             <div className="w-[331px] h-full flex flex-col">
                 <div className="w-[331px] h-[580px] flex flex-col border-y">
                     <div className="w-[331px] h-full overflow-hidden border-y border-white flex flex-col">
@@ -40,9 +41,7 @@ const HireDetail = () => {
                     </div>
                 </div>
             </div>
-            <NavBar role="part" state="1" />
         </div>
-        </Templete>
     )
 }
 export default HireDetail;

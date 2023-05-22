@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineRight } from "react-icons/ai"
 import { useDispatch, useSelector } from "react-redux";
-import { DUMMY_MEMBER, DUMMY_PART, DUMMY_STAFF, User } from "../../interface/User";
+import { DUMMY_MEMBER, DUMMY_PART, DUMMY_STAFF, INIT_USER, User } from "../../interface/User";
 import { logout, setUser } from "../../redux/slice/authSilce";
 import { Link, useNavigate } from "react-router-dom";
 import Templete from "../Templete";
@@ -11,7 +11,7 @@ const Login = () => {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const auth = useSelector((state: any) => (state.auth?.data));
+	const user = useSelector((state: any) => (state.auth?.data));
 	const dispatch: any = useDispatch();
 	const navigate = useNavigate();
 
@@ -32,6 +32,10 @@ const Login = () => {
 		password: "1234",
 		role: "part"
 	}
+
+	useEffect(()=>{
+		if(user!==INIT_USER) navigate(`/${user.role}`)
+	}, [user])
 
 	const handleLogin = () => {
 		let user: User = {} as User;

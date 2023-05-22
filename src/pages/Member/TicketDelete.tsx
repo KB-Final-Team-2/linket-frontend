@@ -15,7 +15,6 @@ const TicketDelete = ({onRequestReturn}:props) => {
     const ticket : Ticket = useSelector((state:any)=>state.ticket.data);
     const navigate = useNavigate();
     return (
-        <Templete>
             <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
                 <Header title="티켓 삭제" func={()=>{onRequestReturn()}} />
                 <div className="w-[331px] h-full">
@@ -41,7 +40,6 @@ const TicketDelete = ({onRequestReturn}:props) => {
                     </div>
                 </div>
             </div>
-        </Templete>
     )
 }
 
