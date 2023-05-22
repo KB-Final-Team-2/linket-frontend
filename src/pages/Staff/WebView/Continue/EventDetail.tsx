@@ -14,7 +14,7 @@ const EventDetail = () => {
         { title: "행사 기간", content: `${event.startDate} ~ ${event.endDate}` },
         { title: "행사 장소", content: event.place },
         { title: "등록 일자", content: event.regDate },
-        { title: "행사 이미지", content: event.eventImg },
+        { title: "행사 이미지", content: event.eventImage },
         { title: "행사 문의처", content: event.eventInq },
     ];
 

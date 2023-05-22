@@ -4,18 +4,9 @@ import { DUMMY_PART, INIT_USER, RegistUser, User } from '../../interface/User';
 import { DUMMY_STAFF } from '../../interface/User';
 import { useNavigate } from 'react-router-dom';
 
-export const login = createAsyncThunk("loginState", async (_:void, {rejectWithValue})=>{
+export const login = createAsyncThunk("loginPostState", async({email, password}:any, {rejectWithValue})=>{
     try {
-        const userData: User = (await axios.get(`/api/login/`)).data;
-        return userData;
-    } catch (error) {
-        rejectWithValue(error);
-    }
-})
-
-export const postLogin = createAsyncThunk("loginPostState", async(_:void, {rejectWithValue})=>{
-    try {
-        const userData = (await axios.post("/api/postLogin",{email:"abcd",password:"defg"})).data;
+        const userData = (await axios.post("/api/postLogin",{email,password})).data;
         console.log(userData);
         return userData;
     } catch (error) {

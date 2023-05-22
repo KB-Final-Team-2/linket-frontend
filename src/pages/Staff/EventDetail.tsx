@@ -4,10 +4,19 @@ import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
 import { useSelector } from "react-redux";
+import { ListProps } from "../../interface/ListProps";
 
 const EventDetail = () => {
     const event: Event = useSelector((state:any)=>state.event.event);
-    const list = [{ title: "행사명", content: event.eventName }, { title: "행사 분류", content: event.eventType }, { title: "행사 기간", content: `${event.startDate} ~ ${event.endDate}` }, { title: "행사장소", content: event.place }, { title: "행사 코드", content: event.eventId }, { title: "행사 포스터", content: "event_poster.jpg" }, { title: "행사 정보 이미지", content: "event_info.jpg" }]
+    const list : ListProps[] = [
+        { title: "행사명", content: event.eventName },
+        {title: "행사 분류", content: event.eventType },
+        { title: "행사 기간", content: `${event.startDate} ~ ${event.endDate}` },
+        { title: "행사장소", content: event.place },
+        { title: "행사 코드", content: `${event.eventId}` },
+        { title: "행사 포스터", content: "event_poster.jpg" },
+        { title: "행사 정보 이미지", content: "event_info.jpg" }
+    ]
 
     return (
         <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
@@ -16,7 +25,7 @@ const EventDetail = () => {
                 <div className="w-full h-[580px] flex flex-col border-t border-b pb-5">
                     <div className="w-[331px] h-[580px] overflow-hidden">
                         {list.map((v, i) => {
-                            return (<List key={i} title={v.title} content={v.content} />)
+                            return (<List key={i} title={v.title} content={v.content || ""} />)
                         })}
 
                         <div className="w-[330px] h-[207px] overflow-hidden border-b flex">

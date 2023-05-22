@@ -28,7 +28,7 @@ const HireList = ({ hire }: props) => {
                 {hire.hireId}
             </div>
             <div className="w-[260px] h-[60px] overflow-hidden flex-shrink-0 text-[15px] font-bold text-center text-secondary flex justify-start items-center px-5">
-                {hire.hireName}
+                {hire?.workName}
             </div>
         </div>
     )

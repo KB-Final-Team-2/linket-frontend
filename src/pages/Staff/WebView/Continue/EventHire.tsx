@@ -23,7 +23,7 @@ const HireList = ({ hire, func, state }: props) => {
             onClick={() => { func() }}
         >
             <p className="text-[28px] font-bold text-center text-white">
-                {hire.hireName}
+                {hire.workName}
             </p>
             <p className="text-xl font-bold text-center text-[#d9d9d9]">
                 {hire.regDate}
@@ -39,7 +39,7 @@ const SmallHireList = ({ hire, func, state }: props) => {
             onClick={() => { func() }}
         >
             <p className="text-[28px] font-bold text-center text-white">
-                {hire.hireName}
+                {hire.workName}
             </p>
         </div>
     )
@@ -65,8 +65,8 @@ const EventHire = () => {
     const dispatch = useDispatch();
     const infoList: ListInfo[] = [
         { title: "공고 번호", content: `${idx}` },
-        { title: "공고명", content: hire?.hireName },
-        { title: "근무일", content: `${hire?.startDate} ~ ${hire?.endDate}` },
+        { title: "공고명", content: hire?.workName },
+        { title: "근무일", content: `${hire?.workStartDate} ~ ${hire?.workEndDate}` },
         { title: "근무 시간", content: `${hire?.workHour}` },
         { title: "시급", content: `${hire?.pay}` },
         { title: "등록 코드", content: `${hire?.hireId}` },
