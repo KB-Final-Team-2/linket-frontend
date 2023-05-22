@@ -7,7 +7,7 @@ import { Hire } from "../../interface/Hire";
 import { ListProps } from "../../interface/ListProps";
 
 const HireSearchDetail = () => {
-    const hire : Hire = useSelector((state:any)=>state.hire.hire);
+    const hire : Hire = useSelector((state:any)=>state.hire?.data);
     
     const infoList : ListProps[] = [
         {title:"공고명", content:hire?.workName},

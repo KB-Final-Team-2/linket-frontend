@@ -8,7 +8,7 @@ interface ListInfo {
 }
 
 const EventDetail = () => {
-    const event: Event = useSelector((state: any) => state.event.event);
+    const event: Event = useSelector((state: any) => state.event?.data);
     const infoList: ListInfo[] = [
         { title: "등록 일자", content: event.regDate },
         { title: "행사 기간", content: `${event.startDate} ~ ${event.endDate}` },

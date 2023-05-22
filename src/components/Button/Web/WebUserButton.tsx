@@ -26,7 +26,7 @@ const WebInfoList = ({ title, content }: Info) => {
 
 const WebUserButton = () => {
     const [openPage, setOpenPage] = useState(false);
-    const user: User = useSelector((state: any) => state.auth.data);
+    const user: User = useSelector((state: any) => state.auth?.data);
     const dispatch = useDispatch();
     const infoList: Info[] = [
         { title: "이름", content: user.userName },

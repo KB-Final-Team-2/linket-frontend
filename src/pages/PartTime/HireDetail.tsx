@@ -8,7 +8,7 @@ import { Hire } from "../../interface/Hire";
 import { Link } from "react-router-dom";
 
 const HireDetail = () => {
-    const hire : Hire = useSelector((state:any)=>state.hire.hire);
+    const hire : Hire = useSelector((state:any)=>state.hire?.data);
 
     const infoList : ListProps[] = [
         {title:"공고명", content:hire?.workName},

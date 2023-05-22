@@ -11,7 +11,7 @@ interface props {
 }
 
 const NavBar = (props: props) => {
-    const user: User = useSelector((state: any) => state.auth.data);
+    const user: User = useSelector((state: any) => state.auth?.data);
     const navigate = useNavigate();
 
     const handleLeft = () => {

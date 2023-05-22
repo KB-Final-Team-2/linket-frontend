@@ -22,7 +22,7 @@ const ModalInfoList = ({ title, content }: ListProps) => {
 
 
 const DeleteHireModal = () => {
-    const hire: Hire = useSelector((state: any) => state.hire.hire)
+    const hire: Hire = useSelector((state: any) => state.hire?.data)
     const dispatch = useDispatch();
     return (
         <Modal>

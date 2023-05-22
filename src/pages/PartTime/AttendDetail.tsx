@@ -10,8 +10,8 @@ import { Attendance } from "../../interface/Attendance";
 import Button from "../../components/Button/Button";
 
 const AttendDetail = () => {
-    const user: User = useSelector((state: any) => state.auth.data);
-    const attend: Attendance = useSelector((state: any) => state.attend.attend);
+    const user: User = useSelector((state: any) => state.auth?.data);
+    const attend: Attendance = useSelector((state: any) => state.attend?.data);
 
     const infoList: ListProps[] = [{ title: "안녕하세요", content: "반갑습니다." },
     { title: "이름", content: user.userName },

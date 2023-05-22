@@ -6,7 +6,7 @@ import { DUMMY_COMPANY } from "../../interface/Company";
 import { User } from "../../interface/User";
 
 const UserInfo = () => {
-    const user: User = useSelector((state:any)=>state.auth.data);
+    const user: User = useSelector((state:any)=>state.auth?.data);
 
     return (
         <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">

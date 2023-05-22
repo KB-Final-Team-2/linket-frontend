@@ -10,7 +10,7 @@ interface props {
 }
 
 const HireList = ({ hire }: props) => {
-    const user: User = useSelector((state: any) => state.auth.data);
+    const user: User = useSelector((state: any) => state.auth?.data);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

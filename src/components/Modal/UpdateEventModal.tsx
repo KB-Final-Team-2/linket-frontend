@@ -17,7 +17,7 @@ const UpdateEventModal = () => {
     const imageRef = useRef<HTMLInputElement>(null);
     const descRef = useRef<HTMLTextAreaElement>(null);
 
-    const event: Event = useSelector((state: any) => state.event.event);
+    const event: Event = useSelector((state: any) => state.event?.data);
     const dispatch = useDispatch();
 
     const [startDate, setStartDate] = useState<Date | null>(new Date("2021-02-03"));

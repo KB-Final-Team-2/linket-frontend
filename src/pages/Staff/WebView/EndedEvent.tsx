@@ -8,7 +8,7 @@ import { Event } from "../../../interface/Event";
 
 const EndedEvent = () => {
     const [eventIdx, setEventIdx] = useState(-1);
-    const event: Event = useSelector((state: any) => state.event.event)
+    const event: Event = useSelector((state: any) => state.event?.data)
     const eventList: Event[] = useSelector((state: any) => state.event.list);
     const dispatch = useDispatch();
 

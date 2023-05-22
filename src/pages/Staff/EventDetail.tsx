@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { ListProps } from "../../interface/ListProps";
 
 const EventDetail = () => {
-    const event: Event = useSelector((state:any)=>state.event.event);
+    const event: Event = useSelector((state:any)=>state.event?.data);
     const list : ListProps[] = [
         { title: "행사명", content: event.eventName },
         {title: "행사 분류", content: event.eventType },

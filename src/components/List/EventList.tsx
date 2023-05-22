@@ -8,7 +8,7 @@ interface props {
 }
 
 const EventList = ({event}: props) => {
-    const user : User = useSelector((state:any)=>state.auth.data);
+    const user : User = useSelector((state:any)=>state.auth?.data);
     const navigate = useNavigate();
 
     return (

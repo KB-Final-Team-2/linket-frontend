@@ -60,8 +60,8 @@ const HireInfoList = ({ title, content }: ListInfo) => {
 
 const EventHire = () => {
     const [idx, setIdx] = useState(-1);
-    const hire : Hire = useSelector((state:any)=>state.hire.hire);
-    const hireList: Hire[] = useSelector((state: any) => state.hire.list);
+    const hire : Hire = useSelector((state:any)=>state.hire?.data);
+    const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
     const dispatch = useDispatch();
     const infoList: ListInfo[] = [
         { title: "공고 번호", content: `${idx}` },

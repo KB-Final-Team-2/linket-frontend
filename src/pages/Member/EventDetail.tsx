@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 const EventDetail = () => {
     
-    const list = useSelector((state:any)=>state.event.eventList);
+    const list = useSelector((state:any)=>state.event?.list);
 
     const navigate = useNavigate();
     return (

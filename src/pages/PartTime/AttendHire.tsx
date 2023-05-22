@@ -7,7 +7,7 @@ import { Attendance } from "../../interface/Attendance";
 import { useParams } from "react-router-dom";
 
 const AttendHire = () => {
-    const attendList : Attendance[] = useSelector((state:any)=>state.attend.list);
+    const attendList : Attendance[] = useSelector((state:any)=>state.attend?.list);
 
     const {hireId} = useParams();
 

@@ -28,8 +28,8 @@ const EventInfo = () => {
     const dispatch = useDispatch();
     const navList = ["행사 상세", "공고 관리", "근태 관리"];
 
-    const event: Event = useSelector((state: any) => state.event.event)
-    const eventList: Event[] = useSelector((state: any) => state.event.list);
+    const event: Event = useSelector((state: any) => state.event?.data)
+    const eventList: Event[] = useSelector((state: any) => state.event?.list);
 
     useEffect(() => {
         setState(0);
@@ -40,12 +40,12 @@ const EventInfo = () => {
             <div className="w-[830px] h-[100px] border-b-2 border-white flex flex-col flex-shrink-0 px-5">
                 <div className="w-full h-[35px] overflow-hidden">
                     <p className="text-3xl font-bold text-left text-secondary">
-                        {event.eventType}
+                        {event?.eventType}
                     </p>
                 </div>
                 <div className="w-full h-[65px] overflow-hidden">
                     <p className=" text-[40px] font-bold text-left text-white">
-                        {event.eventName}
+                        {event?.eventName}
                     </p>
                     <div className="w-[200px] h-[65px] overflow-hidden" />
                 </div>

@@ -6,7 +6,7 @@ import { Hire } from "../../interface/Hire";
 import HireList from "../../components/List/HiretList";
 
 const PartTime = () => {
-	const hireList : Hire[] = useSelector((state:any)=>state.hire.list);
+	const hireList : Hire[] = useSelector((state:any)=>state.hire?.list);
 
 	return (
 		<div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">

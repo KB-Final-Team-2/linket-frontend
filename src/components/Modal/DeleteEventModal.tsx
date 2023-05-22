@@ -20,7 +20,7 @@ const ModalInfoList = ({ title, content }: ListProps) => {
 }
 
 const DeleteEventModal = () => {
-    const event: Event = useSelector((state: any) => state.event.event)
+    const event: Event = useSelector((state: any) => state.event?.data)
     const dispatch = useDispatch();
     return (
         <Modal>

@@ -28,7 +28,7 @@ const EventInfo = () => {
     const [state, setState] = useState(0);
     const navList = ["행사 상세", "관람객 통계", "리뷰 통계"];
 
-    const event: Event = useSelector((state: any) => state.event.event)
+    const event: Event = useSelector((state: any) => state.event?.data)
     const eventList: Event[] = useSelector((state: any) => state.event.list);
 
     useEffect(() => {

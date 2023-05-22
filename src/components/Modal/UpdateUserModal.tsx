@@ -35,7 +35,7 @@ const UpdateUserModal = () => {
     const newPasswordRef = useRef<HTMLInputElement>(null);
     const checkPasswordRef = useRef<HTMLInputElement>(null);
 
-    const user: User = useSelector((state: any) => state.auth.data);
+    const user: User = useSelector((state: any) => state.auth?.data);
     const dispatch = useDispatch();
 
     return (

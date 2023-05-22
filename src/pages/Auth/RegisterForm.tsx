@@ -24,7 +24,7 @@ const RegisterForm = (props: props) => {
     const [companyId, setCompanyId] = useState("");
     const [gender, setGender] = useState("");
 
-    const auth = useSelector((state:any)=> state.auth.data);
+    const auth = useSelector((state:any)=> state.auth?.data);
     const dispatch : any = useDispatch();
 
     const navigate = useNavigate();

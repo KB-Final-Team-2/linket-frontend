@@ -14,7 +14,7 @@ interface props {
 }
 
 const HireList = ({ hire, idx, func }: props) => {
-    const user: User = useSelector((state: any) => state.auth.data);
+    const user: User = useSelector((state: any) => state.auth?.data);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -41,7 +41,7 @@ const HireList = ({ hire, idx, func }: props) => {
 const HireSearchResult = () => {
     const navigate = useNavigate();
 
-    const hireList: Hire[] = useSelector((state: any) => state.hire.list);
+    const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
 
     return (
         <div className="w-[375px] h-[812px] overflow-hidden bg-background-dark flex flex-col justify-center items-center">
