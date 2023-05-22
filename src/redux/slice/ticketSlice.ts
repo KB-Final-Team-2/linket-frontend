@@ -24,6 +24,10 @@ const ticketSlice = createSlice({
         },
         setTicketList: (state, action)=>{
             state.list = action.payload;
+        },
+        initTicket: (state)=>{
+            state.data = INIT_TICKET;
+            state.list=[];
         }
     },
     extraReducers:(builder)=>{
@@ -41,7 +45,9 @@ const ticketSlice = createSlice({
 })
 
 export const {
-    setTicket
+    setTicket,
+    setTicketList,
+    initTicket,
 } = ticketSlice.actions;
 
 export default ticketSlice.reducer;

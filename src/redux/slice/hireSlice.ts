@@ -24,6 +24,10 @@ const hireSlice = createSlice({
         },
         setHireList: (state, action) => {
             state.list = action.payload;
+        },
+        initHire: (state)=>{
+            state.data = INIT_HIRE;
+            state.list = [];
         }
     },
     extraReducers: (builder) => {
@@ -43,6 +47,7 @@ const hireSlice = createSlice({
 export const {
     setHire,
     setHireList,
+    initHire,
 } = hireSlice.actions;
 
 export default hireSlice.reducer;

@@ -24,6 +24,10 @@ const reviewSlice = createSlice({
         },
         setReviewList: (state, action) => {
             state.list = action.payload;
+        },
+        initReview: (state)=>{
+            state.data = INIT_REVIEW;
+            state.list = [];
         }
     },
     extraReducers: (builder) => {
@@ -41,7 +45,9 @@ const reviewSlice = createSlice({
 })
 
 export const {
-    setReview
+    setReview,
+    setReviewList,
+    initReview,
 } = reviewSlice.actions;
 
 export default reviewSlice.reducer;

@@ -33,6 +33,10 @@ const attendSlice = createSlice({
         updateEnd: (state, action) => {
             state.endState = action.payload;
         },
+        initAttend: (state)=>{
+            state.data=INIT_ATTD;
+            state.list=[];
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(getAttend.pending, (state) => {
@@ -52,7 +56,8 @@ export const {
     setAttend,
     setAttendList,
     updateStart,
-    updateEnd
+    updateEnd,
+    initAttend,
 } = attendSlice.actions;
 
 export default attendSlice.reducer;

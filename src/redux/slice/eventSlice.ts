@@ -24,6 +24,10 @@ const eventSlice = createSlice({
         },
         setEventList: (state, action) => {
             state.list = action.payload;
+        },
+        initEvent: (state)=>{
+            state.data = INIT_EVENT;
+            state.list = [];
         }
     },
     extraReducers: (builder) => {
@@ -43,6 +47,7 @@ const eventSlice = createSlice({
 export const {
     setEvent,
     setEventList,
+    initEvent,
 } = eventSlice.actions;
 
 export default eventSlice.reducer;
