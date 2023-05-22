@@ -34,7 +34,7 @@ const WebUserButton = () => {
         { title: "생년월일", content: user.birthDate },
         { title: "성별", content: user.gender },
         { title: "연락처", content: user.phone },
-        { title: "소속", content: user.company?.companyName || "" },
+        { title: "소속", content: `${user?.companyId}` || "" },
     ];
 
 

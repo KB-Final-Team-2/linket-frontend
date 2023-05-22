@@ -32,7 +32,7 @@ const HireList = ({ hire, idx, func }: props) => {
                 {idx + 1}
             </div>
             <div className="w-[260px] h-[60px] overflow-hidden flex-shrink-0 text-[15px] font-bold text-center text-secondary flex justify-start items-center px-5">
-                {hire.hireName}
+                {hire.workName}
             </div>
         </div>
     )
@@ -41,7 +41,7 @@ const HireList = ({ hire, idx, func }: props) => {
 const HireSearchResult = () => {
     const navigate = useNavigate();
 
-    const hireList: Hire[] = useSelector((state: any) => state.hire.hireList);
+    const hireList: Hire[] = useSelector((state: any) => state.hire.list);
 
     return (
         <div className="w-[375px] h-[812px] overflow-hidden bg-background-dark flex flex-col justify-center items-center">

@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { DUMMY_HIRE1, DUMMY_HIRE2, Hire } from "../../interface/Hire";
+import { DUMMY_HIRE1, DUMMY_HIRE2, Hire, INIT_HIRE } from "../../interface/Hire";
 
-export const getHire =  createAsyncThunk("getEventState", async (eventId: string, {rejectWithValue})=>{
+export const getHire = createAsyncThunk("getEventState", async (eventId: string, { rejectWithValue }) => {
     try {
         const eventData = (await axios.get(`/api/getEvent/${eventId}`)).data;
         return eventData;
@@ -12,23 +12,26 @@ export const getHire =  createAsyncThunk("getEventState", async (eventId: string
 })
 
 const hireSlice = createSlice({
-    name:"hire",
+    name: "hire",
     initialState: {
-        hire:DUMMY_HIRE1 as Hire,
-        hireList:[DUMMY_HIRE1, DUMMY_HIRE2],
-        loading:false,
+        data: INIT_HIRE,
+        list: [DUMMY_HIRE1, DUMMY_HIRE2],
+        loading: false,
     },
-    reducers:{
-        setHire: (state, action)=>{
-            state.hire = action.payload;
+    reducers: {
+        setHire: (state, action) => {
+            state.data = action.payload;
+        },
+        setHireList: (state, action) => {
+            state.list = action.payload;
         }
     },
-    extraReducers:(builder)=>{
+    extraReducers: (builder) => {
         builder.addCase(getHire.pending, (state) => {
             state.loading = true;
         });
         builder.addCase(getHire.fulfilled, (state, action) => {
-            state.hireList = action.payload;
+            state.list = action.payload;
             state.loading = false;
         });
         builder.addCase(getHire.rejected, (state) => {
@@ -38,7 +41,8 @@ const hireSlice = createSlice({
 })
 
 export const {
-    setHire
+    setHire,
+    setHireList,
 } = hireSlice.actions;
 
 export default hireSlice.reducer;

@@ -1,26 +1,27 @@
-import { DUMMY_EVENT1, Event, INIT_EVENT } from "./Event";
-import { DUMMY_MEMBER, INIT_USER, User } from "./User";
-
 export interface Attendance {
     attId: number;
+    hireId: number;
+    eventId: number;
+    companyId: number;
+    email: string;
     attDate: string;
     attStartDatetime: string;
     attEndDatetime: string;
     attStartBnt: boolean;
     attEndBnt: boolean;
-    user: User;
-    event: Event;
 }
 
 export const INIT_ATTD : Attendance = {
-    attId: 0,
+    attId: -1,
     attDate: "",
     attStartDatetime: "",
     attEndDatetime: "",
     attStartBnt: false,
     attEndBnt: false,
-    user: INIT_USER,
-    event: INIT_EVENT
+    hireId: -1,
+    eventId: -1,
+    companyId: -1,
+    email: ""
 }
 
 export const DUMMY_ATTD : Attendance = {
@@ -30,6 +31,8 @@ export const DUMMY_ATTD : Attendance = {
     attEndDatetime: "2023-04-14",
     attStartBnt: false,
     attEndBnt: false,
-    user: DUMMY_MEMBER,
-    event: DUMMY_EVENT1
+    hireId: 1,
+    eventId: 1,
+    companyId: 1,
+    email: "part@test.com"
 }

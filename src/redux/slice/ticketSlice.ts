@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { INIT_TICKET } from "../../interface/Ticket";
+import { DUMMY_TICKET1, DUMMY_TICKET2, INIT_TICKET } from "../../interface/Ticket";
 
 export const getTicketList = createAsyncThunk("getTicketList",async (ticketId:string, {rejectWithValue}) => {
     try {
@@ -14,13 +14,16 @@ export const getTicketList = createAsyncThunk("getTicketList",async (ticketId:st
 const ticketSlice = createSlice({
     name:"ticket",
     initialState: {
-        ticket: INIT_TICKET,
-        ticketList: [],
+        data: INIT_TICKET,
+        list: [DUMMY_TICKET1, DUMMY_TICKET2],
         loading: false,
     },
     reducers:{
         setTicket: (state, action)=>{
-            state.ticket = action.payload;
+            state.data = action.payload;
+        },
+        setTicketList: (state, action)=>{
+            state.list = action.payload;
         }
     },
     extraReducers:(builder)=>{
@@ -28,7 +31,7 @@ const ticketSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(getTicketList.fulfilled, (state, action)=>{
-            state.ticket = action.payload;
+            state.list = action.payload;
             state.loading = false;
         });
         builder.addCase(getTicketList.rejected, (state)=>{

@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 const EventHome = () => {
     const navigate = useNavigate();
 
-    const list = useSelector((state:any)=>state.event.eventList);
+    const list = useSelector((state:any)=>state.event.list);
 
     return (
         <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">

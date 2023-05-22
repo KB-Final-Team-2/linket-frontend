@@ -31,8 +31,8 @@ const DeleteHireModal = () => {
                     행사 삭제
                 </div>
                 <div className="w-[600px] h-[600px] overflow-hidden border-y border-white">
-                    <ModalInfoList title="공고명" content={hire.hireName} />
-                    <ModalInfoList title="근무 기간" content={`${hire.startDate} ~ ${hire.endDate}`} />
+                    <ModalInfoList title="공고명" content={hire?.workName} />
+                    <ModalInfoList title="근무 기간" content={`${hire?.workStartDate} ~ ${hire?.workEndDate}`} />
                     <ModalInfoList title="근무 시간" content={`${hire.workHour}`} />
                     <ModalInfoList title="등록 코드" content={`${hire.hireId}`} />
                     <div className="w-full h-[408px] font-bold text-center text-white flex flex-shrink-0 flex-col items-center justify-center py-5">

@@ -1,14 +1,18 @@
-import { Company, DUMMY_COMPANY, INIT_COMPANY } from "./Company";
-
- export interface User {
+export interface User {
     email: string;
     password: string;
     userName: string;
     birthDate: string;
+    aggrement: boolean;
     phone: string;
     gender: string;
     role: string;
-    company: Company | undefined;
+    account: string;
+    regDate: string;
+    withdrawDate: string;
+    enable: string;
+    lastUpdatedDate: string;
+    companyId: number;
 };
 
 export interface RegistUser { 
@@ -30,7 +34,13 @@ export const INIT_USER : User = {
     phone: "",
     gender: "",
     role: "",
-    company: INIT_COMPANY
+    aggrement: false,
+    account: "",
+    regDate: "",
+    withdrawDate: "",
+    enable: "",
+    lastUpdatedDate: "",
+    companyId: -1
 };
 
 export const DUMMY_MEMBER : User = {
@@ -41,7 +51,13 @@ export const DUMMY_MEMBER : User = {
     phone: "010-1234-1234",
     gender: "M",
     role: "member",
-    company: DUMMY_COMPANY
+    aggrement: false,
+    account: "",
+    regDate: "",
+    withdrawDate: "",
+    enable: "",
+    lastUpdatedDate: "",
+    companyId: -1
 };
 
 export const DUMMY_STAFF : User = {
@@ -52,7 +68,13 @@ export const DUMMY_STAFF : User = {
     phone: "010-1234-1234",
     gender: "M",
     role: "staff",
-    company: DUMMY_COMPANY
+    aggrement: false,
+    account: "",
+    regDate: "",
+    withdrawDate: "",
+    enable: "",
+    lastUpdatedDate: "",
+    companyId: 1
 };
 
 export const DUMMY_PART : User = {
@@ -63,5 +85,11 @@ export const DUMMY_PART : User = {
     phone: "010-1234-1234",
     gender: "M",
     role: "part",
-    company: undefined
+    aggrement: false,
+    account: "1234-00-123456",
+    regDate: "",
+    withdrawDate: "",
+    enable: "",
+    lastUpdatedDate: "",
+    companyId: 0
 };

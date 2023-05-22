@@ -1,15 +1,12 @@
 import { useSelector } from "react-redux";
 import IndexHeader from "../../components/Header/IndexHeader";
-import EventList from "../../components/List/EventList";
 import NavBar from "../../components/NavBar/NavBar";
-import { Company } from "../../interface/Company";
-import { Event } from "../../interface/Event";
 import { Link } from "react-router-dom";
 import { Hire } from "../../interface/Hire";
 import HireList from "../../components/List/HiretList";
 
 const PartTime = () => {
-	const hireList : Hire[] = useSelector((state:any)=>state.hire.hireList);
+	const hireList : Hire[] = useSelector((state:any)=>state.hire.list);
 
 	return (
 		<div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">

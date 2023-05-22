@@ -5,14 +5,12 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { setEvent } from "../../../redux/slice/eventSlice";
 import WebEventList from "../../../components/List/WebEventList";
 import EventInfo from "./Continue/EventInfo";
-import Modal from "../../../components/Modal/Modal";
-import CreateEventModal from "../../../components/Modal/CreateEventModal";
 import { setCreateEventModal } from "../../../redux/slice/modalSlice";
 
 const ContinueEvent = () => {
     const [eventIdx, setEventIdx] = useState(-1);
     const event: Event = useSelector((state: any) => state.event.event)
-    const eventList: Event[] = useSelector((state: any) => state.event.eventList);
+    const eventList: Event[] = useSelector((state: any) => state.event.list);
     const dispatch = useDispatch();
 
     const handleEvent = (idx: number) => {

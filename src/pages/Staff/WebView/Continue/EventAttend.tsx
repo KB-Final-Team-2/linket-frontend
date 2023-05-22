@@ -10,9 +10,6 @@ interface props {
 const AttendList = ({ attend }: props) => {
     return (
         <div className="w-[790px] h-[50px] overflow-hidden border-b border-white flex">
-            <div className="w-[90px] h-[50px] overflow-hidden border-r border-white text-xl font-bold text-center text-white flex flex-shrink-0 items-center justify-center">
-                {attend.user.userName}
-            </div>
             <div className="w-[90px] h-[50px] overflow-hidden border-r  border-white text-xl font-bold text-center text-white flex flex-shrink-0 items-center justify-center">
                 {attend.attId}
             </div>
@@ -37,11 +34,11 @@ const AttendList = ({ attend }: props) => {
 
 const EventAttend = () => {
     const attend = useSelector((state: any) => state.attend);
-    const attendList: Attendance[] = attend.attendList;
+    const attendList: Attendance[] = useSelector((state:any)=>state.attend.list);
     const dispatch = useDispatch();
 
     const handleStart = () => {
-        dispatch(updateStart(!attend.startState))
+        dispatch(updateStart(!attend.start))
     }
 
     const handleEnd = () => {

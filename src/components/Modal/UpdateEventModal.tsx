@@ -14,7 +14,7 @@ const UpdateEventModal = () => {
     const nameRef = useRef<HTMLInputElement>(null);
     const placeRef = useRef<HTMLInputElement>(null);
     const inqRef = useRef<HTMLInputElement>(null);
-    const imgRef = useRef<HTMLInputElement>(null);
+    const imageRef = useRef<HTMLInputElement>(null);
     const descRef = useRef<HTMLTextAreaElement>(null);
 
     const event: Event = useSelector((state: any) => state.event.event);
@@ -30,7 +30,7 @@ const UpdateEventModal = () => {
             eventName: nameRef.current?.value || "",
             eventType: type,
             place: placeRef.current?.value || "",
-            eventImg: undefined,
+            eventImage: undefined,
             eventInq: inqRef.current?.value || "",
             eventDesc: descRef.current?.innerText || "",
             startDate: startDate!,
@@ -64,7 +64,7 @@ const UpdateEventModal = () => {
                             </div>
                             <WebInfoInput title={"행사 장소"} ref={placeRef} value={event.place}/>
                             <WebInfoInput title={"행사 문의처"} ref={inqRef} value={event.eventInq}/>
-                            <WebInfoInput title={"행사 이미지"} ref={imgRef} value={event.eventImg}/>
+                            <WebInfoInput title={"행사 이미지"} ref={imageRef} value={event.eventImage}/>
                             <div className="w-full h-10 overflow-hidden flex items-center justify-center flex-shrink-0 px-5">
                                 <p className="w-48 h-full text-[15px] font-bold text-center text-white">
                                     행사 분류

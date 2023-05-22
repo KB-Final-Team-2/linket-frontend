@@ -11,8 +11,8 @@ const HireDetail = () => {
     const hire : Hire = useSelector((state:any)=>state.hire.hire);
 
     const infoList : ListProps[] = [
-        {title:"공고명", content:hire?.hireName},
-        {title:"근무일", content:`${hire?.startDate} ~ ${hire?.endDate}`},
+        {title:"공고명", content:hire?.workName},
+        {title:"근무일", content:`${hire?.workStartDate} ~ ${hire?.workEndDate}`},
         {title:"근무 시간", content:`${hire?.workHour}`},
         {title:"시급", content:`${hire?.pay}`},
         {title:"문의처", content:hire?.edu},

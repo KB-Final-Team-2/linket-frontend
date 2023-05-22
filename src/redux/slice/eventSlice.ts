@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { DUMMY_EVENT1, DUMMY_EVENT2, INIT_EVENT } from "../../interface/Event";
 
-export const getEvent =  createAsyncThunk("getEventState", async (eventId: string, {rejectWithValue})=>{
+export const getEvent = createAsyncThunk("getEventState", async (eventId: string, { rejectWithValue }) => {
     try {
         const eventData = (await axios.get(`/api/getEvent/${eventId}`)).data;
         return eventData;
@@ -12,23 +12,26 @@ export const getEvent =  createAsyncThunk("getEventState", async (eventId: strin
 })
 
 const eventSlice = createSlice({
-    name:"event",
+    name: "event",
     initialState: {
-        event:DUMMY_EVENT1,
-        eventList:[DUMMY_EVENT1, DUMMY_EVENT2],
-        loading:false,
+        data: INIT_EVENT,
+        list: [DUMMY_EVENT1, DUMMY_EVENT2],
+        loading: false,
     },
-    reducers:{
-        setEvent: (state, action)=>{
-            state.event = action.payload;
+    reducers: {
+        setEvent: (state, action) => {
+            state.data = action.payload;
+        },
+        setEventList: (state, action) => {
+            state.list = action.payload;
         }
     },
-    extraReducers:(builder)=>{
+    extraReducers: (builder) => {
         builder.addCase(getEvent.pending, (state) => {
             state.loading = true;
         });
         builder.addCase(getEvent.fulfilled, (state, action) => {
-            state.eventList = action.payload;
+            state.list = action.payload;
             state.loading = false;
         });
         builder.addCase(getEvent.rejected, (state) => {
@@ -38,7 +41,8 @@ const eventSlice = createSlice({
 })
 
 export const {
-    setEvent
+    setEvent,
+    setEventList,
 } = eventSlice.actions;
 
 export default eventSlice.reducer;

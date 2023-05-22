@@ -4,18 +4,9 @@ import { DUMMY_PART, INIT_USER, RegistUser, User } from '../../interface/User';
 import { DUMMY_STAFF } from '../../interface/User';
 import { useNavigate } from 'react-router-dom';
 
-export const login = createAsyncThunk("loginState", async (_:void, {rejectWithValue})=>{
+export const login = createAsyncThunk("loginPostState", async ({ email, password }: any, { rejectWithValue }) => {
     try {
-        const userData: User = (await axios.get(`/api/login/`)).data;
-        return userData;
-    } catch (error) {
-        rejectWithValue(error);
-    }
-})
-
-export const postLogin = createAsyncThunk("loginPostState", async(_:void, {rejectWithValue})=>{
-    try {
-        const userData = (await axios.post("/api/postLogin",{email:"abcd",password:"defg"})).data;
+        const userData = (await axios.post("/api/postLogin", { email, password })).data;
         console.log(userData);
         return userData;
     } catch (error) {
@@ -23,7 +14,7 @@ export const postLogin = createAsyncThunk("loginPostState", async(_:void, {rejec
     }
 })
 
-export const register = createAsyncThunk("registerUser", async(data:RegistUser, {rejectWithValue})=>{
+export const register = createAsyncThunk("registerUser", async (data: RegistUser, { rejectWithValue }) => {
     try {
         const userData = (await axios.post("/api/auth/register", data)).data;
         console.log(userData);
@@ -33,7 +24,7 @@ export const register = createAsyncThunk("registerUser", async(data:RegistUser, 
     }
 })
 
-export const logout = createAsyncThunk("logout", async(_:void,{rejectWithValue})=>{
+export const logout = createAsyncThunk("logout", async (_: void, { rejectWithValue }) => {
     try {
         // const res = (await axios.get("/api/auth/logout")).data;
         // console.log(res);
@@ -46,8 +37,8 @@ export const logout = createAsyncThunk("logout", async(_:void,{rejectWithValue})
 
 const authSlice = createSlice({
     name: 'auth',
-    initialState:{
-        data: DUMMY_PART,
+    initialState: {
+        data: INIT_USER,
         loading: false
     },
     reducers: {
@@ -55,28 +46,28 @@ const authSlice = createSlice({
             state.data = action.payload;
         },
     },
-    extraReducers: (builder)=>{
-        builder.addCase(login.pending,(state, action)=>{
+    extraReducers: (builder) => {
+        builder.addCase(login.pending, (state, action) => {
             state.loading = true;
         });
-        builder.addCase(login.fulfilled,(state, action)=>{
+        builder.addCase(login.fulfilled, (state, action) => {
             state.data = action.payload as User;
-            state.loading= false;
+            state.loading = false;
         });
-        builder.addCase(login.rejected, (state)=>{
-            state.loading=false;
+        builder.addCase(login.rejected, (state) => {
+            state.loading = false;
         });
-        builder.addCase(logout.pending, (state)=>{
-            state.loading=true;
+        builder.addCase(logout.pending, (state) => {
+            state.loading = true;
         });
-        builder.addCase(logout.fulfilled, (state)=>{
+        builder.addCase(logout.fulfilled, (state) => {
             state.data = INIT_USER;
             state.loading = false;
         });
-        builder.addCase(register.pending, (state)=>{
+        builder.addCase(register.pending, (state) => {
             state.loading = true;
         });
-        builder.addCase(register.fulfilled, (state, action)=>{
+        builder.addCase(register.fulfilled, (state, action) => {
             state.data = action.payload;
             state.loading = false;
         })
