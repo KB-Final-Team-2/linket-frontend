@@ -14,13 +14,13 @@ export const getHire =  createAsyncThunk("getEventState", async (eventId: string
 const hireSlice = createSlice({
     name:"hire",
     initialState: {
-        hire:DUMMY_HIRE1 as Hire,
-        hireList:[DUMMY_HIRE1, DUMMY_HIRE2],
+        data:DUMMY_HIRE1 as Hire,
+        list:[DUMMY_HIRE1, DUMMY_HIRE2],
         loading:false,
     },
     reducers:{
         setHire: (state, action)=>{
-            state.hire = action.payload;
+            state.data = action.payload;
         }
     },
     extraReducers:(builder)=>{
@@ -28,7 +28,7 @@ const hireSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(getHire.fulfilled, (state, action) => {
-            state.hireList = action.payload;
+            state.list = action.payload;
             state.loading = false;
         });
         builder.addCase(getHire.rejected, (state) => {

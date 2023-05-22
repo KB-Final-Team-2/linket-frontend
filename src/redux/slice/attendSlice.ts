@@ -15,15 +15,15 @@ export const getAttend = createAsyncThunk('getAttend',async (attendId:string, {r
 const attendSlice = createSlice({
     name:"attend",
     initialState: {
-        attend:INIT_ATTD,
-        attendList: [DUMMY_ATTD, DUMMY_ATTD, DUMMY_ATTD],
+        data:INIT_ATTD,
+        list: [DUMMY_ATTD, DUMMY_ATTD, DUMMY_ATTD],
         startState: false,
         endState: false,
         loading:false,
     },
     reducers:{
         setAttend:(state, action)=>{
-            state.attend = action.payload;
+            state.data = action.payload;
         },
         updateStart:(state, action)=>{
             state.startState = action.payload;
@@ -37,7 +37,7 @@ const attendSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(getAttend.fulfilled, (state, action) => {
-            state.attendList = action.payload;
+            state.list = action.payload;
             state.loading = false;
         })
         builder.addCase(getAttend.rejected,(state)=>{

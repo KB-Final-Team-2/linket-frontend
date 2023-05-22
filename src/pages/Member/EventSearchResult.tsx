@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 const EventSearchResult = () => {
     const navigate = useNavigate();
     
-    const eventList : Event[] = useSelector((state:any)=>state.event.eventList);
+    const eventList : Event[] = useSelector((state:any)=>state.event.list);
 
     return (
         <div className="w-[375px] h-[812px] overflow-hidden bg-background-dark flex flex-col justify-center items-center">

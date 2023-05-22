@@ -14,13 +14,13 @@ export const getEvent =  createAsyncThunk("getEventState", async (eventId: strin
 const eventSlice = createSlice({
     name:"event",
     initialState: {
-        event:DUMMY_EVENT1,
-        eventList:[DUMMY_EVENT1, DUMMY_EVENT2],
+        data:DUMMY_EVENT1,
+        list:[DUMMY_EVENT1, DUMMY_EVENT2],
         loading:false,
     },
     reducers:{
         setEvent: (state, action)=>{
-            state.event = action.payload;
+            state.data = action.payload;
         }
     },
     extraReducers:(builder)=>{
@@ -28,7 +28,7 @@ const eventSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(getEvent.fulfilled, (state, action) => {
-            state.eventList = action.payload;
+            state.list = action.payload;
             state.loading = false;
         });
         builder.addCase(getEvent.rejected, (state) => {

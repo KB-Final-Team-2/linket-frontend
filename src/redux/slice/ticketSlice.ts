@@ -14,13 +14,13 @@ export const getTicketList = createAsyncThunk("getTicketList",async (ticketId:st
 const ticketSlice = createSlice({
     name:"ticket",
     initialState: {
-        ticket: INIT_TICKET,
-        ticketList: [],
+        data: INIT_TICKET,
+        list: [],
         loading: false,
     },
     reducers:{
         setTicket: (state, action)=>{
-            state.ticket = action.payload;
+            state.data = action.payload;
         }
     },
     extraReducers:(builder)=>{
@@ -28,7 +28,7 @@ const ticketSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(getTicketList.fulfilled, (state, action)=>{
-            state.ticket = action.payload;
+            state.list = action.payload;
             state.loading = false;
         });
         builder.addCase(getTicketList.rejected, (state)=>{

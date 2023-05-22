@@ -37,11 +37,11 @@ const AttendList = ({ attend }: props) => {
 
 const EventAttend = () => {
     const attend = useSelector((state: any) => state.attend);
-    const attendList: Attendance[] = attend.attendList;
+    const attendList: Attendance[] = useSelector((state:any)=>state.attend.list);
     const dispatch = useDispatch();
 
     const handleStart = () => {
-        dispatch(updateStart(!attend.startState))
+        dispatch(updateStart(!attend.start))
     }
 
     const handleEnd = () => {

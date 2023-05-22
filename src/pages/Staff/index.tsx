@@ -1,16 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
 import IndexHeader from "../../components/Header/IndexHeader";
 import EventList from "../../components/List/EventList";
 import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
-import { Company } from "../../interface/Company";
 import { useSelector } from "react-redux";
 
 const Staff = () => {
 
     
-    const eventList : Event[] = useSelector((state:any)=>state.event.eventList);
+    const eventList : Event[] = useSelector((state:any)=>state.event.list);
 
 	return (
 		<div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
