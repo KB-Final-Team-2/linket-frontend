@@ -15,7 +15,7 @@ const NavBar = (props: props) => {
     const navigate = useNavigate();
 
     const handleLeft = () => {
-        const url = user.role === "part" ? `/part` : `/${user.role}/event`;
+        const url = `/${user.role}`;
         navigate(url);
     }
 

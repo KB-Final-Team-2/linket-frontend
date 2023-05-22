@@ -39,6 +39,7 @@ import InfoFAQ from './pages/Auth/InfoFAQ';
 import Admin from './pages/Admin';
 import Login from './pages/Auth';
 import Register from './pages/Auth/Register';
+import EventHire from './pages/Staff/EventHire';
 
 function App() {
 
@@ -57,12 +58,11 @@ function App() {
 						<Route path="/member" element={<Member />} />
 
 						{/* Staff Router */}
-						<Route path="/staff/event/:eventId/attend/:date" element={<AttendDetail />} />	
-						<Route path="/staff/event/:eventId/attend" element={<StaffAttend />} />	
+						<Route path="/staff/attend" element={<StaffAttend />} />	
 						<Route path="/staff/event/:eventId/delete" element={<EventDelete />} />	
 						<Route path="/staff/event/:eventId/update" element={<EventUpdate />} />								
-						<Route path="/staff/event/:eventId" element={<StaffEventDetail />} />						
-						<Route path="/staff/event/register" element={<EventRegister />} />					
+						<Route path="/staff/register" element={<EventRegister />} />					
+						<Route path='/staff/hire' element={<EventHire />} />
 						<Route path="/staff/*" element={<Staff />} />
 
 						{/* Staff Web Router */}

@@ -4,25 +4,29 @@ import NextList from "../../components/List/NextList";
 import NavBar from "../../components/NavBar/NavBar";
 import TableInfo from "../../components/Table/TableInfo";
 import Templete from "../Templete";
+import { Event } from "../../interface/Event";
+import { useSelector } from "react-redux";
+import { Attendance } from "../../interface/Attendance";
 
 const EventAttend = () => {
-    const list = [{ title: "2023년 3월 2일" }, { title: "2023년 3월 3일" }, { title: "2023년 3월 4일" }, { title: "2023년 3월 5일" }, { title: "2023년 3월 6일" }, { title: "2023년 3월 7일" }, { title: "2023년 3월 8일" }]
+    const event: Event = useSelector((state: any) => state.event?.data);
+    const attend: Attendance = useSelector((state: any) => state.attend?.data);
+    const attendList: Attendance[] = useSelector((state: any) => state.attend?.list);
+
     return (
         <Templete>
             <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
                 <Header title="근태 관리" />
                 <div className="w-[331px] h-full overflow-hidden">
-                    <div className="w-[331px] h-[580px] overflow-hidden border border-white">
+                    <div className="w-[331px] h-[580px] overflow-hidden border-y border-white">
                         <div className="w-[331px] h-[37px] overflow-hidden">
                             <TableInfo title={"행사명"} content={"KB IT's Your Life"} />
                         </div>
-                        <Link to="/staff/event/attend/detail">
-                            <div className="w-[331px] h-[580px] overflow-hidden">
-                                {list.map((el) => {
-                                    return (<NextList title={el.title} link={`/staff/event/${1234}/attend/${1234}`} />)
-                                })}
-                            </div>
-                        </Link>
+                        <div className="w-[331px] h-[580px] overflow-hidden">
+                            {attendList.map((v, i) => {
+                                return (<NextList title={event.eventName} func={() => {}} />)
+                            })}
+                        </div>
                     </div>
                 </div>
                 <NavBar role="staff" state="1" />

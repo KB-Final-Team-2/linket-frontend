@@ -7,22 +7,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { ListProps } from "../../interface/ListProps";
 import Templete from "../Templete";
 import { setEvent } from "../../redux/slice/eventSlice";
+import { Hire, INIT_HIRE } from "../../interface/Hire";
+import { setHire } from "../../redux/slice/hireSlice";
 
-const EventDetail = () => {
-    const event: Event = useSelector((state: any) => state.event?.data);
+const EventHireDetail = () => {
+    const hire : Hire = useSelector((state:any)=>state.hire?.data);
+    const hireList : Hire[] = useSelector((state:any)=>state.hire?.list);
     const dispatch = useDispatch();
     const list: ListProps[] = [
-        { title: "행사명", content: event.eventName },
-        { title: "행사 분류", content: event.eventType },
-        { title: "행사 기간", content: `${event.startDate} ~ ${event.endDate}` },
-        { title: "행사장소", content: event.place },
-        { title: "행사 코드", content: `${event.eventId}` },
-        { title: "행사 정보 이미지", content: event.eventImage },
+        { title: "공고 번호", content: `${hireList.indexOf(hire)}` },
+        { title: "공고명", content: hire?.workName },
+        { title: "근무 기간", content: `${hire?.workStartDate} ~ ${hire?.workEndDate}` },
+        { title: "근무 시간", content: `${hire?.workHour}`},
+        { title: "시급", content: `${hire?.pay}` },
+        { title: "등록 코드", content: `${hire?.hireId}` },
+        { title: "등록 일자", content: hire?.regDate },
     ]
 
     return (
         <>
-            <Header title="행사 상세" func={() => { dispatch(setEvent(INIT_EVENT)) }} />
+            <Header title="공고 상세" func={() => { dispatch(setHire(INIT_HIRE)) }} />
             <div className="w-[331px] h-full flex">
                 <div className="w-full h-[580px] flex flex-col border-y pb-5">
                     <div className="w-[331px] h-[580px] overflow-hidden">
@@ -32,10 +36,10 @@ const EventDetail = () => {
 
                         <div className="w-[330px] h-[207px] overflow-hidden border-b flex">
                             <p className="w-[115px] h-[207px] text-[15px] font-bold text-center text-white">
-                                행사 설명
+                                사전 교육 정보
                             </p>
                             <p className="w-[215px] h-[207px] text-[15px] font-bold text-center text-white">
-                                {event.eventDesc}
+                                {hire?.edu}
                             </p>
                         </div>
                     </div>
@@ -45,7 +49,7 @@ const EventDetail = () => {
                         </Link>
                         <div className="w-[153px] h-full flex flex-col justify-between">
                             <Link to="/staff/attend" className="w-[153px] h-[60px] overflow-hidden bg-[#d9d9d9] text-[15px] font-bold text-left text-black flex flex-shrink-0 justify-center items-center">
-                                근태 관리
+                                출결 관리
                             </Link>
                             <Link to="/staff/review" className="w-[153px] h-[60px] overflow-hidden bg-[#d9d9d9] text-[15px] font-bold text-left text-black flex flex-shrink-0 justify-center items-center">
                                 리뷰 보기
@@ -57,4 +61,4 @@ const EventDetail = () => {
         </>
     )
 }
-export default EventDetail;
+export default EventHireDetail;
