@@ -31,7 +31,7 @@ const EventDetail = () => {
                                 {list[0].eventDesc}
                             </p>
                         </div>
-                        <NextList title="리뷰 더보기" link={`/member/event/${1234}/review`} />
+                        {/* <NextList title="리뷰 더보기" link={`/member/event/${1234}/review`} /> */}
                     </div>
                 </div>
                 <NavBar role="member" state="1" />

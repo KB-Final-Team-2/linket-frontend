@@ -27,12 +27,12 @@ const NavBar = (props: props) => {
 
     return (
         <>
-            <div className="w-[375px] h-[53px] overflow-hidden bg-[#454545] flex flex-shrink-0">
+            <div className="w-[375px] h-[53px] overflow-hidden bg-none flex flex-shrink-0">
                 <div
                     className={`
                         w-[125px] h-[53px] text-[40px] flex justify-center items-center
                         ${props.state === '1' 
-                            ? "bg-[#454545] text-white" 
+                            ? "bg-none text-white" 
                             : `bg-[#d9d9d9] text-black ${props.state === '2' && "rounded-tr-[20px]"}`
                         }
                         `}
@@ -44,7 +44,7 @@ const NavBar = (props: props) => {
                     className={`
                         w-[125px] h-[53px] flex justify-center items-center
                         ${props.state === '2'
-                            ? "bg-[#454545] text-white"
+                            ? "bg-none text-white"
                             : `bg-[#d9d9d9] ${props.state === '1' ? "rounded-tl-[20px]" : "rounded-tr-[20px]"}`
                         }
                         `}
@@ -59,7 +59,7 @@ const NavBar = (props: props) => {
                     className={`
                         w-[125px] h-[53px] text-[40px] flex justify-center items-center
                         ${props.state === '3' 
-                            ? "bg-[#454545] text-white" 
+                            ? "bg-none text-white" 
                             : `bg-[#d9d9d9] text-black ${props.state === '2' && "rounded-tl-[20px]"}`
                         }
                     `}

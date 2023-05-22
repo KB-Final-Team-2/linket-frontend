@@ -7,8 +7,6 @@ import PartTime from './pages/PartTime';
 
 // Member Import
 import TicketRegister from './pages/Member/TicketRegister';
-import TicketDetail from './pages/Member/TicketDetail';
-import TicketDelete from './pages/Member/TicketDelete';
 import MemberEvent from './pages/Member/Event';
 import EventSearch from './pages/Member/EventSearch';
 import MemberEventDetail from './pages/Member/EventDetail';
@@ -23,15 +21,11 @@ import StaffAttend from './pages/Staff/EventAttend';
 import AttendDetail from './pages/Staff/EventAttendDetail';
 import EventSearchResult from './pages/Member/EventSearchResult';
 import WebView from './pages/Staff/WebView';
-import HireSearch from './pages/PartTime/HireSearch';
 import HireSearchResult from './pages/PartTime/HireSearchResult';
-import HireSearchDetail from './pages/PartTime/HireSearchDetail';
 
 //Part Import
 import PartTimeHireRegister from './pages/PartTime/HireRegister';
 import PartTimeAttendHire from './pages/PartTime/AttendHire';
-import PartTimeHireDetail from './pages/PartTime/HireDetail';
-import PartTimeAttendDetail from './pages/PartTime/AttendDetail';
 
 //Auth Import
 import Info from './pages/Auth/Info';
@@ -45,7 +39,7 @@ import InfoFAQ from './pages/Auth/InfoFAQ';
 import Admin from './pages/Admin';
 import Login from './pages/Auth';
 import Register from './pages/Auth/Register';
-import { useSelector } from 'react-redux';
+
 function App() {
 
 	return (
@@ -77,13 +71,8 @@ function App() {
 						{/* PartTime Router */}
 						<Route path="/part/*" element={<PartTime />} />
 						<Route path="/part/register" element={<PartTimeHireRegister />} />
-						<Route path="/part/:hireId" element={<PartTimeHireDetail />} />
-						<Route path="/part/:hireId/attend" element={<PartTimeAttendHire />} />
-						<Route path="/part/:hireId/attend/:attendId" element={<PartTimeAttendDetail />} />
-						<Route path="/part/:hireId" element={<HireSearchDetail />} />
-						<Route path='/part/search' element={<HireSearch />}/>
-						<Route path='/part/search/result' element={<HireSearchResult />}/>
-						<Route path="/part/search/:hireId" element={<HireSearchDetail />} />
+						<Route path="/part/attend" element={<PartTimeAttendHire />} />
+						<Route path='/part/result' element={<HireSearchResult />}/>
 
 						{/* Admin Router */}
 						<Route path="/admin" element={<Admin />} />

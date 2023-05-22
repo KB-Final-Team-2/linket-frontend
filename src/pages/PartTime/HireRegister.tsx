@@ -14,11 +14,7 @@ const HireRegister = () => {
                             <p className="w-full h-10 text-[15px] font-bold text-left text-white flex items-center my-3 border-b">
                                 공지된 공고 등록번호를 입력해주세요.
                             </p>
-                            <div className="w-full h-[49px] overflow-hidden bg-[#b1b1b1] flex">
-                                <p className="w-[330px] h-[50px] text-[15px] font-bold text-center text-white/[0.72]">
-                                    0000000000
-                                </p>
-                            </div>
+                            <input className="w-full h-[49px] overflow-hidden rounded-md flex" placeholder="000000"/>
                         </div>
                         <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-between items-center px-10">
                             <Button title="Return" type="delete" func={() => { }} />

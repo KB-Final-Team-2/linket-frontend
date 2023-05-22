@@ -2,11 +2,12 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import NavBar from "../../components/NavBar/NavBar";
 import { useDispatch, useSelector } from "react-redux";
-import { Hire } from "../../interface/Hire";
+import { Hire, INIT_HIRE } from "../../interface/Hire";
 import { User } from "../../interface/User";
 import { Link } from "react-router-dom";
 import { setHire } from "../../redux/slice/hireSlice";
 import Templete from "../Templete";
+import HireSearchDetail from "./HireSearchDetail";
 
 interface props {
     hire: Hire;
@@ -21,46 +22,55 @@ const HireList = ({ hire, idx, func }: props) => {
 
     const handleHire = (hire: Hire) => {
         dispatch(setHire(hire));
-        navigate(`/part/search/${hire.hireId}`);
     }
 
     return (
-        <Templete>
-            <div
-                className="w-[331px] h-[60px] overflow-hidden flex border-b"
-                onClick={() => { handleHire(hire) }}
-            >
-                <div className="w-[60px] h-[60px] overflow-hidden flex-shrink-0 border-r text-[15px] font-bold text-center text-secondary flex justify-center items-center">
-                    {idx + 1}
-                </div>
-                <div className="w-[260px] h-[60px] overflow-hidden flex-shrink-0 text-[15px] font-bold text-center text-secondary flex justify-start items-center px-5">
-                    {hire.workName}
-                </div>
+
+        <div
+            className="w-full h-[60px] overflow-hidden flex border-b"
+            onClick={() => { handleHire(hire) }}
+        >
+            <div className="w-[60px] h-[60px] overflow-hidden flex-shrink-0 border-r text-[15px] font-bold text-center text-secondary flex justify-center items-center">
+                {idx + 1}
             </div>
-        </Templete>
+            <div className="w-[260px] h-[60px] overflow-hidden flex-shrink-0 text-[15px] font-bold text-center text-secondary flex justify-start items-center px-5">
+                {hire.workName}
+            </div>
+        </div>
     )
 }
 
 const HireSearchResult = () => {
     const navigate = useNavigate();
 
+    const hire: Hire = useSelector((state: any) => state.hire?.data);
     const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
 
     return (
-        <div className="w-[375px] h-[812px] overflow-hidden flex flex-col justify-center items-center">
-            <Header title="공고 검색 결과" />
+        <Templete>
+            <div className="w-[375px] h-[812px] overflow-hidden flex flex-col justify-center items-center">
+                {hire === INIT_HIRE
+                    ?
+                    <>
+                        <Header title="공고 검색 결과" />
+                        <div className="w-[331px] h-full">
+                            <div className="w-[331px] h-[580px] overflow-hidden border-y py-5">
+                                <div className="w-[331px] h-10 bg-background-light/30 rounded-lg shrink-0 mb-2 " />
 
-            <div className="w-[331px] h-full">
-                <div className="w-[330px] h-[580px] overflow-hidden border-t border-b">
-                    <div className="w-[330px] h-10 bg-background-light/30 rounded-lg shrink-0 mb-2 " />
+                                <div className="w-[331px] h-[465px] left-0 top-[115px] overflow-auto">
+                                    {hireList.map((hire, i) => (<HireList key={i} idx={i} hire={hire} />))}
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                    :
+                    <HireSearchDetail />
+                }
 
-                    <div className="w-[330px] h-[465px] left-0 top-[115px] overflow-hidden">
-                        {hireList.map((hire, i) => (<HireList key={i} idx={i} hire={hire} />))}
-                    </div>
-                </div>
+                <NavBar role="member" state="1" />
             </div>
-            <NavBar role="member" state="1" />
-        </div>
+        </Templete>
     )
 }
+
 export default HireSearchResult;
