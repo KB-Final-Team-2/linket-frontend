@@ -52,14 +52,6 @@ function App() {
 				<BrowserRouter>
 					<Routes>
 						{/* Member Router */}
-						<Route path="/member/info/faq" element={<InfoFAQ />} />
-						<Route path="/member/info/notice/:noticeId" element={<InfoNoticeContent />} />
-						<Route path="/member/info/notice" element={<InfoNotice />} />
-						<Route path="/member/info/user/password" element={<InfoUpdatePassword />} />
-						<Route path="/member/info/user/phone" element={<InfoUpdatePhone />} />
-						<Route path="/member/info/user" element={<UserInfo />} />
-						<Route path="/member/info/check" element={<InfoCheck />} />
-						<Route path="/member/info" element={<Info />} />
 						<Route path="/member/event/:eventId/review" element={<EventReview />} />
 						<Route path="/member/event/:eventId" element={<MemberEventDetail />} />
 						<Route path="/member/event/search/result" element={<EventSearchResult />} />
@@ -71,14 +63,6 @@ function App() {
 						<Route path="/member/*" element={<Member />} />
 
 						{/* Staff Router */}
-						<Route path="/staff/info/faq" element={<InfoFAQ />} />	
-						<Route path="/staff/info/notice/:noticeId" element={<InfoNoticeContent />} />	
-						<Route path="/staff/info/notice" element={<InfoNotice />} />	
-						<Route path="/staff/info/user/password" element={<InfoUpdatePassword />} />	
-						<Route path="/staff/info/user/phone" element={<InfoUpdatePhone />} />	
-						<Route path="/staff/info/user" element={<UserInfo />} />	
-						<Route path="/staff/info/check" element={<InfoCheck />} />	
-						<Route path="/staff/info" element={<Info />} />	
 						<Route path="/staff/event/:eventId/attend/:date" element={<AttendDetail />} />	
 						<Route path="/staff/event/:eventId/attend" element={<StaffAttend />} />	
 						<Route path="/staff/event/:eventId/delete" element={<EventDelete />} />	
@@ -101,23 +85,21 @@ function App() {
 						<Route path='/part/search/result' element={<HireSearchResult />}/>
 						<Route path="/part/search/:hireId" element={<HireSearchDetail />} />
 
-						<Route path="/part/info" element={<Info />} />
-						<Route path="/part/info/check" element={<InfoCheck />} />
-						<Route path="/part/info/user" element={<UserInfo />} />
-						<Route path="/part/info/user/phone" element={<InfoUpdatePhone />} />
-						<Route path="/part/info/user/password" element={<InfoUpdatePassword />} />
-
-						<Route path="/part/info/notice" element={<InfoNotice />} />
-						<Route path="/part/info/notice/:noticeId" element={<InfoNoticeContent />} />
-						<Route path="/part/info/faq" element={<InfoFAQ />} />
-
-
 						{/* Admin Router */}
 						<Route path="/admin" element={<Admin />} />
 
 						{/* Auth Router */}
 						<Route path="/register" element={<Register />} />
-						<Route path="*" element={<Login />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/info/faq" element={<InfoFAQ />} />
+						<Route path="/info/notice/:noticeId" element={<InfoNoticeContent />} />
+						<Route path="/info/notice" element={<InfoNotice />} />
+						<Route path="/info/user/password" element={<InfoUpdatePassword />} />
+						<Route path="/info/user/phone" element={<InfoUpdatePhone />} />
+						<Route path="/info/user" element={<UserInfo />} />
+						<Route path="/info/check" element={<InfoCheck />} />
+						<Route path="/info" element={<Info />} />
+
 					</Routes>
 				</BrowserRouter>
 			</header>
