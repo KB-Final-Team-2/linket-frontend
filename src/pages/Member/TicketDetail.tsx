@@ -10,14 +10,16 @@ import { DUMMY_TICKET1, INIT_TICKET, Ticket } from "../../interface/Ticket";
 import { useState } from "react";
 import TicketDelete from "./TicketDelete";
 import { setTicket } from "../../redux/slice/ticketSlice";
+import QRCode from "react-qr-code";
+import { User } from "../../interface/User";
 
 interface props {
-    onRequestReturn : Function
+    onRequestReturn: Function
 }
 
-const TicketDetail = ({onRequestReturn}:props) => {
+const TicketDetail = ({ onRequestReturn }: props) => {
     const [doDelete, setDoDelete] = useState(false);
-
+    const user : User = useSelector((state:any)=>state.auth.data);
     const ticket: Ticket = useSelector((state: any) => state.ticket.data);
     const eventList: Event[] = useSelector((state: any) => state.event.list);
     const dispatch = useDispatch();
@@ -27,10 +29,10 @@ const TicketDetail = ({onRequestReturn}:props) => {
         <>
             {doDelete
                 ?
-                <TicketDelete onRequestReturn={()=>{setDoDelete(false)}}/>
+                <TicketDelete onRequestReturn={() => { setDoDelete(false) }} />
                 :
                 <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center">
-                    <Header title="티켓 상세" func={()=>dispatch(setTicket(INIT_TICKET))}/>
+                    <Header title="티켓 상세" func={() => dispatch(setTicket(INIT_TICKET))} />
                     <div className="w-full h-full flex flex-col justify-center items-center">
                         <div className="w-[331px] h-[580px] overflow-hidden ">
                             <div className="w-[331px] h-[383px] overflow-hidden">
@@ -51,9 +53,13 @@ const TicketDetail = ({onRequestReturn}:props) => {
                             </div>
                             <div className="flex justify-between">
                                 <div className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9]">
-                                    <p className="text-[15px] font-bold text-left text-black">
-                                        입장용 QR
-                                    </p>
+                                    <QRCode
+                                        size={128}
+                                        className="w-full h-full"
+                                        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                                        value={ticket.serialNum+user.email}
+                                        viewBox={`0 0 256 256`}
+                                    />
                                 </div>
                                 <div className="w-[153px] h-[156px] overflow-hidden flex flex-col justify-center items-center gap-5">
                                     <Button title="Review" type="default" func={() => { }} />
