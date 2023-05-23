@@ -1,4 +1,4 @@
-import { ListProps } from "../../interface/ListProps";
+import { ListProps } from "../../interface/props";
 
 const WebEventInfoList = ({ title, content }: ListProps) => {
     return (

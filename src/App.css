@@ -42,7 +42,8 @@ input {
     background-color: rgb(196 196 196 / 0.31);
     padding-left: 16px;
     font-size: 18px;
-    line-height: 28px
+    line-height: 28px;
+    outline: none;
 }
 
 input:focus {
@@ -51,4 +52,13 @@ input:focus {
 
 .templete {
     background : linear-gradient(to bottom, #454545 0%, rgba(106,106,106,0.93) 51.04%, rgba(33,33,33,0.97) 100%);
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

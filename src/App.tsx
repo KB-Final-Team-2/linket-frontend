@@ -11,21 +11,24 @@ import MemberEvent from './pages/Member/Event';
 import EventSearch from './pages/Member/EventSearch';
 import MemberEventDetail from './pages/Member/EventDetail';
 import EventReview from './pages/Member/EventReview';
+import EventSearchResult from './pages/Member/EventSearchResult';
 
 // Staff Import
 import EventRegister from './pages/Staff/EventRegister';
-import StaffEventDetail from './pages/Staff/EventDetail';
 import EventUpdate from './pages/Staff/EventUpdate';
 import EventDelete from './pages/Staff/EventDelete';
 import StaffAttend from './pages/Staff/EventAttend';
-import AttendDetail from './pages/Staff/EventAttendDetail';
-import EventSearchResult from './pages/Member/EventSearchResult';
 import WebView from './pages/Staff/WebView';
-import HireSearchResult from './pages/PartTime/HireSearchResult';
+import EventHire from './pages/Staff/EventHire';
+import EventHireRegist from './pages/Staff/EventHireRegist';
+import EventHireUpdate from './pages/Staff/EventHireUpdate';
+import EventHireDelete from './pages/Staff/EventHireDelete';
+
 
 //Part Import
 import PartTimeHireRegister from './pages/PartTime/HireRegister';
 import PartTimeAttendHire from './pages/PartTime/AttendHire';
+import HireSearchResult from './pages/PartTime/HireSearchResult';
 
 //Auth Import
 import Info from './pages/Auth/Info';
@@ -39,7 +42,6 @@ import InfoFAQ from './pages/Auth/InfoFAQ';
 import Admin from './pages/Admin';
 import Login from './pages/Auth';
 import Register from './pages/Auth/Register';
-import EventHire from './pages/Staff/EventHire';
 
 function App() {
 
@@ -59,10 +61,13 @@ function App() {
 
 						{/* Staff Router */}
 						<Route path="/staff/attend" element={<StaffAttend />} />	
-						<Route path="/staff/event/:eventId/delete" element={<EventDelete />} />	
-						<Route path="/staff/event/:eventId/update" element={<EventUpdate />} />								
+						<Route path="/staff/delete" element={<EventDelete />} />	
+						<Route path="/staff/update" element={<EventUpdate />} />								
 						<Route path="/staff/register" element={<EventRegister />} />					
 						<Route path='/staff/hire' element={<EventHire />} />
+						<Route path='/staff/hire/regist' element={<EventHireRegist />} />
+						<Route path='/staff/hire/update' element={<EventHireUpdate />} />
+						<Route path='/staff/hire/delete' element={<EventHireDelete />} />
 						<Route path="/staff/*" element={<Staff />} />
 
 						{/* Staff Web Router */}

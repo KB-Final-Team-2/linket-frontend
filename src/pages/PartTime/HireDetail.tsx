@@ -3,7 +3,7 @@ import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
-import { ListProps } from "../../interface/ListProps";
+import { ListProps } from "../../interface/props";
 import { Hire, INIT_HIRE } from "../../interface/Hire";
 import { Link } from "react-router-dom";
 import Templete from "../Templete";

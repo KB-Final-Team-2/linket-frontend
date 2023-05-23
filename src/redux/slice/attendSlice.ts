@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { DUMMY_ATTD, INIT_ATTD } from "../../interface/Attendance";
+import { Attendance, DUMMY_ATTD, INIT_ATTD } from "../../interface/Attendance";
 
 export const getAttend = createAsyncThunk('getAttend', async (attendId: string, { rejectWithValue }) => {
     try {
@@ -11,11 +11,22 @@ export const getAttend = createAsyncThunk('getAttend', async (attendId: string, 
     }
 })
 
+export const getAttendList = createAsyncThunk('getAttendList', async (_:void, {rejectWithValue, dispatch})=>{
+    try{
+        // const list = (await axios.get(`/api/getAttendList/${}`)).data;
+        const list : Attendance[]= [DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD];
+        return list;
+    } catch (error) {
+        rejectWithValue(error);
+    }
+})
+
 const attendSlice = createSlice({
     name: "attend",
     initialState: {
         data: INIT_ATTD,
         list: [DUMMY_ATTD, DUMMY_ATTD, DUMMY_ATTD],
+        days: [],
         startState: false,
         endState: false,
         loading: false,
@@ -45,8 +56,18 @@ const attendSlice = createSlice({
         builder.addCase(getAttend.fulfilled, (state, action) => {
             state.list = action.payload;
             state.loading = false;
-        })
+        });
         builder.addCase(getAttend.rejected, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(getAttendList.pending, (state)=>{
+            state.loading = true;
+        });
+        builder.addCase(getAttendList.fulfilled, (state, action)=>{
+            state.list = action.payload || [];
+            state.loading = false;
+        });
+        builder.addCase(getAttendList.rejected, (state)=>{
             state.loading = false;
         })
     }

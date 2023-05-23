@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import TableInfo from "../../components/Table/TableInfo";
 import List from "../../components/List/List";
 import { useDispatch, useSelector } from "react-redux";
-import { ListProps } from "../../interface/ListProps";
+import { ListProps } from "../../interface/props";
 import { User } from "../../interface/User";
 import { Attendance, INIT_ATTD } from "../../interface/Attendance";
 import Button from "../../components/Button/Button";

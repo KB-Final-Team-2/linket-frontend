@@ -80,7 +80,8 @@ const UpdateEventModal = () => {
                                 <textarea
                                     ref={descRef}
                                     className="mx-5 w-full h-full overflow-hidden rounded-[9px] text-[15px] bg-[#c4c4c4]/[0.31] focus:outline-none focus:bg-[#c4c4c4]/[0.50] px-4 py-2"
-                                >{event.eventDesc}</textarea>
+                                    value={event.eventDesc}
+                                />
                             </div>
                         </div>
 

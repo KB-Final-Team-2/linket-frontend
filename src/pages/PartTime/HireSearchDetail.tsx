@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import { Hire, INIT_HIRE } from "../../interface/Hire";
-import { ListProps } from "../../interface/ListProps";
+import { ListProps } from "../../interface/props";
 import Templete from "../Templete";
 import { setHire } from "../../redux/slice/hireSlice";
 

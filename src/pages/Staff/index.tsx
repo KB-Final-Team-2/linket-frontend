@@ -2,16 +2,24 @@ import { Link, useNavigate } from "react-router-dom";
 import IndexHeader from "../../components/Header/IndexHeader";
 import EventList from "../../components/List/EventList";
 import NavBar from "../../components/NavBar/NavBar";
-import { Event, INIT_EVENT } from "../../interface/Event";
+import { DUMMY_EVENT1, DUMMY_EVENT2, Event, INIT_EVENT } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
 import Templete from "../Templete";
 import EventDetail from "./EventDetail";
+import { useEffect } from "react";
+import { setEvent, setEventList } from "../../redux/slice/eventSlice";
 
 const Staff = () => {
 
 	const event: Event = useSelector((state: any) => state.event?.data);
 	const eventList: Event[] = useSelector((state: any) => state.event?.list);
 	const dispatch = useDispatch();
+
+	useEffect(()=>{
+		const list = [DUMMY_EVENT1, DUMMY_EVENT2];
+		dispatch(setEventList(list));
+		dispatch(setEvent(INIT_EVENT));
+	},[])
 
 	return (
 		<Templete>
@@ -33,7 +41,7 @@ const Staff = () => {
 									<div className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-md font-bold text-center text-black flex flex-shrink-0 justify-center items-center">
 										입장용 QR
 									</div>
-									<Link to="/staff/event/register" className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-md font-bold text-center text-black flex flex-shrink-0 justify-center items-center">
+									<Link to="/staff/register" className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-md font-bold text-center text-black flex flex-shrink-0 justify-center items-center">
 										새 행사 등록하기
 									</Link>
 								</div>

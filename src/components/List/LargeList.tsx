@@ -1,4 +1,4 @@
-import { ListProps } from "../../interface/ListProps";
+import { ListProps } from "../../interface/props";
 
 const LargeList = ({ title, content }: ListProps) => {
     return (

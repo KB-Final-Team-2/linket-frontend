@@ -1,11 +1,6 @@
-import { Link } from "react-router-dom";
+import { FuncListProps } from "../../interface/props";
 
-interface props {
-    title: string,
-    func: Function
-}
-
-const NextList = ({ title, func }: props) => {
+const NextList = ({ title, func }: FuncListProps) => {
     return (
         <div
             className="w-[331px] h-[37px] overflow-hidden flex flex-shrink-0 border-b"

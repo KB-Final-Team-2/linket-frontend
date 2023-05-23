@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import NextList from "../../components/List/NextList";
 import NavBar from "../../components/NavBar/NavBar";
@@ -10,12 +10,18 @@ import { Attendance } from "../../interface/Attendance";
 import { Hire, INIT_HIRE } from "../../interface/Hire";
 import { setHire } from "../../redux/slice/hireSlice";
 import EventHireDetail from "./EventHireDetail";
+import { useEffect } from "react";
 
 const EventHire = () => {
     const event: Event = useSelector((state: any) => state.event?.data);
     const hire: Hire = useSelector((state: any) => state.hire?.data);
     const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        dispatch(setHire(INIT_HIRE));
+    },[])
 
     return (
         <Templete>
@@ -23,7 +29,7 @@ const EventHire = () => {
                 {hire === INIT_HIRE
                     ?
                     <>
-                        <Header title="공고 관리" />
+                        <Header title="공고 관리" list={[{title:"공고 등록", func:()=>{navigate("/staff/hire/regist")}}]}/>
                         <div className="w-[331px] h-full overflow-hidden">
                             <div className="w-[331px] h-[580px] overflow-hidden border-y border-white">
                                 <div className="w-[331px] h-[37px] overflow-hidden">

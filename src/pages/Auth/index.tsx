@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { AiOutlineRight } from "react-icons/ai"
 import { useDispatch, useSelector } from "react-redux";
 import { DUMMY_MEMBER, DUMMY_PART, DUMMY_STAFF, INIT_USER, User } from "../../interface/User";
-import { logout, setUser } from "../../redux/slice/authSilce";
+import { login, logout, setUser } from "../../redux/slice/authSilce";
 import { Link, useNavigate } from "react-router-dom";
 import Templete from "../Templete";
 
@@ -11,39 +11,20 @@ const Login = () => {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const user = useSelector((state: any) => (state.auth?.data));
+	const auth = useSelector((state: any) => (state.auth));
+	const user = auth?.data;
 	const dispatch: any = useDispatch();
 	const navigate = useNavigate();
-
-	const staff = {
-		email: "staff",
-		password: "1234",
-		role: "staff"
-	};
-
-	const member = {
-		email: "member",
-		password: "1234",
-		role: "member"
-	}
-
-	const part = {
-		email: "part",
-		password: "1234",
-		role: "part"
-	}
 
 	useEffect(()=>{
 		if(user!==INIT_USER) navigate(`/${user.role}`)
 	}, [user])
 
 	const handleLogin = () => {
-		let user: User = {} as User;
-		if (staff.email === email && staff.password === password) user = DUMMY_STAFF;
-		else if (member.email === email && member.password === password) user = DUMMY_MEMBER;
-		else if (part.email === email && part.password === password) user = DUMMY_PART;
+		// let user: User = {} as User;
 
-		dispatch(setUser(user));
+		// dispatch(setUser(user));
+		dispatch(login({email, password}));
 		navigate(`/${user.role}`)
 		// axios.post("/api/auth/login",{email:email, password:password})
 		// .then((res)=>{
@@ -69,7 +50,7 @@ const Login = () => {
 				<div className="w-[327px] h-[106px] relative left-6 top-[360px] rounded bg-[#c4c4c4]/[0.31] overflow-hidden px-3">
 					<div className="w-full h-1/2 px-5">
 						<input
-							className="w-full h-full focus:outline-none text-white bg-black/[0]"
+							className="w-full h-full text-white bg-black/[0]"
 							type="text"
 							placeholder="이메일"
 							value={email}
@@ -89,7 +70,7 @@ const Login = () => {
 					className="w-12 h-12 rounded-full bg-primary absolute left-[297px] top-[389px] text-[24px] flex justify-center items-center text-black"
 					onClick={handleLogin}
 				>
-					<AiOutlineRight />
+					{!auth.loading && (<AiOutlineRight />)}
 				</div>
 				<div className="w-[185px] h-8 absolute left-[27px] top-[315px]">
 					<p className="w-[185px] h-8 absolute left-0 top-0 text-2xl font-light text-left text-white">

@@ -1,32 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import { Event, INIT_EVENT } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
-import { ListProps } from "../../interface/ListProps";
+import { FuncListProps, ListProps } from "../../interface/props";
 import Templete from "../Templete";
 import { setEvent } from "../../redux/slice/eventSlice";
 import { Hire, INIT_HIRE } from "../../interface/Hire";
 import { setHire } from "../../redux/slice/hireSlice";
 
 const EventHireDetail = () => {
-    const hire : Hire = useSelector((state:any)=>state.hire?.data);
-    const hireList : Hire[] = useSelector((state:any)=>state.hire?.list);
+    const hire: Hire = useSelector((state: any) => state.hire?.data);
+    const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const list: ListProps[] = [
         { title: "공고 번호", content: `${hireList.indexOf(hire)}` },
         { title: "공고명", content: hire?.workName },
         { title: "근무 기간", content: `${hire?.workStartDate} ~ ${hire?.workEndDate}` },
-        { title: "근무 시간", content: `${hire?.workHour}`},
+        { title: "근무 시간", content: `${hire?.workHour}` },
         { title: "시급", content: `${hire?.pay}` },
         { title: "등록 코드", content: `${hire?.hireId}` },
         { title: "등록 일자", content: hire?.regDate },
     ]
 
+    const dropdownList : FuncListProps[] = [
+        { title: "공고 수정", func: () => { navigate("/staff/hire/update") } },
+        { title: "공고 삭제", func: () => { navigate("/staff/hire/delete") } }
+]
+
     return (
         <>
-            <Header title="공고 상세" func={() => { dispatch(setHire(INIT_HIRE)) }} />
+            <Header title="공고 상세" func={() => { dispatch(setHire(INIT_HIRE)) }} list={dropdownList} />
             <div className="w-[331px] h-full flex">
                 <div className="w-full h-[580px] flex flex-col border-y pb-5">
                     <div className="w-[331px] h-[580px] overflow-hidden">

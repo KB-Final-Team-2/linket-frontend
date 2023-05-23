@@ -1,10 +1,6 @@
+import { FuncListProps } from "../../interface/props";
 
-interface props {
-    title: string,
-    func: Function,
-}
-
-const TicketList = (props : props) => {
+const TicketList = (props : FuncListProps) => {
     return(
         <div
             className="w-[330px] h-20 overflow-hidden border-[5px] border-[#ffa559]"

@@ -5,21 +5,23 @@ import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
 import Templete from "../Templete";
+import { Hire } from "../../interface/Hire";
 
-const EventDelete = () => {
+const EventHireDelete = () => {
     const event : Event = useSelector((state:any)=>state.event?.data);
+    const hire : Hire = useSelector((state:any)=>state.hire?.data);
 
     const list = [
-        { title: "행사명", content: event.eventName },
-        { title: "행사 분류", content: event.eventType },
-        { title: "행사 기간", content: `${event.startDate} ~ ${event.endDate}` },
-        { title: "행사 장소", content: event.place }
+        { title: "공고명", content: hire?.workName },
+        { title: "근무 기간", content: `${hire?.workStartDate} ~ ${hire?.workEndDate}` },
+        { title: "근무 시간", content: `${hire?.workHour}` },
+        { title: "등록 일자", content: `${hire?.regDate}` }
     ]
 
     return (
         <Templete>
             <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-                <Header title="행사 삭제" />
+                <Header title="공고 삭제" />
                 <div className="w-[331px] h-full">
                     <div className="w-[331px] h-[580px] border-y overflow-hidden">
                         <div className="w-[331px] h-fit overflow-hidden border-white">
@@ -31,14 +33,14 @@ const EventDelete = () => {
                             <div className="w-[331px] h-[244px] overflow-hidden flex flex-col justify-center items-center">
                                 <p className="w-[331px] text-xl font-bold text-center text-white flex flex-col gap-3">
                                     <span className="w-[330px] text-xl font-bold text-center text-white">
-                                        해당 행사를 삭제하시겠습니까?
+                                        해당 공고를 삭제하시겠습니까?
                                     </span>
                                     <br />
                                     <span className="w-[331px] text-[16px] font-bold text-center text-white">
-                                        삭제된 행사는 복구할 수 없으며,
+                                        삭제된 공고는 복구할 수 없으며,
                                     </span>
                                     <span className="w-[331px] text-[16px] font-bold text-center text-white">
-                                        기존에 등록된 리뷰 및 이미지가 모두 삭제됩니다.
+                                        해당 공고와 연결된 근태 정보도 삭제됩니다.
                                     </span>
                                 </p>
                             </div>
@@ -54,4 +56,4 @@ const EventDelete = () => {
         </Templete>
     )
 }
-export default EventDelete; 
+export default EventHireDelete; 

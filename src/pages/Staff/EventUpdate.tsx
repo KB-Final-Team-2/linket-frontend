@@ -1,111 +1,72 @@
-import { useRef } from "react";
-import Header from "../../components/Header/Header";
-import NavBar from "../../components/NavBar/NavBar";
-import InputList from "../../components/Input/RegisterInput";
+import { useRef, useState } from "react";
 import Button from "../../components/Button/Button";
+import Header from "../../components/Header/Header";
+import InputList from "../../components/Input/RegisterInput";
+import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
+import DatePicker from "../../components/Input/DatePicker";
+import { useDispatch, useSelector } from "react-redux";
+import SelectButton from "../../components/Button/SelectButton";
+import { Event } from "../../interface/Event";
 
-const EventUpdate = () => {
-    const eventNameRef = useRef<HTMLInputElement>(null);
-    const eventPlaceRef = useRef<HTMLInputElement>(null);
-    const eventPosterRef = useRef<HTMLInputElement>(null);
-    const eventImgRef = useRef<HTMLInputElement>(null);
+const EventRegister = () => {
+    const nameRef = useRef<HTMLInputElement>(null);
+    const placeRef = useRef<HTMLInputElement>(null);
+    const inqRef = useRef<HTMLInputElement>(null);
+    const imageRef = useRef<HTMLInputElement>(null);
+    const descRef = useRef<HTMLTextAreaElement>(null);
+
+    const event: Event = useSelector((state:any)=>state.event?.data);
+    const dispatch = useDispatch();
+
+    const [startDate, setStartDate] = useState<Date | null>(new Date(event.startDate));
+    const [endDate, setEndDate] = useState<Date | null>(new Date(event.endDate));
+    const [type, setType] = useState(event.eventType);
+    const typeList = ["concert", "festival", "etc"];
 
     return (
         <Templete>
             <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-                <Header title="행사 수정" />
+                <Header title="행사 생성" />
                 <div className="w-[331px] h-full flex flex-col">
                     <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white py-2 flex flex-col justify-center items-center">
                         <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2">
-                            <InputList title={"행사명"} ref={eventNameRef} value="1234" />
+                            <InputList title={"행사명"} ref={nameRef} value={event.eventName}/>
                             <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
                                 <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
                                     행사 분류
                                 </p>
-                                <div className="w-[215px] h-[37px] overflow-hidden flex">
-                                    <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-secondary">
-                                        <p className="w-20 h-10 text-[15px] font-bold text-center text-black">
-                                            Festival
-                                        </p>
-                                    </div>
-                                    <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-secondary">
-                                        <p className="w-20 h-10 text-[15px] font-bold text-center text-black">
-                                            Concert
-                                        </p>
-                                    </div>
-                                    <div className="w-[70px] h-[30px] overflow-hidden rounded-[15px] bg-secondary">
-                                        <p className="w-20 h-10 text-[15px] font-bold text-center text-black">
-                                            etc
-                                        </p>
-                                    </div>
+                                <div className="w-[215px] h-[37px] overflow-hidden flex gap-1">
+                                    {typeList.map((v, i) => (
+                                        <SelectButton key={i} state={v === type} title={v} func={() => { setType(v) }} />
+                                    ))}
                                 </div>
                             </div>
-                            <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
-                                <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
+                            <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0 text-[15px] font-bold text-center text-white items-center">
+                                <p className="w-fit h-fit flex-shrink-0">
                                     행사 시작일시
                                 </p>
-                                <div className="w-[215px] h-[37px] top-0 overflow-hidden rounded-[20px] flex">
-                                    <div className="w-[60px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                        <p className="w-[60px] h-[37px] text-[15px] font-bold text-center text-white">
-                                            10시
-                                        </p>
-                                    </div>
-                                    <div className="w-[46px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                        <p className="w-[46px] h-[37px] text-[15px] font-bold text-center text-white">
-                                            01.
-                                        </p>
-                                    </div>
-                                    <div className="w-[46px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                        <p className="w-[46px] h-[37px] text-[15px] font-bold text-center text-white">
-                                            01.
-                                        </p>
-                                    </div>
-                                    <div className="w-[57px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                        <p className="w-[57px] h-[37px] text-[15px] font-bold text-center text-white">
-                                            2023.
-                                        </p>
-                                    </div>
-                                </div>
+                                <DatePicker title={""} date={startDate} setDate={(date: Date) => { setStartDate(date) }} />
                             </div>
                             <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
                                 <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
                                     행사 종료일시
                                 </p>
-                                <div className="w-[215px] h-[37px] overflow-hidden rounded-[20px] flex">
-                                    <div className="w-[60px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                        <p className="w-[60px] h-[37px] text-[15px] font-bold text-center text-white">
-                                            10시
-                                        </p>
-                                    </div>
-                                    <div className="w-[46px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                        <p className="w-[46px] h-[37px] text-[15px] font-bold text-center text-white">
-                                            01.
-                                        </p>
-                                    </div>
-                                    <div className="w-[46px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                        <p className="w-[46px] h-[37px] text-[15px] font-bold text-center text-white">
-                                            01.
-                                        </p>
-                                    </div>
-                                    <div className="w-[57px] h-[37px] overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                        <p className="w-[57px] h-[37px] text-[15px] font-bold text-center text-white">
-                                            2023.
-                                        </p>
-                                    </div>
-                                </div>
+                                <DatePicker title={""} date={endDate} setDate={(date: Date) => { setEndDate(date) }} />
                             </div>
-                            <InputList title={"행사 장소"} ref={eventPlaceRef} />
-                            <InputList title={"행사 포스터"} ref={eventPosterRef} />
-                            <InputList title={"행사 정보 이미지"} ref={eventImgRef} />
+                            <InputList title={"행사 장소"} ref={placeRef} value={event.place}/>
+                            <InputList title={"행사 정보 이미지"} ref={imageRef} value={event.eventImage}/>
+                            <InputList title={"행사 문의처"} ref={inqRef} value={event.eventInq}/>
                             <div className="w-[330px] h-full overflow-hidden flex">
                                 <p className="w-[115px] h-[175px] text-[15px] font-bold text-center text-white">
                                     행사 설명
                                 </p>
-                                <div className="w-[215px] h-[175px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31]" />
+                                <textarea ref={descRef} className="w-[215px] h-[175px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31] outline-none focus:bg-white/30 text-base p-2">
+                                    {event.eventDesc}
+                                </textarea>
                             </div>
                         </div>
-                        <Button title={"Create"} type={"default"} func={() => { console.log(eventNameRef.current?.value) }} />
+                        <Button title={"Create"} type={"default"} func={() => { console.log(nameRef.current?.value) }} />
                     </div>
                 </div>
                 <NavBar role="staff" state="1" />
@@ -113,4 +74,5 @@ const EventUpdate = () => {
         </Templete>
     )
 }
-export default EventUpdate;
+
+export default EventRegister;
