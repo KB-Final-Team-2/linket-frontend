@@ -7,24 +7,27 @@ import { useDispatch, useSelector } from "react-redux";
 import Templete from "../Templete";
 import EventDetail from "./EventDetail";
 import { useEffect } from "react";
-import { setEvent, setEventList } from "../../redux/slice/eventSlice";
+import { getEventList, setEvent, setEventList } from "../../redux/slice/eventSlice";
+import { User } from "../../interface/User";
+import { CgSpinner } from "react-icons/cg";
 
 const Staff = () => {
+	const user: User = useSelector((state: any) => state.auth.data);
+	const event = useSelector((state: any) => state.event);
+	const eventData: Event = event.data;
+	const eventList: Event[] = event.list;
+	const dispatch: any = useDispatch();
 
-	const event: Event = useSelector((state: any) => state.event?.data);
-	const eventList: Event[] = useSelector((state: any) => state.event?.list);
-	const dispatch = useDispatch();
-
-	useEffect(()=>{
+	useEffect(() => {
+		// dispatch(getEventList(user.companyId))
 		const list = [DUMMY_EVENT1, DUMMY_EVENT2];
 		dispatch(setEventList(list));
-		dispatch(setEvent(INIT_EVENT));
-	},[])
+	}, [])
 
 	return (
 		<Templete>
 			<div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-				{event === INIT_EVENT
+				{eventData === INIT_EVENT
 					?
 					<>
 						<IndexHeader title="User Name" />
@@ -34,7 +37,12 @@ const Staff = () => {
 									등록 행사
 								</p>
 								<div className="w-[331px] h-[384px] overflow-auto flex flex-col border-t">
-									{eventList.map((event, i) => (<EventList key={i} event={event} />))}
+									{event.loading
+										?
+										<CgSpinner className=" animate-spin m-auto" />
+										:
+										eventList?.map((event, i) => (<EventList key={i} event={event} />))
+									}
 								</div>
 
 								<div className="w-full h-[156px] flex justify-between">

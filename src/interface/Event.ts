@@ -16,15 +16,15 @@ export interface Event {
 }
 
 export interface RegistEvent {
-    companyId: string;
+    companyId: number;
     eventName: string;
     eventType: string;
     place: string;
-    eventImage: File | undefined;
+    eventImage: string | undefined;
     eventInq: string;
     eventDesc: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
 }
 
 export interface EndedEvent extends Event {

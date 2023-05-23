@@ -9,21 +9,18 @@ import Templete from "../Templete";
 import { setEvent } from "../../redux/slice/eventSlice";
 
 const EventDetail = () => {
-    const event: Event = useSelector((state: any) => state.event?.data);
+    const event = useSelector((state: any) => state.event);
+    const eventData : Event = event?.data;
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const list: ListProps[] = [
-        { title: "행사명", content: event.eventName },
-        { title: "행사 분류", content: event.eventType },
-        { title: "행사 기간", content: `${event.startDate} ~ ${event.endDate}` },
-        { title: "행사장소", content: event.place },
-        { title: "행사 코드", content: `${event.eventId}` },
-        { title: "행사 정보 이미지", content: event.eventImage },
+        { title: "행사명", content: eventData.eventName },
+        { title: "행사 분류", content: eventData.eventType },
+        { title: "행사 기간", content: `${eventData.startDate} ~ ${eventData.endDate}` },
+        { title: "행사장소", content: eventData.place },
+        { title: "행사 코드", content: `${eventData.eventId}` },
+        { title: "행사 정보 이미지", content: eventData.eventImage },
     ]
-
-    const moveUpdate = () => {
-        navigate("/staff/update");
-    }
 
     const dropdownList : FuncListProps[] = [
         {title:"행사 수정", func:()=>{navigate("/staff/update")}},  

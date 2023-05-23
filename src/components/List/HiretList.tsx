@@ -3,7 +3,7 @@ import { Event } from "../../interface/Event";
 import { User } from "../../interface/User";
 import { Link, useNavigate } from "react-router-dom";
 import { Hire } from "../../interface/Hire";
-import { setHire } from "../../redux/slice/hireSlice";
+import { getHire, setHire } from "../../redux/slice/hireSlice";
 
 interface props {
     hire: Hire
@@ -11,10 +11,10 @@ interface props {
 
 const HireList = ({ hire }: props) => {
     const user: User = useSelector((state: any) => state.auth?.data);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const dispatch : any= useDispatch();
 
     const handleHire = () => {
+        // dispatch(getHire(hire?.hireId));
         dispatch(setHire(hire));
     }
 

@@ -7,8 +7,8 @@ import Templete from "../Templete";
 import { Event } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
 import { Attendance } from "../../interface/Attendance";
-import { Hire, INIT_HIRE } from "../../interface/Hire";
-import { setHire } from "../../redux/slice/hireSlice";
+import { DUMMY_HIRE1, DUMMY_HIRE2, Hire, INIT_HIRE } from "../../interface/Hire";
+import { getHire, getHireList, setHire, setHireList } from "../../redux/slice/hireSlice";
 import EventHireDetail from "./EventHireDetail";
 import { useEffect } from "react";
 
@@ -16,12 +16,19 @@ const EventHire = () => {
     const event: Event = useSelector((state: any) => state.event?.data);
     const hire: Hire = useSelector((state: any) => state.hire?.data);
     const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
-    const dispatch = useDispatch();
+    const dispatch : any = useDispatch();
     const navigate = useNavigate();
 
     useEffect(()=>{
-        dispatch(setHire(INIT_HIRE));
+        // dispatch(getHireList(event.eventId));
+        const list = [DUMMY_HIRE1, DUMMY_HIRE2];
+        dispatch(setHireList(list));
     },[])
+
+    const handleHire = (hire: Hire) => {
+        // dispatch(getHire(hire.hireId));
+        dispatch(setHire(hire));
+    }
 
     return (
         <Templete>
@@ -37,7 +44,7 @@ const EventHire = () => {
                                 </div>
                                 <div className="w-[331px] h-[580px] overflow-hidden">
                                     {hireList.map((hire, i) => {
-                                        return (<NextList key={i} title={`${hire.hireId}`} func={() => { dispatch(setHire(hire)) }} />)
+                                        return (<NextList key={i} title={`${hire.hireId}`} func={() => { handleHire(hire) }} />)
                                     })}
                                 </div>
                             </div>

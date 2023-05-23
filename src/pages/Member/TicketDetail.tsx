@@ -13,11 +13,7 @@ import { setTicket } from "../../redux/slice/ticketSlice";
 import QRCode from "react-qr-code";
 import { User } from "../../interface/User";
 
-interface props {
-    onRequestReturn: Function
-}
-
-const TicketDetail = ({ onRequestReturn }: props) => {
+const TicketDetail = () => {
     const [doDelete, setDoDelete] = useState(false);
     const user : User = useSelector((state:any)=>state.auth.data);
     const ticket: Ticket = useSelector((state: any) => state.ticket.data);
@@ -33,8 +29,8 @@ const TicketDetail = ({ onRequestReturn }: props) => {
                 :
                 <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center">
                     <Header title="티켓 상세" func={() => dispatch(setTicket(INIT_TICKET))} />
-                    <div className="w-full h-full flex flex-col justify-center items-center">
-                        <div className="w-[331px] h-[580px] overflow-hidden ">
+                    <div className="w-full h-full flex flex-col items-center">
+                        <div className="w-[331px] h-[580px] overflow-hidden border-y">
                             <div className="w-[331px] h-[383px] overflow-hidden">
                                 <List title="행사명" content={"event.eventName"} />
                                 <List title="행사 분류" content={"event.eventType"} />

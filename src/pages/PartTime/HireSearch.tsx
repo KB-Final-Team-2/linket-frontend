@@ -6,8 +6,8 @@ import NavBar from "../../components/NavBar/NavBar";
 import { useRef, useState } from "react";
 import Templete from "../Templete";
 import { useDispatch } from "react-redux";
-import { setHireList } from "../../redux/slice/hireSlice";
-import { DUMMY_HIRE1, DUMMY_HIRE2 } from "../../interface/Hire";
+import { setHire, setHireList } from "../../redux/slice/hireSlice";
+import { DUMMY_HIRE1, DUMMY_HIRE2, INIT_HIRE } from "../../interface/Hire";
 
 interface props {
     onRequestReturn: Function;
@@ -36,6 +36,7 @@ const HireSearch = ({ onRequestReturn }: props) => {
         const list = [DUMMY_HIRE1, DUMMY_HIRE2]
 
         dispatch(setHireList(list));
+        dispatch(setHire(INIT_HIRE));
         navigate("/part/result");
     }
 

@@ -1,20 +1,37 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
 import Templete from "../Templete";
+import { deleteEvent } from "../../redux/slice/eventSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 
 const EventDelete = () => {
-    const event : Event = useSelector((state:any)=>state.event?.data);
+    const event = useSelector((state:any)=>state.event);
+    const eventData : Event = event?.data;
+    const dispatch : any = useDispatch();
+    const navigate = useNavigate();
 
     const list = [
-        { title: "행사명", content: event.eventName },
-        { title: "행사 분류", content: event.eventType },
-        { title: "행사 기간", content: `${event.startDate} ~ ${event.endDate}` },
-        { title: "행사 장소", content: event.place }
+        { title: "행사명", content: eventData.eventName },
+        { title: "행사 분류", content: eventData.eventType },
+        { title: "행사 기간", content: `${eventData.startDate} ~ ${eventData.endDate}` },
+        { title: "행사 장소", content: eventData.place }
     ]
+
+    const handleDelete = () => {
+        dispatch(deleteEvent(event.eventId))
+        .then(unwrapResult)
+        .then(()=>{
+            navigate("/staff");
+        })
+        .catch((err:Error)=>{
+            console.log(err);
+        })
+    }
 
     return (
         <Templete>
@@ -23,8 +40,8 @@ const EventDelete = () => {
                 <div className="w-[331px] h-full">
                     <div className="w-[331px] h-[580px] border-y overflow-hidden">
                         <div className="w-[331px] h-fit overflow-hidden border-white">
-                            {list.map((el) => {
-                                return (<List title={el.title} content={el.content} />)
+                            {list.map((v, i) => {
+                                return (<List key={i} title={v.title} content={v.content} />)
                             })}
                         </div>
                         <div className="w-[331px] h-full top-[177px] overflow-hidden">
@@ -42,9 +59,8 @@ const EventDelete = () => {
                                     </span>
                                 </p>
                             </div>
-                            <div className="w-[331px] h-[202px] overflow-hidden flex justify-between items-center px-10">
-                                <Button title={"return"} type={"default"} func={() => { }} />
-                                <Button title={"Delete"} type={"delete"} func={() => { }} />
+                            <div className="w-[331px] h-[202px] overflow-hidden flex justify-center items-center px-10">
+                                <Button title={"Delete"} type={"delete"} func={() => { handleDelete() }} loading={event.loading} />
                             </div>
                         </div>
                     </div>

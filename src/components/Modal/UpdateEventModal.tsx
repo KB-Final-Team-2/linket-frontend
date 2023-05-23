@@ -17,7 +17,8 @@ const UpdateEventModal = () => {
     const imageRef = useRef<HTMLInputElement>(null);
     const descRef = useRef<HTMLTextAreaElement>(null);
 
-    const event: Event = useSelector((state: any) => state.event?.data);
+    const event = useSelector((state: any) => state.event);
+    const eventData : Event = event?.data;
     const dispatch = useDispatch();
 
     const [startDate, setStartDate] = useState<Date | null>(new Date("2021-02-03"));
@@ -27,15 +28,15 @@ const UpdateEventModal = () => {
 
     const updateEvent = () => {
         const event: RegistEvent = {
-            eventName: nameRef.current?.value || "",
+            eventName: nameRef.current?.value || eventData.eventName,
             eventType: type,
-            place: placeRef.current?.value || "",
+            place: placeRef.current?.value || eventData.place,
             eventImage: undefined,
-            eventInq: inqRef.current?.value || "",
-            eventDesc: descRef.current?.innerText || "",
-            startDate: startDate!,
-            endDate: endDate!,
-            companyId: ""
+            eventInq: inqRef.current?.value || eventData.eventInq,
+            eventDesc: descRef.current?.innerText || eventData.eventDesc,
+            startDate: startDate?.toString() || eventData.startDate,
+            endDate: endDate?.toString() || eventData.endDate,
+            companyId: 0
         }
     }
 

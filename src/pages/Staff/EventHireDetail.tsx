@@ -28,7 +28,7 @@ const EventHireDetail = () => {
     const dropdownList : FuncListProps[] = [
         { title: "공고 수정", func: () => { navigate("/staff/hire/update") } },
         { title: "공고 삭제", func: () => { navigate("/staff/hire/delete") } }
-]
+    ]
 
     return (
         <>

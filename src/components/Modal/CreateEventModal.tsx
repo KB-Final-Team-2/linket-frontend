@@ -32,9 +32,9 @@ const CreateEventModal = () => {
             eventImage: undefined,
             eventInq: inqRef.current?.value || "",
             eventDesc: descRef.current?.innerText || "",
-            startDate: startDate!,
-            endDate: endDate!,
-            companyId: ""
+            startDate: startDate?.toString() || "",
+            endDate: endDate?.toString() || "",
+            companyId: 0
         }
     }
 

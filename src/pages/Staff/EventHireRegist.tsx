@@ -5,8 +5,14 @@ import InputList from "../../components/Input/RegisterInput";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
 import DatePicker from "../../components/Input/DatePicker";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SelectButton from "../../components/Button/SelectButton";
+import { RegistHire } from "../../interface/Hire";
+import { User } from "../../interface/User";
+import { Event } from "../../interface/Event";
+import { registHire } from "../../redux/slice/hireSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 
 const EventHireRegist = () => {
     const workNameRef = useRef<HTMLInputElement>(null);
@@ -15,12 +21,34 @@ const EventHireRegist = () => {
     const payRef = useRef<HTMLInputElement>(null);
     const eduRef = useRef<HTMLTextAreaElement>(null);
 
-    const dispatch = useDispatch();
+    const user : User = useSelector((state:any)=>state.auth?.data);
+    const event : Event = useSelector((state:any)=>state.event?.data);
+    const hire = useSelector((state:any)=>state.hire);
+    const dispatch : any = useDispatch();
+    const navigate = useNavigate();
 
     const [startDate, setStartDate] = useState<Date | null>(new Date());
     const [endDate, setEndDate] = useState<Date | null>(new Date());
-    const [type, setType] = useState("");
-    const typeList = ["concert", "festival", "etc"];
+
+    const handleRegist = () => {
+        // const hire : RegistHire = {
+        //     eventId: event.eventId,
+        //     companyId: user.companyId,
+        //     workName: workNameRef.current?.value || "",
+        //     workHour: Number.parseInt(workHourRef.current?.value || "0"),
+        //     workStartDate: startDate?.toString() || new Date().toString(),
+        //     workEndDate: endDate?.toString() || new Date().toString(),
+        //     pay: Number.parseInt(payRef.current?.value || "0"),
+        //     edu: eduRef.current?.innerText || "",
+        // }
+
+        // dispatch(registHire(hire))
+        // .then(unwrapResult)
+        // .then(()=>{
+        //    dispatch(setHire(INIT_HIRE));
+        //     navigate("/staff");
+        // })
+    }
 
     return (
         <Templete>
@@ -52,7 +80,7 @@ const EventHireRegist = () => {
                                 <textarea ref={eduRef} className="w-[215px] h-[215px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31] outline-none focus:bg-white/30 text-base p-2" />
                             </div>
                         </div>
-                        <Button title={"Create"} type={"default"} func={() => { console.log(workNameRef.current?.value) }} />
+                        <Button title={"Create"} type={"default"} func={() => { handleRegist() }} loading={hire?.loading} />
                     </div>
                 </div>
                 <NavBar role="staff" state="1" />

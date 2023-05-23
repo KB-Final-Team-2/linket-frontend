@@ -1,18 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { DUMMY_PART, INIT_USER, RegistUser, User } from '../../interface/User';
+import { DUMMY_MEMBER, DUMMY_PART, INIT_USER, RegistUser, User } from '../../interface/User';
 import { DUMMY_STAFF } from '../../interface/User';
 import { useNavigate } from 'react-router-dom';
-
-export const login = createAsyncThunk("loginPostState", async ({ email, password }: any, { rejectWithValue }) => {
-    try {
-        const userData = (await axios.post("/api/postLogin", { email, password })).data;
-        console.log(userData);
-        return userData;
-    } catch (error) {
-        rejectWithValue(error);
-    }
-})
 
 export const register = createAsyncThunk("registerUser", async (data: RegistUser, { rejectWithValue }) => {
     try {
@@ -50,16 +40,6 @@ const authSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(login.pending, (state, action) => {
-            state.loading = true;
-        });
-        builder.addCase(login.fulfilled, (state, action) => {
-            state.data = action.payload as User;
-            state.loading = false;
-        });
-        builder.addCase(login.rejected, (state) => {
-            state.loading = false;
-        });
         builder.addCase(logout.pending, (state) => {
             state.loading = true;
         });
@@ -77,8 +57,8 @@ const authSlice = createSlice({
     }
 })
 
-export const { 
+export const {
     setUser,
     initUser,
- } = authSlice.actions
+} = authSlice.actions
 export default authSlice.reducer

@@ -13,9 +13,13 @@ export const getAttend = createAsyncThunk('getAttend', async (attendId: string, 
 
 export const getAttendList = createAsyncThunk('getAttendList', async (_:void, {rejectWithValue, dispatch})=>{
     try{
-        // const list = (await axios.get(`/api/getAttendList/${}`)).data;
+        // const list = (await axios.get(`/api/getAttendList/${eventId}`)).data;
         const list : Attendance[]= [DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD];
-        return list;
+        const days: string[] = [];
+        list.forEach((attend) => {
+            if (!days.includes(attend.attDate)) days.push(attend.attDate);
+        })
+        return {list, days};
     } catch (error) {
         rejectWithValue(error);
     }
@@ -26,7 +30,8 @@ const attendSlice = createSlice({
     initialState: {
         data: INIT_ATTD,
         list: [DUMMY_ATTD, DUMMY_ATTD, DUMMY_ATTD],
-        days: [],
+        days: [] as string[],
+        date: "",
         startState: false,
         endState: false,
         loading: false,
@@ -37,6 +42,12 @@ const attendSlice = createSlice({
         },
         setAttendList: (state, action) => {
             state.list = action.payload;
+        },
+        setDays: (state, action) => {
+            state.days = action.payload;
+        },
+        setDate: (state, action) =>{
+            state.date = action.payload;
         },
         updateStart: (state, action) => {
             state.startState = action.payload;
@@ -64,7 +75,8 @@ const attendSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(getAttendList.fulfilled, (state, action)=>{
-            state.list = action.payload || [];
+            state.list = action.payload?.list || [];
+            state.days = action.payload?.days || [];
             state.loading = false;
         });
         builder.addCase(getAttendList.rejected, (state)=>{
@@ -76,6 +88,8 @@ const attendSlice = createSlice({
 export const {
     setAttend,
     setAttendList,
+    setDays,
+    setDate,
     updateStart,
     updateEnd,
     initAttend,

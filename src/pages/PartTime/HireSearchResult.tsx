@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { setHire } from "../../redux/slice/hireSlice";
 import Templete from "../Templete";
 import HireSearchDetail from "./HireSearchDetail";
+import { CgSpinner } from "react-icons/cg";
 
 interface props {
     hire: Hire;
@@ -43,22 +44,30 @@ const HireList = ({ hire, idx, func }: props) => {
 const HireSearchResult = () => {
     const navigate = useNavigate();
 
-    const hire: Hire = useSelector((state: any) => state.hire?.data);
-    const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
+    const hire = useSelector((state: any) => state.hire);
+    const hireData: Hire = hire?.data;
+    const hireList: Hire[] = hire?.list;
 
     return (
         <Templete>
             <div className="w-[375px] h-[812px] overflow-hidden flex flex-col justify-center items-center">
-                {hire === INIT_HIRE
+                {hireData === INIT_HIRE
                     ?
+
                     <>
                         <Header title="공고 검색 결과" />
                         <div className="w-[331px] h-full">
                             <div className="w-[331px] h-[580px] overflow-hidden border-y py-5">
                                 <div className="w-[331px] h-10 bg-background-light/30 rounded-lg shrink-0 mb-2 " />
-
-                                <div className="w-[331px] h-[465px] left-0 top-[115px] overflow-auto">
-                                    {hireList.map((hire, i) => (<HireList key={i} idx={i} hire={hire} />))}
+                                <div className="w-[331px] h-[465px] overflow-auto flex flex-col">
+                                    {hire?.loading
+                                        ?
+                                        <CgSpinner className="text-3xl animate-spin m-auto" />
+                                        :
+                                        <>
+                                            {hireList.map((hire, i) => (<HireList key={i} idx={i} hire={hire} />))}
+                                        </>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -66,7 +75,6 @@ const HireSearchResult = () => {
                     :
                     <HireSearchDetail />
                 }
-
                 <NavBar role="member" state="1" />
             </div>
         </Templete>

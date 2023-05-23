@@ -11,6 +11,17 @@ export interface Hire {
     regDate: string;
 }
 
+export interface RegistHire {
+    eventId: number;
+    companyId: number;
+    workName: string;
+    workHour: number;
+    workStartDate: string;
+    workEndDate: string;
+    pay: number;
+    edu: string;
+}
+
 export const INIT_HIRE : Hire = {
     hireId: -1,
     workHour: -1,

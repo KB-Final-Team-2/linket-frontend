@@ -5,25 +5,42 @@ import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
 import { Ticket } from "../../interface/Ticket";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Event } from "../../interface/Event";
+import { deleteTicket, getTicketList } from "../../redux/slice/ticketSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { User } from "../../interface/User";
 
 interface props {
     onRequestReturn : Function;
 }
 
 const TicketDelete = ({onRequestReturn}:props) => {
-    const ticket : Ticket = useSelector((state:any)=>state.ticket.data);
+    const user : User = useSelector((state:any)=>state.auth?.data);
+    const ticket : Ticket = useSelector((state:any)=>state.ticket?.data);
+    const event : Event = useSelector((state:any)=>state.event?.data);
+    const dispatch : any = useDispatch();
     const navigate = useNavigate();
+
+    const handleDelete = () => {
+        dispatch(deleteTicket(ticket.ticketId))
+        .then(unwrapResult)
+        .then(()=>{
+            dispatch(getTicketList(user.email));
+            navigate("/member");
+        })
+    }
+
     return (
             <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
                 <Header title="티켓 삭제" func={()=>{onRequestReturn()}} />
                 <div className="w-[331px] h-full">
                     <div className="w-[331px] h-[580px] overflow-hidden border-b border-t  flex flex-col">
-                        <div className="w-[330px] h-[148px] overflow-hidden">
-                            <List title="행사명" content={`ticket.eventTitle`} />
-                            <List title="행사 분류" content={`ticket.eventType`} />
-                            <List title="행사 기간" content={`ticket.startDate ~ ticket.endDate`} />
-                            <List title="행사 장소" content={`ticket.place`} />
+                        <div className="w-[330px] h-[400px] overflow-hidden">
+                            <List title="행사명" content={event.eventName} />
+                            <List title="행사 분류" content={event.eventType} />
+                            <List title="행사 기간" content={`${event.startDate} ~ ${event.endDate}`} />
+                            <List title="행사 장소" content={event.place} />
                         </div>
                         <div className="w-[330px] h-full overflow-hidden">
                             <div className="w-[330px] h-full font-bold text-center text-[20px] text-white flex flex-col justify-center items-center">
@@ -34,8 +51,7 @@ const TicketDelete = ({onRequestReturn}:props) => {
                             </div>
                         </div>
                         <div className="w-[337px] h-[202px] overflow-hidden flex flex-shrink-0 justify-between items-center px-10">
-                            <Button title="Delete" type="delete" func={() => { navigate("/member") }} />
-                            <Button title="return" type="default" func={() => { onRequestReturn() }} />
+                            <Button title="Delete" type="delete" func={() => { handleDelete() }} />
                         </div>
                     </div>
                 </div>

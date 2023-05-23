@@ -16,14 +16,16 @@ const AttendDetail = () => {
     const attend: Attendance = useSelector((state: any) => state.attend?.data);
     const dispatch = useDispatch();
 
-    const infoList: ListProps[] = [{ title: "안녕하세요", content: "반갑습니다." },
-    { title: "이름", content: user.userName },
-    { title: "출근일시", content: attend.attStartDatetime },
-    { title: "퇴근일시", content: attend.attEndDatetime }];
+    const infoList: ListProps[] = [
+        { title: "안녕하세요", content: "반갑습니다." },
+        { title: "이름", content: user.userName },
+        { title: "출근일시", content: attend.attStartDatetime },
+        { title: "퇴근일시", content: attend.attEndDatetime }
+    ];
 
     return (
         <>
-            <Header title="근태 관리" func={()=>{dispatch(setAttend(INIT_ATTD))}}/>
+            <Header title="근태 관리" func={() => { dispatch(setAttend(INIT_ATTD)) }} />
             <div className="w-[331px] h-full flex flex-col">
                 <div className="w-[330px] h-[580px] overflow-hidden border-y border-white">
                     <div className="w-full h-[500px]">

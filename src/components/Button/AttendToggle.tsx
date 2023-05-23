@@ -20,7 +20,7 @@ const AttendToggle = ({ state, func }: props) => {
                             onClick={() => { func() }}
                         >
                             <rect x={15} y={10} width={60} height={30} rx={15} fill="#FF9F0E" />
-                            <line x1={31} y1={18} x2={31} y2={33} stroke="white" stroke-width={2} />
+                            <line x1={31} y1={18} x2={31} y2={33} stroke="white" strokeWidth={2} />
                             <path
                                 d="M75 25C75 33.2843 68.2843 40 60 40C51.7157 40 45 33.2843 45 25C45 16.7157 51.7157 10 60 10C68.2843 10 75 16.7157 75 25Z"
                                 fill="white"

@@ -3,9 +3,27 @@ import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTicketList, registTicket } from "../../redux/slice/ticketSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { User } from "../../interface/User";
 
 const TicketRegister = () => {
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const user : User = useSelector((state:any)=>state.auth?.data);
+    const dispatch : any = useDispatch();
     const navigate = useNavigate();
+
+    const handleRegist = () => {
+        dispatch(registTicket(Number.parseInt(inputRef.current?.value!)))
+        .then(unwrapResult)
+        .then(()=>{
+            dispatch(getTicketList(user.email));
+            navigate("/member");
+        })
+    }
 
     return (
         <Templete>
@@ -17,15 +35,10 @@ const TicketRegister = () => {
                             <p className="w-full h-10 text-[15px] font-bold text-left text-white flex items-center my-3 border-b">
                                 티켓 일련번호를 입력해주세요
                             </p>
-                            <div className="w-full h-[49px] overflow-hidden bg-[#b1b1b1] flex">
-                                <p className="w-[330px] h-[50px] text-[15px] font-bold text-center text-white/[0.72]">
-                                    0000000000
-                                </p>
-                            </div>
+                            <input ref={inputRef} className="w-full h-[49px] overflow-hidden rounded-lg flex" placeholder="000000"/>
                         </div>
                         <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-between items-center px-10">
-                            <Button title="Return" type="delete" func={() => { navigate("/member") }} />
-                            <Button title="Send" type="default" func={() => { navigate(`/member/ticket/${1234}`) }} />
+                            <Button title="Send" type="default" func={() => { handleRegist() }} />
                         </div>
                     </div>
                 </div>

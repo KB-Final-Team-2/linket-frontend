@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Event } from "../../interface/Event";
 import { User } from "../../interface/User";
 import { Link, useNavigate } from "react-router-dom";
-import { setEvent } from "../../redux/slice/eventSlice";
+import { getEvent, setEvent } from "../../redux/slice/eventSlice";
 
 interface props {
     event: Event
@@ -10,11 +10,12 @@ interface props {
 
 const EventList = ({event}: props) => {
     const user : User = useSelector((state:any)=>state.auth?.data);
-    const dispatch = useDispatch();
+    const dispatch : any = useDispatch();
 
     return (
         <div
             className="w-[331px] h-[60px] overflow-hidden flex border-b"
+            // onClick={()=>{dispatch(getEvent(event.eventId))}}
             onClick={()=>{dispatch(setEvent(event))}}
             >
             <div className="w-[60px] h-[60px] overflow-hidden flex-shrink-0 border-r text-[15px] font-bold text-center text-secondary flex justify-center items-center">

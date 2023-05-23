@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { AiOutlineRight } from "react-icons/ai"
 import { useDispatch, useSelector } from "react-redux";
 import { DUMMY_MEMBER, DUMMY_PART, DUMMY_STAFF, INIT_USER, User } from "../../interface/User";
-import { login, logout, setUser } from "../../redux/slice/authSilce";
 import { Link, useNavigate } from "react-router-dom";
 import Templete from "../Templete";
+import { setUser } from "../../redux/slice/authSilce";
 
 const Login = () => {
 
@@ -21,21 +21,40 @@ const Login = () => {
 	}, [user])
 
 	const handleLogin = () => {
-		// let user: User = {} as User;
-
-		// dispatch(setUser(user));
-		dispatch(login({email, password}));
-		navigate(`/${user.role}`)
-		// axios.post("/api/auth/login",{email:email, password:password})
+		// axios.post("/api/auth/login",{email, password})
 		// .then((res)=>{
-		// 	const userData : User = res.data;
-		// 	if(userData.email) {
-		// 		console.log(userData);
-		// 		dispatch(setUser(userData));
-		// 	} else {
-		// 		console.log("wrong");
-		// 	}
+		// 	const user : User = res.data;
+		// 	dispatch(setUser(user));
+		// 	navigate(`/${user.role}`);
+		// }).catch((err)=>{
+		// 	console.log(err)
 		// })
+        const staff = {
+            email: "staff",
+            password: "1234",
+            role: "staff",
+            user: DUMMY_STAFF,
+        };
+
+        const member = {
+            email: "member",
+            password: "1234",
+            role: "member",
+            user: DUMMY_MEMBER,
+        }
+
+        const part = {
+            email: "part",
+            password: "1234",
+            role: "part",
+            user: DUMMY_PART,
+        }
+
+        const userList = [staff, member, part];
+
+        const userData = userList.filter((el)=>el.email===email&&el.password===password)[0].user;
+		dispatch(setUser(userData));
+		navigate(`/${userData.role}`);
 	}
 
 	const testAuth = async () => {

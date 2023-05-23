@@ -7,9 +7,10 @@ import HireList from "../../components/List/HiretList";
 import Templete from "../Templete";
 import { useEffect, useState } from "react";
 import { User } from "../../interface/User";
-import { setHireList } from "../../redux/slice/hireSlice";
+import { getHire, getPartHireList, setHireList } from "../../redux/slice/hireSlice";
 import HireDetail from "./HireDetail";
 import HireSearch from "./HireSearch";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 const PartTime = () => {
 	const [doSearch, setDoSearch] = useState(false);
@@ -17,9 +18,10 @@ const PartTime = () => {
 	const user: User = useSelector((state: any) => state.auth.data);
 	const hire: Hire = useSelector((state: any) => state.hire.data);
 	const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
-	const dispatch = useDispatch();
+	const dispatch :any = useDispatch();
 
 	useEffect(() => {
+		// dispatch(getPartHireList(user.email))
 		const list = [DUMMY_HIRE1, DUMMY_HIRE2];
 		dispatch(setHireList(list));
 	}, [user])

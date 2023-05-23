@@ -5,8 +5,13 @@ import InputList from "../../components/Input/RegisterInput";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
 import DatePicker from "../../components/Input/DatePicker";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SelectButton from "../../components/Button/SelectButton";
+import { registEvent } from "../../redux/slice/eventSlice";
+import { RegistEvent } from "../../interface/Event";
+import { User } from "../../interface/User";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 
 const EventRegister = () => {
     const nameRef = useRef<HTMLInputElement>(null);
@@ -15,12 +20,38 @@ const EventRegister = () => {
     const imageRef = useRef<HTMLInputElement>(null);
     const descRef = useRef<HTMLTextAreaElement>(null);
 
-    const dispatch = useDispatch();
+    const user : User = useSelector((state:any)=>state.auth?.data);
+    const event = useSelector((state:any)=>state.event);
+    const dispatch : any = useDispatch();
+    const navigate = useNavigate();
 
     const [startDate, setStartDate] = useState<Date | null>(new Date());
     const [endDate, setEndDate] = useState<Date | null>(new Date());
     const [type, setType] = useState("");
     const typeList = ["concert", "festival", "etc"];
+
+    const handleRegist = () => {
+        // const event : RegistEvent = {
+        //     companyId: user.companyId,
+        //     eventName: nameRef.current?.value || "",
+        //     eventType: type,
+        //     place: placeRef.current?.value || "",
+        //     eventImage: imageRef.current?.value,
+        //     eventInq: inqRef.current?.value || "",
+        //     eventDesc: descRef.current?.innerText || "",
+        //     startDate: startDate || new Date(),
+        //     endDate: endDate || new Date()
+        // }
+
+        // dispatch(registEvent(event))
+        // .then(unwrapResult)
+        // .then(()=>{
+        //     navigate("/staff")
+        // })
+        // .catch((err:Error)=>{
+        //     console.log(err);
+        // })
+    }
 
     return (
         <Templete>
@@ -62,7 +93,7 @@ const EventRegister = () => {
                                 <textarea ref={descRef} className="w-[215px] h-[175px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31] outline-none focus:bg-white/30 text-base p-2" />
                             </div>
                         </div>
-                        <Button title={"Create"} type={"default"} func={() => { console.log(nameRef.current?.value) }} />
+                        <Button title={"Create"} type={"default"} func={() => { handleRegist() }} loading={event.loading}/>
                     </div>
                 </div>
                 <NavBar role="staff" state="1" />

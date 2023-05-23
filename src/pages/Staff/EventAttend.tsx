@@ -8,25 +8,29 @@ import { Event } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
 import { Attendance, DUMMY_ATTD, INIT_ATTD } from "../../interface/Attendance";
 import AttendDetail from "./EventAttendDetail";
-import { getAttendList, setAttend, setAttendList } from "../../redux/slice/attendSlice";
-import { useEffect } from "react";
+import { getAttendList, setAttend, setAttendList, setDate, setDays } from "../../redux/slice/attendSlice";
+import { useEffect, useState } from "react";
+import { unwrapResult } from "@reduxjs/toolkit";
+import EventAttendDate from "./EventAttendDate";
 
 const EventAttend = () => {
     const event: Event = useSelector((state: any) => state.event?.data);
     const attend = useSelector((state: any) => state.attend);
-    const attendData : Attendance = attend.data; 
+    const attendData: Attendance = attend.data;
     const attendList: Attendance[] = attend.list;
-    const dispatch : any = useDispatch();
+    const attendDays: string[] = attend.days;
+    const attendDate: string = attend.date;
+    const dispatch: any = useDispatch();
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(setAttend(INIT_ATTD));
         dispatch(getAttendList());
-    },[])
+    }, [])
 
     return (
         <Templete>
             <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-                {attendData === INIT_ATTD
+                {attendDate === ""
                     ?
                     <>
                         <Header title="근태 관리" />
@@ -36,8 +40,8 @@ const EventAttend = () => {
                                     <TableInfo title={"행사명"} content={event.eventName} />
                                 </div>
                                 <div className="w-[331px] h-[580px] overflow-auto">
-                                    {attendList.map((attend, i) => {
-                                        return (<NextList key={i} title={event.eventName} func={() => { dispatch(setAttend(attend)) }} />)
+                                    {attendDays.map((day, i) => {
+                                        return (<NextList key={i} title={day} func={() => { dispatch(setDate((day))) }} />)
                                     })}
                                 </div>
                             </div>

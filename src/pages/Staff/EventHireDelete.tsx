@@ -1,22 +1,37 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
 import Templete from "../Templete";
-import { Hire } from "../../interface/Hire";
+import { Hire, INIT_HIRE } from "../../interface/Hire";
+import { deleteHire, setHire } from "../../redux/slice/hireSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 
 const EventHireDelete = () => {
     const event : Event = useSelector((state:any)=>state.event?.data);
-    const hire : Hire = useSelector((state:any)=>state.hire?.data);
+    const hire = useSelector((state:any)=>state.hire);
+    const hireData : Hire = hire?.data;
+    const dispatch : any = useDispatch();
+    const navigate = useNavigate();
 
     const list = [
-        { title: "공고명", content: hire?.workName },
-        { title: "근무 기간", content: `${hire?.workStartDate} ~ ${hire?.workEndDate}` },
-        { title: "근무 시간", content: `${hire?.workHour}` },
-        { title: "등록 일자", content: `${hire?.regDate}` }
+        { title: "공고명", content: hireData?.workName },
+        { title: "근무 기간", content: `${hireData?.workStartDate} ~ ${hireData?.workEndDate}` },
+        { title: "근무 시간", content: `${hireData?.workHour}` },
+        { title: "등록 일자", content: `${hireData?.regDate}` }
     ]
+
+    const handleDelete = () => { 
+        // dispatch(deleteHire(hireData.hireId))
+        // .then(unwrapResult)
+        // .then(()=>{
+        //     dispatch(setHire(INIT_HIRE));
+        //     navigate("/staff/hire");
+        // })
+    }
 
     return (
         <Templete>
@@ -25,8 +40,8 @@ const EventHireDelete = () => {
                 <div className="w-[331px] h-full">
                     <div className="w-[331px] h-[580px] border-y overflow-hidden">
                         <div className="w-[331px] h-fit overflow-hidden border-white">
-                            {list.map((el) => {
-                                return (<List title={el.title} content={el.content} />)
+                            {list.map((v,i) => {
+                                return (<List key={i} title={v.title} content={v.content} />)
                             })}
                         </div>
                         <div className="w-[331px] h-full top-[177px] overflow-hidden">
@@ -44,9 +59,8 @@ const EventHireDelete = () => {
                                     </span>
                                 </p>
                             </div>
-                            <div className="w-[331px] h-[202px] overflow-hidden flex justify-between items-center px-10">
-                                <Button title={"return"} type={"default"} func={() => { }} />
-                                <Button title={"Delete"} type={"delete"} func={() => { }} />
+                            <div className="w-[331px] h-[202px] overflow-hidden flex justify-center items-center px-10">
+                                <Button title={"Delete"} type={"delete"} func={() => { handleDelete() }} loading={hire?.loading}/>
                             </div>
                         </div>
                     </div>
