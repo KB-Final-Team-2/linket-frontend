@@ -13,6 +13,7 @@ export interface Event {
     regDate: string;
     lastUpdatedDate: string;
     deletedDate: string;
+    link: string;
 }
 
 export interface RegistEvent {
@@ -25,6 +26,13 @@ export interface RegistEvent {
     eventDesc: string;
     startDate: string;
     endDate: string;
+}
+
+export interface EventList {
+    eventId: number;
+    eventName: string;
+    startDate: string;
+    eventStatus: string;
 }
 
 export interface EndedEvent extends Event {
@@ -47,7 +55,8 @@ export const INIT_EVENT: Event = {
     regDate: "",
     companyId: 0,
     lastUpdatedDate: "",
-    deletedDate: ""
+    deletedDate: "",
+    link: ""
 }
 
 export const DUMMY_EVENT1: Event = {
@@ -64,7 +73,8 @@ export const DUMMY_EVENT1: Event = {
     regDate: "2023.05.17",
     companyId: 0,
     lastUpdatedDate: "",
-    deletedDate: ""
+    deletedDate: "",
+    link: ""
 }
 
 export const DUMMY_EVENT2: Event = {
@@ -75,11 +85,12 @@ export const DUMMY_EVENT2: Event = {
     eventImage: "event2.jpg",
     eventInq: "02-123-456",
     eventDesc: "마술쇼",
-    eventStatus: "Y",
+    eventStatus: "N",
     startDate: "2023.05.14",
     endDate: "2023.05.14",
     regDate: "2023.05.14",
     companyId: 0,
     lastUpdatedDate: "",
-    deletedDate: ""
+    deletedDate: "",
+    link: ""
 }

@@ -11,6 +11,14 @@ export interface Hire {
     regDate: string;
 }
 
+export interface HireWithEvent extends Hire, Event {};
+
+export interface HireList {
+    hireId : number;
+    workName: string;
+    regDate: string;
+}
+
 export interface RegistHire {
     eventId: number;
     companyId: number;

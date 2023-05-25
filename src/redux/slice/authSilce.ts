@@ -25,6 +25,15 @@ export const logout = createAsyncThunk("logout", async (_: void, { rejectWithVal
     }
 })
 
+export const checkDuplicate = createAsyncThunk("checkDuplicate", async (email: string, { rejectWithValue }) => {
+    try {
+        const result = (await axios.post("/api/auth/dupleicate", { email })).data;
+        return result;
+    } catch (error) {
+        rejectWithValue(error);
+    }
+})
+
 const authSlice = createSlice({
     name: 'auth',
     initialState: {

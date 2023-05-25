@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Attendance, DUMMY_ATTD, INIT_ATTD } from "../../interface/Attendance";
+import { Attend, AttendWithUser, DUMMY_ATTD, INIT_ATTD } from "../../interface/Attendance";
 
 export const getAttend = createAsyncThunk('getAttend', async (attendId: string, { rejectWithValue }) => {
     try {
@@ -14,7 +14,7 @@ export const getAttend = createAsyncThunk('getAttend', async (attendId: string, 
 export const getAttendList = createAsyncThunk('getAttendList', async (_:void, {rejectWithValue, dispatch})=>{
     try{
         // const list = (await axios.get(`/api/getAttendList/${eventId}`)).data;
-        const list : Attendance[]= [DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD];
+        const list : Attend[]= [DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD];
         const days: string[] = [];
         list.forEach((attend) => {
             if (!days.includes(attend.attDate)) days.push(attend.attDate);
@@ -29,7 +29,7 @@ const attendSlice = createSlice({
     name: "attend",
     initialState: {
         data: INIT_ATTD,
-        list: [DUMMY_ATTD, DUMMY_ATTD, DUMMY_ATTD],
+        list: [DUMMY_ATTD, DUMMY_ATTD, DUMMY_ATTD] as (AttendWithUser[] | Attend[]),
         days: [] as string[],
         date: "",
         startState: false,
