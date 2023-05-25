@@ -49,7 +49,7 @@ const NavBar = (props: props) => {
             >
                 <div
                     className={`
-                        w-[125px] h-[53px] text-[40px] flex justify-center items-center
+                        w-[125px] h-[53px] text-[40px] flex justify-center items-center cursor-pointer
                         ${props.state === '1' 
                             ? "bg-none text-white" 
                             : `bg-[#d9d9d9] text-black ${props.state === '2' && "rounded-tr-[20px]"}`
@@ -67,7 +67,6 @@ const NavBar = (props: props) => {
                             : `bg-[#d9d9d9] ${props.state === '1' ? "rounded-tl-[20px]" : "rounded-tr-[20px]"}`
                         }
                         `}
-                    onClick={() => { navigate(`/${props.role}`) }}
                 >
                     <img
                         className="w-5 h-10"
@@ -76,7 +75,7 @@ const NavBar = (props: props) => {
                 </div>
                 <div
                     className={`
-                        w-[125px] h-[53px] text-[40px] flex justify-center items-center
+                        w-[125px] h-[53px] text-[40px] flex justify-center items-center cursor-pointer
                         ${props.state === '3' 
                             ? "bg-none text-white" 
                             : `bg-[#d9d9d9] text-black ${props.state === '2' && "rounded-tl-[20px]"}`

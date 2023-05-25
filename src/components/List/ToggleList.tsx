@@ -12,16 +12,18 @@ const ToggleList = ({ title, content, state, open, close }: props) => {
             {state
                 ? (
                     <div className="w-[331px] h-fit flex flex-col">
-                        <div className="w-full h-[37px] flex justify-between itmes-center">
+                        <div
+                            className="w-full h-[35px] flex justify-between itmes-center"
+                            onClick={() => { close() }}
+                        >
                             <div
-                                className="w-[331px] h-[37px] overflow-hidden flex justify-start items-center pl-2 text-[15px] font-bold text-left text-white"
-                                onClick={() => { close() }}
+                                className="w-[331px] h-[35px] overflow-hidden flex justify-start items-center pl-2 text-[15px] font-bold text-left text-white"
                             >
-                                        {title}
+                                {title}
                             </div>
                             <div className="w-[35px] h-full items-center overflow-hidden p-2">
                                 <svg
-                                    width={20}
+                                    width={19}
                                     height={16}
                                     viewBox="0 0 19 16"
                                     fill="none"

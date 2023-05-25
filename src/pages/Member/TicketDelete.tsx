@@ -44,13 +44,12 @@ const TicketDelete = ({onRequestReturn}:props) => {
                         </div>
                         <div className="w-[330px] h-full overflow-hidden">
                             <div className="w-[330px] h-full font-bold text-center text-[20px] text-white flex flex-col justify-center items-center">
-                                <p>해당 행사를 삭제하시겠습니까?</p>
-                                <p>삭제된 행사는 복구할 수 없으며,</p>
-                                <p>기존에 등록된 리뷰 및 이미지가</p>
-                                <p> 모두 삭제됩니다.</p>
+                                <p>해당 티켓을 삭제하시겠습니까?</p>
+                                <p>삭제된 티켓은 복구할 수 없으며,</p>
+                                <p>재등록하여 사용할 수 없습니다.</p>
                             </div>
                         </div>
-                        <div className="w-[337px] h-[202px] overflow-hidden flex flex-shrink-0 justify-between items-center px-10">
+                        <div className="w-[337px] h-[202px] overflow-hidden flex flex-shrink-0 justify-center items-center px-10">
                             <Button title="Delete" type="delete" func={() => { handleDelete() }} />
                         </div>
                     </div>

@@ -6,6 +6,11 @@ import { DUMMY_MEMBER, DUMMY_PART, DUMMY_STAFF, INIT_USER, User } from "../../in
 import { Link, useNavigate } from "react-router-dom";
 import Templete from "../Templete";
 import { setUser } from "../../redux/slice/authSilce";
+import Button from "../../components/Button/Button";
+
+import logo_origin from "../../img/logo_origin.png";
+import logo_origin_dark from "../../img/logo_origin_dark.png";
+import team_logo from "../../img/team_logo.png";
 
 const Login = () => {
 
@@ -16,8 +21,8 @@ const Login = () => {
 	const dispatch: any = useDispatch();
 	const navigate = useNavigate();
 
-	useEffect(()=>{
-		if(user!==INIT_USER) navigate(`/${user.role}`)
+	useEffect(() => {
+		if (user !== INIT_USER) navigate(`/${user.role}`)
 	}, [user])
 
 	const handleLogin = () => {
@@ -29,32 +34,34 @@ const Login = () => {
 		// }).catch((err)=>{
 		// 	console.log(err)
 		// })
-        const staff = {
-            email: "staff",
-            password: "1234",
-            role: "staff",
-            user: DUMMY_STAFF,
-        };
+		const staff = {
+			email: "staff",
+			password: "1234",
+			role: "staff",
+			user: DUMMY_STAFF,
+		};
 
-        const member = {
-            email: "member",
-            password: "1234",
-            role: "member",
-            user: DUMMY_MEMBER,
-        }
+		const member = {
+			email: "member",
+			password: "1234",
+			role: "member",
+			user: DUMMY_MEMBER,
+		}
 
-        const part = {
-            email: "part",
-            password: "1234",
-            role: "part",
-            user: DUMMY_PART,
-        }
+		const part = {
+			email: "part",
+			password: "1234",
+			role: "part",
+			user: DUMMY_PART,
+		}
 
-        const userList = [staff, member, part];
+		const userList = [staff, member, part];
 
-        const userData = userList.filter((el)=>el.email===email&&el.password===password)[0].user;
-		dispatch(setUser(userData));
-		navigate(`/${userData.role}`);
+		const userData = userList.filter((el) => el.email === email && el.password === password)[0];
+		if (userData!==undefined) {
+			dispatch(setUser(userData.user));
+			navigate(`/${userData.role}`);
+		}
 	}
 
 	const testAuth = async () => {
@@ -65,55 +72,27 @@ const Login = () => {
 
 	return (
 		<Templete >
-			<div className="w-[375px] h-[812px] relative overflow-hidden">
-				<div className="w-[327px] h-[106px] relative left-6 top-[360px] rounded bg-[#c4c4c4]/[0.31] overflow-hidden px-3">
-					<div className="w-full h-1/2 px-5">
-						<input
-							className="w-full h-full text-white bg-black/[0]"
-							type="text"
-							placeholder="이메일"
-							value={email}
-							onChange={(e) => { setEmail(e.target.value) }} />
+			<div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center px-5">
+
+				<div className=" box-content w-fit h-fit flex flex-col md:bg-background-dark p-10 rounded-3xl items-center gap-5">
+					<img src={logo_origin_dark} />
+					<div className="w-[292px] h-[106px] ">
+						<p className="w-[292px] h-[106px] flex flex-col gap-2">
+							<input className="w-full h-fit text-lg font-semibold text-left px-3 py-1 rounded-md" placeholder="email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+							<input className="w-full h-fit text-lg font-semibold text-left  px-3 py-1 rounded-md" placeholder="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+						</p>
 					</div>
-					<div className="w-[250px] h-[1px] bg-white" />
-					<div className="w-full h-1/2 px-5">
-						<input
-							className="w-full h-full focus:outline-none text-white bg-black/[0]"
-							type="text"
-							placeholder="비밀번호"
-							value={password}
-							onChange={(e) => { setPassword(e.target.value) }} />
+					<Button title="Login" type="default" func={handleLogin} />
+					<div className="w-full h-fit flex flex-col gap-2">
+						<Link to="/register" className="w-full h-fit text-xs font-light text-right text-[#a0a0a0]">
+							아직 회원이 아니신가요?
+						</Link>
+						<div className="w-full h-fit text-xs font-light text-right text-[#a0a0a0]">
+							로그인에 문제가 있으신가요?
+						</div>
 					</div>
 				</div>
-				<div
-					className="w-12 h-12 rounded-full bg-primary absolute left-[297px] top-[389px] text-[24px] flex justify-center items-center text-black"
-					onClick={handleLogin}
-				>
-					{!auth.loading && (<AiOutlineRight />)}
-				</div>
-				<div className="w-[185px] h-8 absolute left-[27px] top-[315px]">
-					<p className="w-[185px] h-8 absolute left-0 top-0 text-2xl font-light text-left text-white">
-						로그인
-					</p>
-				</div>
-				<div className="
-				w-[327px] h-[39px] absolute left-[23px] top-[466px] flex justify-end items-center
-			">
-					<Link className="w-fit h-fit text-[#a0a0a0] hover:text-white text-xs font-light text-right" to={"/register"} >
-						아직 회원이 아니신가요?
-					</Link>
-				</div>
-				<div className="w-[327px] h-[39px] absolute left-6 top-[505px]" onClick={() => { testAuth() }}>
-					<p className="w-[327px] h-[39px] absolute left-0 top-0 text-xs font-light text-right text-[#a0a0a0]">
-						로그인에 문제가 있으신가요?
-					</p>
-				</div>
-				<div className="w-[238px] h-[58px] absolute left-[68px] top-[178px]">
-					<p className="w-[238px] h-[58px] absolute left-0 top-0 text-5xl font-bold text-center text-primary">
-						Linket
-					</p>
-				</div>
-				<div className="w-[43px] h-[43px] absolute left-60 top-[623px]" />
+				<img src={team_logo} className="absolute bottom-32" />
 			</div>
 		</Templete>
 	)

@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
-import InputList from "../../components/Input/RegisterInput";
+import RegistInput from "../../components/Input/RegisterInput";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
 import DatePicker from "../../components/Input/DatePicker";
@@ -11,6 +11,7 @@ import { Hire } from "../../interface/Hire";
 import { getHire, updateHire } from "../../redux/slice/hireSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
+import { Event } from "../../interface/Event";
 
 const EventHireUpdate = () => {
     const workNameRef = useRef<HTMLInputElement>(null);
@@ -19,6 +20,7 @@ const EventHireUpdate = () => {
     const payRef = useRef<HTMLInputElement>(null);
     const eduRef = useRef<HTMLTextAreaElement>(null);
 
+    const event : Event = useSelector((state:any)=>state.event?.data);
     const hire = useSelector((state: any) => state.hire);
     const hireData: Hire = hire?.data;
     const dispatch : any = useDispatch();
@@ -56,7 +58,7 @@ const EventHireUpdate = () => {
                 <div className="w-[331px] h-full flex flex-col">
                     <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white py-2 flex flex-col justify-center items-center">
                         <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2">
-                            <InputList title={"공고명"} ref={workNameRef} value={hireData?.workName} />
+                            <RegistInput title={"공고명"} ref={workNameRef} value={hireData?.workName} />
                             <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0 text-[15px] font-bold text-center text-white items-center">
                                 <p className="w-fit h-fit flex-shrink-0">
                                     행사 시작일시
@@ -69,16 +71,18 @@ const EventHireUpdate = () => {
                                 </p>
                                 <DatePicker title={""} date={endDate} setDate={(date: Date) => { setEndDate(date) }} />
                             </div>
-                            <InputList title={"근무 시간"} ref={workHourRef} value={`${hireData?.workHour}`} />
-                            <InputList title={"시급"} ref={payRef} value={`${hireData?.pay}`}/>
-                            <InputList title={"대표 문의처"} ref={inqRef} value={"`${hire?.workInq}`"}/>
+                            <RegistInput title={"근무 시간"} ref={workHourRef} value={`${hireData?.workHour}`} />
+                            <RegistInput title={"시급"} ref={payRef} value={`${hireData?.pay}`}/>
+                            <RegistInput title={"대표 문의처"} ref={inqRef} value={`${event?.eventInq}`}/>
                             <div className="w-[330px] h-full overflow-hidden flex">
                                 <p className="w-[115px] h-[175px] text-[15px] font-bold text-center text-white">
                                     사전 교육 정보
                                 </p>
-                                <textarea ref={eduRef} className="w-[215px] h-[215px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31] outline-none focus:bg-white/30 text-base p-2" >
-                                    {hireData?.edu}
-                                </textarea>
+                                <textarea
+                                ref={eduRef}
+                                className="w-[215px] h-[215px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31] outline-none focus:bg-white/30 text-base p-2"
+                                defaultValue={hireData?.edu}
+                                />
                             </div>
                         </div>
                         <Button title={"Create"} type={"default"} func={() => { handleUpdate() }} loading={hire?.loading}/>

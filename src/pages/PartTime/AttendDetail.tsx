@@ -6,14 +6,14 @@ import List from "../../components/List/List";
 import { useDispatch, useSelector } from "react-redux";
 import { ListProps } from "../../interface/props";
 import { User } from "../../interface/User";
-import { Attendance, INIT_ATTD } from "../../interface/Attendance";
+import { Attend, INIT_ATTD } from "../../interface/Attendance";
 import Button from "../../components/Button/Button";
 import Templete from "../Templete";
 import { setAttend } from "../../redux/slice/attendSlice";
 
 const AttendDetail = () => {
     const user: User = useSelector((state: any) => state.auth?.data);
-    const attend: Attendance = useSelector((state: any) => state.attend?.data);
+    const attend: Attend = useSelector((state: any) => state.attend?.data);
     const dispatch = useDispatch();
 
     const infoList: ListProps[] = [

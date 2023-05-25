@@ -6,7 +6,7 @@ import TableInfo from "../../components/Table/TableInfo";
 import Templete from "../Templete";
 import { Event } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
-import { Attendance } from "../../interface/Attendance";
+import { Attend } from "../../interface/Attendance";
 import { DUMMY_HIRE1, DUMMY_HIRE2, Hire, INIT_HIRE } from "../../interface/Hire";
 import { getHire, getHireList, setHire, setHireList } from "../../redux/slice/hireSlice";
 import EventHireDetail from "./EventHireDetail";
@@ -44,7 +44,7 @@ const EventHire = () => {
                                 </div>
                                 <div className="w-[331px] h-[580px] overflow-hidden">
                                     {hireList.map((hire, i) => {
-                                        return (<NextList key={i} title={`${hire.hireId}`} func={() => { handleHire(hire) }} />)
+                                        return (<NextList key={i} title={`${hire.workName}`} func={() => { handleHire(hire) }} />)
                                     })}
                                 </div>
                             </div>

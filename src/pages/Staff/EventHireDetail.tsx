@@ -11,6 +11,7 @@ import { Hire, INIT_HIRE } from "../../interface/Hire";
 import { setHire } from "../../redux/slice/hireSlice";
 
 const EventHireDetail = () => {
+    const event : Event = useSelector((state:any)=>state.event?.data);
     const hire: Hire = useSelector((state: any) => state.hire?.data);
     const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const EventHireDetail = () => {
         { title: "근무 시간", content: `${hire?.workHour}` },
         { title: "시급", content: `${hire?.pay}` },
         { title: "등록 코드", content: `${hire?.hireId}` },
+        { title: "문의처", content: `${event?.eventInq}` },
         { title: "등록 일자", content: hire?.regDate },
     ]
 
@@ -34,32 +36,19 @@ const EventHireDetail = () => {
         <>
             <Header title="공고 상세" func={() => { dispatch(setHire(INIT_HIRE)) }} list={dropdownList} />
             <div className="w-[331px] h-full flex">
-                <div className="w-full h-[580px] flex flex-col border-y pb-5">
-                    <div className="w-[331px] h-[580px] overflow-hidden">
+                <div className="w-full h-[580px] flex flex-col border-y">
+                    <div className="w-full h-[580px] overflow-hidden flex flex-col">
                         {list.map((v, i) => {
                             return (<List key={i} title={v.title} content={v.content || ""} />)
                         })}
 
-                        <div className="w-[330px] h-[207px] overflow-hidden border-b flex">
-                            <p className="w-[115px] h-[207px] text-[15px] font-bold text-center text-white">
+                        <div className="w-full h-full overflow-hidden border-b flex">
+                            <p className="w-[115px] h-full text-[15px] font-bold text-center text-white flex justify-center items-center">
                                 사전 교육 정보
-                            </p>
-                            <p className="w-[215px] h-[207px] text-[15px] font-bold text-center text-white">
+                            </p> 
+                            <p className="w-[215px] h-full text-[15px] font-bold text-center text-white flex justify-center items-center">
                                 {hire?.edu}
                             </p>
-                        </div>
-                    </div>
-                    <div className="w-full h-[158px] flex flex-shrink-0 justify-between">
-                        <Link to="/staff/hire" className="w-[153px] h-full flex justify-center items-center bg-[#d9d9d9] text-black">
-                            공고 관리
-                        </Link>
-                        <div className="w-[153px] h-full flex flex-col justify-between">
-                            <Link to="/staff/attend" className="w-[153px] h-[60px] overflow-hidden bg-[#d9d9d9] text-[15px] font-bold text-left text-black flex flex-shrink-0 justify-center items-center">
-                                출결 관리
-                            </Link>
-                            <Link to="/staff/review" className="w-[153px] h-[60px] overflow-hidden bg-[#d9d9d9] text-[15px] font-bold text-left text-black flex flex-shrink-0 justify-center items-center">
-                                리뷰 보기
-                            </Link>
                         </div>
                     </div>
                 </div>

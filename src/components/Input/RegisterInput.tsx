@@ -5,7 +5,7 @@ interface props {
     value?: string
 }
 
-const InputList = forwardRef((props: props, ref:ForwardedRef<HTMLInputElement>) => {
+const RegistInput = forwardRef((props: props, ref:ForwardedRef<HTMLInputElement>) => {
     return (
         <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
             <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white flex flex-shrink-0 justify-center items-center">
@@ -16,4 +16,4 @@ const InputList = forwardRef((props: props, ref:ForwardedRef<HTMLInputElement>) 
     )
 })
 
-export default InputList;
+export default RegistInput;

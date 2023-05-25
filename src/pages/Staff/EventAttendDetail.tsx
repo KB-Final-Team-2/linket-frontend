@@ -4,7 +4,7 @@ import Grid3Header from "../../components/Table/Grid3Header";
 import Grid3Row from "../../components/Table/Grid3Row";
 import TableInfo from "../../components/Table/TableInfo";
 import { Event } from "../../interface/Event";
-import { Attendance, INIT_ATTD } from "../../interface/Attendance";
+import { Attend, INIT_ATTD } from "../../interface/Attendance";
 import { setAttend, setDate } from "../../redux/slice/attendSlice";
 import AttendToggle from "../../components/Button/AttendToggle";
 import { updateStart } from "../../redux/slice/attendSlice";
@@ -13,7 +13,7 @@ import { updateEnd } from "../../redux/slice/attendSlice";
 const AttendDetail = () => {
     const event: Event = useSelector((state: any) => state.event?.data);
     const attend = useSelector((state:any)=>state.attend)
-    const attendList: Attendance[] = attend.list;
+    const attendList: Attend[] = attend.list;
     const attendDate: string = attend.date;
     const dispatch = useDispatch();
 

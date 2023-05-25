@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import NextList from "../../components/List/NextList";
 import NavBar from "../../components/NavBar/NavBar";
 import TableInfo from "../../components/Table/TableInfo";
-import { Attendance, DUMMY_ATTD, INIT_ATTD } from "../../interface/Attendance";
+import { Attend, DUMMY_ATTD, INIT_ATTD } from "../../interface/Attendance";
 import { useNavigate, useParams } from "react-router-dom";
 import Templete from "../Templete";
 import AttendDetail from "./AttendDetail";
@@ -15,7 +15,7 @@ const AttendHire = () => {
     const hire = useSelector((state:any)=>state.hire);
     const attend = useSelector((state: any) => state.attend);
     const attendData = attend.data;
-    const attendList: Attendance[] = attend?.list;
+    const attendList: Attend[] = attend?.list;
     const dispatch : any = useDispatch();
     const navigate = useNavigate();
 

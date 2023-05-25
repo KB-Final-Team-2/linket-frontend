@@ -37,12 +37,12 @@ const TicketRegister = () => {
                             </p>
                             <input ref={inputRef} className="w-full h-[49px] overflow-hidden rounded-lg flex" placeholder="000000"/>
                         </div>
-                        <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-between items-center px-10">
+                        <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-center items-center px-10">
                             <Button title="Send" type="default" func={() => { handleRegist() }} />
                         </div>
                     </div>
                 </div>
-                <NavBar role="member" state="2" />
+                <NavBar role="member" state="1" />
             </div>
         </Templete>
     )

@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
-import InputList from "../../components/Input/RegisterInput";
+import RegistInput from "../../components/Input/RegisterInput";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
 import DatePicker from "../../components/Input/DatePicker";
@@ -39,7 +39,7 @@ const EventHireRegist = () => {
         //     workStartDate: startDate?.toString() || new Date().toString(),
         //     workEndDate: endDate?.toString() || new Date().toString(),
         //     pay: Number.parseInt(payRef.current?.value || "0"),
-        //     edu: eduRef.current?.innerText || "",
+        //     edu: eduRef.current?.value || "",
         // }
 
         // dispatch(registHire(hire))
@@ -57,7 +57,7 @@ const EventHireRegist = () => {
                 <div className="w-[331px] h-full flex flex-col">
                     <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white py-2 flex flex-col justify-center items-center">
                         <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2">
-                            <InputList title={"공고명"} ref={workNameRef} />
+                            <RegistInput title={"공고명"} ref={workNameRef} />
                             <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0 text-[15px] font-bold text-center text-white items-center">
                                 <p className="w-fit h-fit flex-shrink-0">
                                     행사 시작일시
@@ -70,9 +70,9 @@ const EventHireRegist = () => {
                                 </p>
                                 <DatePicker title={""} date={endDate} setDate={(date: Date) => { setEndDate(date) }} />
                             </div>
-                            <InputList title={"근무 시간"} ref={workHourRef} />
-                            <InputList title={"시급"} ref={payRef} />
-                            <InputList title={"대표 문의처"} ref={inqRef} />
+                            <RegistInput title={"근무 시간"} ref={workHourRef} />
+                            <RegistInput title={"시급"} ref={payRef} />
+                            <RegistInput title={"대표 문의처"} ref={inqRef} />
                             <div className="w-[330px] h-full overflow-hidden flex">
                                 <p className="w-[115px] h-[175px] text-[15px] font-bold text-center text-white">
                                     사전 교육 정보

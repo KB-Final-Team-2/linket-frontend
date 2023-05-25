@@ -6,7 +6,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
 import Templete from "../Templete";
-import { DUMMY_TICKET1, INIT_TICKET, Ticket } from "../../interface/Ticket";
+import { DUMMY_TICKET1, INIT_TICKET, Ticket, TicketWithEvent } from "../../interface/Ticket";
 import { useState } from "react";
 import TicketDelete from "./TicketDelete";
 import { setTicket } from "../../redux/slice/ticketSlice";
@@ -16,8 +16,7 @@ import { User } from "../../interface/User";
 const TicketDetail = () => {
     const [doDelete, setDoDelete] = useState(false);
     const user : User = useSelector((state:any)=>state.auth.data);
-    const ticket: Ticket = useSelector((state: any) => state.ticket.data);
-    const eventList: Event[] = useSelector((state: any) => state.event.list);
+    const ticket: TicketWithEvent = useSelector((state: any) => state.ticket.data);
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -30,24 +29,24 @@ const TicketDetail = () => {
                 <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center">
                     <Header title="티켓 상세" func={() => dispatch(setTicket(INIT_TICKET))} />
                     <div className="w-full h-full flex flex-col items-center">
-                        <div className="w-[331px] h-[580px] overflow-hidden border-y">
-                            <div className="w-[331px] h-[383px] overflow-hidden">
-                                <List title="행사명" content={"event.eventName"} />
-                                <List title="행사 분류" content={"event.eventType"} />
-                                <List title="행사 기간" content={`${"event.startDate"} ~ ${"event.endDate"}`} />
-                                <List title="행사 장소" content={`event.place`} />
-                                <List title="좌석" content={`ticket.seat`} />
-                                <List title="url" content={`event.url`} />
-                                <div className="w-[330px] h-[161px] left-0 top-[185px] overflow-hidden border-t-0 border-r-0 border-b border-l-0 border-white flex">
-                                    <p className="w-[115px] h-[161px] text-[15px] font-bold text-center text-white">
+                        <div className="w-[331px] h-[580px] overflow-hidden border-y flex flex-col">
+                            <div className="w-[331px] h-full overflow-hidden flex flex-col">
+                                <List title="행사명" content={ticket.eventName} />
+                                <List title="행사 분류" content={ticket.eventType} />
+                                <List title="행사 기간" content={`${ticket.startDate} ~ ${ticket.endDate}`} />
+                                <List title="행사 장소" content={ticket.place} />
+                                <List title="좌석" content={ticket.seat} />
+                                <List title="url" content={ticket.link} />
+                                <div className="self-stretch w-[330px] h-full overflow-hidden border-b border-white flex items-center">
+                                    <p className="w-[115px] h-fit text-[15px] font-bold text-center text-white">
                                         행사 설명
                                     </p>
-                                    <p className="w-[215px] h-[161px] text-[15px] font-bold text-center text-white">
-                                        {`event.eventDesc`}
+                                    <p className="w-[215px] h-fit text-[15px] font-bold text-center text-white">
+                                        {ticket.eventDesc}
                                     </p>
                                 </div>
                             </div>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between items-center w-full h-[156px]">
                                 <div className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9]">
                                     <QRCode
                                         size={128}
@@ -58,8 +57,7 @@ const TicketDetail = () => {
                                     />
                                 </div>
                                 <div className="w-[153px] h-[156px] overflow-hidden flex flex-col justify-center items-center gap-5">
-                                    <Button title="Review" type="default" func={() => { }} />
-                                    <Button title="Notice" type="default" func={() => { }} />
+                                    <Button title="Review" type="default" func={() => { navigate("/member/review")}} />
                                     <Button title="Delete" type="delete" func={() => { setDoDelete(true) }} />
                                 </div>
                             </div>

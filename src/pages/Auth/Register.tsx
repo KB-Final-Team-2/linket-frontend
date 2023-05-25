@@ -10,10 +10,10 @@ const Register = () => {
     return (
         <Templete>
             {role == "" && (
-                <div className="w-[375px] h-[812px] relative overflow-hidden bg-[#454545]">
+                <div className="w-[375px] h-[812px] relative overflow-hidden">
                     <div className="flex flex-col w-[375px] h-[662px] absolute left-0 top-[150px] overflow-hidden">
                         <div
-                            className="w-[331px] h-[85px] absolute left-6 top-[225px] overflow-hidden bg-[#c4c4c4]/[0.31] hover:bg-red-400 text-white hover:text-black flex items-center justify-center"
+                            className="w-[331px] h-[85px] absolute left-6 top-[225px] overflow-hidden bg-[#c4c4c4]/[0.31] hover:bg-primary text-white hover:text-black flex items-center justify-center transition-all"
                             onClick={() => setRole("staff")}
                         >
                             <p className="w-fit h-fit text-2xl font-bold text-center">
@@ -21,7 +21,7 @@ const Register = () => {
                             </p>
                         </div>
                         <div
-                            className="w-[328px] h-[84px] absolute left-[23px] top-[375px] overflow-hidden bg-[#c4c4c4]/[0.31] hover:bg-red-400 text-white hover:text-black flex items-center justify-center"
+                            className="w-[328px] h-[84px] absolute left-[23px] top-[375px] overflow-hidden bg-[#c4c4c4]/[0.31] hover:bg-primary text-white hover:text-black flex items-center justify-center"
                             onClick={() => setRole("part")}
                         >
                             <p className="w-fit h-fit left-0 top-0 text-2xl font-bold text-center">
@@ -29,7 +29,7 @@ const Register = () => {
                             </p>
                         </div>
                         <div
-                            className="w-[328px] h-[84px] absolute left-6 top-[75px] overflow-hidden bg-[#c4c4c4]/[0.31] hover:bg-red-400 text-white hover:text-black flex items-center justify-center"
+                            className="w-[328px] h-[84px] absolute left-6 top-[75px] overflow-hidden bg-[#c4c4c4]/[0.31] hover:bg-primary text-white hover:text-black flex items-center justify-center"
                             onClick={() => setRole("member")}
                         >
                             <p className="w-fit h-fit left-0 top-0 text-2xl font-bold text-center ">

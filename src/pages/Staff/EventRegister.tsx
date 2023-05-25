@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
-import InputList from "../../components/Input/RegisterInput";
+import RegistInput from "../../components/Input/RegisterInput";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
 import DatePicker from "../../components/Input/DatePicker";
@@ -38,7 +38,7 @@ const EventRegister = () => {
         //     place: placeRef.current?.value || "",
         //     eventImage: imageRef.current?.value,
         //     eventInq: inqRef.current?.value || "",
-        //     eventDesc: descRef.current?.innerText || "",
+        //     eventDesc: descRef.current?.value || "",
         //     startDate: startDate || new Date(),
         //     endDate: endDate || new Date()
         // }
@@ -60,7 +60,7 @@ const EventRegister = () => {
                 <div className="w-[331px] h-full flex flex-col">
                     <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white py-2 flex flex-col justify-center items-center">
                         <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2">
-                            <InputList title={"행사명"} ref={nameRef} />
+                            <RegistInput title={"행사명"} ref={nameRef} />
                             <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
                                 <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
                                     행사 분류
@@ -83,9 +83,9 @@ const EventRegister = () => {
                                 </p>
                                 <DatePicker title={""} date={endDate} setDate={(date: Date) => { setEndDate(date) }} />
                             </div>
-                            <InputList title={"행사 장소"} ref={placeRef} />
-                            <InputList title={"행사 정보 이미지"} ref={imageRef} />
-                            <InputList title={"행사 문의처"} ref={inqRef} />
+                            <RegistInput title={"행사 장소"} ref={placeRef} />
+                            <RegistInput title={"행사 정보 이미지"} ref={imageRef} />
+                            <RegistInput title={"행사 문의처"} ref={inqRef} />
                             <div className="w-[330px] h-full overflow-hidden flex">
                                 <p className="w-[115px] h-[175px] text-[15px] font-bold text-center text-white">
                                     행사 설명

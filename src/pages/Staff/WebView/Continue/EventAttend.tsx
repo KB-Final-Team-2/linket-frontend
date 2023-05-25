@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import AttendToggle from "../../../../components/Button/AttendToggle";
 import { updateEnd, updateStart } from "../../../../redux/slice/attendSlice";
-import { Attendance } from "../../../../interface/Attendance";
+import { Attend } from "../../../../interface/Attendance";
 
 interface props {
-    attend: Attendance;
+    attend: Attend;
 }
 
 const AttendList = ({ attend }: props) => {
@@ -12,6 +12,9 @@ const AttendList = ({ attend }: props) => {
         <div className="w-[790px] h-[50px] overflow-hidden border-b border-white flex">
             <div className="w-[90px] h-[50px] overflow-hidden border-r  border-white text-xl font-bold text-center text-white flex flex-shrink-0 items-center justify-center">
                 {attend.attId}
+            </div>
+            <div className="w-[90px] h-[50px] overflow-hidden border-r  border-white text-xl font-bold text-center text-white flex flex-shrink-0 items-center justify-center">
+                {attend.hireId}
             </div>
             <div className="w-[90px] h-[50px] overflow-hidden  border-r border-white text-xl font-bold text-center text-white flex flex-shrink-0 items-center justify-center">
                 {attend.attStartDatetime}
@@ -34,11 +37,11 @@ const AttendList = ({ attend }: props) => {
 
 const EventAttend = () => {
     const attend = useSelector((state: any) => state.attend);
-    const attendList: Attendance[] = useSelector((state:any)=>state.attend?.list);
+    const attendList: Attend[] = useSelector((state:any)=>state.attend?.list);
     const dispatch = useDispatch();
 
     const handleStart = () => {
-        dispatch(updateStart(!attend.start))
+        dispatch(updateStart(!attend.startState))
     }
 
     const handleEnd = () => {

@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
-import InputList from "../../components/Input/RegisterInput";
+import RegistInput from "../../components/Input/RegisterInput";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
 import DatePicker from "../../components/Input/DatePicker";
@@ -65,7 +65,7 @@ const EventRegister = () => {
                 <div className="w-[331px] h-full flex flex-col">
                     <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white py-2 flex flex-col justify-center items-center">
                         <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2">
-                            <InputList title={"행사명"} ref={nameRef} value={eventData.eventName}/>
+                            <RegistInput title={"행사명"} ref={nameRef} value={eventData.eventName}/>
                             <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
                                 <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
                                     행사 분류
@@ -88,16 +88,18 @@ const EventRegister = () => {
                                 </p>
                                 <DatePicker title={""} date={endDate} setDate={(date: Date) => { setEndDate(date) }} />
                             </div>
-                            <InputList title={"행사 장소"} ref={placeRef} value={eventData.place}/>
-                            <InputList title={"행사 정보 이미지"} ref={imageRef} value={eventData.eventImage}/>
-                            <InputList title={"행사 문의처"} ref={inqRef} value={eventData.eventInq}/>
+                            <RegistInput title={"행사 장소"} ref={placeRef} value={eventData.place}/>
+                            <RegistInput title={"행사 정보 이미지"} ref={imageRef} value={eventData.eventImage}/>
+                            <RegistInput title={"행사 문의처"} ref={inqRef} value={eventData.eventInq}/>
                             <div className="w-[330px] h-full overflow-hidden flex">
                                 <p className="w-[115px] h-[175px] text-[15px] font-bold text-center text-white">
                                     행사 설명
                                 </p>
-                                <textarea ref={descRef} className="w-[215px] h-[175px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31] outline-none focus:bg-white/30 text-base p-2">
-                                    {eventData.eventDesc}
-                                </textarea>
+                                <textarea
+                                    ref={descRef}
+                                    className="w-[215px] h-[175px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31] outline-none focus:bg-white/30 text-base p-2"
+                                    defaultValue={eventData.eventDesc}
+                                    />
                             </div>
                         </div>
                         <Button title={"Create"} type={"default"} func={() => { console.log(nameRef.current?.value) }} loading={event.loading}/>
