@@ -127,6 +127,7 @@ const hireSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(deleteHire.fulfilled, (state) => {
+            state.data = INIT_HIRE;
             state.loading = false;
         });
         builder.addCase(deleteHire.rejected, (state) => {

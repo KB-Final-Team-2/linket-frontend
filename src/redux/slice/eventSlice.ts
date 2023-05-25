@@ -109,6 +109,7 @@ const eventSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(deleteEvent.fulfilled, (state)=>{
+            state.data = INIT_EVENT;
             state.loading = false;
         });
         builder.addCase(deleteEvent.rejected, (state)=>{

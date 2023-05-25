@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Attend, AttendWithUser, DUMMY_ATTD, INIT_ATTD } from "../../interface/Attendance";
+import { Attend, AttendWithUser, DUMMY_ATTD, DUMMY_ATTD2, DUMMY_ATTDWITHUSER, DUMMY_ATTDWITHUSER2, INIT_ATTD } from "../../interface/Attendance";
 
 export const getAttend = createAsyncThunk('getAttend', async (attendId: string, { rejectWithValue }) => {
     try {
@@ -11,10 +11,24 @@ export const getAttend = createAsyncThunk('getAttend', async (attendId: string, 
     }
 })
 
-export const getAttendList = createAsyncThunk('getAttendList', async (_:void, {rejectWithValue, dispatch})=>{
+export const getAttendList = createAsyncThunk('getAttendList', async (hireId:number, {rejectWithValue, dispatch})=>{
     try{
-        // const list = (await axios.get(`/api/getAttendList/${eventId}`)).data;
-        const list : Attend[]= [DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD];
+        // const list = (await axios.get(`/api/getAttendList/${hireId}`)).data;
+        const list : Attend[]= [DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD2,DUMMY_ATTD2,DUMMY_ATTD2,DUMMY_ATTD2];
+        const days: string[] = [];
+        list.forEach((attend) => {
+            if (!days.includes(attend.attDate)) days.push(attend.attDate);
+        })
+        return {list, days};
+    } catch (error) {
+        rejectWithValue(error);
+    }
+})
+
+export const getEventAttendList = createAsyncThunk('getEventAttendList', async (eventId:number, {rejectWithValue})=>{
+    try {
+        // const list : AttendWithUser[] = (await axios.post(`/api/attend/${eventId}`)).data;
+        const list : AttendWithUser[] = [DUMMY_ATTDWITHUSER,DUMMY_ATTDWITHUSER,DUMMY_ATTDWITHUSER,DUMMY_ATTDWITHUSER2,DUMMY_ATTDWITHUSER2,DUMMY_ATTDWITHUSER2,DUMMY_ATTDWITHUSER2];
         const days: string[] = [];
         list.forEach((attend) => {
             if (!days.includes(attend.attDate)) days.push(attend.attDate);
@@ -81,7 +95,18 @@ const attendSlice = createSlice({
         });
         builder.addCase(getAttendList.rejected, (state)=>{
             state.loading = false;
-        })
+        });
+        builder.addCase(getEventAttendList.pending, (state)=>{
+            state.loading = true;
+        });
+        builder.addCase(getEventAttendList.fulfilled, (state, action)=>{
+            state.list = action.payload?.list || [];
+            state.days = action.payload?.days || [];
+            state.loading = false;
+        });
+        builder.addCase(getEventAttendList.rejected, (state)=>{
+            state.loading = false;
+        });
     }
 })
 

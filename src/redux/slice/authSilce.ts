@@ -28,6 +28,16 @@ export const logout = createAsyncThunk("logout", async (_: void, { rejectWithVal
 export const checkDuplicate = createAsyncThunk("checkDuplicate", async (email: string, { rejectWithValue }) => {
     try {
         const result = (await axios.post("/api/auth/dupleicate", { email })).data;
+        // return result;
+        return DUMMY_MEMBER;
+    } catch (error) {
+        rejectWithValue(error);
+    }
+})
+
+export const confirmEmail = createAsyncThunk("confirmEmail", async (email: string, {rejectWithValue})=>{
+    try {
+        const result = (await axios.post("/api/auth/confirm", { email })).data;
         return result;
     } catch (error) {
         rejectWithValue(error);
@@ -59,10 +69,30 @@ const authSlice = createSlice({
         builder.addCase(register.pending, (state) => {
             state.loading = true;
         });
-        builder.addCase(register.fulfilled, (state, action) => {
-            state.data = action.payload;
+        builder.addCase(register.fulfilled, (state) => {
             state.loading = false;
-        })
+        });
+        builder.addCase(register.rejected, (state)=>{
+            state.loading = false;
+        });
+        builder.addCase(checkDuplicate.pending, (state)=>{
+            state.loading = true;
+        });
+        builder.addCase(checkDuplicate.fulfilled, (state)=>{
+            state.loading = false;
+        });
+        builder.addCase(checkDuplicate.rejected, (state)=>{
+            state.loading = false;
+        });
+        builder.addCase(confirmEmail.pending, (state)=>{
+            state.loading = true;
+        });
+        builder.addCase(confirmEmail.fulfilled, (state)=>{
+            state.loading = false;
+        });
+        builder.addCase(confirmEmail.rejected, (state)=>{
+            state.loading = false;
+        });
     }
 })
 

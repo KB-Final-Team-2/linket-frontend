@@ -51,8 +51,8 @@ export const getEventTicketList = createAsyncThunk("getEventTicketList", async (
 export const getUserTicketList = createAsyncThunk("getUserTicketList", async (userId:number, {rejectWithValue}) => {
     try {
         // const eventTicketList : TicketWithUser = (await axios.get(`/api/ticket/${eventId}`)).data;
-        // const eventTicketList : TicketWithEvent[] = [DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT];
-        const eventTicketList : TicketWithEvent[] = [];
+        const eventTicketList : TicketWithEvent[] = [DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT];
+        // const eventTicketList : TicketWithEvent[] = [];
         return eventTicketList;
     } catch (error) {
         rejectWithValue(error);
@@ -81,6 +81,8 @@ const ticketSlice = createSlice({
         initTicket: (state) => {
             state.data = INIT_TICKET;
             state.list = [];
+            state.eventTicketList = [];
+            state.userTicketList = [];
         }
     },
     extraReducers: (builder) => {
@@ -128,6 +130,7 @@ const ticketSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(deleteTicket.fulfilled, (state) => {
+            state.data = INIT_TICKET;
             state.loading = false;
         });
         builder.addCase(deleteTicket.rejected, (state) => {

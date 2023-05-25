@@ -2,9 +2,19 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { DUMMY_EVENT_REVIEW, DUMMY_REVIEW, DUMMY_REVIEWWITHEVENT, INIT_REVIEW, RegistReview, Review, ReviewWithEvent, ReviewWithUser } from "../../interface/Review";
 
-export const getReview = createAsyncThunk("getReview", async (reviewId: string, { rejectWithValue }) => {
+export const getReview = createAsyncThunk("getReview", async (reviewId: number, { rejectWithValue }) => {
     try {
         const reviewData = (await axios.get(`/api/getReview/${reviewId}`)).data;
+        return reviewData;
+    } catch (error) {
+        rejectWithValue(error);
+    }
+})
+
+export const getEventReview = createAsyncThunk("getEventReview", async (eventId:number, {rejectWithValue})=>{
+    try {
+        // const reviewData : Review = (await axios.get(`/api/review/${eventId}`)).data || INIT_REVIEW;
+        const reviewData = INIT_REVIEW;
         return reviewData;
     } catch (error) {
         rejectWithValue(error);
@@ -58,6 +68,7 @@ const reviewSlice = createSlice({
         initReview: (state) => {
             state.data = INIT_REVIEW;
             state.list = [];
+            state.eventReviewList = [];
         }
     },
     extraReducers: (builder) => {
@@ -69,6 +80,16 @@ const reviewSlice = createSlice({
             state.loading = false;
         });
         builder.addCase(getReview.rejected, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(getEventReview.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(getEventReview.fulfilled, (state, action) => {
+            state.data = action.payload || INIT_REVIEW;
+            state.loading = false;
+        });
+        builder.addCase(getEventReview.rejected, (state) => {
             state.loading = false;
         });
         builder.addCase(getReviewList.pending, (state) => {
