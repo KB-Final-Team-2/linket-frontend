@@ -19,9 +19,9 @@ const Button = ({ title, type, func, loading = false }: props) => {
                 ${type === "delete" && "bg-black/50 hover:bg-red-500 cursor-pointer  border-red-500"}
                 ${type === "default" && "bg-black/50 hover:bg-primary cursor-pointer border-primary "}
                 ${type === "unable" && "bg-gray-500 cursor-not-allowed"}
-                text-[15px] font-bold flex justify-center items-center
+                text-[15px] font-bold flex justify-center items-center noselect
             `}
-                onClick={() => { handleFunc() }}
+                onClick={type==="unable"?()=>{}:() => { handleFunc() }}
             >
                 {loading
                     ?
