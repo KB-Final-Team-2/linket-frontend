@@ -26,7 +26,6 @@ const DeleteHireModal = () => {
     const dispatch = useDispatch();
     return (
         <Modal>
-            <div className="w-[600px] h-[800px] relative overflow-hidden rounded-[49px] bg-[#454545] border-[10px] border-white flex flex-col">
                 <div className="w-[600px] h-[100px] overflow-hidden flex flex-shrink-0 flex-grow-0 justify-center items-center text-[40px] font-bold text-center text-white">
                     행사 삭제
                 </div>
@@ -52,8 +51,6 @@ const DeleteHireModal = () => {
                 <div className="w-[600px] h-[100px] overflow-hidden flex flex-shrink-0 flex-grow-0 justify-center items-center">
                     <Button title="삭제" type={"delete"} func={() => { }} />
                 </div>
-                <AiOutlineClose className="absolute right-8 top-8 text-3xl" onClick={() => { dispatch(closeModal()) }} />
-            </div>
         </Modal>
     )
 }
