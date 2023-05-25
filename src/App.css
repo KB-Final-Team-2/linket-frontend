@@ -50,6 +50,10 @@ input:focus {
     background-color: rgb(196 196 196 / 0.50);
 }
 
+textarea:focus {
+    outline:none;
+}
+
 .templete {
     background : linear-gradient(to bottom, #454545 0%, rgba(106,106,106,0.93) 51.04%, rgba(33,33,33,0.97) 100%);
 }
@@ -61,4 +65,19 @@ input:focus {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.custom-toolbar::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color:none;
+}
+
+.custom-toolbar::-webkit-scrollbar-thumb {
+    background: #ff9900;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Mina:wght@700&display=swap');
+* {
+    font-family: 'Mina', sans-serif;
 }

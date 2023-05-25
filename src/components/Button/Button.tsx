@@ -15,11 +15,11 @@ const Button = ({ title, type, func, loading = false }: props) => {
         <>
             <div
                 className={`
-                w-20 h-10 left-[148px] top-5 overflow-hidden rounded-[15px]
-                ${type === "delete" && "bg-red-600 hover:bg-red-500 cursor-pointer"}
-                ${type === "default" && "bg-secondary/80 hover:bg-secondary cursor-pointer"}
-                ${type === "unable" && "bg-gray-500 text-gray-200 cursor-not-allowed"}
-                text-[15px] font-bold text-black flex justify-center items-center
+                w-20 h-10 left-[148px] top-5 overflow-hidden rounded-[15px] text-white border-4
+                ${type === "delete" && "bg-black/50 hover:bg-red-500 cursor-pointer  border-red-500"}
+                ${type === "default" && "bg-black/50 hover:bg-primary cursor-pointer border-primary "}
+                ${type === "unable" && "bg-gray-500 cursor-not-allowed"}
+                text-[15px] font-bold flex justify-center items-center
             `}
                 onClick={() => { handleFunc() }}
             >
