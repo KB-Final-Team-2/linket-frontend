@@ -51,7 +51,7 @@ const HireSearchResult = () => {
     return (
         <Templete>
             <div className="w-[375px] h-[812px] overflow-hidden flex flex-col justify-center items-center">
-                {hireData === INIT_HIRE
+                {hireData.hireId === -1
                     ?
 
                     <>

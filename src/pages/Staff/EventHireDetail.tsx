@@ -17,7 +17,7 @@ const EventHireDetail = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const list: ListProps[] = [
-        { title: "공고 번호", content: `${hireList.indexOf(hire)}` },
+        { title: "공고 번호", content: `${hire?.hireId}` },
         { title: "공고명", content: hire?.workName },
         { title: "근무 기간", content: `${hire?.workStartDate} ~ ${hire?.workEndDate}` },
         { title: "근무 시간", content: `${hire?.workHour}` },

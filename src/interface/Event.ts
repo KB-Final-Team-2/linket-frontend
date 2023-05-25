@@ -42,7 +42,7 @@ export interface EndedEvent extends Event {
 }
 
 export const INIT_EVENT: Event = {
-    eventId: 1,
+    eventId: -1,
     eventName: "",
     eventType: "",
     place: "",

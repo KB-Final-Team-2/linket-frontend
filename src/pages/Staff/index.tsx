@@ -11,6 +11,7 @@ import { getEventList, setEvent, setEventList } from "../../redux/slice/eventSli
 import { User } from "../../interface/User";
 import { CgSpinner } from "react-icons/cg";
 import EventEndedDetail from "./EventEndedDetail";
+import Content from "../Templete/Content";
 
 const Staff = () => {
 	const user: User = useSelector((state: any) => state.auth.data);
@@ -28,31 +29,29 @@ const Staff = () => {
 	return (
 		<Templete>
 			<div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-				{eventData === INIT_EVENT
+				{eventData.eventId === -1
 					?
 					<>
 						<IndexHeader title="User Name" />
-						<div className="w-[331px] h-full">
-							<div className="w-full h-[580px] flex flex-col border-y pb-5">
-								<p className="w-full h-10 text-sm font-bold text-center text-secondary flex justify-start items-center px-3">
-									등록 행사
-								</p>
-								<div className="w-[331px] h-full overflow-auto flex flex-col border-t">
-									{event.loading
-										?
-										<CgSpinner className=" animate-spin m-auto" />
-										:
-										eventList?.map((event, i) => (<EventList key={i} event={event} />))
-									}
-								</div>
-
-								<div className="w-full h-[156px] flex justify-between items-center">
-									<Link to="/staff/register" className="w-full h-16 flex justify-center items-center bg-black/30 text-white hover:bg-white/20 border-primary border-4 rounded-2xl shadow-md">
-										행사 등록
-									</Link>
-								</div>
+						<Content>
+							<p className="w-full h-10 text-sm font-bold text-center text-secondary flex justify-start items-center px-3">
+								등록 행사
+							</p>
+							<div className="w-[331px] h-full overflow-auto flex flex-col border-t">
+								{event.loading
+									?
+									<CgSpinner className=" animate-spin m-auto" />
+									:
+									eventList?.map((event, i) => (<EventList key={i} event={event} />))
+								}
 							</div>
-						</div>
+
+							<div className="w-full h-[156px] flex justify-between items-center">
+								<Link to="/staff/register" className="w-full h-16 flex justify-center items-center bg-black/30 text-white hover:bg-white/20 border-primary border-4 rounded-2xl shadow-md">
+									행사 등록
+								</Link>
+							</div>
+						</Content>
 					</>
 					:
 					(eventData.eventStatus === "Y" ? <EventContinueDetail /> : <EventEndedDetail />)

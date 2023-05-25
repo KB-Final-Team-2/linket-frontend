@@ -29,7 +29,7 @@ const PartTime = () => {
 	return (
 		<Templete>
 			<div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-				{hire === INIT_HIRE
+				{hire.hireId === -1
 					?
 					(doSearch
 						?

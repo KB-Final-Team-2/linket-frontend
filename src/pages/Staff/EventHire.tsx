@@ -33,7 +33,7 @@ const EventHire = () => {
     return (
         <Templete>
             <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-                {hire === INIT_HIRE
+                {hire.hireId === -1
                     ?
                     <>
                         <Header title="공고 관리" list={[{title:"공고 등록", func:()=>{navigate("/staff/hire/regist")}}]}/>

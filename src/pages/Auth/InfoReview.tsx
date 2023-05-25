@@ -23,7 +23,7 @@ const InfoReview = () => {
     return (
         <Templete>
             <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-                {reviewData === INIT_REVIEW
+                {reviewData.reviewId === -1
                     ?
                     <>
                         <Header title="내 리뷰" />
