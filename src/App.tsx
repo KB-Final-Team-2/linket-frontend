@@ -7,11 +7,6 @@ import PartTime from './pages/PartTime';
 
 // Member Import
 import TicketRegister from './pages/Member/TicketRegister';
-import MemberEvent from './pages/Member/Event';
-import EventSearch from './pages/Member/EventSearch';
-import MemberEventDetail from './pages/Member/EventDetail';
-import EventReview from './pages/Member/EventReview';
-import EventSearchResult from './pages/Member/EventSearchResult';
 
 // Staff Import
 import EventRegister from './pages/Staff/EventRegister';
@@ -23,6 +18,7 @@ import EventHire from './pages/Staff/EventHire';
 import EventHireRegist from './pages/Staff/EventHireRegist';
 import EventHireUpdate from './pages/Staff/EventHireUpdate';
 import EventHireDelete from './pages/Staff/EventHireDelete';
+import EventReview from './pages/Staff/EventReview';
 
 
 //Part Import
@@ -39,9 +35,11 @@ import InfoUpdatePassword from './pages/Auth/InfoUpdatePassword';
 import InfoNotice from './pages/Auth/InfoNotice';
 import InfoNoticeContent from './pages/Auth/InfoNoticeContent';
 import InfoFAQ from './pages/Auth/InfoFAQ';
-import Admin from './pages/Admin';
 import Login from './pages/Auth';
 import Register from './pages/Auth/Register';
+import TicketReview from './pages/Member/TicketReview';
+import InfoReviewDetail from './pages/Auth/InfoReviewDetail';
+import InfoReview from './pages/Auth/InfoReview';
 
 function App() {
 
@@ -51,11 +49,7 @@ function App() {
 				<BrowserRouter>
 					<Routes>
 						{/* Member Router */}
-						<Route path="/member/event/:eventId/review" element={<EventReview />} />
-						<Route path="/member/event/:eventId" element={<MemberEventDetail />} />
-						<Route path="/member/event/search/result" element={<EventSearchResult />} />
-						<Route path="/member/event/search" element={<EventSearch />} />
-						<Route path="/member/event" element={<MemberEvent />} />
+						<Route path="/member/review" element={<TicketReview />} />
 						<Route path="/member/register" element={<TicketRegister />} />
 						<Route path="/member" element={<Member />} />
 
@@ -79,9 +73,6 @@ function App() {
 						<Route path="/part/attend" element={<PartTimeAttendHire />} />
 						<Route path='/part/result' element={<HireSearchResult />}/>
 
-						{/* Admin Router */}
-						<Route path="/admin" element={<Admin />} />
-
 						{/* Auth Router */}
 						<Route path="/register" element={<Register />} />
 						<Route path="/*" element={<Login />} />
@@ -93,6 +84,7 @@ function App() {
 						<Route path="/info/user" element={<UserInfo />} />
 						<Route path="/info/check" element={<InfoCheck />} />
 						<Route path="/info" element={<Info />} />
+						<Route path="/info/review" element={<InfoReview />} />
 
 					</Routes>
 				</BrowserRouter>
