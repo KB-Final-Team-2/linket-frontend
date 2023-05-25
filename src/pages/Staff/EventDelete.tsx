@@ -8,11 +8,13 @@ import Templete from "../Templete";
 import { deleteEvent } from "../../redux/slice/eventSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const EventDelete = () => {
-    const event = useSelector((state:any)=>state.event);
-    const eventData : Event = event?.data;
-    const dispatch : any = useDispatch();
+    const [isOk, setIsOk] = useState(false);
+    const event = useSelector((state: any) => state.event);
+    const eventData: Event = event?.data;
+    const dispatch: any = useDispatch();
     const navigate = useNavigate();
 
     const list = [
@@ -23,14 +25,15 @@ const EventDelete = () => {
     ]
 
     const handleDelete = () => {
-        dispatch(deleteEvent(event.eventId))
-        .then(unwrapResult)
-        .then(()=>{
-            navigate("/staff");
-        })
-        .catch((err:Error)=>{
-            console.log(err);
-        })
+        // dispatch(deleteEvent(event.eventId))
+        //     .then(unwrapResult)
+        //     .then(() => {
+        //         setIsOk(true);
+        //     })
+        //     .catch((err: Error) => {
+        //         console.log(err);
+        //     })
+        setIsOk(true);
     }
 
     return (
@@ -38,31 +41,49 @@ const EventDelete = () => {
             <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
                 <Header title="행사 삭제" />
                 <div className="w-[331px] h-full">
-                    <div className="w-[331px] h-[580px] border-y overflow-hidden">
-                        <div className="w-[331px] h-fit overflow-hidden border-white">
-                            {list.map((v, i) => {
-                                return (<List key={i} title={v.title} content={v.content} />)
-                            })}
-                        </div>
-                        <div className="w-[331px] h-full top-[177px] overflow-hidden">
-                            <div className="w-[331px] h-[244px] overflow-hidden flex flex-col justify-center items-center">
-                                <p className="w-[331px] text-xl font-bold text-center text-white flex flex-col gap-3">
-                                    <span className="w-[330px] text-xl font-bold text-center text-white">
-                                        해당 행사를 삭제하시겠습니까?
-                                    </span>
-                                    <br />
-                                    <span className="w-[331px] text-[16px] font-bold text-center text-white">
-                                        삭제된 행사는 복구할 수 없으며,
-                                    </span>
-                                    <span className="w-[331px] text-[16px] font-bold text-center text-white">
-                                        기존에 등록된 리뷰 및 이미지가 모두 삭제됩니다.
-                                    </span>
-                                </p>
-                            </div>
-                            <div className="w-[331px] h-[202px] overflow-hidden flex justify-center items-center px-10">
-                                <Button title={"Delete"} type={"delete"} func={() => { handleDelete() }} loading={event.loading} />
-                            </div>
-                        </div>
+                    <div className="w-[331px] h-[580px] border-y overflow-hidden flex flex-col">
+                        {isOk
+                            ?
+                            <>
+                                <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2 place-content-center">
+                                    <p className="inline w-fit h-fit justify-center items-center text-lg">
+                                        행사 삭제가 완료되었습니다.<br />
+                                        삭제된 행사는 복구할 수 없으며,<br />
+                                        기존에 등록된 정보 및 리뷰가 모두 삭제됩니다.<br />
+                                    </p>
+                                </div>
+                                <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-center items-center px-10">
+                                    <Button title="Home" type="default" func={() => { navigate("/staff") }} />
+                                </div>
+                            </>
+                            :
+                            <>
+                                <div className="w-[331px] h-fit overflow-hidden border-white">
+                                    {list.map((v, i) => {
+                                        return (<List key={i} title={v.title} content={v.content} />)
+                                    })}
+                                </div>
+                                <div className="w-[331px] h-full top-[177px] overflow-hidden">
+                                    <div className="w-[331px] h-[244px] overflow-hidden flex flex-col justify-center items-center">
+                                        <p className="w-[331px] text-xl font-bold text-center text-white flex flex-col gap-3">
+                                            <span className="w-[330px] text-xl font-bold text-center text-white">
+                                                해당 행사를 삭제하시겠습니까?
+                                            </span>
+                                            <br />
+                                            <span className="w-[331px] text-[16px] font-bold text-center text-white">
+                                                삭제된 행사는 복구할 수 없으며,
+                                            </span>
+                                            <span className="w-[331px] text-[16px] font-bold text-center text-white">
+                                                기존에 등록된 정보 및 리뷰가 모두 삭제됩니다.
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div className="w-[331px] h-[202px] overflow-hidden flex justify-center items-center px-10">
+                                        <Button title={"Delete"} type={"delete"} func={() => { handleDelete() }} loading={event.loading} />
+                                    </div>
+                                </div>
+                            </>
+                        }
                     </div>
                 </div>
                 <NavBar role="staff" state="1" />
