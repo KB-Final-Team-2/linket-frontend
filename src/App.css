@@ -77,7 +77,20 @@ textarea:focus {
     background: #ff9900;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Mina:wght@700&display=swap');
-* {
-    font-family: 'Mina', sans-serif;
+@font-face{
+    font-family :'Mina-Bold';
+    src : local('Mina'),
+    url('./font/Mina/Mina-Bold.ttf');
+    unicode-range: U+0020-007E;
+}
+
+@font-face{
+    font-family :'RecipeKorea';
+    src : local('RecipeKorea'),
+    url('./font/RecipeKorea/RecipeKorea.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
+*{
+    font-family : 'Mina-Bold', 'RecipeKorea';
 }
