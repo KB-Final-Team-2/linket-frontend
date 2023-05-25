@@ -18,7 +18,6 @@ import EventHire from './pages/Staff/EventHire';
 import EventHireRegist from './pages/Staff/EventHireRegist';
 import EventHireUpdate from './pages/Staff/EventHireUpdate';
 import EventHireDelete from './pages/Staff/EventHireDelete';
-import EventReview from './pages/Staff/EventReview';
 
 
 //Part Import
@@ -38,7 +37,6 @@ import InfoFAQ from './pages/Auth/InfoFAQ';
 import Login from './pages/Auth';
 import Register from './pages/Auth/Register';
 import TicketReview from './pages/Member/TicketReview';
-import InfoReviewDetail from './pages/Auth/InfoReviewDetail';
 import InfoReview from './pages/Auth/InfoReview';
 import TicketDelete from './pages/Member/TicketDelete';
 

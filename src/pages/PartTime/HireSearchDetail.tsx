@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
-import NavBar from "../../components/NavBar/NavBar";
 import { Hire, INIT_HIRE } from "../../interface/Hire";
 import { ListProps } from "../../interface/props";
 import Templete from "../Templete";
 import { setHire } from "../../redux/slice/hireSlice";
+import Content from "../Templete/Content";
 
 const HireSearchDetail = () => {
     const hire: Hire = useSelector((state: any) => state.hire?.data);
@@ -21,18 +20,16 @@ const HireSearchDetail = () => {
     ];
 
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-            <Header title="공고 상세" func={()=>{dispatch(setHire(INIT_HIRE))}}/>
-            <div className="w-[331px] h-full flex flex-col">
-                <div className="w-[331px] h-[580px] flex flex-col border-y">
-                    <div className="w-[331px] h-full overflow-hidden border-white flex flex-col">
-                        {infoList.map((v, i) => {
-                            return (<List key={i} title={v.title} content={v.content!} />)
-                        })}
-                    </div>
+        <Templete>
+            <Header title="공고 상세" func={() => { dispatch(setHire(INIT_HIRE)) }} />
+            <Content>
+                <div className="w-[331px] h-full overflow-hidden border-white flex flex-col">
+                    {infoList.map((v, i) => {
+                        return (<List key={i} title={v.title} content={v.content!} />)
+                    })}
                 </div>
-            </div>
-        </div>
+            </Content>
+        </Templete>
     )
 }
 

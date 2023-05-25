@@ -1,14 +1,13 @@
-import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import NavBar from "../../components/NavBar/NavBar";
 import { useDispatch, useSelector } from "react-redux";
-import { Hire, INIT_HIRE } from "../../interface/Hire";
+import { Hire } from "../../interface/Hire";
 import { User } from "../../interface/User";
-import { Link } from "react-router-dom";
 import { setHire } from "../../redux/slice/hireSlice";
 import Templete from "../Templete";
 import HireSearchDetail from "./HireSearchDetail";
 import { CgSpinner } from "react-icons/cg";
+import Content from "../Templete/Content";
 
 interface props {
     hire: Hire;
@@ -19,7 +18,6 @@ interface props {
 const HireList = ({ hire, idx, func }: props) => {
     const user: User = useSelector((state: any) => state.auth?.data);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleHire = (hire: Hire) => {
         dispatch(setHire(hire));
@@ -42,41 +40,35 @@ const HireList = ({ hire, idx, func }: props) => {
 }
 
 const HireSearchResult = () => {
-    const navigate = useNavigate();
-
     const hire = useSelector((state: any) => state.hire);
     const hireData: Hire = hire?.data;
     const hireList: Hire[] = hire?.list;
 
     return (
         <Templete>
-            <div className="w-[375px] h-[812px] overflow-hidden flex flex-col justify-center items-center">
-                {hireData.hireId === -1
-                    ?
+            {hireData.hireId === -1
+                ?
 
-                    <>
-                        <Header title="공고 검색 결과" />
-                        <div className="w-[331px] h-full">
-                            <div className="w-[331px] h-[580px] overflow-hidden border-y py-5">
-                                <div className="w-[331px] h-10 bg-background-light/30 rounded-lg shrink-0 mb-2 " />
-                                <div className="w-[331px] h-[465px] overflow-auto flex flex-col">
-                                    {hire?.loading
-                                        ?
-                                        <CgSpinner className="text-3xl animate-spin m-auto" />
-                                        :
-                                        <>
-                                            {hireList.map((hire, i) => (<HireList key={i} idx={i} hire={hire} />))}
-                                        </>
-                                    }
-                                </div>
-                            </div>
+                <>
+                    <Header title="공고 검색 결과" />
+                    <Content>
+                        <div className="w-[331px] h-10 bg-background-light/30 rounded-lg shrink-0 mb-2 " />
+                        <div className="w-[331px] h-[465px] overflow-auto flex flex-col">
+                            {hire?.loading
+                                ?
+                                <CgSpinner className="text-3xl animate-spin m-auto" />
+                                :
+                                <>
+                                    {hireList.map((hire, i) => (<HireList key={i} idx={i} hire={hire} />))}
+                                </>
+                            }
                         </div>
-                    </>
-                    :
-                    <HireSearchDetail />
-                }
-                <NavBar role="member" state="1" />
-            </div>
+                    </Content>
+                </>
+                :
+                <HireSearchDetail />
+            }
+            <NavBar role="member" state="1" />
         </Templete>
     )
 }

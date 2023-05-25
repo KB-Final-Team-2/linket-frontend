@@ -1,13 +1,7 @@
-import WebInfoInput from "../Input/WebInfoInput";
 import Modal from "./Modal"
-import { ForwardedRef, forwardRef, useRef, useState } from "react";
-import DatePicker from "../Input/DatePicker";
-import { AiOutlineClose } from "react-icons/ai";
-import WebSelectButton from "../Button/Web/WebSelectButton";
-import { Event, RegistEvent } from "../../interface/Event";
+import { ForwardedRef, forwardRef, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../Button/Button";
-import { closeModal } from "../../redux/slice/modalSlice";
 import { User } from "../../interface/User";
 import { ListProps } from "../../interface/props";
 

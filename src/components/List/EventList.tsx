@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Event } from "../../interface/Event";
 import { User } from "../../interface/User";
-import { Link, useNavigate } from "react-router-dom";
 import { getEvent, setEvent } from "../../redux/slice/eventSlice";
 
 interface props {

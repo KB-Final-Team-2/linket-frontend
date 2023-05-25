@@ -2,13 +2,9 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
-import NavBar from "../../components/NavBar/NavBar";
-import { Event } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
-import Templete from "../Templete";
-import { DUMMY_TICKET1, INIT_TICKET, Ticket, TicketWithEvent } from "../../interface/Ticket";
+import { INIT_TICKET, TicketWithEvent } from "../../interface/Ticket";
 import { useEffect, useState } from "react";
-import TicketDelete from "./TicketDelete";
 import { setTicket } from "../../redux/slice/ticketSlice";
 import QRCode from "react-qr-code";
 import { User } from "../../interface/User";
@@ -17,7 +13,6 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import { INIT_REVIEW, Review } from "../../interface/Review";
 
 const TicketDetail = () => {
-    const [doDelete, setDoDelete] = useState(false);
     const [isReview, setIsReview] = useState(true);
     const user: User = useSelector((state: any) => state.auth.data);
     const ticket: TicketWithEvent = useSelector((state: any) => state.ticket.data);

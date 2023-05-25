@@ -1,7 +1,5 @@
-import { AiOutlineClose } from "react-icons/ai";
 import Modal from "./Modal";
 import Button from "../Button/Button";
-import { closeModal } from "../../redux/slice/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Event } from "../../interface/Event";
 import { ListProps } from "../../interface/props";

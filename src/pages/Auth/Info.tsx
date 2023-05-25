@@ -16,6 +16,7 @@ import { initReview } from "../../redux/slice/reviewSlice";
 import { initTicket } from "../../redux/slice/ticketSlice";
 import { User } from "../../interface/User";
 import { unwrapResult } from "@reduxjs/toolkit";
+import Content from "../Templete/Content";
 
 const Info = () => {
     const dispatch: any = useDispatch();
@@ -37,50 +38,46 @@ const Info = () => {
 
     return (
         <Templete>
-            <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center flex-grow-0 flex-shrink-0">
-                <IndexHeader title="내 정보" />
-                <div className="w-[331px] h-full">
-                    <div className="w-[331px] h-[580px] overflow-hidden border-t border-b border-white">
-                        <div className="w-[331px] h-fit overflow-hidden border-y-2 border-white">
-                            <Link to="/info/user">
-                                <InfoList title="내 정보">
-                                    <IoMdHappy />
-                                </InfoList>
-                            </Link>
+            <IndexHeader title="내 정보" />
+            <Content>
+                <div className="w-[331px] h-fit overflow-hidden border-y-2 border-white">
+                    <Link to="/info/user">
+                        <InfoList title="내 정보">
+                            <IoMdHappy />
+                        </InfoList>
+                    </Link>
 
-                            {user?.role === "member" &&
-                                <Link to="/info/review">
-                                    <InfoList title="리뷰 관리">
-                                        <MdOutlineChat />
-                                    </InfoList>
-                                </Link>
-                            }
-                        </div>
-                        <div className="w-[331px] h-[100px] overflow-hidden border-b border-white">
-                            <Link to="/info/FAQ">
-                                <InfoList title="FAQ">
-                                    <FaRegCommentDots />
-                                </InfoList>
-                            </Link>
-
-                            <Link to="/info/notice">
-                                <InfoList title="공지사항">
-                                    <AiOutlineNotification />
-                                </InfoList>
-                            </Link>
-                        </div>
-                        <div
-                            className="w-[331px] h-[50px] overflow-hidden border-y cursor-pointer"
-                            onClick={() => { handleLogout() }}
-                        >
-                            <InfoList title="로그아웃">
-                                <AiOutlinePoweroff className="text-red-500" />
+                    {user?.role === "member" &&
+                        <Link to="/info/review">
+                            <InfoList title="리뷰 관리">
+                                <MdOutlineChat />
                             </InfoList>
-                        </div>
-                    </div>
+                        </Link>
+                    }
                 </div>
-                <NavBar role="member" state="3" />
-            </div>
+                <div className="w-[331px] h-[100px] overflow-hidden border-b border-white">
+                    <Link to="/info/FAQ">
+                        <InfoList title="FAQ">
+                            <FaRegCommentDots />
+                        </InfoList>
+                    </Link>
+
+                    <Link to="/info/notice">
+                        <InfoList title="공지사항">
+                            <AiOutlineNotification />
+                        </InfoList>
+                    </Link>
+                </div>
+                <div
+                    className="w-[331px] h-[50px] overflow-hidden border-y cursor-pointer"
+                    onClick={() => { handleLogout() }}
+                >
+                    <InfoList title="로그아웃">
+                        <AiOutlinePoweroff className="text-red-500" />
+                    </InfoList>
+                </div>
+            </Content>
+            <NavBar role="member" state="3" />
         </Templete>
     )
 }

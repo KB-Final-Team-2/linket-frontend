@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { DUMMY_EVENT_REVIEW, DUMMY_REVIEW, DUMMY_REVIEWWITHEVENT, INIT_REVIEW, RegistReview, Review, ReviewWithEvent, ReviewWithUser } from "../../interface/Review";
+import { DUMMY_EVENT_REVIEW, DUMMY_REVIEWWITHEVENT, INIT_REVIEW, RegistReview, Review, ReviewWithEvent, ReviewWithUser } from "../../interface/Review";
 
 export const getReview = createAsyncThunk("getReview", async (reviewId: number, { rejectWithValue }) => {
     try {

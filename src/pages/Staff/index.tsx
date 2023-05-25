@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import IndexHeader from "../../components/Header/IndexHeader";
 import EventList from "../../components/List/EventList";
 import NavBar from "../../components/NavBar/NavBar";
@@ -28,7 +28,6 @@ const Staff = () => {
 
 	return (
 		<Templete>
-			<div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
 				{eventData.eventId === -1
 					?
 					<>
@@ -57,7 +56,6 @@ const Staff = () => {
 					(eventData.eventStatus === "Y" ? <EventContinueDetail /> : <EventEndedDetail />)
 				}
 				<NavBar role="staff" state="1" />
-			</div>
 		</Templete>
 	)
 }

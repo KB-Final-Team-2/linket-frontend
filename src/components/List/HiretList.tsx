@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Event } from "../../interface/Event";
 import { User } from "../../interface/User";
-import { Link, useNavigate } from "react-router-dom";
 import { Hire } from "../../interface/Hire";
 import { getHire, setHire } from "../../redux/slice/hireSlice";
 

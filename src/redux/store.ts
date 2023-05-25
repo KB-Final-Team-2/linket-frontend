@@ -7,7 +7,6 @@ import attendReducer from './slice/attendSlice';
 import hireReducer from "./slice/hireSlice";
 import modalReducer from './slice/modalSlice';
 import { useDispatch } from 'react-redux';
-import storage from 'reduxjs-toolkit-persist/lib/storage'
 import sessionStorage from 'reduxjs-toolkit-persist/lib/storage'
 import autoMergeLevel1 from 'reduxjs-toolkit-persist/lib/stateReconciler/autoMergeLevel1'
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from 'reduxjs-toolkit-persist';

@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { getReviewList, setReview } from "../../redux/slice/reviewSlice";
 import { User } from "../../interface/User";
 import InfoReviewDetail from "./InfoReviewDetail";
+import Content from "../Templete/Content";
 
 const InfoReview = () => {
     const user: User = useSelector((state: any) => state.auth?.data);
@@ -22,24 +23,20 @@ const InfoReview = () => {
 
     return (
         <Templete>
-            <div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-                {reviewData.reviewId === -1
-                    ?
-                    <>
-                        <Header title="내 리뷰" />
-                        <div className="w-[331px] h-full flex flex-col">
-                            <div className="w-[331px] h-[580px] overflow-hidden border-y border-white">
-                                {reviewList.map((review, i) => {
-                                    return (<NextList key={i} title={review.eventName} func={() => { dispatch(setReview(review)) }} />)
-                                })}
-                            </div>
-                        </div>
-                    </>
-                    :
-                    <InfoReviewDetail />
-                }
-                <NavBar role="member" state="3" />
-            </div>
+            {reviewData.reviewId === -1
+                ?
+                <>
+                    <Header title="내 리뷰" />
+                    <Content>
+                        {reviewList.map((review, i) => {
+                            return (<NextList key={i} title={review.eventName} func={() => { dispatch(setReview(review)) }} />)
+                        })}
+                    </Content>
+                </>
+                :
+                <InfoReviewDetail />
+            }
+            <NavBar role="member" state="3" />
         </Templete>
     )
 }

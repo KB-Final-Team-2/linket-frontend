@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import Templete from "../Templete";
 import { unwrapResult } from "@reduxjs/toolkit";
 import DatePicker from "../../components/Input/DatePicker";
-import RegistInput from "../../components/Input/RegisterInput";
 
 interface props {
     role: string,

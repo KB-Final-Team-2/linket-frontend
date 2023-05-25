@@ -1,17 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
-import NavBar from "../../components/NavBar/NavBar";
-import { Event, INIT_EVENT } from "../../interface/Event";
+import { Event } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
 import { FuncListProps, ListProps } from "../../interface/props";
-import Templete from "../Templete";
-import { setEvent } from "../../redux/slice/eventSlice";
 import { Hire, INIT_HIRE } from "../../interface/Hire";
 import { setHire } from "../../redux/slice/hireSlice";
+import Content from "../Templete/Content";
 
 const EventHireDetail = () => {
-    const event : Event = useSelector((state:any)=>state.event?.data);
+    const event: Event = useSelector((state: any) => state.event?.data);
     const hire: Hire = useSelector((state: any) => state.hire?.data);
     const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
     const dispatch = useDispatch();
@@ -27,7 +25,7 @@ const EventHireDetail = () => {
         { title: "등록 일자", content: hire?.regDate },
     ]
 
-    const dropdownList : FuncListProps[] = [
+    const dropdownList: FuncListProps[] = [
         { title: "공고 수정", func: () => { navigate("/staff/hire/update") } },
         { title: "공고 삭제", func: () => { navigate("/staff/hire/delete") } }
     ]
@@ -35,24 +33,22 @@ const EventHireDetail = () => {
     return (
         <>
             <Header title="공고 상세" func={() => { dispatch(setHire(INIT_HIRE)) }} list={dropdownList} />
-            <div className="w-[331px] h-full flex">
-                <div className="w-full h-[580px] flex flex-col border-y">
-                    <div className="w-full h-[580px] overflow-hidden flex flex-col">
-                        {list.map((v, i) => {
-                            return (<List key={i} title={v.title} content={v.content || ""} />)
-                        })}
+            <Content>
+                <div className="w-full h-[580px] overflow-hidden flex flex-col">
+                    {list.map((v, i) => {
+                        return (<List key={i} title={v.title} content={v.content || ""} />)
+                    })}
 
-                        <div className="w-full h-full overflow-hidden border-b flex">
-                            <p className="w-[115px] h-full text-[15px] font-bold text-center text-white flex justify-center items-center">
-                                사전 교육 정보
-                            </p> 
-                            <p className="w-[215px] h-full text-[15px] font-bold text-center text-white flex justify-center items-center">
-                                {hire?.edu}
-                            </p>
-                        </div>
+                    <div className="w-full h-full overflow-hidden border-b flex">
+                        <p className="w-[115px] h-full text-[15px] font-bold text-center text-white flex justify-center items-center">
+                            사전 교육 정보
+                        </p>
+                        <p className="w-[215px] h-full text-[15px] font-bold text-center text-white flex justify-center items-center">
+                            {hire?.edu}
+                        </p>
                     </div>
                 </div>
-            </div>
+            </Content>
         </>
     )
 }

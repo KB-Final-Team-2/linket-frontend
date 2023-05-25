@@ -1,4 +1,3 @@
-
 interface props {
     text: string;
     state: boolean;

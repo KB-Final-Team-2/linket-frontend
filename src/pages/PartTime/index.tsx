@@ -11,6 +11,7 @@ import { getHire, getPartHireList, setHireList } from "../../redux/slice/hireSli
 import HireDetail from "./HireDetail";
 import HireSearch from "./HireSearch";
 import { unwrapResult } from "@reduxjs/toolkit";
+import Content from "../Templete/Content";
 
 const PartTime = () => {
 	const [doSearch, setDoSearch] = useState(false);
@@ -18,7 +19,7 @@ const PartTime = () => {
 	const user: User = useSelector((state: any) => state.auth.data);
 	const hire: Hire = useSelector((state: any) => state.hire.data);
 	const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
-	const dispatch :any = useDispatch();
+	const dispatch: any = useDispatch();
 
 	useEffect(() => {
 		// dispatch(getPartHireList(user.email))
@@ -28,46 +29,42 @@ const PartTime = () => {
 
 	return (
 		<Templete>
-			<div className="w-[375px] h-[812px] relative overflow-hidden flex flex-col justify-center items-center">
-				{hire.hireId === -1
+			{hire.hireId === -1
+				?
+				(doSearch
 					?
-					(doSearch
-						?
-						<HireSearch onRequestReturn={()=>{setDoSearch(false)}}/>
-						:
-						<>
-							<IndexHeader title="User name" />
-							<div className="w-[331px] h-full">
-								<div className="w-[330px] h-[580px] overflow-hidden border-t border-b">
-									<p className="w-full h-10 text-sm font-bold text-left align-middle text-secondary">
-										등록 공고
-									</p>
-									<div className="w-[331px] h-[384px] overflow-hidden">
-										{hireList.map((hire, i) => (
-											<HireList key={i} hire={hire} />
-										))}
-									</div>
-									<div className="w-full h-[156px] flex justify-between items-center mb-5">
-										<div
-											className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] flex justify-center items-center text-lg font-bold text-black"
-											onClick={()=>{setDoSearch(true)}}
-											>
-											공고 검색
-										</div>
-										<Link to={`/part/register`} className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] flex justify-center items-center text-lg font-bold text-black">
-											새 공고 등록하기
-										</Link>
-									</div>
-								</div>
-							</div>
-						</>
-					)
-
+					<HireSearch onRequestReturn={() => { setDoSearch(false) }} />
 					:
-					<HireDetail />
-				}
-				<NavBar role="part" state="1" />
-			</div>
+					<>
+						<IndexHeader title="User name" />
+						<Content>
+							<p className="w-full h-10 text-sm font-bold text-left align-middle text-secondary">
+								등록 공고
+							</p>
+							<div className="w-[331px] h-[384px] overflow-hidden">
+								{hireList.map((hire, i) => (
+									<HireList key={i} hire={hire} />
+								))}
+							</div>
+							<div className="w-full h-[156px] flex justify-between items-center mb-5">
+								<div
+									className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] flex justify-center items-center text-lg font-bold text-black"
+									onClick={() => { setDoSearch(true) }}
+								>
+									공고 검색
+								</div>
+								<Link to={`/part/register`} className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] flex justify-center items-center text-lg font-bold text-black">
+									새 공고 등록하기
+								</Link>
+							</div>
+						</Content>
+					</>
+				)
+
+				:
+				<HireDetail />
+			}
+			<NavBar role="part" state="1" />
 		</Templete>
 	)
 }

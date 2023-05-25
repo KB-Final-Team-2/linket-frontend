@@ -1,14 +1,9 @@
-import ReactDatePicker from "react-datepicker";
 import WebInfoInput from "../Input/WebInfoInput";
 import Modal from "./Modal"
 import { useRef, useState } from "react";
 import DatePicker from "../Input/DatePicker";
-import { AiOutlineClose } from "react-icons/ai";
-import WebSelectButton from "../Button/Web/WebSelectButton";
-import { RegistEvent } from "../../interface/Event";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
-import { closeModal } from "../../redux/slice/modalSlice";
 
 interface RegistHire {
     hireName: string;

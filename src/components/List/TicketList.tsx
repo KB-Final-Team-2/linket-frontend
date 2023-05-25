@@ -1,4 +1,3 @@
-import { FuncListProps } from "../../interface/props";
 import TicketBackground from "../../img/ticket2.png"
 import Barcode from "react-barcode";
 import { TicketWithEvent } from "../../interface/Ticket";
