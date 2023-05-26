@@ -48,12 +48,12 @@ const PartTime = () => {
 							</div>
 							<div className="w-full h-[156px] flex justify-between items-center mb-5">
 								<div
-									className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] flex justify-center items-center text-lg font-bold text-black"
+									className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-place-center text-lg font-bold text-black"
 									onClick={() => { setDoSearch(true) }}
 								>
 									공고 검색
 								</div>
-								<Link to={`/part/register`} className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] flex justify-center items-center text-lg font-bold text-black">
+								<Link to={`/part/register`} className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-place-center text-lg font-bold text-black">
 									새 공고 등록하기
 								</Link>
 							</div>

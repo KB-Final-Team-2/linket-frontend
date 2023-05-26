@@ -94,3 +94,9 @@ textarea:focus {
 *{
     font-family : 'Mina-Bold', 'RecipeKorea';
 }
+
+.text-place-center {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}

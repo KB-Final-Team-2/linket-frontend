@@ -40,10 +40,10 @@ const EventHireDetail = () => {
                     })}
 
                     <div className="w-full h-full overflow-hidden border-b flex">
-                        <p className="w-[115px] h-full text-[15px] font-bold text-center text-white flex justify-center items-center">
+                        <p className="w-[115px] h-full text-[15px] font-bold text-center text-white text-place-center">
                             사전 교육 정보
                         </p>
-                        <p className="w-[215px] h-full text-[15px] font-bold text-center text-white flex justify-center items-center">
+                        <p className="w-[215px] h-full text-[15px] font-bold text-center text-white text-place-center">
                             {hire?.edu}
                         </p>
                     </div>

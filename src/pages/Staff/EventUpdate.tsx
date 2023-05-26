@@ -63,43 +63,41 @@ const EventRegister = () => {
         <Templete>
             <Header title="행사 생성" />
             <Content>
-                <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2">
-                    <RegistInput title={"행사명"} ref={nameRef} value={eventData.eventName} />
-                    <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
-                        <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
-                            행사 분류
-                        </p>
-                        <div className="w-[215px] h-[37px] overflow-hidden flex gap-1">
-                            {typeList.map((v, i) => (
-                                <SelectButton key={i} state={v === type} title={v} func={() => { setType(v) }} />
-                            ))}
-                        </div>
+                <RegistInput title={"행사명"} ref={nameRef} value={eventData.eventName} />
+                <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
+                    <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
+                        행사 분류
+                    </p>
+                    <div className="w-[215px] h-[37px] overflow-hidden flex gap-1">
+                        {typeList.map((v, i) => (
+                            <SelectButton key={i} state={v === type} title={v} func={() => { setType(v) }} />
+                        ))}
                     </div>
-                    <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0 text-[15px] font-bold text-center text-white items-center">
-                        <p className="w-fit h-fit flex-shrink-0">
-                            행사 시작일시
-                        </p>
-                        <DatePicker title={""} date={startDate} setDate={(date: Date) => { setStartDate(date) }} />
-                    </div>
-                    <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
-                        <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
-                            행사 종료일시
-                        </p>
-                        <DatePicker title={""} date={endDate} setDate={(date: Date) => { setEndDate(date) }} />
-                    </div>
-                    <RegistInput title={"행사 장소"} ref={placeRef} value={eventData.place} />
-                    <RegistInput title={"행사 정보 이미지"} ref={imageRef} value={eventData.eventImage} />
-                    <RegistInput title={"행사 문의처"} ref={inqRef} value={eventData.eventInq} />
-                    <div className="w-[330px] h-full overflow-hidden flex">
-                        <p className="w-[115px] h-[175px] text-[15px] font-bold text-center text-white">
-                            행사 설명
-                        </p>
-                        <textarea
-                            ref={descRef}
-                            className="w-[215px] h-[175px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31] outline-none focus:bg-white/30 text-base p-2"
-                            defaultValue={eventData.eventDesc}
-                        />
-                    </div>
+                </div>
+                <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0 text-[15px] font-bold text-center text-white items-center">
+                    <p className="w-fit h-fit flex-shrink-0">
+                        행사 시작일시
+                    </p>
+                    <DatePicker title={""} date={startDate} setDate={(date: Date) => { setStartDate(date) }} />
+                </div>
+                <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
+                    <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
+                        행사 종료일시
+                    </p>
+                    <DatePicker title={""} date={endDate} setDate={(date: Date) => { setEndDate(date) }} />
+                </div>
+                <RegistInput title={"행사 장소"} ref={placeRef} value={eventData.place} />
+                <RegistInput title={"행사 정보 이미지"} ref={imageRef} value={eventData.eventImage} />
+                <RegistInput title={"행사 문의처"} ref={inqRef} value={eventData.eventInq} />
+                <div className="w-[330px] h-full overflow-hidden flex">
+                    <p className="w-[115px] h-[175px] text-[15px] font-bold text-center text-white">
+                        행사 설명
+                    </p>
+                    <textarea
+                        ref={descRef}
+                        className="w-[215px] h-[175px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31] outline-none focus:bg-white/30 text-base p-2"
+                        defaultValue={eventData.eventDesc}
+                    />
                 </div>
                 <Button title={"Create"} type={"default"} func={() => { console.log(nameRef.current?.value) }} loading={event.loading} />
             </Content>

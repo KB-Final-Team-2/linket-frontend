@@ -29,48 +29,48 @@ const EventReview = ({ onRequestReturn }: props) => {
                 <TableInfo title={"전체 리뷰 수"} content={`${eventReviewList.length}`} />
                 <div className="flex flex-col justify-start items-start self-stretch flex-grow overflow-hidden">
                     <div className="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 h-[60px] overflow-hidden  border-b border-white">
-                        <div className="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
+                        <div className="text-place-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
                             시설<br />(좌석)
                         </div>
-                        <div className="flex justify-center items-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5 border-r  border-white text-[15px] font-bold text-center text-white">
+                        <div className="text-place-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5 border-r  border-white text-[15px] font-bold text-center text-white">
                             {`${(eventReviewList.reduce((pre, cur) => { return pre + cur.rateFacilChair }, 0) / eventReviewList.length).toFixed(1)}`}/5.0
                         </div>
-                        <div className="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
+                        <div className="text-place-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
                             시설<br />(화장실)
                         </div>
-                        <div className="flex justify-center items-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5  border-white text-[15px] font-bold text-center text-white">
+                        <div className="text-place-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5  border-white text-[15px] font-bold text-center text-white">
                             {`${(eventReviewList.reduce((pre, cur) => { return pre + cur.rateFacilRest }, 0) / eventReviewList.length).toFixed(1)}`}/5.0
                         </div>
                     </div>
                     <div className="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 h-[60px] overflow-hidden  border-b border-white">
-                        <div className="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
+                        <div className="text-place-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
                             직원<br />(입장 안내)
                         </div>
-                        <div className="flex justify-center items-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5 border-r  border-white text-[15px] font-bold text-center text-white">
+                        <div className="text-place-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5 border-r  border-white text-[15px] font-bold text-center text-white">
                             {`${(eventReviewList.reduce((pre, cur) => { return pre + cur.rateStaffIn }, 0) / eventReviewList.length).toFixed(1)}`}/5.0
-                        </div><div className="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
+                        </div><div className="text-place-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
                             직원<br />(티켓 발급)
                         </div>
-                        <div className="flex justify-center items-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5 text-[15px] font-bold text-center text-white">
+                        <div className="text-place-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5 text-[15px] font-bold text-center text-white">
                             {`${(eventReviewList.reduce((pre, cur) => { return pre + cur.rateStaffTicket }, 0) / eventReviewList.length).toFixed(1)}`}/5.0
                         </div>
                     </div>
                     <div className="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 h-[60px] overflow-hidden  border-b border-white">
-                        <div className="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
+                        <div className="text-place-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
                             행사 구성
                         </div>
-                        <div className="flex justify-center items-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5 border-r  border-white text-[15px] font-bold text-center text-white">
+                        <div className="text-place-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5 border-r  border-white text-[15px] font-bold text-center text-white">
                             {`${(eventReviewList.reduce((pre, cur) => { return pre + cur.rateEventContent }, 0) / eventReviewList.length).toFixed(1)}`}/5.0
                         </div>
-                        <div className="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
+                        <div className="text-place-center self-stretch flex-grow-0 flex-shrink-0 w-[80px] overflow-hidden border-r border-white text-[15px] font-bold text-center text-white">
                             행사 진행
                         </div>
-                        <div className="flex justify-center items-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5 text-[15px] font-bold text-center text-white">
+                        <div className="text-place-center w-full self-stretch flex-grow relative overflow-hidden gap-2.5 text-[15px] font-bold text-center text-white">
                             {`${(eventReviewList.reduce((pre, cur) => { return pre + cur.rateEventGo }, 0) / eventReviewList.length).toFixed(1)}`}/5.0
                         </div>
                     </div>
                     <div className="flex flex-col justify-start items-start self-stretch flex-grow overflow-hidden">
-                        <div className="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 h-10 border-b border-white text-[15px] font-bold text-left text-white px-3">
+                        <div className="text-place-center self-stretch flex-grow-0 flex-shrink-0 h-10 border-b border-white text-[15px] font-bold text-left text-white px-3">
                             기타 의견
                         </div>
                         <div className="flex flex-col justify-start items-start self-stretch flex-grow overflow-auto custom-toolbar">

@@ -29,7 +29,7 @@ const HireDetail = () => {
                     })}
                 </div>
                 <div className="w-full h-[156px] flex flex-shrink-0 flex-grow-0">
-                    <Link to={`/part/attend`} className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-[15px] font-bold text-left text-black flex justify-center items-center flex-shrink-0">
+                    <Link to={`/part/attend`} className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-[15px] font-bold text-left text-black text-place-center flex-shrink-0">
                         근태 관리
                     </Link>
                     <div className="w-[153px] h-[156px] overflow-hidden flex flex-col justify-center items-center gap-5">
