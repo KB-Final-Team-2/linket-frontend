@@ -29,6 +29,7 @@ const UpdateEventModal = () => {
             eventName: nameRef.current?.value || eventData.eventName,
             eventType: type,
             place: placeRef.current?.value || eventData.place,
+            placeId: "",
             eventImage: undefined,
             eventInq: inqRef.current?.value || eventData.eventInq,
             eventDesc: descRef.current?.innerText || eventData.eventDesc,

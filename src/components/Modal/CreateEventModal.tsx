@@ -26,6 +26,7 @@ const CreateEventModal = () => {
             eventName: nameRef.current?.value || "",
             eventType: type,
             place: placeRef.current?.value || "",
+            placeId: "",
             eventImage: undefined,
             eventInq: inqRef.current?.value || "",
             eventDesc: descRef.current?.innerText || "",
