@@ -39,6 +39,7 @@ import Register from './pages/Auth/Register';
 import TicketReview from './pages/Member/TicketReview';
 import InfoReview from './pages/Auth/InfoReview';
 import TicketDelete from './pages/Member/TicketDelete';
+import TicketPlace from './pages/Member/TicketPlace';
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
 						<Route path="/member/register" element={<TicketRegister />} />
 						<Route path="/member/delete" element={<TicketDelete />} />
 						<Route path="/member" element={<Member />} />
+						<Route path="/member/:placeId" element={<TicketPlace />}/>
 
 						{/* Staff Router */}
 						<Route path="/staff/attend" element={<StaffAttend />} />	

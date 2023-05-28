@@ -36,19 +36,17 @@ const EventEndedDetail = () => {
                 <>
                     <Header title="행사 상세" func={() => { dispatch(setEvent(INIT_EVENT)) }} list={dropdownList} />
                     <Content>
-                        <div className="w-[331px] h-[580px] overflow-hidden">
-                            {list.map((v, i) => {
-                                return (<List key={i} title={v.title} content={v.content || ""} />)
-                            })}
+                        {list.map((v, i) => {
+                            return (<List key={i} title={v.title} content={v.content || ""} />)
+                        })}
 
-                            <div className="w-[330px] h-[207px] overflow-hidden border-b flex">
-                                <p className="w-[115px] h-[207px] text-[15px] font-bold text-center text-white">
-                                    행사 설명
-                                </p>
-                                <p className="w-[215px] h-[207px] text-[15px] font-bold text-center text-white">
-                                    {event.eventDesc}
-                                </p>
-                            </div>
+                        <div className="w-[330px] h-full overflow-hidden border-b flex">
+                            <p className="w-[115px] h-full text-[15px] font-bold text-center text-white text-place-center">
+                                행사 설명
+                            </p>
+                            <p className="w-[215px] h-full text-[15px] font-bold text-center text-white text-place-center">
+                                {eventData.eventDesc}
+                            </p>
                         </div>
                         <div className="w-full h-[158px] flex flex-col flex-shrink-0 justify-between">
                             <div

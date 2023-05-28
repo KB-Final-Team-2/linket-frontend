@@ -29,10 +29,10 @@ const HireList = ({ hire, idx, func }: props) => {
             className="w-full h-[60px] overflow-hidden flex border-b"
             onClick={() => { handleHire(hire) }}
         >
-            <div className="w-[60px] h-[60px] overflow-hidden flex-shrink-0 border-r text-[15px] font-bold text-center text-secondary text-place-center">
+            <div className="w-[60px] h-[60px] overflow-hidden flex-shrink-0 border-r text-[15px] font-bold text-center text-primary-200 text-place-center">
                 {idx + 1}
             </div>
-            <div className="w-[260px] h-[60px] overflow-hidden flex-shrink-0 text-[15px] font-bold text-center text-secondary flex justify-start items-center px-5">
+            <div className="w-[260px] h-[60px] overflow-hidden flex-shrink-0 text-[15px] font-bold text-center text-primary-200 flex justify-start items-center px-5">
                 {hire.workName}
             </div>
         </div>

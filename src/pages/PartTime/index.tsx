@@ -22,9 +22,9 @@ const PartTime = () => {
 	const dispatch: any = useDispatch();
 
 	useEffect(() => {
-		// dispatch(getPartHireList(user.email))
-		const list = [DUMMY_HIRE1, DUMMY_HIRE2];
-		dispatch(setHireList(list));
+		dispatch(getPartHireList(user.email));
+		// const list = [DUMMY_HIRE1, DUMMY_HIRE2];
+		// dispatch(setHireList(list));
 	}, [user])
 
 	return (
@@ -38,7 +38,7 @@ const PartTime = () => {
 					<>
 						<IndexHeader title="User name" />
 						<Content>
-							<p className="w-full h-10 text-sm font-bold text-left align-middle text-secondary">
+							<p className="w-full h-10 text-sm font-bold text-left align-middle text-primary-200">
 								등록 공고
 							</p>
 							<div className="w-[331px] h-[384px] overflow-hidden">

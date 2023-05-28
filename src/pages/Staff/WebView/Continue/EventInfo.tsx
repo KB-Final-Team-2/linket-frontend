@@ -39,7 +39,7 @@ const EventInfo = () => {
         <div className="w-[830px] h-full bg-black/25 inline-flex flex-col flex-shrink-0 flex-grow-0 justify-start">
             <div className="w-[830px] h-[100px] border-b-2 border-white flex flex-col flex-shrink-0 px-5">
                 <div className="w-full h-[35px] overflow-hidden">
-                    <p className="text-3xl font-bold text-left text-secondary">
+                    <p className="text-3xl font-bold text-left text-primary-200">
                         {event?.eventType}
                     </p>
                 </div>
@@ -58,7 +58,7 @@ const EventInfo = () => {
                     <div
                         className="
                             w-[70px] h-full overflow-hidden text-xl font-bold text-center text-white cursor-pointer flex justify-center items-center
-                            hover:bg-secondary
+                            hover:bg-primary-200
                         "
                         onClick={() => { dispatch(setUpdateEventModal()) }}
                     >

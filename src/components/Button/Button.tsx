@@ -17,9 +17,9 @@ const Button = ({ title, type, func, loading = false }: props) => {
                 className={`
                 w-20 h-10 left-[148px] top-5 overflow-hidden rounded-[15px] text-white border-4
                 ${type === "delete" && "bg-black/50 hover:bg-red-500 cursor-pointer  border-red-500"}
-                ${type === "default" && "bg-black/50 hover:bg-primary cursor-pointer border-primary "}
+                ${type === "default" && "bg-black/50 hover:bg-primary-100 cursor-pointer border-primary-100 "}
                 ${type === "unable" && "bg-gray-500 cursor-not-allowed"}
-                text-[15px] font-bold flex justify-center items-center noselect
+                text-[15px] font-bold flex justify-center items-center noselect flex-shrink-0
             `}
                 onClick={type==="unable"?()=>{}:() => { handleFunc() }}
             >
