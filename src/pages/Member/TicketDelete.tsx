@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
-import { Ticket } from "../../interface/Ticket";
+import { Ticket, TicketWithEvent } from "../../interface/Ticket";
 import { useDispatch, useSelector } from "react-redux";
 import { Event } from "../../interface/Event";
 import { deleteTicket, getTicketList } from "../../redux/slice/ticketSlice";
@@ -16,18 +16,19 @@ import Content from "../Templete/Content";
 const TicketDelete = () => {
     const [isOk, setIsOk] = useState(false);
     const user: User = useSelector((state: any) => state.auth?.data);
-    const ticket: Ticket = useSelector((state: any) => state.ticket?.data);
-    const event: Event = useSelector((state: any) => state.event?.data);
+    const ticket = useSelector((state:any)=>state.ticket);
+    const ticketData: TicketWithEvent = ticket.data;
     const dispatch: any = useDispatch();
     const navigate = useNavigate();
 
     const handleDelete = () => {
-        // dispatch(deleteTicket(ticket.ticketId))
-        //     .then(unwrapResult)
-        //     .then(() => {
-        //         dispatch(getTicketList(user.email));
-        //         setIsOk(true);
-        //     })
+        dispatch(deleteTicket(ticketData.ticketId))
+            .then(unwrapResult)
+            .then((res:number) => {
+                setIsOk(true);
+            }).catch((err:Error)=>{
+                alert(err.message);
+            })
         setIsOk(true);
     }
 
@@ -52,10 +53,10 @@ const TicketDelete = () => {
                         :
                         <>
                             <div className="w-[330px] h-[400px] overflow-hidden">
-                                <List title="행사명" content={event.eventName} />
-                                <List title="행사 분류" content={event.eventType} />
-                                <List title="행사 기간" content={`${event.startDate} ~ ${event.endDate}`} />
-                                <List title="행사 장소" content={event.place} />
+                                <List title="행사명" content={ticketData.eventName} />
+                                <List title="행사 분류" content={ticketData.eventType} />
+                                <List title="행사 기간" content={`${ticketData.startDate} ~ ${ticketData.endDate}`} />
+                                <List title="행사 장소" content={ticketData.place} />
                             </div>
                             <div className="w-[330px] h-full overflow-hidden">
                                 <div className="w-[330px] h-full font-bold text-center text-[20px] text-white flex flex-col justify-center items-center">

@@ -22,16 +22,17 @@ export const getTicketList = createAsyncThunk("getTicketList", async (email: str
 
 export const deleteTicket = createAsyncThunk("deleteTicket", async (ticketId: number, { rejectWithValue }) => {
     try {
-        const result = (await axios.delete(`/api/ticket/${ticketId}`)).data;
+        const result = (await axios.delete(`/api/ticket/user/${ticketId}`)).data;
         return result;
     } catch (error) {
         rejectWithValue(error);
     }
 })
 
-export const registTicket = createAsyncThunk("registTicket", async (ticketId: number, { rejectWithValue }) => {
+export const registTicket = createAsyncThunk("registTicket", async (serialNum: number, { rejectWithValue }) => {
     try {
-        const result = (await axios.post(`/api/ticket/regist`,{ticketId})).data;
+        console.log(serialNum);
+        const result = (await axios.patch(`/api/ticket/user/${serialNum}`, {serialNum})).data;
         return result;
     } catch (error) {
         rejectWithValue(error);
@@ -40,8 +41,8 @@ export const registTicket = createAsyncThunk("registTicket", async (ticketId: nu
 
 export const getEventTicketList = createAsyncThunk("getEventTicketList", async (eventId:number, {rejectWithValue}) => {
     try {
-        // const eventTicketList : TicketWithUser = (await axios.get(`/api/ticket/${eventId}`)).data;
-        const eventTicketList : TicketWithUser[] = [DUMMY_TICKETWITHUSER, DUMMY_TICKETWITHUSER, DUMMY_TICKETWITHUSER, DUMMY_TICKETWITHUSER];
+        const eventTicketList : TicketWithUser[] = (await axios.get(`/api/ticket/staff/${eventId}/status/mem`)).data.filter((ticket:TicketWithUser)=>ticket.ticketReg==="Y");
+        // const eventTicketList : TicketWithUser[] = [DUMMY_TICKETWITHUSER, DUMMY_TICKETWITHUSER, DUMMY_TICKETWITHUSER, DUMMY_TICKETWITHUSER];
         return eventTicketList;
     } catch (error) {
         rejectWithValue(error);
@@ -50,9 +51,8 @@ export const getEventTicketList = createAsyncThunk("getEventTicketList", async (
 
 export const getUserTicketList = createAsyncThunk("getUserTicketList", async (userId:number, {rejectWithValue}) => {
     try {
-        // const eventTicketList : TicketWithUser = (await axios.get(`/api/ticket/${eventId}`)).data;
-        const eventTicketList : TicketWithEvent[] = [DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT, DUMMY_TICKETWITHEVENT];
-        // const eventTicketList : TicketWithEvent[] = [];
+        const eventTicketList : TicketWithEvent[] = (await axios.get(`/api/ticket/user/list`)).data;
+        console.log(eventTicketList);
         return eventTicketList;
     } catch (error) {
         rejectWithValue(error);

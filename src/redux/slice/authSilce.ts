@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const register = createAsyncThunk("registerUser", async (data: RegistUser, { rejectWithValue }) => {
     try {
-        const userData = (await axios.post("/api/auth/register", data)).data;
+        const userData = (await axios.post("/api/auth/signup", data)).data;
         console.log(userData);
         return userData;
     } catch (error) {
@@ -16,12 +16,12 @@ export const register = createAsyncThunk("registerUser", async (data: RegistUser
 
 export const logout = createAsyncThunk("logout", async (_: void, { rejectWithValue }) => {
     try {
-        // const res = (await axios.get("/api/auth/logout")).data;
-        // console.log(res);
-        // return res;
-        return 0;
-    } catch (error) {
-
+        const res = (await axios.get("/api/auth/logout")).data;
+        console.log(res);
+        return res;
+    } catch (error : any) {
+        console.log(error);
+        rejectWithValue(error.response.data);
     }
 })
 

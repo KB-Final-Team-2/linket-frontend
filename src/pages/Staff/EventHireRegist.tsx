@@ -11,6 +11,9 @@ import { Event } from "../../interface/Event";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import Content from "../Templete/Content";
+import { RegistHire } from "../../interface/Hire";
+import moment from "moment";
+import { registHire } from "../../redux/slice/hireSlice";
 
 const EventHireRegist = () => {
     const workNameRef = useRef<HTMLInputElement>(null);
@@ -18,36 +21,38 @@ const EventHireRegist = () => {
     const inqRef = useRef<HTMLInputElement>(null);
     const payRef = useRef<HTMLInputElement>(null);
     const eduRef = useRef<HTMLTextAreaElement>(null);
+    const workStartDayRef = useRef<HTMLInputElement>(null);
+    const workEndDayRef = useRef<HTMLInputElement>(null);
 
     const user: User = useSelector((state: any) => state.auth?.data);
     const event: Event = useSelector((state: any) => state.event?.data);
     const hire = useSelector((state: any) => state.hire);
     const dispatch: any = useDispatch();
     const navigate = useNavigate();
+    const today = moment().format("YYYY-MM-DD");
 
-    const [startDate, setStartDate] = useState<Date | null>(new Date());
-    const [endDate, setEndDate] = useState<Date | null>(new Date());
     const [isOk, setIsOk] = useState(false);
 
     const handleRegist = () => {
-        // const hire : RegistHire = {
-        //     eventId: event.eventId,
-        //     companyId: user.companyId,
-        //     workName: workNameRef.current?.value || "",
-        //     workHour: Number.parseInt(workHourRef.current?.value || "0"),
-        //     workStartDate: startDate?.toString() || new Date().toString(),
-        //     workEndDate: endDate?.toString() || new Date().toString(),
-        //     pay: Number.parseInt(payRef.current?.value || "0"),
-        //     edu: eduRef.current?.value || "",
-        // }
+        const hire : RegistHire = {
+            eventId: event.eventId,
+            companyId: user.userCompanyId,
+            workName: workNameRef.current?.value!,
+            workHour: Number.parseInt(workHourRef.current?.value!),
+            workStartDay: workStartDayRef.current?.value!,
+            workEndDay: workEndDayRef.current?.value!,
+            pay: Number.parseInt(payRef.current?.value!),
+            edu: eduRef.current?.value!,
+        }
+        console.log(hire);
 
-        // dispatch(registHire(hire))
-        // .then(unwrapResult)
-        // .then(()=>{
-        //    dispatch(setHire(INIT_HIRE));
-        //    setIsOk(true);
-        // })
-        setIsOk(true);
+        dispatch(registHire(hire))
+        .then(unwrapResult)
+        .then(()=>{
+           setIsOk(true);
+        }).catch((err:Error)=>{
+            alert(err.message);
+        })
     }
 
     return (
@@ -71,18 +76,8 @@ const EventHireRegist = () => {
                     <>
                         <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2">
                             <RegistInput title={"공고명"} ref={workNameRef} />
-                            <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0 text-[15px] font-bold text-center text-white items-center">
-                                <p className="w-fit h-fit flex-shrink-0">
-                                    행사 시작일시
-                                </p>
-                                <DatePicker title={""} date={startDate} setDate={(date: Date) => { setStartDate(date) }} />
-                            </div>
-                            <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
-                                <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
-                                    행사 종료일시
-                                </p>
-                                <DatePicker title={""} date={endDate} setDate={(date: Date) => { setEndDate(date) }} />
-                            </div>
+                            <RegistInput title="근무 시작일" ref={workStartDayRef} value={today} type="date"/>
+                            <RegistInput title="근무 종료일" ref={workEndDayRef} value={today} type="date"/>
                             <RegistInput title={"근무 시간"} ref={workHourRef} />
                             <RegistInput title={"시급"} ref={payRef} />
                             <RegistInput title={"대표 문의처"} ref={inqRef} />

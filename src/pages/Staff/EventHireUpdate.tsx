@@ -26,8 +26,8 @@ const EventHireUpdate = () => {
     const dispatch: any = useDispatch();
     const navigate = useNavigate();
 
-    const [startDate, setStartDate] = useState<Date | null>(new Date(hireData?.workStartDate));
-    const [endDate, setEndDate] = useState<Date | null>(new Date(hireData?.workEndDate));
+    const [startDate, setStartDate] = useState<Date | null>(new Date(hireData?.workStartDay));
+    const [endDate, setEndDate] = useState<Date | null>(new Date(hireData?.workEndDay));
 
     const handleUpdate = () => {
         // const hire : Hire = {

@@ -14,7 +14,7 @@ const AttendList = ({ attend }: props) => {
                 {attend.attId}
             </div>
             <div className="w-[90px] h-[50px] overflow-hidden border-r  border-white text-xl font-bold text-center text-white flex flex-shrink-0 items-center justify-center">
-                {attend.hireId}
+                {attend.attHireId}
             </div>
             <div className="w-[90px] h-[50px] overflow-hidden  border-r border-white text-xl font-bold text-center text-white flex flex-shrink-0 items-center justify-center">
                 {attend.attStartDatetime}

@@ -15,19 +15,18 @@ const TicketRegister = () => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const user: User = useSelector((state: any) => state.auth?.data);
+    const ticket = useSelector((state:any)=>state.ticket);
     const dispatch: any = useDispatch();
     const navigate = useNavigate();
 
     const handleRegist = () => {
-        // dispatch(registTicket(Number.parseInt(inputRef.current?.value!)))
-        //     .then(unwrapResult)
-        //     .then(() => {
-        //         dispatch(getTicketList(user.email));
-        //         setIsOk(true);
-        //         // navigate("/member");
-        //     }).catch((err:Error)=>{
-        //         alert(err.message);
-        //     })
+        dispatch(registTicket(Number.parseInt(inputRef.current?.value!)))
+            .then(unwrapResult)
+            .then(() => {
+                setIsOk(true);
+            }).catch((err:Error)=>{
+                alert(err.message);
+            })
         setIsOk(true);
     }
 
@@ -57,7 +56,7 @@ const TicketRegister = () => {
                             <input ref={inputRef} className="w-full h-[49px] overflow-hidden rounded-lg flex" placeholder="000000" />
                         </div>
                         <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-center items-center px-10">
-                            <Button title="Send" type="default" func={() => { handleRegist() }} />
+                            <Button title="Send" type="default" func={() => { handleRegist() }} loading={ticket.loading} />
                         </div>
                     </>
                 }

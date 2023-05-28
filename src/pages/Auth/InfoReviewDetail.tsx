@@ -52,9 +52,9 @@ const InfoReviewDetail = () => {
 
     const handleRegist = () => {
         const review: RegistReview = {
-            ticketId: ticket.ticketId,
-            eventId: ticket.eventId,
-            conpanyId: ticket.companyId,
+            reviewTicketId: ticket.ticketId,
+            reviewEventId: ticket.ticketEventId,
+            reviewCompanyId: ticket.ticketCompanyId,
             rateFacilChair: facilChair,
             rateFacilRest: facilRest,
             rateStaffIn: staffIn,

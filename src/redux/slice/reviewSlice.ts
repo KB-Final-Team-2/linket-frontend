@@ -13,8 +13,7 @@ export const getReview = createAsyncThunk("getReview", async (reviewId: number, 
 
 export const getEventReview = createAsyncThunk("getEventReview", async (eventId:number, {rejectWithValue})=>{
     try {
-        // const reviewData : Review = (await axios.get(`/api/review/${eventId}`)).data || INIT_REVIEW;
-        const reviewData = INIT_REVIEW;
+        const reviewData : Review = (await axios.get(`/api/review/${eventId}`)).data || INIT_REVIEW;
         return reviewData;
     } catch (error) {
         rejectWithValue(error);
@@ -33,8 +32,7 @@ export const getReviewList = createAsyncThunk("getReviewLIst", async (email: str
 
 export const getEventReviewList = createAsyncThunk("getEventReviewList", async (eventId: number, { rejectWithValue }) => {
     try {
-        // const reviewList = (await axios.get(`/api/ticket/event/${eventId}`)).data;
-        const eventReviewList = [DUMMY_EVENT_REVIEW, DUMMY_EVENT_REVIEW, DUMMY_EVENT_REVIEW, DUMMY_EVENT_REVIEW];
+        const eventReviewList = (await axios.get(`/api/review/staff/${eventId}/status`)).data;
         return eventReviewList;
     } catch (error) {
         rejectWithValue(error);
@@ -43,7 +41,7 @@ export const getEventReviewList = createAsyncThunk("getEventReviewList", async (
 
 export const registReview = createAsyncThunk("registReview", async (review: RegistReview, { rejectWithValue }) => {
     try {
-        const result = (await axios.post("/api/review/regist", review)).data;
+        const result = (await axios.post(`/api/review/member/${review.reviewTicketId}/review`, review)).data;
         return result;
     } catch (error) {
         rejectWithValue(error);

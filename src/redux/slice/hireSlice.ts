@@ -4,8 +4,8 @@ import { DUMMY_HIRE1, DUMMY_HIRE2, Hire, INIT_HIRE, RegistHire } from "../../int
 
 export const getHire = createAsyncThunk("getHireState", async (hireId: number, { rejectWithValue }) => {
     try {
-        const eventData = (await axios.get(`/api/hire/${hireId}`)).data;
-        return eventData;
+        let hireData = (await axios.get(`/api/event/hire/getHire/${hireId}`)).data;
+        return hireData;
     } catch (error) {
         rejectWithValue(error);
     }
@@ -13,8 +13,8 @@ export const getHire = createAsyncThunk("getHireState", async (hireId: number, {
 
 export const getHireList = createAsyncThunk("getHireList", async (eventId: number, { rejectWithValue, dispatch }) => {
     try {
-        const eventList = (await axios.get(`/api/hire/${eventId}`)).data;
-        return eventList;
+        const eventHireList = (await axios.get(`/api/event/hire/getAllHires/${eventId}`)).data;
+        return eventHireList;
     } catch (error) {
         rejectWithValue(error);
     }
@@ -22,7 +22,7 @@ export const getHireList = createAsyncThunk("getHireList", async (eventId: numbe
 
 export const registHire = createAsyncThunk("registHire", (hire: RegistHire, { rejectWithValue }) => {
     try {
-        const result = axios.post(`/api/hire/regist`, hire);
+        const result = axios.post(`/api/event/hire/registerHire`, hire);
         return result;
     } catch (error) {
         rejectWithValue(error);

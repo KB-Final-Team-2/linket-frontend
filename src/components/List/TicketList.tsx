@@ -17,7 +17,6 @@ const TicketList = ({ ticket }: props) => {
             style={{
                 background: `url(${TicketBackground})`
             }}
-            // onClick={() => { dispatch(getTicket(ticket.ticketId)) }}
             onClick={() => { dispatch(setTicket(ticket)) }}
         >
             <div className="w-[60px] h-[30px] rotate-90 overflow-hidden flex place-content-center flex-shrink-0">

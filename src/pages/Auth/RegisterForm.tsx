@@ -51,7 +51,7 @@ const RegisterForm = (props: props) => {
     const [phone, setPhone] = useState("");
     const [companyId, setCompanyId] = useState("");
     const [gender, setGender] = useState("");
-    const [birthDate, setBirthDate] = useState(new Date());
+    const [birthdate, setBirthdate] = useState("1990-01-01");
     const [isOk, setIsOk] = useState(false);
     const [samePassword, setSamePassword] = useState(false);
     const [viewInfo, setViewInfo] = useState(false);
@@ -62,11 +62,14 @@ const RegisterForm = (props: props) => {
     const navigate = useNavigate();
 
     const handleRegist = () => {
-        const registData: RegistUser = { email, password, userName, phone, gender, birthDate: "12345678", role: props.role, companyId };
+        const registData: RegistUser = { email, password, userName, phone, gender, birthdate, role: props.role, companyId };
+        console.log(registData);
         dispatch(register(registData))
             .then(unwrapResult)
             .then(() => {
                 setIsOk(true);
+            }).catch((err:Error)=>{
+                alert(err.message);
             })
     }
 
@@ -121,7 +124,7 @@ const RegisterForm = (props: props) => {
                                             <div className=" w-24 flex-shrink-0">
                                                 생년월일
                                             </div>
-                                            <DatePicker title={""} date={birthDate} setDate={(date: Date) => { setBirthDate(date) }} />
+                                            <input type="date" value={birthdate} onChange={(e) => { setBirthdate(e.target.value) }} />
                                         </div>
                                         <div className="w-[331px] h-[37px] overflow-hidden flex text-[15px] font-bold text-center text-white">
                                             <div className=" w-24 flex-shrink-0">
@@ -132,7 +135,12 @@ const RegisterForm = (props: props) => {
                                                 <SelectButton title="Woman" func={() => setGender("W")} state={gender == "W"} />
                                             </div>
                                         </div>
-                                        <RegistList title="연락처" data={phone} setFunc={(data: string) => { setPhone(data) }} />
+                                        <div className="w-[331px] h-[37px] overflow-hidden flex text-[15px] font-bold text-center text-white">
+                                            <div className=" w-24 flex-shrink-0">
+                                                연락처
+                                            </div>
+                                            <input type="tel" value={phone} onChange={(e) => { setPhone(e.target.value) }} />
+                                        </div>
                                         {props.role == "staff" && (<RegistList title="기업 코드" data={companyId} setFunc={(data: string) => { setCompanyId(data) }} />)}
                                     </>
                                     :

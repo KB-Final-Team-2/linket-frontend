@@ -40,7 +40,7 @@ const EventInfo = () => {
         <div className="w-[830px] h-[920px] overflow-hidden bg-black/25 flex flex-col flex-shrink-0 flex-grow-0 justify-start">
             <div className="w-[830px] h-[100px] overflow-hidden border-t-0 border-r-0 border-b-2 border-l-0 border-white">
                 <div className="w-[830px] h-[35px] overflow-hidden">
-                    <p className="text-3xl font-bold text-left text-secondary">
+                    <p className="text-3xl font-bold text-left text-primary-200">
                         {event.eventType}
                     </p>
                 </div>

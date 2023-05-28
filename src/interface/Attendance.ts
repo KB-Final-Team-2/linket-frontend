@@ -2,10 +2,10 @@ import { User } from "./User";
 
 export interface Attend {
     attId: number;
-    hireId: number;
-    eventId: number;
-    companyId: number;
-    email: string;
+    attHireId: number;
+    attEventId: number;
+    attCompanyId: number;
+    attEmail: string;
     attDate: string;
     attStartDatetime: string;
     attEndDatetime: string;
@@ -30,10 +30,10 @@ export const INIT_ATTD: Attend = {
     attEndDatetime: "",
     attStartBnt: false,
     attEndBnt: false,
-    hireId: -1,
-    eventId: -1,
-    companyId: -1,
-    email: ""
+    attHireId: -1,
+    attEventId: -1,
+    attCompanyId: -1,
+    attEmail: ""
 }
 
 export const DUMMY_ATTD: Attend = {
@@ -43,10 +43,10 @@ export const DUMMY_ATTD: Attend = {
     attEndDatetime: "",
     attStartBnt: false,
     attEndBnt: false,
-    hireId: 1,
-    eventId: 1,
-    companyId: 1,
-    email: "part@test.com"
+    attHireId: 1,
+    attEventId: 1,
+    attCompanyId: 1,
+    attEmail: "part@test.com"
 }
 
 export const DUMMY_ATTD2: Attend = {
@@ -56,10 +56,10 @@ export const DUMMY_ATTD2: Attend = {
     attEndDatetime: "",
     attStartBnt: false,
     attEndBnt: false,
-    hireId: 2,
-    eventId: 2,
-    companyId: 2,
-    email: "part@test.com"
+    attHireId: 2,
+    attEventId: 2,
+    attCompanyId: 2,
+    attEmail: "part@test.com"
 }
 
 export const DUMMY_ATTDWITHUSER: AttendWithUser = {
@@ -69,13 +69,13 @@ export const DUMMY_ATTDWITHUSER: AttendWithUser = {
     attEndDatetime: "",
     attStartBnt: false,
     attEndBnt: false,
-    hireId: 1,
-    eventId: 1,
-    companyId: 1,
-    email: "part@test.com",
+    attHireId: 1,
+    attEventId: 1,
+    attCompanyId: 1,
+    attEmail: "part@test.com",
     password: "1234",
     userName: "Part",
-    birthDate: "2023-05-18",
+    birthdate: "2023-05-18",
     phone: "010-1234-1234",
     gender: "M",
     role: "part",
@@ -85,6 +85,8 @@ export const DUMMY_ATTDWITHUSER: AttendWithUser = {
     withdrawDate: "",
     enable: "",
     lastUpdatedDate: "",
+    email: "",
+    userCompanyId: 0
 }
 
 export const DUMMY_ATTDWITHUSER2: AttendWithUser = {
@@ -94,13 +96,13 @@ export const DUMMY_ATTDWITHUSER2: AttendWithUser = {
     attEndDatetime: "",
     attStartBnt: false,
     attEndBnt: false,
-    hireId: 1,
-    eventId: 1,
-    companyId: 1,
-    email: "part@test.com",
+    attHireId: 1,
+    attEventId: 1,
+    attCompanyId: 1,
+    attEmail: "part@test.com",
     password: "1234",
     userName: "Part2",
-    birthDate: "2023-05-18",
+    birthdate: "2023-05-18",
     phone: "010-1234-1234",
     gender: "M",
     role: "part",
@@ -110,4 +112,6 @@ export const DUMMY_ATTDWITHUSER2: AttendWithUser = {
     withdrawDate: "",
     enable: "",
     lastUpdatedDate: "",
+    email: "",
+    userCompanyId: 0
 }

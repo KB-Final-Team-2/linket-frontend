@@ -3,9 +3,9 @@ import { DUMMY_MEMBER, INIT_USER, User } from "./User";
 
 export interface Ticket {
     ticketId: number;
-    eventId: number;
-    companyId: number;
-    email: string;
+    ticketEventId: number;
+    ticketCompanyId: number;
+    ticketEmail: string;
     serialNum: string;
     ticketReg: string;
     ticketStatus: string;
@@ -20,9 +20,9 @@ export interface TicketWithUser extends Ticket, User {};
 
 export const DUMMY_TICKETWITHEVENT : TicketWithEvent = {
     ticketId: 1,
-    eventId: 1,
-    companyId: 1,
-    email: "member@test.com",
+    ticketEventId: 1,
+    ticketCompanyId: 1,
+    ticketEmail: "member@test.com",
     serialNum: "123456",
     ticketReg: "Y",
     ticketStatus: "Y",
@@ -39,14 +39,16 @@ export const DUMMY_TICKETWITHEVENT : TicketWithEvent = {
     endDate: "2023.05.17",
     deletedDate: "",
     seat: "s",
-    link: ""
+    link: "",
+    eventId: 1,
+    eventCompanyId: 0
 }
 
 export const INIT_TICKET : Ticket = {
     ticketId: -1,
-    eventId: -1,
-    companyId: -1,
-    email: "",
+    ticketEventId: -1,
+    ticketCompanyId: -1,
+    ticketEmail: "",
     serialNum: "",
     ticketReg: "",
     ticketStatus: "",
@@ -57,9 +59,9 @@ export const INIT_TICKET : Ticket = {
 
 export const DUMMY_TICKET1 : Ticket = {
     ticketId: 1,
-    eventId: 1,
-    companyId: 1,
-    email: "member@test.com",
+    ticketEventId: 1,
+    ticketCompanyId: 1,
+    ticketEmail: "member@test.com",
     serialNum: "123456",
     ticketReg: "Y",
     ticketStatus: "Y",
@@ -70,9 +72,9 @@ export const DUMMY_TICKET1 : Ticket = {
 
 export const DUMMY_TICKET2 : Ticket = {
     ticketId: 2,
-    eventId: 1,
-    companyId: 1,
-    email: "member2@test.com",
+    ticketEventId: 1,
+    ticketCompanyId: 1,
+    ticketEmail: "member2@test.com",
     serialNum: "12345678",
     ticketReg: "Y",
     ticketStatus: "Y",
@@ -83,9 +85,9 @@ export const DUMMY_TICKET2 : Ticket = {
 
 export const DUMMY_TICKETWITHUSER : TicketWithUser = {
     ticketId: 1,
-    eventId: 1,
-    companyId: 1,
-    email: "member@test.com",
+    ticketEventId: 1,
+    ticketCompanyId: 1,
+    ticketEmail: "member@test.com",
     serialNum: "123456",
     ticketReg: "Y",
     ticketStatus: "Y",
@@ -93,7 +95,7 @@ export const DUMMY_TICKETWITHUSER : TicketWithUser = {
     lastUpdatedDate: "",
     password: "1234",
     userName: "Member",
-    birthDate: "2023-05-18",
+    birthdate: "2023-05-18",
     phone: "010-1234-1234",
     gender: "M",
     role: "member",
@@ -101,5 +103,7 @@ export const DUMMY_TICKETWITHUSER : TicketWithUser = {
     account: "",
     withdrawDate: "",
     enable: "",
-    seat: "s"
+    seat: "s",
+    email: "",
+    userCompanyId: 0
 }

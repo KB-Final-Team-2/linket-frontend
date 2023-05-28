@@ -39,7 +39,7 @@ const EventContinueDetail = () => {
                         행사 설명
                     </p>
                     <p className="w-[215px] h-full text-[15px] font-bold text-center text-white text-place-center">
-                        {event.eventDesc}
+                        {eventData.eventDesc}
                     </p>
                 </div>
                 <div className="w-full h-[158px] flex flex-col flex-shrink-0 justify-between">

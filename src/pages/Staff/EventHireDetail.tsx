@@ -17,7 +17,7 @@ const EventHireDetail = () => {
     const list: ListProps[] = [
         { title: "공고 번호", content: `${hire?.hireId}` },
         { title: "공고명", content: hire?.workName },
-        { title: "근무 기간", content: `${hire?.workStartDate} ~ ${hire?.workEndDate}` },
+        { title: "근무 기간", content: `${hire.workStartDay.split("-").slice(0,3).join("-")} ~ ${hire.workStartDay.split("-").slice(0,3).join("-")}` },
         { title: "근무 시간", content: `${hire?.workHour}` },
         { title: "시급", content: `${hire?.pay}` },
         { title: "등록 코드", content: `${hire?.hireId}` },

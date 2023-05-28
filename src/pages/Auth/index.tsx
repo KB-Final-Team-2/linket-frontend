@@ -24,42 +24,43 @@ const Login = () => {
 	}, [user])
 
 	const handleLogin = () => {
-		// axios.post("/api/auth/login",{email, password})
-		// .then((res)=>{
-		// 	const user : User = res.data;
-		// 	dispatch(setUser(user));
-		// 	navigate(`/${user.role}`);
-		// }).catch((err)=>{
-		// 	console.log(err)
-		// })
-		const staff = {
-			email: "staff",
-			password: "1234",
-			role: "staff",
-			user: DUMMY_STAFF,
-		};
+		axios.post("/api/auth/login",{email, password})
+		.then((res)=>{
+			const user : User = res.data;
+			dispatch(setUser(user));
+			console.log(user);
+			navigate(`/${user.role}`);
+		}).catch((err)=>{
+			console.log(err)
+		})
+		// const staff = {
+		// 	email: "staff",
+		// 	password: "1234",
+		// 	role: "staff",
+		// 	user: DUMMY_STAFF,
+		// };
 
-		const member = {
-			email: "member",
-			password: "1234",
-			role: "member",
-			user: DUMMY_MEMBER,
-		}
+		// const member = {
+		// 	email: "member",
+		// 	password: "1234",
+		// 	role: "member",
+		// 	user: DUMMY_MEMBER,
+		// }
 
-		const part = {
-			email: "part",
-			password: "1234",
-			role: "part",
-			user: DUMMY_PART,
-		}
+		// const part = {
+		// 	email: "part",
+		// 	password: "1234",
+		// 	role: "part",
+		// 	user: DUMMY_PART,
+		// }
 
-		const userList = [staff, member, part];
+		// const userList = [staff, member, part];
 
-		const userData = userList.filter((el) => el.email === email && el.password === password)[0];
-		if (userData !== undefined) {
-			dispatch(setUser(userData.user));
-			navigate(`/${userData.role}`);
-		}
+		// const userData = userList.filter((el) => el.email === email && el.password === password)[0];
+		// if (userData !== undefined) {
+		// 	dispatch(setUser(userData.user));
+		// 	navigate(`/${userData.role}`);
+		// }
 	}
 
 	const testAuth = async () => {

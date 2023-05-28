@@ -5,13 +5,14 @@ import Templete from "../Templete";
 import { useDispatch, useSelector } from "react-redux";
 import { Ticket, TicketWithEvent } from "../../interface/Ticket";
 import TicketList from "../../components/List/TicketList";
-import { setTicket } from "../../redux/slice/ticketSlice";
+import { getUserTicketList, setTicket } from "../../redux/slice/ticketSlice";
 import TicketDetail from "./TicketDetail";
 import { useEffect } from "react";
 import { getEvent, setEvent } from "../../redux/slice/eventSlice";
 import { DUMMY_EVENT1 } from "../../interface/Event";
 import { HiPlus } from "react-icons/hi";
 import Content from "../Templete/Content";
+import { CgSpinner } from "react-icons/cg";
 
 const Member = () => {
 	const user = useSelector((state: any) => state.auth.data);
@@ -22,15 +23,8 @@ const Member = () => {
 	const userTicketList: TicketWithEvent[] = ticket?.userTicketList;
 
 	useEffect(() => {
-		// dispatch(getUserTicketList(user.email));
+		dispatch(getUserTicketList(user.email));
 	}, [user])
-
-	const handleTicket = (ticket: Ticket) => {
-		// dispatch(getTicket(ticket.ticketId));
-		// dispatch(getEvent(ticket.eventId));
-		dispatch(setTicket(ticket));
-		dispatch(setEvent(DUMMY_EVENT1));
-	}
 
 	return (
 		<Templete>
@@ -44,7 +38,13 @@ const Member = () => {
 							<HiPlus className="text-4xl" onClick={() => { navigate("/member/register") }} />
 						</div>
 						<div className="w-full h-full overflow-auto flex flex-col gap-3 custom-toolbar px-5">
-							{userTicketList.length === 0
+							{ticket.loading
+							?
+							<div className="flex w-full h-full text-place-center">
+								<CgSpinner className="animate-spin text-4xl"/>
+							</div>
+							:
+							(userTicketList.length === 0
 								?
 								<div className="w-full h-full text-center flex flex-col justify-center items-center text-2xl gap-10">
 									<svg
@@ -72,7 +72,7 @@ const Member = () => {
 								:
 								(userTicketList.map((ticket, i) => (
 									<TicketList key={i} ticket={ticket} />
-								)))
+								))))
 							}
 						</div>
 					</Content>

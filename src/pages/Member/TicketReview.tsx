@@ -10,7 +10,7 @@ import { Event } from "../../interface/Event";
 import { FuncListProps } from "../../interface/props";
 import { useState } from "react";
 import { RegistReview, Review } from "../../interface/Review";
-import { Ticket } from "../../interface/Ticket";
+import { Ticket, TicketWithEvent } from "../../interface/Ticket";
 import { getTicket } from "../../redux/slice/ticketSlice";
 import { getEventReview, registReview } from "../../redux/slice/reviewSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -51,17 +51,17 @@ const TicketReview = () => {
     const [isOk, setIsOk] = useState(false);
 
     const user: User = useSelector((state: any) => state.auth.data);
-    const event: Event = useSelector((state: any) => state.event?.data);
-    const ticket: Ticket = useSelector((state: any) => state.ticket?.data);
+    const ticket = useSelector((state:any)=>state.ticket);
+    const ticketData: TicketWithEvent = ticket.data;
     const review: Review = useSelector((state: any) => state.review?.data);
     const dispatch: any = useDispatch();
     const navigate = useNavigate();
 
     const handleRegist = () => {
         const review: RegistReview = {
-            ticketId: ticket.ticketId,
-            eventId: ticket.eventId,
-            conpanyId: ticket.companyId,
+            reviewTicketId: ticketData.ticketId,
+            reviewEventId: ticketData.ticketEventId,
+            reviewCompanyId: ticketData.ticketCompanyId,
             rateFacilChair: facilChair,
             rateFacilRest: facilRest,
             rateStaffIn: staffIn,
@@ -71,12 +71,15 @@ const TicketReview = () => {
             reviewEtc: etc,
         }
 
-        // dispatch(registReview(review))
-        //     .then(unwrapResult)
-        //     .then(() => {
-        //         setIsOk(true);
-        //     })
-        setIsOk(true);
+        console.log(review);
+
+        dispatch(registReview(review))
+            .then(unwrapResult)
+            .then((res:string) => {
+                setIsOk(true);
+            }).catch((err:Error)=>{
+                alert(err.message);
+            })
     }
 
     return (
@@ -99,7 +102,7 @@ const TicketReview = () => {
                         </>
                         :
                         <>
-                            <TableInfo title={"행사명"} content={event.eventName} />
+                            <TableInfo title={"행사명"} content={ticketData.eventName} />
                             {viewEtc
                                 ?
                                 <div className="flex flex-col justify-start items-center w-[330px] h-[543px] overflow-hidden">
@@ -117,7 +120,7 @@ const TicketReview = () => {
                                     </div>
                                     <div className="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 h-[92px] relative overflow-hidden gap-[58px] p-2.5">
                                         <Button title="return" type="default" func={() => { setViewEtc(false) }} />
-                                        <Button title="send" type="default" func={() => { handleRegist() }} />
+                                        <Button title="send" type="default" func={() => { handleRegist() }} loading={ticket.loading}/>
                                     </div>
                                 </div>
                                 :
@@ -129,7 +132,7 @@ const TicketReview = () => {
                                     <ReviewList title="행사 구성은 만족스러웠나요?" func={(score: number) => { setEventContent(score) }} score={eventContent} />
                                     <ReviewList title="행사 진행은 매끄러웠나요?" func={(score: number) => { setEventGo(score) }} score={eventGo} />
                                     <div className="flex justify-center items-center self-stretch w-full h-full">
-                                        <Button title={"Next"} type={"default"} func={() => { setViewEtc(true) }} />
+                                        <Button title={"Next"} type={"default"} func={() => { setViewEtc(true) }}/>
                                     </div>
                                 </div>
                             }

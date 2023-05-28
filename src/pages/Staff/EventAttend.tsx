@@ -22,8 +22,14 @@ const EventAttend = () => {
     const dispatch: any = useDispatch();
 
     useEffect(() => {
-        dispatch(setAttend(INIT_ATTD));
-        dispatch(getEventAttendList(event.eventId));
+        console.log(event.eventId);
+        dispatch(getEventAttendList(event.eventId))
+        .then(unwrapResult)
+        .then(()=>{
+
+        }).catch((err:Error)=>{
+            alert(err.message);
+        });
     }, [])
 
     return (

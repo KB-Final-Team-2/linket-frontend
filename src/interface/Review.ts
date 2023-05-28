@@ -3,9 +3,9 @@ import { User } from "./User";
 
 export interface Review {
     reviewId: number;
-    ticketId: number;
-    eventId: number;
-    conpanyId: number;
+    reviewTicketId: number;
+    reviewEventId: number;
+    reviewConpanyId: number;
     rateFacilChair: number;
     rateFacilRest: number;
     rateStaffIn: number;
@@ -17,9 +17,9 @@ export interface Review {
 };
 
 export interface RegistReview {
-    ticketId: number;
-    eventId: number;
-    conpanyId: number;
+    reviewTicketId: number;
+    reviewEventId: number;
+    reviewCompanyId: number;
     rateFacilChair: number;
     rateFacilRest: number;
     rateStaffIn: number;
@@ -35,9 +35,9 @@ export interface ReviewWithEvent extends Review, Event {};
 
 export const INIT_REVIEW : Review = {
     reviewId: -1,
-    ticketId: -1,
-    eventId: -1,
-    conpanyId: -1,
+    reviewTicketId: -1,
+    reviewEventId: -1,
+    reviewConpanyId: -1,
     rateFacilChair: -1,
     rateFacilRest: -1,
     rateStaffIn: -1,
@@ -50,9 +50,9 @@ export const INIT_REVIEW : Review = {
 
 export const DUMMY_REVIEW : Review = {
     reviewId: 1,
-    ticketId: 1,
-    eventId: 1,
-    conpanyId: 1,
+    reviewTicketId: 1,
+    reviewEventId: 1,
+    reviewConpanyId: 1,
     rateFacilChair: 5,
     rateFacilRest: 5,
     rateStaffIn: 5,
@@ -65,9 +65,9 @@ export const DUMMY_REVIEW : Review = {
 
 export const DUMMY_EVENT_REVIEW : ReviewWithUser = {
     reviewId: 1,
-    ticketId: 1,
-    eventId: 1,
-    conpanyId: 1,
+    reviewTicketId: 1,
+    reviewEventId: 1,
+    reviewConpanyId: 1,
     rateFacilChair: 5,
     rateFacilRest: 5,
     rateStaffIn: 5,
@@ -79,7 +79,7 @@ export const DUMMY_EVENT_REVIEW : ReviewWithUser = {
     email: "member@email.com",
     password: "1234",
     userName: "Member",
-    birthDate: "2023-05-18",
+    birthdate: "2023-05-18",
     phone: "010-1234-1234",
     gender: "M",
     role: "member",
@@ -88,14 +88,14 @@ export const DUMMY_EVENT_REVIEW : ReviewWithUser = {
     withdrawDate: "",
     enable: "",
     lastUpdatedDate: "",
-    companyId: -1
+    userCompanyId: -1
 }
 
 export const DUMMY_REVIEWWITHEVENT : ReviewWithEvent = {
     reviewId: 1,
-    ticketId: 1,
-    eventId: 1,
-    conpanyId: 1,
+    reviewTicketId: 1,
+    reviewEventId: 1,
+    reviewConpanyId: 1,
     rateFacilChair: 5,
     rateFacilRest: 5,
     rateStaffIn: 5,
@@ -113,8 +113,9 @@ export const DUMMY_REVIEWWITHEVENT : ReviewWithEvent = {
     eventStatus: "Y",
     startDate: "2023.05.17",
     endDate: "2023.05.17",
-    companyId: 0,
+    eventCompanyId: 0,
     lastUpdatedDate: "",
     deletedDate: "",
-    link: ""
+    link: "",
+    eventId: 0
 }

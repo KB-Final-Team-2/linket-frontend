@@ -15,7 +15,7 @@ const UserInfo = () => {
             <Content>
                 <LargeList title="이름" content={user.userName} />
                 <LargeList title="이메일" content={user.email} />
-                <LargeList title="생일" content={user.birthDate} />
+                <LargeList title="생일" content={user.birthdate} />
                 <LargeList title="성별" content={user.gender} />
                 <LargeList title="연락처" content={user.phone} />
             </Content>

@@ -13,7 +13,7 @@ export const getEvent = createAsyncThunk("getEventState", async (eventId: number
 
 export const getEventList = createAsyncThunk("getEventList", async (companyId:number, {rejectWithValue, dispatch})=>{
     try {
-        const eventList = (await axios.get(`/api/event/${companyId}`)).data;
+        const eventList = (await axios.get(`/api/event/getAllEvents/${companyId}`)).data;
         return eventList;
     } catch (error) {
         rejectWithValue(error);
@@ -22,7 +22,7 @@ export const getEventList = createAsyncThunk("getEventList", async (companyId:nu
 
 export const registEvent = createAsyncThunk("registEvent", (event:RegistEvent, {rejectWithValue})=>{
     try {
-        const result = axios.post(`/api/event/regist`, event);
+        const result = axios.post(`/api/event/register`, {event});
         return result;
     } catch (error) {
         rejectWithValue(error);
@@ -51,7 +51,7 @@ const eventSlice = createSlice({
     name: "event",
     initialState: {
         data: INIT_EVENT,
-        list: [DUMMY_EVENT1, DUMMY_EVENT2],
+        list: [],
         loading: false,
     },
     reducers: {

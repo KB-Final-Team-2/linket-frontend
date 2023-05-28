@@ -21,9 +21,7 @@ const Staff = () => {
 	const dispatch: any = useDispatch();
 
 	useEffect(() => {
-		// dispatch(getEventList(user.companyId))
-		const list = [DUMMY_EVENT1, DUMMY_EVENT2];
-		dispatch(setEventList(list));
+		dispatch(getEventList(user.userCompanyId))
 	}, [])
 
 	return (
@@ -33,7 +31,7 @@ const Staff = () => {
 					<>
 						<IndexHeader title="User Name" />
 						<Content>
-							<p className="w-full h-10 text-sm font-bold text-center text-secondary flex justify-start items-center px-3">
+							<p className="w-full h-10 text-sm font-bold text-center text-primary-200 flex justify-start items-center px-3">
 								등록 행사
 							</p>
 							<div className="w-[331px] h-full overflow-auto flex flex-col border-t">

@@ -22,7 +22,7 @@ const EventHireDelete = () => {
 
     const list = [
         { title: "공고명", content: hireData?.workName },
-        { title: "근무 기간", content: `${hireData?.workStartDate} ~ ${hireData?.workEndDate}` },
+        { title: "근무 기간", content: `${hireData?.workStartDay} ~ ${hireData?.workEndDay}` },
         { title: "근무 시간", content: `${hireData?.workHour}` },
         { title: "등록 일자", content: `${hireData?.regDate}` }
     ]

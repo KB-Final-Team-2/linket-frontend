@@ -66,7 +66,7 @@ const EventHire = () => {
     const infoList: ListInfo[] = [
         { title: "공고 번호", content: `${idx}` },
         { title: "공고명", content: hire?.workName },
-        { title: "근무일", content: `${hire?.workStartDate} ~ ${hire?.workEndDate}` },
+        { title: "근무일", content: `${hire?.workStartDay} ~ ${hire?.workEndDay}` },
         { title: "근무 시간", content: `${hire?.workHour}` },
         { title: "시급", content: `${hire?.pay}` },
         { title: "등록 코드", content: `${hire?.hireId}` },

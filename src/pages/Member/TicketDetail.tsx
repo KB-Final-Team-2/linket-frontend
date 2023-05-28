@@ -13,7 +13,7 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import { INIT_REVIEW, Review } from "../../interface/Review";
 
 const TicketDetail = () => {
-    const [isReview, setIsReview] = useState(true);
+    const [isReview, setIsReview] = useState(false);
     const user: User = useSelector((state: any) => state.auth.data);
     const ticket: TicketWithEvent = useSelector((state: any) => state.ticket.data);
     const dispatch: any = useDispatch();
@@ -25,11 +25,11 @@ const TicketDetail = () => {
     })
 
     const handleReview = () => {
-        dispatch(getEventReview(ticket.eventId))
-            .then(unwrapResult)
-            .then((res: Review) => {
-                setIsReview(res === INIT_REVIEW ? false : true)
-            })
+        // dispatch(getEventReview(ticket.eventId))
+        //     .then(unwrapResult)
+        //     .then((res: Review) => {
+        //         setIsReview(res === INIT_REVIEW ? false : true)
+        //     })
     }
 
     return (
@@ -41,7 +41,15 @@ const TicketDetail = () => {
                         <List title="행사명" content={ticket.eventName} />
                         <List title="행사 분류" content={ticket.eventType} />
                         <List title="행사 기간" content={`${ticket.startDate} ~ ${ticket.endDate}`} />
-                        <List title="행사 장소" content={ticket.place} />
+                        <div className="w-[331px] h-[37px] overflow-hidden border-b border-white flex flex-shrink-0">
+                            <p className=" w-[115px] h-[37px] text-[15px] font-bold text-center text-white flex justify-center items-center flex-shrink-0 flex-grow-0">
+                                행사 장소
+                            </p>
+                            <p className="w-[135px] h-[37px] text-[15px] font-bold text-center text-white flex justify-center items-center flex-shrink-0 flex-grow-0">
+                                {ticket.place}
+                            </p>
+                            <Button title="위치" type="default" func={()=>{navigate("/member/FC002465")}}/>
+                        </div>
                         <List title="좌석" content={ticket.seat} />
                         <List title="url" content={ticket.link} />
                         <div className="self-stretch w-[330px] h-full overflow-hidden border-b border-white flex items-center">

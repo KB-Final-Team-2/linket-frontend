@@ -20,14 +20,11 @@ const EventHire = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // dispatch(getHireList(event.eventId));
-        const list = [DUMMY_HIRE1, DUMMY_HIRE2];
-        dispatch(setHireList(list));
+        dispatch(getHireList(event.eventId));
     }, [])
 
     const handleHire = (hire: Hire) => {
-        // dispatch(getHire(hire.hireId));
-        dispatch(setHire(hire));
+        dispatch(getHire(hire.hireId));
     }
 
     return (
