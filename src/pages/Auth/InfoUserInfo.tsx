@@ -2,26 +2,25 @@ import { useSelector } from "react-redux";
 import Header from "../../components/Header/Header";
 import LargeList from "../../components/List/LargeList";
 import NavBar from "../../components/NavBar/NavBar";
-import { DUMMY_COMPANY } from "../../interface/Company";
 import { User } from "../../interface/User";
+import Templete from "../Templete";
+import Content from "../Templete/Content";
 
 const UserInfo = () => {
-    const user: User = useSelector((state:any)=>state.auth.data);
+    const user: User = useSelector((state: any) => state.auth?.data);
 
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
+        <Templete>
             <Header title="회원 정보" />
-            <div className="w-[331px] h-full">
-                <div className="w-[331px] h-[582px] overflow-hidden border-y border-white">
-                    <LargeList title="이름" content={user.userName} />
-                    <LargeList title="이메일" content={user.email} />
-                    <LargeList title="생일" content={user.birthDate} />
-                    <LargeList title="성별" content={user.gender} />
-                    <LargeList title="연락처" content={user.phone} />
-                </div>
-            </div>
+            <Content>
+                <LargeList title="이름" content={user.userName} />
+                <LargeList title="이메일" content={user.email} />
+                <LargeList title="생일" content={user.birthdate} />
+                <LargeList title="성별" content={user.gender} />
+                <LargeList title="연락처" content={user.phone} />
+            </Content>
             <NavBar role="member" state="3" />
-        </div>
+        </Templete>
     )
 }
 

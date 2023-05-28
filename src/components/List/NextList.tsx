@@ -1,13 +1,11 @@
-import { Link } from "react-router-dom";
+import { FuncListProps } from "../../interface/props";
 
-interface props {
-    title: string,
-    link: string
-}
-
-const NextList = ({ title, link }: props) => {
+const NextList = ({ title, func }: FuncListProps) => {
     return (
-        <Link to={link} className="w-[331px] h-[37px] overflow-hidden flex flex-shrink-0 border-b">
+        <div
+            className="w-[331px] h-[37px] overflow-hidden flex flex-shrink-0 border-b"
+            onClick={()=>{func()}}
+            >
             <div className="w-[331px] h-[37px] overflow-hidden relative flex justify-between">
                 <div className="w-[331px] h-[37px] overflow-hidden">
                     <p className="w-full h-[37px] text-[15px] font-bold text-left text-white flex justify-start items-center pl-5">
@@ -33,7 +31,7 @@ const NextList = ({ title, link }: props) => {
                     </svg>
                 </div>
             </div>
-        </Link>
+        </div>
     )
 }
 

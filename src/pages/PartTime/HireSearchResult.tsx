@@ -1,11 +1,13 @@
-import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import NavBar from "../../components/NavBar/NavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { Hire } from "../../interface/Hire";
 import { User } from "../../interface/User";
-import { Link } from "react-router-dom";
 import { setHire } from "../../redux/slice/hireSlice";
+import Templete from "../Templete";
+import HireSearchDetail from "./HireSearchDetail";
+import { CgSpinner } from "react-icons/cg";
+import Content from "../Templete/Content";
 
 interface props {
     hire: Hire;
@@ -14,24 +16,23 @@ interface props {
 }
 
 const HireList = ({ hire, idx, func }: props) => {
-    const user: User = useSelector((state: any) => state.auth.data);
+    const user: User = useSelector((state: any) => state.auth?.data);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleHire = (hire: Hire) => {
         dispatch(setHire(hire));
-        navigate(`/part/search/${hire.hireId}`);
     }
 
     return (
+
         <div
-            className="w-[331px] h-[60px] overflow-hidden flex border-b"
+            className="w-full h-[60px] overflow-hidden flex border-b"
             onClick={() => { handleHire(hire) }}
         >
-            <div className="w-[60px] h-[60px] overflow-hidden flex-shrink-0 border-r text-[15px] font-bold text-center text-secondary flex justify-center items-center">
+            <div className="w-[60px] h-[60px] overflow-hidden flex-shrink-0 border-r text-[15px] font-bold text-center text-primary-200 text-place-center">
                 {idx + 1}
             </div>
-            <div className="w-[260px] h-[60px] overflow-hidden flex-shrink-0 text-[15px] font-bold text-center text-secondary flex justify-start items-center px-5">
+            <div className="w-[260px] h-[60px] overflow-hidden flex-shrink-0 text-[15px] font-bold text-center text-primary-200 flex justify-start items-center px-5">
                 {hire.workName}
             </div>
         </div>
@@ -39,25 +40,37 @@ const HireList = ({ hire, idx, func }: props) => {
 }
 
 const HireSearchResult = () => {
-    const navigate = useNavigate();
-
-    const hireList: Hire[] = useSelector((state: any) => state.hire.list);
+    const hire = useSelector((state: any) => state.hire);
+    const hireData: Hire = hire?.data;
+    const hireList: Hire[] = hire?.list;
 
     return (
-        <div className="w-[375px] h-[812px] overflow-hidden bg-background-dark flex flex-col justify-center items-center">
-            <Header title="공고 검색 결과" />
+        <Templete>
+            {hireData.hireId === -1
+                ?
 
-            <div className="w-[331px] h-full">
-                <div className="w-[330px] h-[580px] overflow-hidden border-t border-b">
-                    <div className="w-[330px] h-10 bg-background-light/30 rounded-lg shrink-0 mb-2 " />
-
-                    <div className="w-[330px] h-[465px] left-0 top-[115px] overflow-hidden">
-                        {hireList.map((hire, i) => (<HireList key={i} idx={i} hire={hire} />))}
-                    </div>
-                </div>
-            </div>
+                <>
+                    <Header title="공고 검색 결과" />
+                    <Content>
+                        <div className="w-[331px] h-10 bg-background-light/30 rounded-lg shrink-0 mb-2 " />
+                        <div className="w-[331px] h-[465px] overflow-auto flex flex-col">
+                            {hire?.loading
+                                ?
+                                <CgSpinner className="text-3xl animate-spin m-auto" />
+                                :
+                                <>
+                                    {hireList.map((hire, i) => (<HireList key={i} idx={i} hire={hire} />))}
+                                </>
+                            }
+                        </div>
+                    </Content>
+                </>
+                :
+                <HireSearchDetail />
+            }
             <NavBar role="member" state="1" />
-        </div>
+        </Templete>
     )
 }
+
 export default HireSearchResult;

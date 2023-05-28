@@ -1,42 +1,47 @@
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/Header/Header";
-import List from "../../components/List/List";
-import NavBar from "../../components/NavBar/NavBar";
 import Grid3Header from "../../components/Table/Grid3Header";
 import Grid3Row from "../../components/Table/Grid3Row";
 import TableInfo from "../../components/Table/TableInfo";
+import { Event } from "../../interface/Event";
+import { Attend, AttendWithUser } from "../../interface/Attendance";
+import { setAttend, setDate } from "../../redux/slice/attendSlice";
+import AttendToggle from "../../components/Button/AttendToggle";
+import { updateStart } from "../../redux/slice/attendSlice";
+import { updateEnd } from "../../redux/slice/attendSlice";
+import Content from "../Templete/Content";
 
 const AttendDetail = () => {
-    const event = {
-        eventTitle: "KB IT's Your Life",
-        startDate: "2023년 03월 02일",
-    }
-    const gridHeader = {
-        title: "이름",
-        content1: "출근",
-        content2: "퇴근"
-    }
-    const part = [
-        { name: "홍길동", attStartDatetime: "09:41", attEndDatetime: "X" },
-        { name: "길복순", attStartDatetime: "09:52", attEndDatetime: "12:01" },
-        { name: "박서준", attStartDatetime: "10:22", attEndDatetime: "14:03" }
-    ]
+    const event: Event = useSelector((state: any) => state.event?.data);
+    const attend = useSelector((state: any) => state.attend)
+    const attendDate: string = attend.date;
+    const attendList: AttendWithUser[] = attend.list.filter((el: Attend) => el.attDate === attendDate);
+    const dispatch = useDispatch();
+
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
-            <Header title="근태 관리" />
-            <div className="w-[331px] h-[622px] overflow-hidden">
-                <div className="w-[330px] h-[580px] overflow-hidden border border-white">
-                    <TableInfo title="행사명" content={event.eventTitle} />
-                    <TableInfo title="행사 분류" content={event.startDate} />
-                    <div className="w-[331px] h-[519px] relative overflow-hidden">
-                        <Grid3Header title={"이름"} content1={"출근"} content2={"퇴근"} />
-                        {part.map((v,i)=>(
-                            <Grid3Row title={v.name} content1={v.attStartDatetime} content2={v.attEndDatetime} />
-                        ))}
+        <>
+            <Header title="근태 관리" func={() => { dispatch(setDate("")) }} />
+            <Content>
+                <TableInfo title="행사명" content={event.eventName} />
+                <TableInfo title="출근일" content={attendDate} />
+                <div className="w-[330px] h-[40px] relative overflow-hidden border-b flex items-center text-xl">
+                    <div className="w-1/2 h-full flex items-center justify-center">
+                        <div className="noselect">출근</div>
+                        <AttendToggle state={attend.startState} func={() => { dispatch(updateStart(!attend.startState)) }} />
+                    </div>
+                    <div className="w-1/2 h-full flex items-center justify-center">
+                        <div className="noselect">퇴근</div>
+                        <AttendToggle state={attend.endState} func={() => { dispatch(updateEnd(!attend.endState)) }} />
                     </div>
                 </div>
-            </div>
-            <NavBar role="staff" state="1" />
-        </div>
+                <div className="w-[331px] h-[519px] relative overflow-hidden">
+                    <Grid3Header title={"이름"} content1={"출근"} content2={"퇴근"} />
+                    {attendList.filter((el) => el.attDate === attendDate).map((attend, i) => (
+                        <Grid3Row key={i} title={attend.userName} content1={attend.attStartDatetime || "x"} content2={attend.attEndDatetime || "x"} />
+                    ))}
+                </div>
+            </Content>
+        </>
     )
 }
 export default AttendDetail;

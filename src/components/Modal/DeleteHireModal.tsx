@@ -1,11 +1,8 @@
-import { AiOutlineClose } from "react-icons/ai";
 import Modal from "./Modal";
 import Button from "../Button/Button";
-import { closeModal } from "../../redux/slice/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { Event } from "../../interface/Event";
 import { Hire } from "../../interface/Hire";
-import { ListProps } from "../../interface/ListProps";
+import { ListProps } from "../../interface/props";
 
 const ModalInfoList = ({ title, content }: ListProps) => {
     return (
@@ -22,17 +19,16 @@ const ModalInfoList = ({ title, content }: ListProps) => {
 
 
 const DeleteHireModal = () => {
-    const hire: Hire = useSelector((state: any) => state.hire.hire)
+    const hire: Hire = useSelector((state: any) => state.hire?.data)
     const dispatch = useDispatch();
     return (
         <Modal>
-            <div className="w-[600px] h-[800px] relative overflow-hidden rounded-[49px] bg-[#454545] border-[10px] border-white flex flex-col">
                 <div className="w-[600px] h-[100px] overflow-hidden flex flex-shrink-0 flex-grow-0 justify-center items-center text-[40px] font-bold text-center text-white">
                     행사 삭제
                 </div>
                 <div className="w-[600px] h-[600px] overflow-hidden border-y border-white">
                     <ModalInfoList title="공고명" content={hire?.workName} />
-                    <ModalInfoList title="근무 기간" content={`${hire?.workStartDate} ~ ${hire?.workEndDate}`} />
+                    <ModalInfoList title="근무 기간" content={`${hire?.workStartDay} ~ ${hire?.workEndDay}`} />
                     <ModalInfoList title="근무 시간" content={`${hire.workHour}`} />
                     <ModalInfoList title="등록 코드" content={`${hire.hireId}`} />
                     <div className="w-full h-[408px] font-bold text-center text-white flex flex-shrink-0 flex-col items-center justify-center py-5">
@@ -52,8 +48,6 @@ const DeleteHireModal = () => {
                 <div className="w-[600px] h-[100px] overflow-hidden flex flex-shrink-0 flex-grow-0 justify-center items-center">
                     <Button title="삭제" type={"delete"} func={() => { }} />
                 </div>
-                <AiOutlineClose className="absolute right-8 top-8 text-3xl" onClick={() => { dispatch(closeModal()) }} />
-            </div>
         </Modal>
     )
 }

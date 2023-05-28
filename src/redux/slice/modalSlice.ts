@@ -24,6 +24,9 @@ const modalSlice = createSlice({
         setUpdaateUserModal: (state) => {
             state.current = "updateUser"
         },
+        setSelectPlaceModal: (state) => {
+            state.current = "selectPlace"
+        },
         closeModal: (state) => {
             state.current = "";
         }
@@ -40,6 +43,7 @@ export const {
     setCreateHireModal,
     setDeleteHireModal,
     setUpdaateUserModal,
+    setSelectPlaceModal,
     closeModal,
 } = modalSlice.actions;
 

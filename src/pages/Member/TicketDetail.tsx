@@ -2,59 +2,83 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
-import NavBar from "../../components/NavBar/NavBar";
-import { Event } from "../../interface/Event";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { INIT_TICKET, TicketWithEvent } from "../../interface/Ticket";
+import { useEffect, useState } from "react";
+import { setTicket } from "../../redux/slice/ticketSlice";
+import QRCode from "react-qr-code";
+import { User } from "../../interface/User";
+import { getEventReview } from "../../redux/slice/reviewSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { INIT_REVIEW, Review } from "../../interface/Review";
 
 const TicketDetail = () => {
-    const ticket = {
-        eventTitle: "KB Killing Boys Concert",
-        eventType: "Concert",
-        startDate: "2023.05.17",
-        endDate: "2023.05.17",
-        place: "잠실 올림픽 경기장",
-        url: "http://linket.io/event/12345",
+    const [isReview, setIsReview] = useState(false);
+    const user: User = useSelector((state: any) => state.auth.data);
+    const ticket: TicketWithEvent = useSelector((state: any) => state.ticket.data);
+    const dispatch: any = useDispatch();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        handleReview();
+    })
+
+    const handleReview = () => {
+        // dispatch(getEventReview(ticket.eventId))
+        //     .then(unwrapResult)
+        //     .then((res: Review) => {
+        //         setIsReview(res === INIT_REVIEW ? false : true)
+        //     })
     }
 
-    const eventList : Event[] = useSelector((state:any)=>state.event.list);
-	const navigate = useNavigate();
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center">
-            <Header title="티켓 상세" />
-            <div className="w-full h-full flex flex-col justify-center items-center">
-                <div className="w-[331px] h-[580px] overflow-hidden ">
-                    <div className="w-[331px] h-[383px] overflow-hidden">
-                        <List title="행사명" content={ticket.eventTitle} />
+        <>
+            <Header title="티켓 상세" func={() => dispatch(setTicket(INIT_TICKET))} />
+            <div className="w-full h-full flex flex-col items-center">
+                <div className="w-[331px] h-[580px] overflow-hidden border-y flex flex-col">
+                    <div className="w-[331px] h-full overflow-hidden flex flex-col">
+                        <List title="행사명" content={ticket.eventName} />
                         <List title="행사 분류" content={ticket.eventType} />
                         <List title="행사 기간" content={`${ticket.startDate} ~ ${ticket.endDate}`} />
-                        <List title="행사 장소" content={ticket.place} />
-                        <List title="행사명" content={ticket.eventTitle} />
-                        <List title="url" content={ticket.url} />
-                        <div className="w-[330px] h-[161px] left-0 top-[185px] overflow-hidden border-t-0 border-r-0 border-b border-l-0 border-white flex">
-                            <p className="w-[115px] h-[161px] text-[15px] font-bold text-center text-white">
+                        <div className="w-[331px] h-[37px] overflow-hidden border-b border-white flex flex-shrink-0">
+                            <p className=" w-[115px] h-[37px] text-[15px] font-bold text-center text-white flex justify-center items-center flex-shrink-0 flex-grow-0">
+                                행사 장소
+                            </p>
+                            <p className="w-[135px] h-[37px] text-[15px] font-bold text-center text-white flex justify-center items-center flex-shrink-0 flex-grow-0">
+                                {ticket.place}
+                            </p>
+                            <Button title="위치" type="default" func={()=>{navigate("/member/FC002465")}}/>
+                        </div>
+                        <List title="좌석" content={ticket.seat} />
+                        <List title="url" content={ticket.link} />
+                        <div className="self-stretch w-[330px] h-full overflow-hidden border-b border-white flex items-center">
+                            <p className="w-[115px] h-fit text-[15px] font-bold text-center text-white">
                                 행사 설명
                             </p>
-                            <p className="w-[215px] h-[161px] text-[15px] font-bold text-center text-white">
-                                {eventList[0].eventDesc}
+                            <p className="w-[215px] h-fit text-[15px] font-bold text-center text-white">
+                                {ticket.eventDesc}
                             </p>
                         </div>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center w-full h-[156px]">
                         <div className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9]">
-                            <p className="text-[15px] font-bold text-left text-black">
-                                입장용 QR
-                            </p>
+                            <QRCode
+                                size={128}
+                                className="w-full h-full"
+                                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                                value={ticket.serialNum + user.email}
+                                viewBox={`0 0 256 256`}
+                            />
                         </div>
                         <div className="w-[153px] h-[156px] overflow-hidden flex flex-col justify-center items-center gap-5">
-                            <Button title="Review" type="default" func={() => { }} />
-                            <Button title="Notice" type="default" func={() => { }} />
-                            <Button title="Delete" type="delete" func={() => {navigate("/member/ticket/delete")}} />
+                            <Button title="Review" type={isReview ? "unable" : "default"} func={() => { navigate("/member/review") }} />
+                            <Button title="Delete" type="delete" func={() => { navigate("/member/delete") }} />
                         </div>
                     </div>
                 </div>
             </div>
-            <NavBar role="member" state="2" />
-        </div>
+        </>
     )
 }
 

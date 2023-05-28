@@ -42,9 +42,61 @@ input {
     background-color: rgb(196 196 196 / 0.31);
     padding-left: 16px;
     font-size: 18px;
-    line-height: 28px
+    line-height: 28px;
+    outline: none;
 }
 
 input:focus {
     background-color: rgb(196 196 196 / 0.50);
+}
+
+textarea:focus {
+    outline:none;
+}
+
+.templete {
+    background : linear-gradient(to bottom, #1d1f21 0%, rgba(200,200,200,0.80) 50%, #1d1f21 100%);
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.custom-toolbar::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color:none;
+}
+
+.custom-toolbar::-webkit-scrollbar-thumb {
+    background: #ff9900;
+}
+
+@font-face{
+    font-family :'Mina-Bold';
+    src : local('Mina'),
+    url('./font/Mina/Mina-Bold.ttf');
+    unicode-range: U+0020-007E;
+}
+
+@font-face{
+    font-family :'Hanna';
+    src : local('BMHANNAAir'),
+    url('./font/Han_na/BMHANNAAir.ttf');
+    unicode-range: U+AC00-D7A3;
+}
+
+*{
+    font-family : 'Mina-Bold', 'Hanna';
+}
+
+.text-place-center {
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }

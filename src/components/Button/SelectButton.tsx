@@ -8,9 +8,10 @@ const SelectButton = (props: props) => {
     return(
         <div
             className={`
-                w-[70px] h-[30px] overflow-hidden rounded-[15px] text-lg
-                text-black font-bold flex justify-center items-center
-                ${props.state ? "bg-[#f1d1a0]" : "bg-secondary"}
+                w-fit h-[30px] overflow-hidden rounded-[15px] text-lg
+                text-white font-bold flex justify-center items-center
+                border-4 border-primary px-3 cursor-pointer
+                ${props.state ? "bg-primary" : "bg-black/50"}
             `}
             onClick={()=>props.func()}
         >

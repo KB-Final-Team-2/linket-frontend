@@ -1,36 +1,49 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/Header/Header";
 import NextList from "../../components/List/NextList";
 import NavBar from "../../components/NavBar/NavBar";
 import TableInfo from "../../components/Table/TableInfo";
-import { Attendance } from "../../interface/Attendance";
-import { useParams } from "react-router-dom";
+import { Attend } from "../../interface/Attendance";
+import { useNavigate } from "react-router-dom";
+import Templete from "../Templete";
+import AttendDetail from "./AttendDetail";
+import { getAttendList, setAttend, setAttendList } from "../../redux/slice/attendSlice";
+import { useEffect } from "react";
+import Content from "../Templete/Content";
 
 const AttendHire = () => {
-    const attendList : Attendance[] = useSelector((state:any)=>state.attend.list);
+    const hire = useSelector((state: any) => state.hire);
+    const attend = useSelector((state: any) => state.attend);
+    const attendData: Attend = attend.data;
+    const attendList: Attend[] = attend?.list;
+    const dispatch: any = useDispatch();
+    const navigate = useNavigate();
 
-    const {hireId} = useParams();
+    useEffect(() => {
+        dispatch(getAttendList(hire.hireId));
+        // const list = [DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD];
+        // dispatch(setAttendList(list));
+    }, [])
 
-    const list = [{ title: "안녕하세요", content: "반갑습니다." },
-    { title: "안녕하세요", content: "반갑습니다." },
-    { title: "안녕하세요", content: "반갑습니다." },
-    { title: "안녕하세요", content: "반갑습니다." }];
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
-            <Header title="근태 관리" />
-            <div className="w-[331px] h-full flex flex-col">
-                <div className="w-[331px] h-[622px] overflow-hidden">
-                    <div className="w-[330px] h-[580px] overflow-hidden border-y border-white">
+        <Templete>
+            {attendData.attId === -1
+                ?
+                <>
+                    <Header title="근태 관리" />
+                    <Content>
                         <TableInfo title="행사명" content="KB IT’s Your Life" />
-                        {attendList.map((v, i) => {
-                            return (<NextList title={v.attDate} link={`/part/${hireId}/attend/${v.attId}`}/>)
+                        {attendList.map((attend, i) => {
+                            return (<NextList key={i} title={attend.attDate} func={() => { dispatch(setAttend(attend)) }} />)
                         })}
-                    </div>
-                </div>
-            </div>
-            <NavBar role="part" state="1" />
+                    </Content>
+                </>
+                :
+                <AttendDetail />
+            }
 
-        </div>
+            <NavBar role="part" state="1" />
+        </Templete>
     )
 }
 

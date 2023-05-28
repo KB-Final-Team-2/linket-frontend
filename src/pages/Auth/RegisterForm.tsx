@@ -1,16 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RegisterHeader from "../../components/Header/RegisterHeader";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import SelectButton from "../../components/Button/SelectButton";
 import { RegistUser, User } from "../../interface/User";
-import { register } from "../../redux/slice/authSilce";
+import { checkDuplicate, register } from "../../redux/slice/authSilce";
 import { useNavigate } from "react-router-dom";
+import Templete from "../Templete";
+import { unwrapResult } from "@reduxjs/toolkit";
+import DatePicker from "../../components/Input/DatePicker";
 
 interface props {
     role: string,
     init: Function
+}
+
+interface listProps {
+    title: string;
+    data: string;
+    setFunc: Function;
+}
+
+const RegistList = ({ title, data, setFunc }: listProps) => {
+    return (
+        <div className="w-full h-[37px] overflow-hidden flex text-[15px] font-bold text-center text-white">
+            <div className="w-24 flex-shrink-0">
+                {title}
+            </div>
+            <input
+                type="text"
+                className="
+                    w-full h-[37px] rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold 
+                    focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
+                "
+                onChange={(e) => { setFunc(e.target.value) }}
+                value={data}
+            />
+        </div>
+    )
 }
 
 const RegisterForm = (props: props) => {
@@ -23,193 +51,123 @@ const RegisterForm = (props: props) => {
     const [phone, setPhone] = useState("");
     const [companyId, setCompanyId] = useState("");
     const [gender, setGender] = useState("");
+    const [birthdate, setBirthdate] = useState("1990-01-01");
+    const [isOk, setIsOk] = useState(false);
+    const [samePassword, setSamePassword] = useState(false);
+    const [viewInfo, setViewInfo] = useState(false);
 
-    const auth = useSelector((state:any)=> state.auth.data);
-    const dispatch : any = useDispatch();
+    const auth = useSelector((state: any) => state.auth?.data);
+    const dispatch: any = useDispatch();
 
     const navigate = useNavigate();
 
-    const sendData = () => {
-        const registData : RegistUser = {email, password, userName, phone, gender, birthDate:"12345678", role:props.role, companyId};
-        dispatch(register(registData));
+    const handleRegist = () => {
+        const registData: RegistUser = { email, password, userName, phone, gender, birthdate, role: props.role, companyId };
+        console.log(registData);
+        dispatch(register(registData))
+            .then(unwrapResult)
+            .then(() => {
+                setIsOk(true);
+            }).catch((err:Error)=>{
+                alert(err.message);
+            })
     }
 
-    return(
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-white">
-            <svg
-                width={375}
-                height={812}
-                viewBox="0 0 375 812"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-[375px] h-[812px] absolute left-0 top-0"
-                preserveAspectRatio="none"
-            >
-                <path d="M0 0H375V812H0V0Z" fill="#454545" />
-            </svg>
-            <div className="w-[375px] h-[662px] absolute left-0 top-[150px] overflow-hidden">
-                <div className="w-[375px] h-[50px] absolute left-0 top-0 overflow-hidden">
-                    <p className="w-[373px] h-[50px] absolute left-0 top-0 text-2xl font-bold text-center text-white">
-                        회원정보를 입력해주세요.
-                    </p>
-                </div>
-                <div className="w-[375px] h-[532px] absolute left-0 top-[50px] overflow-hidden">
-                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[25px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            email
-                        </p>
-                        <input
-                            type="text"
-                            className="
-                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                            "
-                            onChange={(e)=>{setEmail(e.target.value)}}
-                            value={email}
-                        />
-                    </div>
-                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[76px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            email 인증
-                        </p>
-                        <input
-                            type="text"
-                            className="
-                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                            "
-                            onChange={(e)=>{setEmailCode(e.target.value)}}
-                            value={emailCode}
-                        />
-                    </div>
-                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[127px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            비밀번호
-                        </p>
-                        <input
-                            type="text"
-                            className="
-                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                            "
-                            onChange={(e)=>{setPassword(e.target.value)}}
-                            value={password}
-                        />
-                    </div>
-                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[178px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            비밀번호 확인
-                        </p>
-                        <input
-                            type="text"
-                            className="
-                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                            "
-                            onChange={(e)=>{setPasswordCheck(e.target.value)}}
-                            value={passwordCheck}
-                        />
-                    </div>
-                    <div className="w-[331px] h-[37px] absolute left-[23px] top-[229px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                            이름
-                        </p>
-                        <input
-                            type="text"
-                            className="
-                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                            "
-                            onChange={(e)=>{setName(e.target.value)}}
-                            value={userName}
-                        />
-                    </div>
-                    <div className="w-[330px] h-[37px] absolute left-[23px] top-[280px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                        생년월일
-                        </p>
-                        <div className="w-[215px] h-[37px] absolute left-[115px] top-0 overflow-hidden rounded-[20px]">
-                            <div className="w-[71px] h-[37px] absolute left-36 top-0 overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                <p className="w-[71px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                01.
+    const confirmEmail = () => {
+        if (email !== "") {
+            dispatch(checkDuplicate(email))
+                .then(unwrapResult)
+                .then((res: any) => {
+                    console.log(res);
+                })
+                .catch((err: Error) => {
+                    console.log(err);
+                })
+        }
+    }
+
+    useEffect(() => {
+        setSamePassword(password === passwordCheck);
+    }, [passwordCheck])
+
+    return (
+        <Templete>
+            <div className="w-[375px] h-[812px] relative overflow-hidden">
+                <RegisterHeader />
+                <div className="w-[375px] h-[540px] overflow-hidden flex flex-col">
+                    {isOk
+                        ?
+                        <>
+                            <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2 place-content-center">
+                                <p className="inline w-fit h-fit justify-center items-center text-lg">
+                                    회원 가입이 완료되었습니다.<br />
+                                    가입한 계정으로 로그인하시기 바랍니다.
                                 </p>
                             </div>
-                            <div className="w-[71px] h-[37px] absolute left-[72px] top-0 overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                <p className="w-[71px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                01.
+                            <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-center items-center px-10">
+                                <Button title="login" type="default" func={() => { navigate("/") }} />
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div className="w-[375px] h-[50px] overflow-hidden">
+                                <p className="w-[373px] h-[30px] text-2xl font-bold text-center text-white">
+                                    회원정보를 입력해주세요.
                                 </p>
                             </div>
-                            <div className="w-[71px] h-[37px] absolute left-0 top-0 overflow-hidden bg-[#c4c4c4]/[0.31]">
-                                <p className="w-[71px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                2023.
-                                </p>
+                            <div className="w-[375px] h-full overflow-hidden bg-background-dark flex flex-col justify-between items-start py-10 px-5 rounded-2xl">
+                                {viewInfo
+                                    ?
+                                    <>
+                                        <RegistList title="이름" data={userName} setFunc={(data: string) => { setName(data) }} />
+                                        <div className="w-[331px] h-[37px] overflow-hidden flex text-[15px] font-bold text-center text-white">
+                                            <div className=" w-24 flex-shrink-0">
+                                                생년월일
+                                            </div>
+                                            <input type="date" value={birthdate} onChange={(e) => { setBirthdate(e.target.value) }} />
+                                        </div>
+                                        <div className="w-[331px] h-[37px] overflow-hidden flex text-[15px] font-bold text-center text-white">
+                                            <div className=" w-24 flex-shrink-0">
+                                                성별
+                                            </div>
+                                            <div className="w-full h-[37px] relative flex justify-between px-5 overflow-hidden">
+                                                <SelectButton title="Man" func={() => setGender("M")} state={gender == "M"} />
+                                                <SelectButton title="Woman" func={() => setGender("W")} state={gender == "W"} />
+                                            </div>
+                                        </div>
+                                        <div className="w-[331px] h-[37px] overflow-hidden flex text-[15px] font-bold text-center text-white">
+                                            <div className=" w-24 flex-shrink-0">
+                                                연락처
+                                            </div>
+                                            <input type="tel" value={phone} onChange={(e) => { setPhone(e.target.value) }} />
+                                        </div>
+                                        {props.role == "staff" && (<RegistList title="기업 코드" data={companyId} setFunc={(data: string) => { setCompanyId(data) }} />)}
+                                    </>
+                                    :
+                                    <>
+                                        <RegistList title="email" data={email} setFunc={(data: string) => { setEmail(data) }} />
+                                        <div
+                                            className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary rounded-sm flex justify-center items-center text-sm"
+                                            onClick={() => { confirmEmail() }}
+                                        >
+                                            email 인증
+                                        </div>
+                                        <RegistList title="email 확인" data={emailCode} setFunc={(data: string) => { setEmailCode(data) }} />
+                                        <div className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary rounded-sm flex justify-center items-center text-sm">코드 인증</div>
+                                        <RegistList title="비밀번호" data={password} setFunc={(data: string) => { setPassword(data) }} />
+                                        <RegistList title="비밀번호 확인" data={passwordCheck} setFunc={(data: string) => { setPasswordCheck(data) }} />
+                                    </>
+                                }
+                                <div className="w-full h-10 overflow-hidden flex justify-center items-center gap-10">
+                                    <Button title={viewInfo ? "회원가입" : "다음"} func={viewInfo ? () => { handleRegist() } : () => { setViewInfo(true) }} type="default" />
+                                    <Button title="뒤로 가기" func={viewInfo ? () => { setViewInfo(false) } : props.init} type="default" />
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="w-[330px] h-[37px] absolute left-[23px] top-[331px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                        성별
-                        </p>
-                        <div className="w-[215px] h-[37px] relative flex justify-between px-5 left-[115px] top-0 overflow-hidden">
-                            {/* <div className="w-[70px] h-[30px] absolute left-[120px] top-1 overflow-hidden rounded-[15px] bg-secondary">
-                                <p className="w-20 h-10 absolute left-[-5px] top-[-5px] text-[15px] font-bold text-center text-black">
-                                Woman
-                                </p>
-                            </div> */}
-                            <SelectButton title="Man" func={()=>setGender("M")} state={gender=="M"} />
-                            <SelectButton title="Woman" func={()=>setGender("W")} state={gender=="W"}/>
-                        </div>
-                    </div>
-                    <div className="w-[330px] h-[37px] absolute left-[23px] top-[382px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                        연락처
-                        </p>
-                        <input
-                            type="text"
-                            className="
-                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                            "
-                            onChange={(e)=>{setPhone(e.target.value)}}
-                            value={phone}
-                        />
-                    </div>
-                    <div className="w-[330px] h-[37px] absolute left-[23px] top-[433px] overflow-hidden">
-                        <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                        개인정보동의
-                        </p>
-                        <input
-                            type="text"
-                            className="
-                                w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                            "
-                        />
-                    </div>
-                    {props.role=="staff"&&(
-                        <div className="w-[330px] h-[37px] absolute left-[23px] top-[484px] overflow-hidden">
-                            <p className="w-[115px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-center text-white">
-                                기업 코드
-                            </p>
-                            <input
-                                type="text"
-                                className="
-                                    w-[215px] h-[37px] absolute left-[115px] top-0 rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold text-center
-                                    focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
-                                "
-                                onChange={(e)=>{setCompanyId(e.target.value)}}
-                                value={companyId}
-                            />
-                        </div>
-                    )}
-                </div>
-                <div className="w-full h-20 relative left-0 top-[582px] overflow-hidden flex justify-between items-center px-16">
-                    <Button title="회원가입" func={()=>{navigate("/")}} type="default"/>
-                    <Button title="뒤로 가기" func={props.init} type="default"/>
+                        </>
+                    }
                 </div>
             </div>
-            <RegisterHeader />
-        </div>
+        </Templete >
     )
 }
 

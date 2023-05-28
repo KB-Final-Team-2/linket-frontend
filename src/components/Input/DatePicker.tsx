@@ -17,7 +17,7 @@ const DatePicker = forwardRef(({ date, setDate }: props, ref) => {
             onChange={((date:Date) => { setDate(date!) })}
             dateFormat={'yyyy.MM.dd'}
             shouldCloseOnSelect
-            className="w-fit h-fit border-none font-bold text-lg text-center py-5 bg-black/20 outline-none focus:bg-white/20"
+            className=" w-full h-full border-none font-bold text-lg text-center bg-black/30 outline-none focus:bg-white/20"
         />
     )
 })

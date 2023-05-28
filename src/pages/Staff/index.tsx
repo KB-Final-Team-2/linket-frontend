@@ -1,41 +1,60 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import IndexHeader from "../../components/Header/IndexHeader";
 import EventList from "../../components/List/EventList";
 import NavBar from "../../components/NavBar/NavBar";
-import { Event } from "../../interface/Event";
-import { useSelector } from "react-redux";
+import { DUMMY_EVENT1, DUMMY_EVENT2, Event, INIT_EVENT } from "../../interface/Event";
+import { useDispatch, useSelector } from "react-redux";
+import Templete from "../Templete";
+import EventContinueDetail from "./EventContinueDetail";
+import { useEffect } from "react";
+import { getEventList, setEvent, setEventList } from "../../redux/slice/eventSlice";
+import { User } from "../../interface/User";
+import { CgSpinner } from "react-icons/cg";
+import EventEndedDetail from "./EventEndedDetail";
+import Content from "../Templete/Content";
 
 const Staff = () => {
+	const user: User = useSelector((state: any) => state.auth.data);
+	const event = useSelector((state: any) => state.event);
+	const eventData: Event = event.data;
+	const eventList: Event[] = event.list;
+	const dispatch: any = useDispatch();
 
-    
-    const eventList : Event[] = useSelector((state:any)=>state.event.list);
+	useEffect(() => {
+		dispatch(getEventList(user.userCompanyId))
+	}, [])
 
 	return (
-		<div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
-			<IndexHeader title="User Name" />
-			<div className="w-[331px] h-full flex flex-grow-0">
-				<div className="w-[331px] h-[580x] overflow-hidden flex flex-col flex-shrink-0 border-t border-b">
-					<p className="w-[85px] h-[30px] text-sm font-bold text-center text-secondary">
-						등록 행사
-					</p>
-					<Link to="/staff/event/detail" >
-						<div className="w-[331px] h-full overflow-hidden flex flex-col border-t">
-							{eventList.map((event, i) => (<EventList key={i} event={event} />))}
-						</div>
-					</Link>
+		<Templete>
+				{eventData.eventId === -1
+					?
+					<>
+						<IndexHeader title="User Name" />
+						<Content>
+							<p className="w-full h-10 text-sm font-bold text-center text-primary-200 flex justify-start items-center px-3">
+								등록 행사
+							</p>
+							<div className="w-[331px] h-full overflow-auto flex flex-col border-t">
+								{event.loading
+									?
+									<CgSpinner className=" animate-spin m-auto" />
+									:
+									eventList?.map((event, i) => (<EventList key={i} event={event} />))
+								}
+							</div>
 
-					<div className="w-full h-[156px] flex justify-between">
-						<div className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-md font-bold text-center text-black flex flex-shrink-0 justify-center items-center">
-							입장용 QR
-						</div>
-						<Link to="/staff/event/register" className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-md font-bold text-center text-black flex flex-shrink-0 justify-center items-center">
-							새 행사 등록하기
-						</Link>
-					</div>
-				</div>
-			</div>
-			<NavBar role="staff" state="1" />
-		</div>
+							<div className="w-full h-[156px] flex justify-between items-center">
+								<Link to="/staff/register" className="w-full h-16 flex justify-center items-center bg-black/30 text-white hover:bg-white/20 border-primary border-4 rounded-2xl shadow-md">
+									행사 등록
+								</Link>
+							</div>
+						</Content>
+					</>
+					:
+					(eventData.eventStatus === "Y" ? <EventContinueDetail /> : <EventEndedDetail />)
+				}
+				<NavBar role="staff" state="1" />
+		</Templete>
 	)
 }
 

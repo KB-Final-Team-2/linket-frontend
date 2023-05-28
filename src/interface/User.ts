@@ -2,7 +2,7 @@ export interface User {
     email: string;
     password: string;
     userName: string;
-    birthDate: string;
+    birthdate: string;
     aggrement: boolean;
     phone: string;
     gender: string;
@@ -12,14 +12,14 @@ export interface User {
     withdrawDate: string;
     enable: string;
     lastUpdatedDate: string;
-    companyId: number;
+    userCompanyId: number;
 };
 
 export interface RegistUser { 
     email: string;
     password: string;
     userName: string;
-    birthDate: string;
+    birthdate: string;
     phone: string;
     gender: string;
     role: string;
@@ -30,7 +30,7 @@ export const INIT_USER : User = {
     email: "",
     password: "",
     userName: "",
-    birthDate: "",
+    birthdate: "",
     phone: "",
     gender: "",
     role: "",
@@ -40,14 +40,14 @@ export const INIT_USER : User = {
     withdrawDate: "",
     enable: "",
     lastUpdatedDate: "",
-    companyId: -1
+    userCompanyId: -1
 };
 
 export const DUMMY_MEMBER : User = {
     email: "member@email.com",
     password: "1234",
     userName: "Member",
-    birthDate: "2023-05-18",
+    birthdate: "2023-05-18",
     phone: "010-1234-1234",
     gender: "M",
     role: "member",
@@ -57,14 +57,14 @@ export const DUMMY_MEMBER : User = {
     withdrawDate: "",
     enable: "",
     lastUpdatedDate: "",
-    companyId: -1
+    userCompanyId: -1
 };
 
 export const DUMMY_STAFF : User = {
     email: "staff@email.com",
     password: "1234",
     userName: "Staff",
-    birthDate: "2023-05-18",
+    birthdate: "2023-05-18",
     phone: "010-1234-1234",
     gender: "M",
     role: "staff",
@@ -74,14 +74,14 @@ export const DUMMY_STAFF : User = {
     withdrawDate: "",
     enable: "",
     lastUpdatedDate: "",
-    companyId: 1
+    userCompanyId: 1
 };
 
 export const DUMMY_PART : User = {
     email: "part@email.com",
     password: "1234",
     userName: "Part",
-    birthDate: "2023-05-18",
+    birthdate: "2023-05-18",
     phone: "010-1234-1234",
     gender: "M",
     role: "part",
@@ -91,5 +91,5 @@ export const DUMMY_PART : User = {
     withdrawDate: "",
     enable: "",
     lastUpdatedDate: "",
-    companyId: 0
+    userCompanyId: 0
 };

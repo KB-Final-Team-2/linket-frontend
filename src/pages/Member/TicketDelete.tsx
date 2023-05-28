@@ -3,44 +3,76 @@ import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
+import Templete from "../Templete";
+import { Ticket, TicketWithEvent } from "../../interface/Ticket";
+import { useDispatch, useSelector } from "react-redux";
+import { Event } from "../../interface/Event";
+import { deleteTicket, getTicketList } from "../../redux/slice/ticketSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { User } from "../../interface/User";
+import { useState } from "react";
+import Content from "../Templete/Content";
 
 const TicketDelete = () => {
-    const ticket = {
-        eventTitle: "KB Killing Boys Concert",
-        eventType: "Concert",
-        startDate: "2023.05.17",
-        endDate: "2023.05.17",
-        place: "잠실 올림픽 경기장",
-        url: "http://linket.io/event/12345",
-    }
+    const [isOk, setIsOk] = useState(false);
+    const user: User = useSelector((state: any) => state.auth?.data);
+    const ticket = useSelector((state:any)=>state.ticket);
+    const ticketData: TicketWithEvent = ticket.data;
+    const dispatch: any = useDispatch();
     const navigate = useNavigate();
+
+    const handleDelete = () => {
+        dispatch(deleteTicket(ticketData.ticketId))
+            .then(unwrapResult)
+            .then((res:number) => {
+                setIsOk(true);
+            }).catch((err:Error)=>{
+                alert(err.message);
+            })
+        setIsOk(true);
+    }
+
     return (
-        <div className="w-[375px] h-[812px] relative overflow-hidden bg-background-dark flex flex-col justify-center items-center">
-            <Header title="티켓 삭제" />
-            <div className="w-[331px] h-full">
-                <div className="w-[331px] h-[580px] overflow-hidden border-b border-t  flex flex-col">
-                    <div className="w-[330px] h-[148px] overflow-hidden">
-                        <List title="행사명" content={ticket.eventTitle} />
-                        <List title="행사 분류" content={ticket.eventType} />
-                        <List title="행사 기간" content={`${ticket.startDate} ~ ${ticket.endDate}`} />
-                        <List title="행사 장소" content={ticket.place} />
-                    </div>
-                    <div className="w-[330px] h-full overflow-hidden">
-                        <div className="w-[330px] h-full font-bold text-center text-[20px] text-white flex flex-col justify-center items-center">
-                            <p>해당 행사를 삭제하시겠습니까?</p>
-                            <p>삭제된 행사는 복구할 수 없으며,</p>
-                            <p>기존에 등록된 리뷰 및 이미지가</p>
-                            <p> 모두 삭제됩니다.</p>
-                        </div>
-                    </div>
-                    <div className="w-[337px] h-[202px] overflow-hidden flex flex-shrink-0 justify-between items-center px-10">
-                        <Button title="Delete" type="delete" func={() => {navigate("/member")}} />
-                        <Button title="return" type="default" func={() => {navigate(-1) }} />
-                    </div>
-                </div>
-            </div>
-            <NavBar role="member" state="2" />
-        </div>
+        <Templete>
+                <Header title="티켓 삭제" func={() => { navigate("/member") }} />
+                <Content>
+                    {isOk
+                        ?
+                        <>
+                            <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2 place-content-center">
+                                <p className="inline w-fit h-fit justify-center items-center text-lg">
+                                    티켓 삭제가 완료되었습니다.<br />
+                                    삭제된 티켓은 복구할 수 없으며,<br />
+                                    재등록하여 사용할 수 없습니다.<br />
+                                </p>
+                            </div>
+                            <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-center items-center px-10">
+                                <Button title="Home" type="default" func={() => { navigate("/member") }} />
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div className="w-[330px] h-[400px] overflow-hidden">
+                                <List title="행사명" content={ticketData.eventName} />
+                                <List title="행사 분류" content={ticketData.eventType} />
+                                <List title="행사 기간" content={`${ticketData.startDate} ~ ${ticketData.endDate}`} />
+                                <List title="행사 장소" content={ticketData.place} />
+                            </div>
+                            <div className="w-[330px] h-full overflow-hidden">
+                                <div className="w-[330px] h-full font-bold text-center text-[20px] text-white flex flex-col justify-center items-center">
+                                    <p>해당 티켓을 삭제하시겠습니까?</p>
+                                    <p>삭제된 티켓은 복구할 수 없으며,</p>
+                                    <p>재등록하여 사용할 수 없습니다.</p>
+                                </div>
+                            </div>
+                            <div className="w-[337px] h-[202px] overflow-hidden flex flex-shrink-0 justify-center items-center px-10">
+                                <Button title="Delete" type="delete" func={() => { handleDelete() }} />
+                            </div>
+                        </>
+                    }
+                </Content>
+                <NavBar state={"1"} role={"member"}  />
+        </Templete>
     )
 }
 

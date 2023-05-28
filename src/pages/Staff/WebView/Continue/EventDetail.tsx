@@ -8,14 +8,14 @@ interface ListInfo {
 }
 
 const EventDetail = () => {
-    const event: Event = useSelector((state: any) => state.event.event);
+    const event: Event = useSelector((state: any) => state.event?.data);
     const infoList: ListInfo[] = [
-        { title: "등록 일자", content: event.regDate },
-        { title: "행사 기간", content: `${event.startDate} ~ ${event.endDate}` },
-        { title: "행사 장소", content: event.place },
-        { title: "등록 일자", content: event.regDate },
-        { title: "행사 이미지", content: event.eventImage },
-        { title: "행사 문의처", content: event.eventInq },
+        { title: "등록 일자", content: event?.regDate },
+        { title: "행사 기간", content: `${event?.startDate} ~ ${event?.endDate}` },
+        { title: "행사 장소", content: event?.place },
+        { title: "등록 일자", content: event?.regDate },
+        { title: "행사 이미지", content: event?.eventImage },
+        { title: "행사 문의처", content: event?.eventInq },
     ];
 
     return (
@@ -32,7 +32,7 @@ const EventDetail = () => {
                     </div>
                     <div className="w-[590px] h-full overflow-hidden items-center justify-center flex">
                         <p className="text-2xl font-bold text-center text-white">
-                            {event.eventDesc}
+                            {event?.eventDesc}
                         </p>
                     </div>
                 </div>
