@@ -4,7 +4,6 @@ import Header from "../../components/Header/Header";
 import RegistInput from "../../components/Input/RegisterInput";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
-import DatePicker from "../../components/Input/DatePicker";
 import { useDispatch, useSelector } from "react-redux";
 import { User } from "../../interface/User";
 import { Event } from "../../interface/Event";
