@@ -9,7 +9,6 @@ import { checkDuplicate, register } from "../../redux/slice/authSilce";
 import { useNavigate } from "react-router-dom";
 import Templete from "../Templete";
 import { unwrapResult } from "@reduxjs/toolkit";
-import DatePicker from "../../components/Input/DatePicker";
 
 interface props {
     role: string,

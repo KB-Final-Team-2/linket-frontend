@@ -1,9 +1,9 @@
 import WebInfoInput from "../Input/WebInfoInput";
 import Modal from "./Modal"
 import { useRef, useState } from "react";
-import DatePicker from "../Input/DatePicker";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
+import moment from "moment";
 
 interface RegistHire {
     hireName: string;
@@ -23,15 +23,15 @@ const CreateHireModal = () => {
 
     const dispatch = useDispatch();
 
-    const [startDate, setStartDate] = useState<Date | null>(new Date());
-    const [endDate, setEndDate] = useState<Date | null>(new Date());
+    const [startDate, setStartDate] = useState(moment().format("YYYY-MM-DD"));
+    const [endDate, setEndDate] = useState(moment().format("YYYY-MM-DD"));
 
     const registEvent = () => {
         const hire: RegistHire = {
             hireName: nameRef.current?.value || "",
             workHour: payRef.current?.value || "",
-            startDate: startDate || undefined,
-            endDate: endDate || undefined,
+            startDate: undefined,
+            endDate: undefined,
             pay: payRef.current?.value || 0,
             edu: eduRef.current?.innerText || "",
         }
@@ -53,13 +53,13 @@ const CreateHireModal = () => {
                         <p className="w-48 h-fit text-[15px] font-bold text-center text-white">
                             근무 시작일시
                         </p>
-                        <DatePicker title="" date={startDate} setDate={setStartDate} />
+                        <input type="date" value={startDate} onChange={(e)=>setStartDate(e.target?.value)}/>
                     </div>
                     <div className="w-full h-10 overflow-hidden flex items-center flex-shrink-0">
                         <p className="w-48 h-full text-[15px] font-bold text-center text-white">
                             근무 종료일시
                         </p>
-                        <DatePicker title="" date={endDate} setDate={setEndDate} />
+                        <input type="date" value={endDate} onChange={(e)=>setEndDate(e.target?.value)}/>
                     </div>
                     <WebInfoInput title={"근무 시간"} ref={workHourRef} />
                     <WebInfoInput title={"시급"} ref={payRef} type="number" />

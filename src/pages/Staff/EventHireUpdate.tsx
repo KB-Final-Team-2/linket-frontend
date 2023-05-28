@@ -4,7 +4,6 @@ import Header from "../../components/Header/Header";
 import RegistInput from "../../components/Input/RegisterInput";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
-import DatePicker from "../../components/Input/DatePicker";
 import { useDispatch, useSelector } from "react-redux";
 import { Hire } from "../../interface/Hire";
 import { getHire, updateHire } from "../../redux/slice/hireSlice";
@@ -26,8 +25,8 @@ const EventHireUpdate = () => {
     const dispatch: any = useDispatch();
     const navigate = useNavigate();
 
-    const [startDate, setStartDate] = useState<Date | null>(new Date(hireData?.workStartDay));
-    const [endDate, setEndDate] = useState<Date | null>(new Date(hireData?.workEndDay));
+    const [startDate, setStartDate] = useState(hireData?.workStartDay);
+    const [endDate, setEndDate] = useState(hireData?.workEndDay);
 
     const handleUpdate = () => {
         // const hire : Hire = {
@@ -61,13 +60,13 @@ const EventHireUpdate = () => {
                         <p className="w-fit h-fit flex-shrink-0">
                             행사 시작일시
                         </p>
-                        <DatePicker title={""} date={startDate} setDate={(date: Date) => { setStartDate(date) }} />
+                        <input type="date" value={startDate} onChange={(e)=>setStartDate(e.target?.value)}/>
                     </div>
                     <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
                         <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
                             행사 종료일시
                         </p>
-                        <DatePicker title={""} date={endDate} setDate={(date: Date) => { setEndDate(date) }} />
+                        <input type="date" value={startDate} onChange={(e)=>setStartDate(e.target?.value)}/>
                     </div>
                     <RegistInput title={"근무 시간"} ref={workHourRef} value={`${hireData?.workHour}`} />
                     <RegistInput title={"시급"} ref={payRef} value={`${hireData?.pay}`} />

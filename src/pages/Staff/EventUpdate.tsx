@@ -4,7 +4,6 @@ import Header from "../../components/Header/Header";
 import RegistInput from "../../components/Input/RegisterInput";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
-import DatePicker from "../../components/Input/DatePicker";
 import { useDispatch, useSelector } from "react-redux";
 import SelectButton from "../../components/Button/SelectButton";
 import { Event } from "../../interface/Event";
@@ -25,8 +24,8 @@ const EventRegister = () => {
     const dispatch: any = useDispatch();
     const navigate = useNavigate();
 
-    const [startDate, setStartDate] = useState<Date | null>(new Date(eventData.startDate));
-    const [endDate, setEndDate] = useState<Date | null>(new Date(eventData.endDate));
+    const [startDate, setStartDate] = useState(eventData.startDate);
+    const [endDate, setEndDate] = useState(eventData.endDate);
     const [type, setType] = useState(eventData.eventType);
     const typeList = ["concert", "festival", "etc"];
 
@@ -78,13 +77,13 @@ const EventRegister = () => {
                     <p className="w-fit h-fit flex-shrink-0">
                         행사 시작일시
                     </p>
-                    <DatePicker title={""} date={startDate} setDate={(date: Date) => { setStartDate(date) }} />
+                    <input type="date" value={startDate} onChange={(e)=>setStartDate(e.target?.value)}/>
                 </div>
                 <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
                     <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
                         행사 종료일시
                     </p>
-                    <DatePicker title={""} date={endDate} setDate={(date: Date) => { setEndDate(date) }} />
+                    <input type="date" value={startDate} onChange={(e)=>setStartDate(e.target?.value)}/>
                 </div>
                 <RegistInput title={"행사 장소"} ref={placeRef} value={eventData.place} />
                 <RegistInput title={"행사 정보 이미지"} ref={imageRef} value={eventData.eventImage} />

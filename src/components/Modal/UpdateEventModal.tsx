@@ -1,7 +1,6 @@
 import WebInfoInput from "../Input/WebInfoInput";
 import Modal from "./Modal"
 import { useRef, useState } from "react";
-import DatePicker from "../Input/DatePicker";
 import WebSelectButton from "../Button/Web/WebSelectButton";
 import { Event, RegistEvent } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,8 +18,8 @@ const UpdateEventModal = () => {
     const eventData: Event = event?.data;
     const dispatch = useDispatch();
 
-    const [startDate, setStartDate] = useState<Date | null>(new Date("2021-02-03"));
-    const [endDate, setEndDate] = useState<Date | null>(new Date("2021-02-03"));
+    const [startDate, setStartDate] = useState("2021-02-03");
+    const [endDate, setEndDate] = useState("2021-02-03");
     const [type, setType] = useState(event.eventType);
     const typeList = ["concert", "festival", "etc"];
 
@@ -51,13 +50,13 @@ const UpdateEventModal = () => {
                         <p className="w-48 h-fit text-[15px] font-bold text-center text-white flex justify-center items-center">
                             행사 시작일
                         </p>
-                        <DatePicker title="" date={startDate} setDate={setStartDate} />
+                        <input type="date" value={startDate} onChange={(e)=>setStartDate(e.target?.value)}/>
                     </div>
                     <div className="w-full h-10 overflow-hidden flex items-center justify-center flex-shrink-0 px-5">
                         <p className="w-48 h-full text-[15px] font-bold text-center text-white flex justify-center items-center">
                             행사 종료일시
                         </p>
-                        <DatePicker title="" date={endDate} setDate={setEndDate} />
+                        <input type="date" value={endDate} onChange={(e)=>setEndDate(e.target?.value)}/>
                     </div>
                     <WebInfoInput title={"행사 장소"} ref={placeRef} value={eventData.place} />
                     <WebInfoInput title={"행사 문의처"} ref={inqRef} value={eventData.eventInq} />
