@@ -23,13 +23,13 @@ const ContinueEvent = () => {
         <>
             <div className="w-[1080px] h-full overflow-hidden flex">
                 <div id="eventList" className="w-[250px] h-[920px] overflow-hidden flex flex-col">
-                    <div className="w-full h-[50px] overflow-hidden border-b-[5px] border-primary flex items-center">
+                    <div className="w-full h-[50px] overflow-hidden border-b-[5px] border-primary-100 flex items-center">
                         <p className="w-[250px] h-fit text-2xl font-bold text-left text-white">
                             행사 목록
                         </p>
                         <AiOutlinePlus onClick={()=>{dispatch(setCreateEventModal())}} className="cursor-pointer"/>
                     </div>
-                    {eventList.map((v, i) => (
+                    {eventList?.map((v, i) => (
                         <WebEventList key={i} event={v} state={eventIdx === i} func={() => { handleEvent(i) }} />
                     ))}
                 </div>

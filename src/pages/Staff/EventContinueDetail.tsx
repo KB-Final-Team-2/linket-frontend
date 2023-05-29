@@ -30,7 +30,7 @@ const EventContinueDetail = () => {
         <>
             <Header title="행사 상세" func={() => { dispatch(setEvent(INIT_EVENT)) }} list={dropdownList} />
             <Content>
-                {list.map((v, i) => {
+                {list?.map((v, i) => {
                     return (<List key={i} title={v.title} content={v.content || ""} />)
                 })}
 
@@ -43,10 +43,10 @@ const EventContinueDetail = () => {
                     </p>
                 </div>
                 <div className="w-full h-[158px] flex flex-col flex-shrink-0 justify-between">
-                    <Link to="/staff/hire" className="w-full h-16 text-place-center bg-black/30 text-white hover:bg-white/20 border-primary border-4 rounded-2xl shadow-md">
+                    <Link to="/staff/hire" className="w-full h-16 text-place-center bg-black/30 text-white hover:bg-white/20 border-primary-100 border-4 rounded-2xl shadow-md">
                         공고 관리
                     </Link>
-                    <Link to="/staff/attend" className="w-full h-16 text-place-center bg-black/30 text-white hover:bg-white/20 border-primary border-4 rounded-2xl shadow-md">
+                    <Link to="/staff/attend" className="w-full h-16 text-place-center bg-black/30 text-white hover:bg-white/20 border-primary-100 border-4 rounded-2xl shadow-md">
                         근태 관리
                     </Link>
                 </div>

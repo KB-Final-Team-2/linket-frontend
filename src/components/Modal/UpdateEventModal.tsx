@@ -34,7 +34,8 @@ const UpdateEventModal = () => {
             eventDesc: descRef.current?.innerText || eventData.eventDesc,
             startDate: startDate?.toString() || eventData.startDate,
             endDate: endDate?.toString() || eventData.endDate,
-            companyId: 0
+            eventCompanyId: 0,
+            link:"",
         }
     }
 
@@ -66,7 +67,7 @@ const UpdateEventModal = () => {
                             행사 분류
                         </p>
                         <div className="w-full h-full overflow-hidden flex items-center justify-between px-5">
-                            {typeList.map((v, i) => (<WebSelectButton key={i} title={v} state={v === type} func={() => { setType(v) }} />))}
+                            {typeList?.map((v, i) => (<WebSelectButton key={i} title={v} state={v === type} func={() => { setType(v) }} />))}
                         </div>
                     </div>
                     <div className="w-full h-[150px] overflow-hidden flex flex-shrink-0 flex-grow-0 px-5">

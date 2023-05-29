@@ -36,7 +36,7 @@ const EventEndedDetail = () => {
                 <>
                     <Header title="행사 상세" func={() => { dispatch(setEvent(INIT_EVENT)) }} list={dropdownList} />
                     <Content>
-                        {list.map((v, i) => {
+                        {list?.map((v, i) => {
                             return (<List key={i} title={v.title} content={v.content || ""} />)
                         })}
 
@@ -50,13 +50,13 @@ const EventEndedDetail = () => {
                         </div>
                         <div className="w-full h-[158px] flex flex-col flex-shrink-0 justify-between">
                             <div
-                                className="w-full h-16 text-place-center bg-black/30 text-white hover:bg-white/20 border-primary border-4 rounded-2xl shadow-md"
+                                className="w-full h-16 text-place-center bg-black/30 text-white hover:bg-white/20 border-primary-100 border-4 rounded-2xl shadow-md"
                                 onClick={() => { setPage("tickets") }}
                             >
                                 관람객 통계
                             </div>
                             <div
-                                className="w-full h-16 text-place-center bg-black/30 text-white hover:bg-white/20 border-primary border-4 rounded-2xl shadow-md"
+                                className="w-full h-16 text-place-center bg-black/30 text-white hover:bg-white/20 border-primary-100 border-4 rounded-2xl shadow-md"
                                 onClick={() => { setPage("review") }}
                             >
                                 리뷰 통계

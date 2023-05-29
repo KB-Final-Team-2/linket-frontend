@@ -44,7 +44,7 @@ const Member = () => {
 								<CgSpinner className="animate-spin text-4xl"/>
 							</div>
 							:
-							(userTicketList.length === 0
+							(userTicketList?.length === 0
 								?
 								<div className="w-full h-full text-center flex flex-col justify-center items-center text-2xl gap-10">
 									<svg
@@ -70,7 +70,7 @@ const Member = () => {
 									티켓을 등록해주세요.
 								</div>
 								:
-								(userTicketList.map((ticket, i) => (
+								(userTicketList?.map((ticket, i) => (
 									<TicketList key={i} ticket={ticket} />
 								))))
 							}

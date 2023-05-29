@@ -21,12 +21,12 @@ const EndedEvent = () => {
     return (
         <div className="w-[1080px] h-screen relative overflow-hidden flex">
             <div id="eventList" className="w-[250px] h-[920px] overflow-hidden flex flex-col">
-                <div className="w-full h-[50px] overflow-hidden border-b-[5px] border-primary flex">
+                <div className="w-full h-[50px] overflow-hidden border-b-[5px] border-primary-100 flex">
                     <p className="w-[250px] h-[50px] text-2xl font-bold text-left text-white">
                         행사 목록
                     </p>
                 </div>
-                {eventList.map((v, i) => (
+                {eventList?.map((v, i) => (
                     <WebEventList key={i} event={v} state={eventIdx === i} func={()=>{handleEvent(i)}} />
                 ))}
             </div>

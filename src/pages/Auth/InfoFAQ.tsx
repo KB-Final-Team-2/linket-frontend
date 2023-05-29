@@ -12,7 +12,7 @@ const InfoFAQ = () => {
         <Templete>
             <Header title="FAQ" />
             <Content>
-                {list.map((v, i) => (<ToggleList key={i} title={v} content="" state={i === selectFAQ} open={() => { setSelectFAQ(i) }} close={() => { setSelectFAQ(-1) }} />))}
+                {list?.map((v, i) => (<ToggleList key={i} title={v} content="" state={i === selectFAQ} open={() => { setSelectFAQ(i) }} close={() => { setSelectFAQ(-1) }} />))}
             </Content>
             <NavBar role="member" state="3" />
         </Templete>

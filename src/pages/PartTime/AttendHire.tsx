@@ -10,20 +10,27 @@ import AttendDetail from "./AttendDetail";
 import { getAttendList, setAttend, setAttendList } from "../../redux/slice/attendSlice";
 import { useEffect } from "react";
 import Content from "../Templete/Content";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { Hire } from "../../interface/Hire";
 
 const AttendHire = () => {
     const hire = useSelector((state: any) => state.hire);
     const attend = useSelector((state: any) => state.attend);
+    const hireData : Hire = hire.data;
     const attendData: Attend = attend.data;
     const attendList: Attend[] = attend?.list;
     const dispatch: any = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(getAttendList(hire.hireId));
-        // const list = [DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD];
-        // dispatch(setAttendList(list));
-    }, [])
+        dispatch(getAttendList(hireData.hireId))
+        .then(unwrapResult)
+        .then((res:any)=>{
+            console.log(res);
+        }).catch((err:Error)=>{
+            alert(err.message);
+        })
+    }, [attendData])
 
     return (
         <Templete>
@@ -33,8 +40,8 @@ const AttendHire = () => {
                     <Header title="근태 관리" />
                     <Content>
                         <TableInfo title="행사명" content="KB IT’s Your Life" />
-                        {attendList.map((attend, i) => {
-                            return (<NextList key={i} title={attend.attDate} func={() => { dispatch(setAttend(attend)) }} />)
+                        {attendList?.map((attend, i) => {
+                            return (<NextList key={i} title={attend.attDate.slice(0,10)} func={() => { dispatch(setAttend(attend)) }} />)
                         })}
                     </Content>
                 </>

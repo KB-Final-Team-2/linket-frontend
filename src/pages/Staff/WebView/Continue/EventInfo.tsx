@@ -15,7 +15,7 @@ interface NavProps {
 const NavButton = ({ title, state, func }: NavProps) => {
     return (
         <div
-            className={`w-[150px] h-[50px] overflow-hidden flex flex-shrink-0 justify-center items-center text-2xl font-bold text-center text-white ${state && "bg-primary"}`}
+            className={`w-[150px] h-[50px] overflow-hidden flex flex-shrink-0 justify-center items-center text-2xl font-bold text-center text-white ${state && "bg-primary-100"}`}
             onClick={() => { func() }}
         >
             {title}
@@ -39,7 +39,7 @@ const EventInfo = () => {
         <div className="w-[830px] h-full bg-black/25 inline-flex flex-col flex-shrink-0 flex-grow-0 justify-start">
             <div className="w-[830px] h-[100px] border-b-2 border-white flex flex-col flex-shrink-0 px-5">
                 <div className="w-full h-[35px] overflow-hidden">
-                    <p className="text-3xl font-bold text-left text-primary-200">
+                    <p className="text-3xl font-bold text-left text-primary-100-200">
                         {event?.eventType}
                     </p>
                 </div>
@@ -50,15 +50,15 @@ const EventInfo = () => {
                     <div className="w-[200px] h-[65px] overflow-hidden" />
                 </div>
             </div>
-            <div className="w-[830px] h-[50px] overflow-hidden border-b-[5px] border-primary flex justify-between flex-shrink-0">
+            <div className="w-[830px] h-[50px] overflow-hidden border-b-[5px] border-primary-100 flex justify-between flex-shrink-0">
                 <div className="w-fit h-full flex justify-start items-center">
-                    {navList.map((v, i) => (<NavButton key={i} title={v} state={i === state} func={() => { setState(i) }} />))}
+                    {navList?.map((v, i) => (<NavButton key={i} title={v} state={i === state} func={() => { setState(i) }} />))}
                 </div>
                 {state === 0 && <div className="w-[140px] h-[50px] overflow-hidden flex">
                     <div
                         className="
                             w-[70px] h-full overflow-hidden text-xl font-bold text-center text-white cursor-pointer flex justify-center items-center
-                            hover:bg-primary-200
+                            hover:bg-primary-100-200
                         "
                         onClick={() => { dispatch(setUpdateEventModal()) }}
                     >

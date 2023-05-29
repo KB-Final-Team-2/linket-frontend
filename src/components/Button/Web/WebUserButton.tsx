@@ -42,14 +42,14 @@ const WebUserButton = () => {
         <>
             <div className="z-30 h-full w-[70px] relative">
                 <div
-                    className={`z-30 h-full w-[70px] relative flex flex-shrink-0 justify-center items-center text-5xl overflow-visible ${openPage && "bg-primary-200 text-black"}`}
+                    className={`z-30 h-full w-[70px] relative flex flex-shrink-0 justify-center items-center text-5xl overflow-visible ${openPage && "bg-primary-100-200 text-black"}`}
                     onClick={() => { setOpenPage(!openPage) }}
                 >
                     <FaRegUserCircle />
                 </div>
                 {openPage && (
-                    <div className="absolute w-[300px] h-[400px] top-[70px] right-0 rounded-tr-none rounded-2xl bg-primary-200 flex flex-col justify-start items-center px-5 py-5">
-                        {infoList.map((v, i) => (
+                    <div className="absolute w-[300px] h-[400px] top-[70px] right-0 rounded-tr-none rounded-2xl bg-primary-100-200 flex flex-col justify-start items-center px-5 py-5">
+                        {infoList?.map((v, i) => (
                             <WebInfoList title={v.title} content={v.content} />
                         ))}
                         <div>

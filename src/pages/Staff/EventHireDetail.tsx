@@ -37,16 +37,16 @@ const EventHireDetail = () => {
         const queryRef = _db.query(_db.collection(db, "chat"), _db.where("hireId", "==", hire.hireId));
 
         _db.getDocs(queryRef)
-        .then((query)=>{
-            const chatData = query.docs.at(0);
-            console.log(query.docs.at(0));
-            if(!chatData) {
-                const newRef = _db.doc(_db.collection(db, "chat"));
-                const initChat = {hireId: hire.hireId, eventId: event.eventId, chat:[]}
-    
-                _db.setDoc(newRef, initChat).then(()=>{navigate("/staff/hire/chat")})
-            } else navigate("/staff/hire/chat");
-        })
+            .then((query) => {
+                const chatData = query.docs.at(0);
+                console.log(query.docs.at(0));
+                if (!chatData) {
+                    const newRef = _db.doc(_db.collection(db, "chat"));
+                    const initChat = { hireId: hire.hireId, eventId: event.eventId, chat: [] }
+
+                    _db.setDoc(newRef, initChat).then(() => { navigate("/staff/hire/chat") })
+                } else navigate("/staff/hire/chat");
+            })
 
         // navigate("/staff/hire/chat")
     }
@@ -55,7 +55,7 @@ const EventHireDetail = () => {
         <>
             <Header title="공고 상세" func={() => { dispatch(setHire(INIT_HIRE)) }} list={dropdownList} />
             <Content>
-                {list.map((v, i) => {
+                {list?.map((v, i) => {
                     return (<List key={i} title={v.title} content={v.content || ""} />)
                 })}
 
@@ -67,7 +67,7 @@ const EventHireDetail = () => {
                         {hire?.edu}
                     </p>
                 </div>
-                <Button title="채팅" type="default" func={handleChat}/>
+                <Button title="채팅" type="default" func={handleChat} />
             </Content>
         </>
     )

@@ -8,12 +8,12 @@ import { useEffect, useState } from "react";
 import { setTicket } from "../../redux/slice/ticketSlice";
 import QRCode from "react-qr-code";
 import { User } from "../../interface/User";
-import { getEventReview } from "../../redux/slice/reviewSlice";
+import { checkTicketReview } from "../../redux/slice/reviewSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { INIT_REVIEW, Review } from "../../interface/Review";
 
 const TicketDetail = () => {
-    const [isReview, setIsReview] = useState(false);
+    const [isReview, setIsReview] = useState(true);
     const user: User = useSelector((state: any) => state.auth.data);
     const ticket: TicketWithEvent = useSelector((state: any) => state.ticket.data);
     const dispatch: any = useDispatch();
@@ -25,11 +25,12 @@ const TicketDetail = () => {
     })
 
     const handleReview = () => {
-        // dispatch(getEventReview(ticket.eventId))
-        //     .then(unwrapResult)
-        //     .then((res: Review) => {
-        //         setIsReview(res === INIT_REVIEW ? false : true)
-        //     })
+        dispatch(checkTicketReview(ticket.ticketId))
+            .then(unwrapResult)
+            .then((res: string) => {
+                console.log(res);
+                if(res==="able") setIsReview(false);
+            })
     }
 
     return (

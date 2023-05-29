@@ -10,10 +10,10 @@ const Dropdown = ({ list }: props) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div className=" overflow-visible w-fit h-fit relative noselect">
-            <BsThreeDots className="w-10 h-10 text-primary" onClick={()=>{setIsOpen(!isOpen)}}/>
-            {(isOpen && list.length !== 0) && (
+            <BsThreeDots className="w-10 h-10 text-primary-100" onClick={()=>{setIsOpen(!isOpen)}}/>
+            {(isOpen && list?.length !== 0) && (
                 <div className="z-50 w-[100px] h-fit absolute top-7 -right-2 overflow-hidden rounded-[20px] bg-background-dark border-2 border-white box-content">
-                    {list.map((v, i) => (
+                    {list?.map((v, i) => (
                         <div
                             key={i}
                             className={`

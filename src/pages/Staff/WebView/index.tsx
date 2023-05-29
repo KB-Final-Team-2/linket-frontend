@@ -52,7 +52,7 @@ const WebView = () => {
                     <div className="w-full h-[70px] overflow-visible bg-black flex justify-center items-center">
                         <div className="w-[1080px] h-[70px] overflow-visible flex flex-grow-0 flex-shrink-0 justify-between">
                             <div className="w-fit h-full flex">
-                                {navList.map((v, i) => (
+                                {navList?.map((v, i) => (
                                     <NavButton text={v.text} state={event === v.state} func={() => { setEvent(v.state) }} />
                                 ))}
                             </div>

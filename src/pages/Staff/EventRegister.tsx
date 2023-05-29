@@ -19,6 +19,7 @@ import { XMLParser } from "fast-xml-parser";
 import Modal from "../../components/Modal/Modal";
 import { CgSpinner } from "react-icons/cg";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
+import SelectPlaceModal from "../../components/Modal/SelectPlaceModal";
 
 const EventRegister = () => {
     const [isOk, setIsOk] = useState(false);
@@ -43,16 +44,17 @@ const EventRegister = () => {
 
     const handleRegist = () => {
         const event: RegistEvent = {
-            companyId: user.userCompanyId,
+            eventCompanyId: user.userCompanyId,
             eventName: nameRef.current?.value || "",
             eventType: type,
+            startDate: startDate.current?.value || today,
+            endDate: endDate.current?.value || today,
             place: place.content || "",
             placeId: place.id || "",
             eventImage: imageRef.current?.value,
             eventInq: inqRef.current?.value || "",
             eventDesc: descRef.current?.value || "",
-            startDate: startDate.current?.value || today,
-            endDate: endDate.current?.value || today
+            link: "",
         }
 
         console.log(event);
@@ -65,7 +67,6 @@ const EventRegister = () => {
             .catch((err: Error) => {
                 alert(err.message);
             })
-        // setIsOk(true);
     }
 
     const getPlaceList = async () => {
@@ -105,7 +106,7 @@ const EventRegister = () => {
                                         행사 분류
                                     </p>
                                     <div className="w-[215px] h-[37px] overflow-hidden flex gap-1">
-                                        {typeList.map((v, i) => (
+                                        {typeList?.map((v, i) => (
                                             <SelectButton key={i} state={v === type} title={v} func={() => { setType(v) }} />
                                         ))}
                                     </div>
@@ -140,126 +141,5 @@ const EventRegister = () => {
         </>
     )
 }
-
-interface modalProps {
-    onSelect: Function;
-}
-
-const SelectPlaceModal = ({ onSelect }: modalProps) => {
-    const regionRef = useRef<HTMLSelectElement>(null);
-    const [region, setRegion] = useState({ id: "11", content: "서울특별시" });
-    const [regionContent, setRegionContent] = useState("");
-    const [ckk, setCkk] = useState("");
-    const [placeList, setPlaceList] = useState([]);
-    const [page, setPage] = useState(1);
-    const [loading, setLoading] = useState(false);
-
-    const handleRegion = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const id = e.target.value;
-        setRegion(RegionList.filter((region) => region.id === id)[0]);
-        console.log(RegionList.filter((region) => region.id === id)[0])
-        setPage(1);
-    }
-
-    const handleCkk = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setCkk(e.target.value);
-        setPage(1);
-        handlePlaceList();
-    }
-
-    const handlePlaceList = () => {
-        axios.get(`https://www.kopis.or.kr/openApi/restful/prfplc?service=11653933ac2447da843868e7cb625bdb&cpage=${page}&rows=7&signgucodesub=${ckk}`)
-            .then((res) => {
-                console.log(res.data);
-                const parser = new XMLParser();
-                const data = parser.parse(res.data);
-                console.log(data);
-                setPlaceList(data.dbs?.db || []);
-            }).catch((err: Error) => {
-                alert(err);
-            });
-    }
-
-    const handleReducePage = () => {
-        if (page > 1) setPage(page - 1);
-    }
-
-    const handleAddPage = () => {
-        setPage(page + 1);
-    }
-
-    const handleSelect = (place: any) => {
-        onSelect(place);
-    }
-
-    useEffect(() => {
-        handlePlaceList();
-    }, [page])
-
-    useEffect(() => {
-        const init = RegionDetailList.filter((ckk) => ckk.id.slice(0, 2) === region.id);
-        setCkk(init[0].id);
-    }, [region]);
-
-    return (
-        <Modal>
-            <div className="w-[331px] h-full flex flex-col justify-start place-items-center">
-                <div className="w-full h-[50px] border-b border-white flex mt-10">
-                    <p className="w-[150px] h-full text-place-center">시/도</p>
-                    <select
-                        ref={regionRef}
-                        className="w-full h-full text-place-center bg-bg-100 outline-none"
-                        onChange={handleRegion}
-                    >
-                        {RegionList.map((region, i) => (
-                            <option key={i} value={region.id}>{region.content}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className="w-full h-[50px] border-b border-white flex mt-10">
-                    <p className="w-[150px] h-full text-place-center">시/군/구</p>
-                    <select
-                        ref={regionRef}
-                        value={ckk}
-                        className="w-full h-full text-place-center bg-bg-100 outline-none"
-                        onChange={handleCkk}
-                    >
-                        {RegionDetailList.filter((ckk) => ckk.id.slice(0, 2) === region.id).map((ckk, i) => (
-                            <option key={i} value={ckk.id}>
-                                {ckk.content.replace(region.content, "") || "전체"}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div className="w-full h-[350px] bg-bg-100 flex flex-col">
-                    {placeList?.length === 0
-                        ?
-                        <CgSpinner />
-                        :
-                        <>
-                            {placeList.map((place: any, i) => (
-                                <div
-                                    key={i}
-                                    className="w-full h-[70px]"
-                                    onClick={() => { onSelect({ id: place.mt10id, content:place.fcltynm }) }}
-                                >
-                                    {place.fcltynm}
-                                </div>
-                            ))}
-                            <div
-                                id="pagenation"
-                                className="w-full h-fit flex justify-center gap-5"
-                            >
-                                <BiLeftArrow onClick={handleReducePage} />
-                                {page}
-                                <BiRightArrow onClick={handleAddPage} />
-                            </div>
-                        </>
-                    }
-                </div>
-            </div>
-        </Modal>
-    )
-};
 
 export default EventRegister;
