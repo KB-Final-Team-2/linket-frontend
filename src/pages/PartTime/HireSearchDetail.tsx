@@ -24,7 +24,7 @@ const HireSearchDetail = () => {
             <Header title="공고 상세" func={() => { dispatch(setHire(INIT_HIRE)) }} />
             <Content>
                 <div className="w-[331px] h-full overflow-hidden border-white flex flex-col">
-                    {infoList.map((v, i) => {
+                    {infoList?.map((v, i) => {
                         return (<List key={i} title={v.title} content={v.content!} />)
                     })}
                 </div>

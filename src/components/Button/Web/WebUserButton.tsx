@@ -49,7 +49,7 @@ const WebUserButton = () => {
                 </div>
                 {openPage && (
                     <div className="absolute w-[300px] h-[400px] top-[70px] right-0 rounded-tr-none rounded-2xl bg-primary-200 flex flex-col justify-start items-center px-5 py-5">
-                        {infoList.map((v, i) => (
+                        {infoList?.map((v, i) => (
                             <WebInfoList title={v.title} content={v.content} />
                         ))}
                         <div>

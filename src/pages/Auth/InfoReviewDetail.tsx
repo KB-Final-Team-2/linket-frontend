@@ -26,7 +26,7 @@ const ReviewList = ({ title, func, score }: FuncListProps & props) => {
                 </p>
             </div>
             <div className="flex justify-center items-center w-[331px] h-[45px] overflow-hidden gap-[15px]">
-                {scoreList.map((ticket, i) => (
+                {scoreList?.map((ticket, i) => (
                     <IoTicketSharp key={i} className={`${score >= ticket && "text-primary"} text-3xl`} onClick={() => { func(ticket) }} />
                 ))}
             </div>

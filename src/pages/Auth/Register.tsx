@@ -36,7 +36,7 @@ const Register = () => {
                         </p>
                     </div>
                     <div className="flex flex-col w-[375px] h-[662px] overflow-hidden justify-evenly">
-                        {roleList.map((v, i) => (<RoleList key={i} title={v.title} content={v.content} func={(role: string) => { setRole(role) }} />))}
+                        {roleList?.map((v, i) => (<RoleList key={i} title={v.title} content={v.content} func={(role: string) => { setRole(role) }} />))}
                     </div>
                 </>
             )}

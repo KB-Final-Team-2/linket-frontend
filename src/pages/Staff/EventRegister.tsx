@@ -105,7 +105,7 @@ const EventRegister = () => {
                                         행사 분류
                                     </p>
                                     <div className="w-[215px] h-[37px] overflow-hidden flex gap-1">
-                                        {typeList.map((v, i) => (
+                                        {typeList?.map((v, i) => (
                                             <SelectButton key={i} state={v === type} title={v} func={() => { setType(v) }} />
                                         ))}
                                     </div>
@@ -211,7 +211,7 @@ const SelectPlaceModal = ({ onSelect }: modalProps) => {
                         className="w-full h-full text-place-center bg-bg-100 outline-none"
                         onChange={handleRegion}
                     >
-                        {RegionList.map((region, i) => (
+                        {RegionList?.map((region, i) => (
                             <option key={i} value={region.id}>{region.content}</option>
                         ))}
                     </select>
@@ -224,7 +224,7 @@ const SelectPlaceModal = ({ onSelect }: modalProps) => {
                         className="w-full h-full text-place-center bg-bg-100 outline-none"
                         onChange={handleCkk}
                     >
-                        {RegionDetailList.filter((ckk) => ckk.id.slice(0, 2) === region.id).map((ckk, i) => (
+                        {RegionDetailList.filter((ckk) => ckk.id.slice(0, 2) === region.id)?.map((ckk, i) => (
                             <option key={i} value={ckk.id}>
                                 {ckk.content.replace(region.content, "") || "전체"}
                             </option>
@@ -237,7 +237,7 @@ const SelectPlaceModal = ({ onSelect }: modalProps) => {
                         <CgSpinner />
                         :
                         <>
-                            {placeList.map((place: any, i) => (
+                            {placeList?.map((place: any, i) => (
                                 <div
                                     key={i}
                                     className="w-full h-[70px]"
