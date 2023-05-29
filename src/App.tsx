@@ -40,6 +40,7 @@ import TicketReview from './pages/Member/TicketReview';
 import InfoReview from './pages/Auth/InfoReview';
 import TicketDelete from './pages/Member/TicketDelete';
 import TicketPlace from './pages/Member/TicketPlace';
+import EventHireChat from './pages/Staff/EventHireChat';
 
 function App() {
 
@@ -64,6 +65,7 @@ function App() {
 						<Route path='/staff/hire/regist' element={<EventHireRegist />} />
 						<Route path='/staff/hire/update' element={<EventHireUpdate />} />
 						<Route path='/staff/hire/delete' element={<EventHireDelete />} />
+						<Route path='/staff/hire/chat' element={<EventHireChat />} />
 						<Route path="/staff/*" element={<Staff />} />
 
 						{/* Staff Web Router */}
