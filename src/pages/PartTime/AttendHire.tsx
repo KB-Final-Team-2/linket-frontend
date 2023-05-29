@@ -21,8 +21,6 @@ const AttendHire = () => {
 
     useEffect(() => {
         dispatch(getAttendList(hire.hireId));
-        // const list = [DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD];
-        // dispatch(setAttendList(list));
     }, [])
 
     return (
