@@ -22,9 +22,11 @@ const PartTime = () => {
 	const dispatch: any = useDispatch();
 
 	useEffect(() => {
-		dispatch(getPartHireList(user.email));
-		// const list = [DUMMY_HIRE1, DUMMY_HIRE2];
-		// dispatch(setHireList(list));
+		dispatch(getPartHireList(user.email))
+		.then(unwrapResult)
+		.then((res:any)=>{
+			console.log(res);
+		});
 	}, [user])
 
 	return (
@@ -42,7 +44,7 @@ const PartTime = () => {
 								등록 공고
 							</p>
 							<div className="w-[331px] h-[384px] overflow-hidden">
-								{hireList.map((hire, i) => (
+								{hireList?.map((hire, i) => (
 									<HireList key={i} hire={hire} />
 								))}
 							</div>

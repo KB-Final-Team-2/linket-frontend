@@ -13,8 +13,7 @@ export const getAttend = createAsyncThunk('getAttend', async (attendId: string, 
 
 export const getAttendList = createAsyncThunk('getAttendList', async (hireId:number, {rejectWithValue, dispatch})=>{
     try{
-        // const list = (await axios.get(`/api/getAttendList/${hireId}`)).data;
-        const list : Attend[]= [DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD,DUMMY_ATTD2,DUMMY_ATTD2,DUMMY_ATTD2,DUMMY_ATTD2];
+        const list : Attend[] = (await axios.get(`/api/getAttendList/${hireId}`)).data;
         const days: string[] = [];
         list.forEach((attend) => {
             if (!days.includes(attend.attDate)) days.push(attend.attDate);

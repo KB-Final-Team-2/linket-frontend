@@ -49,7 +49,7 @@ export const deleteHire = createAsyncThunk("deleteHire", (hireId: number, { reje
 
 export const getPartHireList = createAsyncThunk("getPartHireLIst", async (email:string, {rejectWithValue})=>{
     try {
-        const eventList = (await axios.get(`/api/hire/part/${email}`)).data;
+        const eventList = (await axios.get(`/api/attendance/part-time/${email}`)).data;
         return eventList;
     } catch (error) {
         rejectWithValue(error);
