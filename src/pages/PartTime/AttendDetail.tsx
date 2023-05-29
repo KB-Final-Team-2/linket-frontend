@@ -9,6 +9,7 @@ import Button from "../../components/Button/Button";
 import { getAttend, setAttend, updatePartStart } from "../../redux/slice/attendSlice";
 import Content from "../Templete/Content";
 import { unwrapResult } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 
 const AttendDetail = () => {
     const user: User = useSelector((state: any) => state.auth?.data);
@@ -46,7 +47,7 @@ const AttendDetail = () => {
                 </div>
                 <div className="w-full h-20 flex justify-between px-10 items-center">
                     <Button title="출근" type={attendData.attStartBnt==="Y" ? "default" : "unable"} func={handleStart} loading={attend.loading} />
-                    <Button title="퇴근" type={attendData.attEndBnt==="Y" ? "default" : "unable"} func={() => { }} />
+                    <Button title="퇴근" type={attendData.attEndBnt==="Y" ? "default" : "unable"} func={() => {  }} />
                 </div>
             </Content>
         </>
