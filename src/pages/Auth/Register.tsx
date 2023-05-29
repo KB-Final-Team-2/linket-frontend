@@ -7,7 +7,7 @@ import { ListProps } from "../../interface/props";
 const RoleList = ({ title, content, func }: ListProps) => {
     return (
         <div
-            className="w-[331px] h-[85px] overflow-hidden bg-[#c4c4c4]/[0.31] hover:bg-primary text-white hover:text-black flex items-center justify-center transition-all"
+            className="w-[331px] h-[85px] overflow-hidden bg-[#c4c4c4]/[0.31] hover:bg-primary-100 text-white hover:text-black flex items-center justify-center transition-all"
             onClick={() => { func && func(content) }}
         >
             <p className="w-fit h-fit text-2xl font-bold text-center">

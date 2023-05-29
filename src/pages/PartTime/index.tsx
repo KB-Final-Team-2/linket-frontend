@@ -40,7 +40,7 @@ const PartTime = () => {
 					<>
 						<IndexHeader title="User name" />
 						<Content>
-							<p className="w-full h-10 text-sm font-bold text-left align-middle text-primary-200">
+							<p className="w-full h-10 text-sm font-bold text-left align-middle text-primary-100-200">
 								등록 공고
 							</p>
 							<div className="w-[331px] h-[384px] overflow-hidden">

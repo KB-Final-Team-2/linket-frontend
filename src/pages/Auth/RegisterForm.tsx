@@ -146,13 +146,13 @@ const RegisterForm = (props: props) => {
                                     <>
                                         <RegistList title="email" data={email} setFunc={(data: string) => { setEmail(data) }} />
                                         <div
-                                            className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary rounded-sm flex justify-center items-center text-sm"
+                                            className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary-100 rounded-sm flex justify-center items-center text-sm"
                                             onClick={() => { confirmEmail() }}
                                         >
                                             email 인증
                                         </div>
                                         <RegistList title="email 확인" data={emailCode} setFunc={(data: string) => { setEmailCode(data) }} />
-                                        <div className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary rounded-sm flex justify-center items-center text-sm">코드 인증</div>
+                                        <div className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary-100 rounded-sm flex justify-center items-center text-sm">코드 인증</div>
                                         <RegistList title="비밀번호" data={password} setFunc={(data: string) => { setPassword(data) }} />
                                         <RegistList title="비밀번호 확인" data={passwordCheck} setFunc={(data: string) => { setPasswordCheck(data) }} />
                                     </>
