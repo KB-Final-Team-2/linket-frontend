@@ -36,7 +36,7 @@ const EventEndedDetail = () => {
                 <>
                     <Header title="행사 상세" func={() => { dispatch(setEvent(INIT_EVENT)) }} list={dropdownList} />
                     <Content>
-                        {list.map((v, i) => {
+                        {list?.map((v, i) => {
                             return (<List key={i} title={v.title} content={v.content || ""} />)
                         })}
 

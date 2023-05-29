@@ -59,7 +59,7 @@ const HireSearchResult = () => {
                                 <CgSpinner className="text-3xl animate-spin m-auto" />
                                 :
                                 <>
-                                    {hireList.map((hire, i) => (<HireList key={i} idx={i} hire={hire} />))}
+                                    {hireList?.map((hire, i) => (<HireList key={i} idx={i} hire={hire} />))}
                                 </>
                             }
                         </div>

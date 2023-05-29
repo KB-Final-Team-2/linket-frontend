@@ -43,7 +43,7 @@ const EventAttend = () => {
                             <TableInfo title={"행사명"} content={event.eventName} />
                         </div>
                         <div className="w-[331px] h-[580px] overflow-auto">
-                            {attendDays.map((day, i) => {
+                            {attendDays?.map((day, i) => {
                                 return (<NextList key={i} title={day} func={() => { dispatch(setDate((day))) }} />)
                             })}
                         </div>

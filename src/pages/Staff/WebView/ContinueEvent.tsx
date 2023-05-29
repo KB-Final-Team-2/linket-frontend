@@ -29,7 +29,7 @@ const ContinueEvent = () => {
                         </p>
                         <AiOutlinePlus onClick={()=>{dispatch(setCreateEventModal())}} className="cursor-pointer"/>
                     </div>
-                    {eventList.map((v, i) => (
+                    {eventList?.map((v, i) => (
                         <WebEventList key={i} event={v} state={eventIdx === i} func={() => { handleEvent(i) }} />
                     ))}
                 </div>

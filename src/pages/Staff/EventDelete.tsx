@@ -58,7 +58,7 @@ const EventDelete = () => {
                     :
                     <>
                         <div className="w-[331px] h-fit overflow-hidden border-white">
-                            {list.map((v, i) => {
+                            {list?.map((v, i) => {
                                 return (<List key={i} title={v.title} content={v.content} />)
                             })}
                         </div>

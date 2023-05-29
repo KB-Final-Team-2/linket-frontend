@@ -28,7 +28,7 @@ const AttendDetail = () => {
                 <div className="w-full h-[500px]">
                     <TableInfo title="행사명" content="KB IT’s Your Life" />
                     <TableInfo title="행사일" content="2023년 3월 2일" />
-                    {infoList.map((v, i) => {
+                    {infoList?.map((v, i) => {
                         return (<List key={i} title={v.title} content={v.content || "x"} />)
                     })}
                 </div>

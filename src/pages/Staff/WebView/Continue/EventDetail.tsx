@@ -21,7 +21,7 @@ const EventDetail = () => {
     return (
         <div className="w-[830px] h-full overflow-hidden flex justify-center items-center py-4">
             <div className="w-[790px] h-full overflow-auto border-y border-white flex flex-col flex-grow-0 flex-shrink-0">
-                {infoList.map((v, i) => (
+                {infoList?.map((v, i) => (
                     <WebEventInfoList key={i} title={v.title} content={v.content} />
                 ))}
                 <div className="w-[790px] h-full overflow-hidden flex flex-shrink flex-grow-0">

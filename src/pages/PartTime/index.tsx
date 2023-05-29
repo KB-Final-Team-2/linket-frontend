@@ -42,7 +42,7 @@ const PartTime = () => {
 								등록 공고
 							</p>
 							<div className="w-[331px] h-[384px] overflow-hidden">
-								{hireList.map((hire, i) => (
+								{hireList?.map((hire, i) => (
 									<HireList key={i} hire={hire} />
 								))}
 							</div>

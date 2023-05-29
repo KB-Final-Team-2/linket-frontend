@@ -68,7 +68,7 @@ const EventRegister = () => {
                         행사 분류
                     </p>
                     <div className="w-[215px] h-[37px] overflow-hidden flex gap-1">
-                        {typeList.map((v, i) => (
+                        {typeList?.map((v, i) => (
                             <SelectButton key={i} state={v === type} title={v} func={() => { setType(v) }} />
                         ))}
                     </div>
