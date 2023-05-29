@@ -24,6 +24,8 @@ const EventReview = ({ onRequestReturn }: props) => {
             .then(unwrapResult)
             .then((res: any[]) => {
                 console.log(res);
+            }).catch((err:Error)=>{
+                alert(err.message);
             });
     }, [])
 

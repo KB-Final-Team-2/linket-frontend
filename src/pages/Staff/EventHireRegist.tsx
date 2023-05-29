@@ -34,8 +34,8 @@ const EventHireRegist = () => {
 
     const handleRegist = () => {
         const hire : RegistHire = {
-            eventId: event.eventId,
-            companyId: user.userCompanyId,
+            hireEventId: event.eventId,
+            hireCompanyId: user.userCompanyId,
             workName: workNameRef.current?.value!,
             workHour: Number.parseInt(workHourRef.current?.value!),
             workStartDay: workStartDayRef.current?.value!,
@@ -68,7 +68,7 @@ const EventHireRegist = () => {
                             </p>
                         </div>
                         <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-center items-center px-10">
-                            <Button title="Home" type="default" func={() => { navigate("/staff/hire") }} />
+                            <Button title="Home" type="default" func={() => { navigate(-1) }} />
                         </div>
                     </>
                     :

@@ -12,7 +12,7 @@ import { useState } from "react";
 import { RegistReview, Review } from "../../interface/Review";
 import { Ticket, TicketWithEvent } from "../../interface/Ticket";
 import { getTicket } from "../../redux/slice/ticketSlice";
-import { getEventReview, registReview } from "../../redux/slice/reviewSlice";
+import { checkTicketReview, registReview } from "../../redux/slice/reviewSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import Content from "../Templete/Content";
@@ -32,7 +32,7 @@ const ReviewList = ({ title, func, score }: FuncListProps & props) => {
             </div>
             <div className="flex justify-center items-center w-[331px] h-[45px] overflow-hidden gap-[15px]">
                 {scoreList?.map((num, i) => (
-                    <IoTicketSharp key={i} className={`${score >= num && "text-primary"} cursor-pointer text-3xl`} onClick={() => { func(num) }} />
+                    <IoTicketSharp key={i} className={`${score >= num && "text-primary-100"} cursor-pointer text-3xl`} onClick={() => { func(num) }} />
                 ))}
             </div>
         </div>

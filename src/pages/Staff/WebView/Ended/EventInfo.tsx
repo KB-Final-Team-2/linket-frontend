@@ -16,7 +16,7 @@ interface NavProps {
 const NavButton = ({ title, state, func }: NavProps) => {
     return (
         <div
-            className={`w-[150px] h-[50px] overflow-hidden flex flex-shrink-0 justify-center items-center text-2xl font-bold text-center text-white ${state && "bg-primary"}`}
+            className={`w-[150px] h-[50px] overflow-hidden flex flex-shrink-0 justify-center items-center text-2xl font-bold text-center text-white ${state && "bg-primary-100"}`}
             onClick={() => { func() }}
         >
             {title}
@@ -40,7 +40,7 @@ const EventInfo = () => {
         <div className="w-[830px] h-[920px] overflow-hidden bg-black/25 flex flex-col flex-shrink-0 flex-grow-0 justify-start">
             <div className="w-[830px] h-[100px] overflow-hidden border-t-0 border-r-0 border-b-2 border-l-0 border-white">
                 <div className="w-[830px] h-[35px] overflow-hidden">
-                    <p className="text-3xl font-bold text-left text-primary-200">
+                    <p className="text-3xl font-bold text-left text-primary-100-200">
                         {event.eventType}
                     </p>
                 </div>
@@ -51,7 +51,7 @@ const EventInfo = () => {
                     <div className="w-[200px] h-[65px] overflow-hidden" />
                 </div>
             </div>
-            <div className="w-[830px] h-[50px] overflow-hidden border-t-0 border-r-0 border-b-[5px] border-l-0 border-primary flex justify-between">
+            <div className="w-[830px] h-[50px] overflow-hidden border-t-0 border-r-0 border-b-[5px] border-l-0 border-primary-100 flex justify-between">
                 <div className="w-fit h-full flex justify-start items-center">
                     {navList?.map((v, i) => (<NavButton key={i} title={v} state={i === state} func={() => { setState(i) }} />))}
                 </div>

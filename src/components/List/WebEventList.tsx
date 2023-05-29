@@ -13,7 +13,7 @@ const WebEventList = ({ event, state, func }: props) => {
             onClick={() => { func() }}
         >
             <div className={`w-[250px] h-[35px] overflow-hidden`}>
-                <p className="w-[300px] text-2xl font-bold text-left text-primary-200 truncate">
+                <p className="w-[300px] text-2xl font-bold text-left text-primary-100-200 truncate">
                     {event.eventType}
                 </p>
             </div>

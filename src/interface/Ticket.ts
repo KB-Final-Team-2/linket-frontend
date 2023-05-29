@@ -41,7 +41,8 @@ export const DUMMY_TICKETWITHEVENT : TicketWithEvent = {
     seat: "s",
     link: "",
     eventId: 1,
-    eventCompanyId: 0
+    eventCompanyId: 0,
+    placeId: ""
 }
 
 export const INIT_TICKET : Ticket = {

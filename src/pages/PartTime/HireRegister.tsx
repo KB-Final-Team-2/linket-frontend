@@ -18,15 +18,14 @@ const HireRegister = () => {
     const navigate = useNavigate();
 
     const handleRegist = () => {
-        // dispatch(registPartHire(Number.parseInt(inputRef.current?.value!)))
-        // .then(unwrapResult)
-        // .then(()=>{
-        //     dispatch(setHire(INIT_HIRE));
-        //     navigate("/part");
-        // }).catch((err:Error)=>{
-        //     console.log(err);
-        // })
-        setIsOk(true);
+        dispatch(registPartHire(Number.parseInt(inputRef.current?.value!)))
+        .then(unwrapResult)
+        .then((res:string)=>{
+            console.log(res);
+            setIsOk(true);
+        }).catch((err:Error)=>{
+            alert(err);
+        })
     }
 
     return (
