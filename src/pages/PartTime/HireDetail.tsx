@@ -41,7 +41,7 @@ const HireDetail = () => {
                     </Link>
                     <div className="w-[153px] h-[156px] overflow-hidden flex flex-col justify-center items-center gap-5">
                         <Button title={"Delete"} type={"delete"} func={() => { }} />
-                        <Button title={"Review"} type={"default"} func={() => { }} />
+                        <Button title={"chat"} type={"default"} func={() => { }} />
                     </div>
                 </div>
             </Content>

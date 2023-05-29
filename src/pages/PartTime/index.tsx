@@ -12,6 +12,7 @@ import HireDetail from "./HireDetail";
 import HireSearch from "./HireSearch";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Content from "../Templete/Content";
+import moment from "moment";
 
 const PartTime = () => {
 	const [doSearch, setDoSearch] = useState(false);

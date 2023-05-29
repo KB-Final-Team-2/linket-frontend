@@ -22,7 +22,7 @@ export const getEventList = createAsyncThunk("getEventList", async (companyId:nu
 
 export const registEvent = createAsyncThunk("registEvent", (event:RegistEvent, {rejectWithValue})=>{
     try {
-        const result = axios.post(`/api/event/register`, {event});
+        const result = axios.post(`/api/event/register`, event);
         return result;
     } catch (error) {
         rejectWithValue(error);

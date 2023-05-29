@@ -2,18 +2,18 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Attend, AttendWithUser, DUMMY_ATTD, DUMMY_ATTD2, DUMMY_ATTDWITHUSER, DUMMY_ATTDWITHUSER2, INIT_ATTD } from "../../interface/Attendance";
 
-export const getAttend = createAsyncThunk('getAttend', async (attendId: string, { rejectWithValue }) => {
+export const getAttend = createAsyncThunk('getAttend', async ({attEmail, attHireId, attDate}: any, { rejectWithValue }) => {
     try {
-        const attendData = (await axios.get(`/api/getAttend/${attendId}`)).data;
+        const attendData = (await axios.post(`/api/attendance/part-time/${attHireId}`,{attEmail, attHireId, attDate})).data;
         return attendData;
     } catch (error) {
         rejectWithValue(error)
     }
-})
+});
 
 export const getAttendList = createAsyncThunk('getAttendList', async (hireId:number, {rejectWithValue, dispatch})=>{
     try{
-        const list : Attend[] = (await axios.get(`/api/getAttendList/${hireId}`)).data;
+        const list : Attend[] = (await axios.get(`/api/attendance/part-time/hireId/${hireId}`)).data;
         const days: string[] = [];
         list.forEach((attend) => {
             if (!days.includes(attend.attDate)) days.push(attend.attDate);
@@ -22,7 +22,7 @@ export const getAttendList = createAsyncThunk('getAttendList', async (hireId:num
     } catch (error) {
         rejectWithValue(error);
     }
-})
+});
 
 export const getEventAttendList = createAsyncThunk('getEventAttendList', async (eventId:number, {rejectWithValue})=>{
     try {
@@ -35,7 +35,7 @@ export const getEventAttendList = createAsyncThunk('getEventAttendList', async (
     } catch (error) {
         rejectWithValue(error);
     }
-})
+});
 
 export const updateStaffStart = createAsyncThunk("updateStaffStart", async({attDate, attEventId, attStartBnt}:any, {rejectWithValue})=>{
     try {
@@ -44,7 +44,7 @@ export const updateStaffStart = createAsyncThunk("updateStaffStart", async({attD
     } catch (error) {
         rejectWithValue(error);
     }
-})
+});
 
 export const updateStaffEnd = createAsyncThunk("updateStaffEnd", async({attDate, attEventId, attEndBnt}:any, {rejectWithValue})=>{
     try {
@@ -53,7 +53,25 @@ export const updateStaffEnd = createAsyncThunk("updateStaffEnd", async({attDate,
     } catch (error) {
         rejectWithValue(error);
     }
-})
+});
+
+export const updatePartStart = createAsyncThunk("updatePartStart", async(attId:number,{rejectWithValue})=>{
+    try {
+        const result = (await axios.post("/api/attendance/part-time/start",{attId})).data;
+        return result;
+    } catch (error) {
+        rejectWithValue(error);
+    }
+});
+
+export const updatePartEnd = createAsyncThunk("updatePartEnd", async(attId:number,{rejectWithValue})=>{
+    try {
+        const result = (await axios.post("/api/attendance/part-time/end",{attId})).data;
+        return result;
+    } catch (error) {
+        rejectWithValue(error);
+    }
+});
 
 const attendSlice = createSlice({
     name: "attend",
@@ -89,7 +107,7 @@ const attendSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(getAttend.fulfilled, (state, action) => {
-            state.list = action.payload;
+            state.data = action.payload;
             state.loading = false;
         });
         builder.addCase(getAttend.rejected, (state) => {
@@ -133,6 +151,24 @@ const attendSlice = createSlice({
             state.loading = false;
         });
         builder.addCase(updateStaffEnd.rejected, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(updatePartStart.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updatePartStart.fulfilled, (state, action) => {
+            state.loading = false;
+        });
+        builder.addCase(updatePartStart.rejected, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(updatePartEnd.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updatePartEnd.fulfilled, (state, action) => {
+            state.loading = false;
+        });
+        builder.addCase(updatePartEnd.rejected, (state) => {
             state.loading = false;
         });
     }

@@ -47,13 +47,14 @@ const EventRegister = () => {
             eventCompanyId: user.userCompanyId,
             eventName: nameRef.current?.value || "",
             eventType: type,
+            startDate: startDate.current?.value || today,
+            endDate: endDate.current?.value || today,
             place: place.content || "",
             placeId: place.id || "",
             eventImage: imageRef.current?.value,
             eventInq: inqRef.current?.value || "",
             eventDesc: descRef.current?.value || "",
-            startDate: startDate.current?.value || today,
-            endDate: endDate.current?.value || today
+            link: "",
         }
 
         console.log(event);

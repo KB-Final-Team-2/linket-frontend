@@ -28,6 +28,7 @@ export interface RegistEvent {
     eventDesc: string;
     startDate: string;
     endDate: string;
+    link:"";
 }
 
 export interface EventList {

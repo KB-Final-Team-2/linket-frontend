@@ -5,7 +5,7 @@ import axios from "axios";
 import Button from "../../components/Button/Button";
 import SelectButton from "../../components/Button/SelectButton";
 import { RegistUser, User } from "../../interface/User";
-import { checkDuplicate, register } from "../../redux/slice/authSilce";
+import { checkDuplicate, confirmEmail, register } from "../../redux/slice/authSilce";
 import { useNavigate } from "react-router-dom";
 import Templete from "../Templete";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -43,7 +43,8 @@ const RegistList = ({ title, data, setFunc }: listProps) => {
 const RegisterForm = (props: props) => {
     const [email, setEmail] = useState("");
     const [emailCode, setEmailCode] = useState("");
-    const [duplicate, setDuplicate] = useState(false);
+    const [emailCheck, setEmailCheck] = useState("");
+    const [isCheck, setIsCheck] = useState(false);
     const [password, setPassword] = useState("");
     const [passwordCheck, setPasswordCheck] = useState("");
     const [userName, setName] = useState("");
@@ -72,16 +73,28 @@ const RegisterForm = (props: props) => {
             })
     }
 
-    const confirmEmail = () => {
+    const checkEmail = () => {
         if (email !== "") {
-            dispatch(checkDuplicate(email))
+            dispatch(confirmEmail(email))
                 .then(unwrapResult)
                 .then((res: any) => {
                     console.log(res);
+                    if(res==="fail")    alert("이미 등록된 이메일입니다.")
+                    else {
+                        setEmailCheck(res);
+                        alert("이메일이 발송되었습니다. 확인 코드를 입력해주세요.")
+                    }
                 })
                 .catch((err: Error) => {
                     console.log(err);
                 })
+        }
+    }
+
+    const checkEmailCode = () => {
+        if(emailCode===emailCheck)  setIsCheck(true);
+        else {
+            alert("잘못된 코드입니다.");
         }
     }
 
@@ -147,7 +160,7 @@ const RegisterForm = (props: props) => {
                                         <RegistList title="email" data={email} setFunc={(data: string) => { setEmail(data) }} />
                                         <div
                                             className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary-100 rounded-sm flex justify-center items-center text-sm"
-                                            onClick={() => { confirmEmail() }}
+                                            onClick={() => { checkEmail() }}
                                         >
                                             email 인증
                                         </div>

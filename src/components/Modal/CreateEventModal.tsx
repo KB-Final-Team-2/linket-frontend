@@ -32,7 +32,8 @@ const CreateEventModal = () => {
             eventDesc: descRef.current?.innerText || "",
             startDate: startDate?.toString() || "",
             endDate: endDate?.toString() || "",
-            eventCompanyId: 0
+            eventCompanyId: 0,
+            link:"",
         }
     }
 
