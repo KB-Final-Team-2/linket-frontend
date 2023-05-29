@@ -8,3 +8,8 @@ export interface FuncListProps {
     title: string,
     func: Function
 };
+
+export interface ChatProps {
+    email: string;
+    message: string;
+};

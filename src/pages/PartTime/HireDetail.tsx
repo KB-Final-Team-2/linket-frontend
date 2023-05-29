@@ -4,13 +4,17 @@ import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import { ListProps } from "../../interface/props";
 import { Hire, INIT_HIRE } from "../../interface/Hire";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setHire } from "../../redux/slice/hireSlice";
 import Content from "../Templete/Content";
+import { useEffect, useState } from "react";
+import { _db, db } from "../../firebase";
 
 const HireDetail = () => {
+    const [isChat, setIsChat] = useState(false);
     const hire: Hire = useSelector((state: any) => state.hire?.data);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const infoList: ListProps[] = [
         { title: "공고명", content: hire?.workName },
@@ -18,6 +22,25 @@ const HireDetail = () => {
         { title: "근무 시간", content: `${hire?.workHour}시간(일)` },
         { title: "시급", content: `${hire?.pay}원` },
     ];
+
+    useEffect(()=>{
+        const handleChat = () => {
+            const queryRef = _db.query(_db.collection(db, "chat"), _db.where("hireId", "==", hire?.hireId));
+    
+            _db.getDocs(queryRef)
+                .then((query) => {
+                    const chatData = query.docs.at(0);
+                    console.log(query.docs.at(0));
+                    if (!chatData)  setIsChat(false);
+                    else            setIsChat(true);
+                })
+    
+            // navigate("/staff/hire/chat")
+        }
+
+        handleChat();
+    },[])
+
     return (
         <>
             <Header title="공고 상세" func={() => { dispatch(setHire(INIT_HIRE)) }} />
@@ -41,7 +64,7 @@ const HireDetail = () => {
                     </Link>
                     <div className="w-[153px] h-[156px] overflow-hidden flex flex-col justify-center items-center gap-5">
                         <Button title={"Delete"} type={"delete"} func={() => { }} />
-                        <Button title={"chat"} type={"default"} func={() => { }} />
+                        <Button title={"chat"} type={isChat?"default":"unable"} func={() => { navigate("/part/chat") }} />
                     </div>
                 </div>
             </Content>

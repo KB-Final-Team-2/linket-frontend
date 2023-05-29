@@ -40,6 +40,8 @@ import TicketReview from './pages/Member/TicketReview';
 import InfoReview from './pages/Auth/InfoReview';
 import TicketDelete from './pages/Member/TicketDelete';
 import TicketPlace from './pages/Member/TicketPlace';
+import EventHireChat from './pages/Staff/EventHireChat';
+import HireChat from './pages/PartTime/HireChat';
 
 function App() {
 
@@ -64,6 +66,7 @@ function App() {
 						<Route path='/staff/hire/regist' element={<EventHireRegist />} />
 						<Route path='/staff/hire/update' element={<EventHireUpdate />} />
 						<Route path='/staff/hire/delete' element={<EventHireDelete />} />
+						<Route path='/staff/hire/chat' element={<EventHireChat />} />
 						<Route path="/staff/*" element={<Staff />} />
 
 						{/* Staff Web Router */}
@@ -74,6 +77,7 @@ function App() {
 						<Route path="/part/register" element={<PartTimeHireRegister />} />
 						<Route path="/part/attend" element={<PartTimeAttendHire />} />
 						<Route path='/part/result' element={<HireSearchResult />}/>
+						<Route path="/part/chat" element={<HireChat />} />
 
 						{/* Auth Router */}
 						<Route path="/register" element={<Register />} />
