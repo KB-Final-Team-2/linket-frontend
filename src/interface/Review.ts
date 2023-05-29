@@ -117,5 +117,6 @@ export const DUMMY_REVIEWWITHEVENT : ReviewWithEvent = {
     lastUpdatedDate: "",
     deletedDate: "",
     link: "",
-    eventId: 0
+    eventId: 0,
+    placeId: ""
 }

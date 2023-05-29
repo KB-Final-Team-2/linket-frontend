@@ -9,8 +9,10 @@ export interface Attend {
     attDate: string;
     attStartDatetime: string;
     attEndDatetime: string;
-    attStartBnt: boolean;
-    attEndBnt: boolean;
+    attStartBnt: string;
+    attEndBnt: string;
+    attstartbnt: boolean;
+    attendbnt: boolean;
 }
 
 export interface AttendWithUser extends Attend, User {}
@@ -28,12 +30,14 @@ export const INIT_ATTD: Attend = {
     attDate: "",
     attStartDatetime: "",
     attEndDatetime: "",
-    attStartBnt: false,
-    attEndBnt: false,
+    attstartbnt: false,
+    attendbnt: false,
     attHireId: -1,
     attEventId: -1,
     attCompanyId: -1,
-    attEmail: ""
+    attEmail: "",
+    attStartBnt: "",
+    attEndBnt: ""
 }
 
 export const DUMMY_ATTD: Attend = {
@@ -41,12 +45,14 @@ export const DUMMY_ATTD: Attend = {
     attDate: "2023-04-01",
     attStartDatetime: "",
     attEndDatetime: "",
-    attStartBnt: false,
-    attEndBnt: false,
+    attstartbnt: false,
+    attendbnt: false,
     attHireId: 1,
     attEventId: 1,
     attCompanyId: 1,
-    attEmail: "part@test.com"
+    attEmail: "part@test.com",
+    attStartBnt: "N",
+    attEndBnt: "N"
 }
 
 export const DUMMY_ATTD2: Attend = {
@@ -54,12 +60,14 @@ export const DUMMY_ATTD2: Attend = {
     attDate: "2023-04-02",
     attStartDatetime: "",
     attEndDatetime: "",
-    attStartBnt: false,
-    attEndBnt: false,
+    attstartbnt: false,
+    attendbnt: false,
     attHireId: 2,
     attEventId: 2,
     attCompanyId: 2,
-    attEmail: "part@test.com"
+    attEmail: "part@test.com",
+    attStartBnt: "N",
+    attEndBnt: "N"
 }
 
 export const DUMMY_ATTDWITHUSER: AttendWithUser = {
@@ -67,8 +75,8 @@ export const DUMMY_ATTDWITHUSER: AttendWithUser = {
     attDate: "2023-04-01",
     attStartDatetime: "",
     attEndDatetime: "",
-    attStartBnt: false,
-    attEndBnt: false,
+    attstartbnt: false,
+    attendbnt: false,
     attHireId: 1,
     attEventId: 1,
     attCompanyId: 1,
@@ -86,7 +94,9 @@ export const DUMMY_ATTDWITHUSER: AttendWithUser = {
     enable: "",
     lastUpdatedDate: "",
     email: "",
-    userCompanyId: 0
+    userCompanyId: 0,
+    attStartBnt: "N",
+    attEndBnt: "N"
 }
 
 export const DUMMY_ATTDWITHUSER2: AttendWithUser = {
@@ -94,8 +104,8 @@ export const DUMMY_ATTDWITHUSER2: AttendWithUser = {
     attDate: "2023-04-02",
     attStartDatetime: "",
     attEndDatetime: "",
-    attStartBnt: false,
-    attEndBnt: false,
+    attstartbnt: false,
+    attendbnt: false,
     attHireId: 1,
     attEventId: 1,
     attCompanyId: 1,
@@ -113,5 +123,7 @@ export const DUMMY_ATTDWITHUSER2: AttendWithUser = {
     enable: "",
     lastUpdatedDate: "",
     email: "",
-    userCompanyId: 0
+    userCompanyId: 0,
+    attStartBnt: "N",
+    attEndBnt: "N"
 }

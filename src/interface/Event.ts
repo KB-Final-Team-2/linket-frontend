@@ -4,6 +4,7 @@ export interface Event {
     eventName: string;
     eventType: string;
     place: string;
+    placeId: string;
     eventImage: string;
     eventInq: string;
     eventDesc: string;
@@ -17,7 +18,7 @@ export interface Event {
 }
 
 export interface RegistEvent {
-    companyId: number;
+    eventCompanyId: number;
     eventName: string;
     eventType: string;
     place: string;
@@ -44,56 +45,59 @@ export interface EndedEvent extends Event {
 
 export const INIT_EVENT: Event = {
     eventId: -1,
-    eventName:"",
-    eventType:"",
-    place:"",
-    eventImage:"",
-    eventInq:"",
-    eventDesc:"",
-    eventStatus:"",
-    startDate:"",
-    endDate:"",
-    regDate:"",
+    eventName: "",
+    eventType: "",
+    place: "",
+    eventImage: "",
+    eventInq: "",
+    eventDesc: "",
+    eventStatus: "",
+    startDate: "",
+    endDate: "",
+    regDate: "",
     eventCompanyId: 0,
-    lastUpdatedDate:"",
-    deletedDate:"",
-    link:""
+    lastUpdatedDate: "",
+    deletedDate: "",
+    link: "",
+    placeId: ""
 }
 
 export const DUMMY_EVENT1: Event = {
     eventId: 2,
-    eventName:"KB Killing Boys Concert",
-    eventType:"concert",
-    place:"잠실 올림픽 경기장",
-    eventImage:"event1.jpg",
-    eventInq:"02-123-456",
-    eventDesc:"대세 남자 아이돌 콘서트",
-    eventStatus:"Y",
-    startDate:"2023.05.17",
-    endDate:"2023.05.17",
-    regDate:"2023.05.17",
+    eventName: "KB Killing Boys Concert",
+    eventType: "concert",
+    place: "잠실 올림픽 경기장",
+    eventImage: "event1.jpg",
+    eventInq: "02-123-456",
+    eventDesc: "대세 남자 아이돌 콘서트",
+    eventStatus: "Y",
+    startDate: "2023.05.17",
+    endDate: "2023.05.17",
+    regDate: "2023.05.17",
     eventCompanyId: 0,
-    lastUpdatedDate:"",
-    deletedDate:"",
-    link:""
+    lastUpdatedDate: "",
+    deletedDate: "",
+    link: "",
+    placeId: ""
 }
 
 export const DUMMY_EVENT2: Event = {
     eventId: 3,
-    eventName:"호구와트 마술쇼",
-    eventType:"concert",
-    place:"잠실 올림픽 경기장",
-    eventImage:"event2.jpg",
-    eventInq:"02-123-456",
-    eventDesc:"마술쇼",
-    eventStatus:"N",
-    startDate:"2023.05.14",
-    endDate:"2023.05.14",
-    regDate:"2023.05.14",
+    eventName: "호구와트 마술쇼",
+    eventType: "concert",
+    place: "잠실 올림픽 경기장",
+    eventImage: "event2.jpg",
+    eventInq: "02-123-456",
+    eventDesc: "마술쇼",
+    eventStatus: "N",
+    startDate: "2023.05.14",
+    endDate: "2023.05.14",
+    regDate: "2023.05.14",
     eventCompanyId: 0,
-    lastUpdatedDate:"",
-    deletedDate:"",
-    link:""
+    lastUpdatedDate: "",
+    deletedDate: "",
+    link: "",
+    placeId: ""
 }
 
 export const RegionList = [

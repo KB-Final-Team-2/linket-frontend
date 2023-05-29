@@ -4,7 +4,7 @@ import { DUMMY_EVENT1, DUMMY_EVENT2, Event, INIT_EVENT, RegistEvent } from "../.
 
 export const getEvent = createAsyncThunk("getEventState", async (eventId: number, { rejectWithValue }) => {
     try {
-        const eventData = (await axios.get(`/api/getEvent/${eventId}`)).data;
+        const eventData = (await axios.get(`/api/event/getEvent/${eventId}`)).data;
         return eventData;
     } catch (error) {
         rejectWithValue(error);
@@ -31,7 +31,7 @@ export const registEvent = createAsyncThunk("registEvent", (event:RegistEvent, {
 
 export const updateEvent = createAsyncThunk("updateEvent", (event:Event, {rejectWithValue})=>{
     try {
-        const result = axios.post(`/api/event/update`, event);
+        const result = axios.post(`/api/event/updateEvent`, event);
         return result;
     } catch (error) {
         rejectWithValue(error);

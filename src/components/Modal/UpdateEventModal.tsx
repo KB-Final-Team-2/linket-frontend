@@ -34,7 +34,7 @@ const UpdateEventModal = () => {
             eventDesc: descRef.current?.innerText || eventData.eventDesc,
             startDate: startDate?.toString() || eventData.startDate,
             endDate: endDate?.toString() || eventData.endDate,
-            companyId: 0
+            eventCompanyId: 0
         }
     }
 

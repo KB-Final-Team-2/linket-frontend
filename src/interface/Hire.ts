@@ -20,8 +20,8 @@ export interface HireList {
 }
 
 export interface RegistHire {
-    eventId: number;
-    companyId: number;
+    hireEventId: number;
+    hireCompanyId: number;
     workName: string;
     workHour: number;
     workStartDay: string;

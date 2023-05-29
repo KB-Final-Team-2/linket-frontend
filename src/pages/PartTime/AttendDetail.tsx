@@ -33,8 +33,8 @@ const AttendDetail = () => {
                     })}
                 </div>
                 <div className="w-full h-20 flex justify-between px-10 items-center">
-                    <Button title="출근" type={attend.attStartBnt ? "default" : "unable"} func={() => { }} />
-                    <Button title="퇴근" type={attend.attStartBnt ? "default" : "unable"} func={() => { }} />
+                    <Button title="출근" type={attend.attstartbnt ? "default" : "unable"} func={() => { }} />
+                    <Button title="퇴근" type={attend.attstartbnt ? "default" : "unable"} func={() => { }} />
                 </div>
             </Content>
         </>
