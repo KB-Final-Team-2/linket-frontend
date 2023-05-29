@@ -92,7 +92,7 @@ const EventHire = () => {
                                     + 새 공고 추가
                                 </p>
                             </div>
-                            {hireList.map((v, i) => (
+                            {hireList?.map((v, i) => (
                                 <HireList key={i} hire={v} func={() => {handleHire(v,i)}} state={i === idx} />
                             ))}
                         </div>
@@ -108,12 +108,12 @@ const EventHire = () => {
                                     + 새 공고 추가
                                 </p>
                             </div>
-                            {hireList.map((v, i) => (
+                            {hireList?.map((v, i) => (
                                 <SmallHireList key={i} hire={v} func={() => { handleHire(v,i) }} state={i === idx} />
                             ))}
                         </div>
                         <div className="w-[590px] h-full overflow-hidden bg-black/25 flex flex-col flex-grow-0 flex-shrink">
-                            {infoList.map((v, i) => (
+                            {infoList?.map((v, i) => (
                                 <HireInfoList key={i} title={v.title} content={v.content} />
                             ))}
                             <div className="w-[590px] h-full overflow-hidden border-b border-white flex flex-shrink">

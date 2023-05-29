@@ -53,7 +53,7 @@ const EventInfo = () => {
             </div>
             <div className="w-[830px] h-[50px] overflow-hidden border-t-0 border-r-0 border-b-[5px] border-l-0 border-primary flex justify-between">
                 <div className="w-fit h-full flex justify-start items-center">
-                    {navList.map((v, i) => (<NavButton key={i} title={v} state={i === state} func={() => { setState(i) }} />))}
+                    {navList?.map((v, i) => (<NavButton key={i} title={v} state={i === state} func={() => { setState(i) }} />))}
                 </div>
                 {state === 0 &&
                 <div className="w-[140px] h-[50px] overflow-hidden flex justify-end items-center">

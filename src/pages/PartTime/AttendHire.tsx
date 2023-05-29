@@ -33,7 +33,7 @@ const AttendHire = () => {
                     <Header title="근태 관리" />
                     <Content>
                         <TableInfo title="행사명" content="KB IT’s Your Life" />
-                        {attendList.map((attend, i) => {
+                        {attendList?.map((attend, i) => {
                             return (<NextList key={i} title={attend.attDate} func={() => { dispatch(setAttend(attend)) }} />)
                         })}
                     </Content>

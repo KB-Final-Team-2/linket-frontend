@@ -35,7 +35,7 @@ const EventHireDetail = () => {
             <Header title="공고 상세" func={() => { dispatch(setHire(INIT_HIRE)) }} list={dropdownList} />
             <Content>
                 <div className="w-full h-[580px] overflow-hidden flex flex-col">
-                    {list.map((v, i) => {
+                    {list?.map((v, i) => {
                         return (<List key={i} title={v.title} content={v.content || ""} />)
                     })}
 

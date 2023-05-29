@@ -38,7 +38,7 @@ const EventHire = () => {
                             <TableInfo title={"행사명"} content={"KB IT's Your Life"} />
                         </div>
                         <div className="w-[331px] h-[580px] overflow-hidden">
-                            {hireList.map((hire, i) => {
+                            {hireList?.map((hire, i) => {
                                 return (<NextList key={i} title={`${hire.workName}`} func={() => { handleHire(hire) }} />)
                             })}
                         </div>

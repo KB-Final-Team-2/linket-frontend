@@ -87,7 +87,7 @@ const HireSearch = ({ onRequestReturn }: props) => {
                             행사<br />종류
                         </div>
                         <div className="w-full h-[60px] overflow-hidden flex justify-between items-center px-4">
-                            {typeList.map((v, i) => (<SelectButton key={i} state={type === v} title={v} func={() => { setType(v) }} />))}
+                            {typeList?.map((v, i) => (<SelectButton key={i} state={type === v} title={v} func={() => { setType(v) }} />))}
                         </div>
                     </div>
                     <div className="w-full h-[100px] flex justify-center items-center">

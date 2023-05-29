@@ -35,8 +35,8 @@ const AttendDetail = () => {
                 </div>
                 <div className="w-[331px] h-[519px] relative overflow-hidden">
                     <Grid3Header title={"이름"} content1={"출근"} content2={"퇴근"} />
-                    {attendList?.filter((el) => el.attDate === attendDate)?.map((attend, i) => (
-                        <Grid3Row key={i} title={attend.attEmail} content1={attend.attStartDatetime?.slice(11) || "x"} content2={attend.attEndDatetime?.slice(11) || "x"} />
+                    {attendList.filter((el) => el.attDate === attendDate)?.map((attend, i) => (
+                        <Grid3Row key={i} title={attend.userName} content1={attend.attStartDatetime || "x"} content2={attend.attEndDatetime || "x"} />
                     ))}
                 </div>
             </Content>

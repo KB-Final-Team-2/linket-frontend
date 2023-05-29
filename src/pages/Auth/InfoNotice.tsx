@@ -13,7 +13,7 @@ const InfoNotice = () => {
         <Templete>
                 <Header title="공지사항" />
                 <Content>
-                    {list.map((v, i) => {
+                    {list?.map((v, i) => {
                         return (<NextList key={i} title={v.content} func={() => { navigate(`/member/info/notice/${1234}`) }} />)
                     })}
                 </Content>

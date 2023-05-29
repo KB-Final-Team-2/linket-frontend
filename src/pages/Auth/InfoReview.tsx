@@ -28,7 +28,7 @@ const InfoReview = () => {
                 <>
                     <Header title="내 리뷰" />
                     <Content>
-                        {reviewList.map((review, i) => {
+                        {reviewList?.map((review, i) => {
                             return (<NextList key={i} title={review.eventName} func={() => { dispatch(setReview(review)) }} />)
                         })}
                     </Content>

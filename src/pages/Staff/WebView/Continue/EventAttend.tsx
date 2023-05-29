@@ -110,7 +110,7 @@ const EventAttend = () => {
                     </div>
 
                     <div className="w-[790px] h-full overflow-auto">
-                        {attendList.map((v, i) => (<AttendList key={i} attend={v} />))}
+                        {attendList?.map((v, i) => (<AttendList key={i} attend={v} />))}
                     </div>
                 </div>
                 <div className="w-[790px] h-[100px] overflow-hidden flex flex-shrink-0">
