@@ -168,6 +168,7 @@ const SelectPlaceModal = ({ onSelect }: modalProps) => {
     }
 
     const handlePlaceList = () => {
+        setLoading(true);
         axios.get(`https://www.kopis.or.kr/openApi/restful/prfplc?service=11653933ac2447da843868e7cb625bdb&cpage=${page}&rows=7&signgucodesub=${ckk}`)
             .then((res) => {
                 console.log(res.data);
@@ -175,6 +176,7 @@ const SelectPlaceModal = ({ onSelect }: modalProps) => {
                 const data = parser.parse(res.data);
                 console.log(data);
                 setPlaceList(data.dbs?.db || []);
+                setLoading(false);
             }).catch((err: Error) => {
                 alert(err);
             });

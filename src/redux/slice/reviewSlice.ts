@@ -11,15 +11,6 @@ export const getReview = createAsyncThunk("getReview", async (reviewId: number, 
     }
 })
 
-export const getEventReview = createAsyncThunk("getEventReview", async (eventId:number, {rejectWithValue})=>{
-    try {
-        const reviewData : Review = (await axios.get(`/api/review/${eventId}`)).data || INIT_REVIEW;
-        return reviewData;
-    } catch (error) {
-        rejectWithValue(error);
-    }
-})
-
 export const getReviewList = createAsyncThunk("getReviewLIst", async (email: string, { rejectWithValue }) => {
     try {
         // const reviewList = (await axios.get(`/api/ticket/${userId}`)).data;
@@ -41,8 +32,18 @@ export const getEventReviewList = createAsyncThunk("getEventReviewList", async (
 
 export const registReview = createAsyncThunk("registReview", async (review: RegistReview, { rejectWithValue }) => {
     try {
-        const result = (await axios.post(`/api/review/member/${review.reviewTicketId}/review`, review)).data;
+        const result = (await axios.post(`/api/review/member/review`, review)).data;
         return result;
+    } catch (error) {
+        rejectWithValue(error);
+    }
+})
+
+
+export const checkTicketReview = createAsyncThunk("getEventReview", async (ticketId:number, {rejectWithValue})=>{
+    try {
+        const reviewData : Review = (await axios.post(`/api/review/member/${ticketId}/review/check`)).data;
+        return reviewData;
     } catch (error) {
         rejectWithValue(error);
     }
@@ -80,14 +81,14 @@ const reviewSlice = createSlice({
         builder.addCase(getReview.rejected, (state) => {
             state.loading = false;
         });
-        builder.addCase(getEventReview.pending, (state) => {
+        builder.addCase(checkTicketReview.pending, (state) => {
             state.loading = true;
         });
-        builder.addCase(getEventReview.fulfilled, (state, action) => {
+        builder.addCase(checkTicketReview.fulfilled, (state, action) => {
             state.data = action.payload || INIT_REVIEW;
             state.loading = false;
         });
-        builder.addCase(getEventReview.rejected, (state) => {
+        builder.addCase(checkTicketReview.rejected, (state) => {
             state.loading = false;
         });
         builder.addCase(getReviewList.pending, (state) => {

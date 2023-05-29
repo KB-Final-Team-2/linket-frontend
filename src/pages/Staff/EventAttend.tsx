@@ -22,11 +22,10 @@ const EventAttend = () => {
     const dispatch: any = useDispatch();
 
     useEffect(() => {
-        console.log(event.eventId);
         dispatch(getEventAttendList(event.eventId))
         .then(unwrapResult)
-        .then(()=>{
-
+        .then((res:any)=>{
+            console.log(res);
         }).catch((err:Error)=>{
             alert(err.message);
         });
@@ -42,9 +41,9 @@ const EventAttend = () => {
                         <div className="w-[331px] h-[37px] overflow-hidden">
                             <TableInfo title={"행사명"} content={event.eventName} />
                         </div>
-                        <div className="w-[331px] h-[580px] overflow-auto">
+                        <div className="w-[331px] h-[580px] overflow-auto border-t">
                             {attendDays.map((day, i) => {
-                                return (<NextList key={i} title={day} func={() => { dispatch(setDate((day))) }} />)
+                                return (<NextList key={i} title={day.slice(0,10)} func={() => { dispatch(setDate((day))) }} />)
                             })}
                         </div>
                     </Content>

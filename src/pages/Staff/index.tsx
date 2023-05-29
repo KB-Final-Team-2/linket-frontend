@@ -12,6 +12,7 @@ import { User } from "../../interface/User";
 import { CgSpinner } from "react-icons/cg";
 import EventEndedDetail from "./EventEndedDetail";
 import Content from "../Templete/Content";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 const Staff = () => {
 	const user: User = useSelector((state: any) => state.auth.data);
@@ -21,7 +22,14 @@ const Staff = () => {
 	const dispatch: any = useDispatch();
 
 	useEffect(() => {
+		console.log(user);
 		dispatch(getEventList(user.userCompanyId))
+		.then(unwrapResult)
+		.then((res:any[])=>{
+			console.log(res);
+		}).catch((err:Error)=>{
+			alert(err.message)
+		});
 	}, [])
 
 	return (

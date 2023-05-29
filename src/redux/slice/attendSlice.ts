@@ -37,6 +37,24 @@ export const getEventAttendList = createAsyncThunk('getEventAttendList', async (
     }
 })
 
+export const updateStaffStart = createAsyncThunk("updateStaffStart", async({attDate, attEventId, attStartBnt}:any, {rejectWithValue})=>{
+    try {
+        const result = (await axios.post("/api/attendance/staff/start",{attDate, attEventId, attStartBnt})).data;
+        return result;
+    } catch (error) {
+        rejectWithValue(error);
+    }
+})
+
+export const updateStaffEnd = createAsyncThunk("updateStaffEnd", async({attDate, attEventId, attEndBnt}:any, {rejectWithValue})=>{
+    try {
+        const result = (await axios.post("/api/attendance/staff/end",{attDate, attEventId, attEndBnt})).data;
+        return result;
+    } catch (error) {
+        rejectWithValue(error);
+    }
+})
+
 const attendSlice = createSlice({
     name: "attend",
     initialState: {
@@ -60,12 +78,6 @@ const attendSlice = createSlice({
         },
         setDate: (state, action) =>{
             state.date = action.payload;
-        },
-        updateStart: (state, action) => {
-            state.startState = action.payload;
-        },
-        updateEnd: (state, action) => {
-            state.endState = action.payload;
         },
         initAttend: (state)=>{
             state.data=INIT_ATTD;
@@ -105,6 +117,24 @@ const attendSlice = createSlice({
         builder.addCase(getEventAttendList.rejected, (state)=>{
             state.loading = false;
         });
+        builder.addCase(updateStaffStart.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updateStaffStart.fulfilled, (state, action) => {
+            state.loading = false;
+        });
+        builder.addCase(updateStaffStart.rejected, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(updateStaffEnd.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updateStaffEnd.fulfilled, (state, action) => {
+            state.loading = false;
+        });
+        builder.addCase(updateStaffEnd.rejected, (state) => {
+            state.loading = false;
+        });
     }
 })
 
@@ -113,8 +143,6 @@ export const {
     setAttendList,
     setDays,
     setDate,
-    updateStart,
-    updateEnd,
     initAttend,
 } = attendSlice.actions;
 

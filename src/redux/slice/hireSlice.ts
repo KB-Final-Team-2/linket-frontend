@@ -56,12 +56,12 @@ export const getPartHireList = createAsyncThunk("getPartHireLIst", async (email:
     }
 })
 
-export const registPartHire = createAsyncThunk("registPartHire", async (hireId:number) => {
+export const registPartHire = createAsyncThunk("registPartHire", async (hireId:number, {rejectWithValue}) => {
     try {
-        const result = (await axios.post(`/api/hire/regist`)).data;
+        const result = (await axios.post(`/api/attendance/join/${hireId}`)).data;
         return result;
     } catch (error) {
-
+        rejectWithValue(error);
     }
 })
 
