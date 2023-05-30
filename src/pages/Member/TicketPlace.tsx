@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, useSearchParams } from "react-router-dom"
 import Header from "../../components/Header/Header"
 import NavBar from "../../components/NavBar/NavBar"
 import Templete from "../Templete"
@@ -16,20 +16,26 @@ declare global {
 const {kakao} = window;
 
 const TicketPlace = () => {
-    const {placeId} = useParams();
-    const [la, setLa] = useState(0);
-    const [lo, setLo] = useState(0);
+    const [la, setLa] = useState("0");
+    const [lo, setLo] = useState("0");
+    const [searchParams] = useSearchParams();
+    const queryList : any[] = [...searchParams];
 
     const handleMap = () => {
         let container = document.getElementById("map");
+        const tmpLa = queryList.filter((el)=>el[0]==="la")[0][1];
+        const tmpLo = queryList.filter((el)=>el[0]==="lo")[0][1];
+        setLa(tmpLa);
+        setLo(tmpLo);
+        console.log(queryList);
         let options = {
-            center: new kakao.maps.LatLng(la, lo), // 지도 중심좌표
+            center: new kakao.maps.LatLng(tmpLa, tmpLo), // 지도 중심좌표
             level: 3 // 지도 레벨 (확대, 축소 정도)
         };
 
         let map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
 
-        let markerPosition = new kakao.maps.LatLng(la, lo); // 마커가 표시될 위치
+        let markerPosition = new kakao.maps.LatLng(tmpLa, tmpLo); // 마커가 표시될 위치
         let marker = new kakao.maps.Marker({ // 마커 생성
             position: markerPosition
         });
@@ -38,19 +44,8 @@ const TicketPlace = () => {
     }
 
     useEffect(()=>{
-        console.log(placeId);
-        axios.get(`http://www.kopis.or.kr/openApi/restful/prfplc/${placeId}?service=11653933ac2447da843868e7cb625bdb`)
-        .then((res)=>{
-            const parser = new XMLParser();
-            const data = parser.parse(res.data).dbs.db;
-            console.log(data);
-            setLa(data.la);
-            setLo(data.lo);
-            handleMap();
-        })
-
-    },[placeId]);
-    
+        handleMap();
+    },[searchParams]);
 
     return(
         <Templete>
