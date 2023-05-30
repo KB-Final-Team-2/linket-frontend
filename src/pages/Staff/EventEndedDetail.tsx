@@ -5,14 +5,17 @@ import { Event, INIT_EVENT } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
 import { FuncListProps, ListProps } from "../../interface/props";
 import { setEvent } from "../../redux/slice/eventSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EventReview from "./EventReview";
 import EventStats from "./EventStats";
 import Content from "../Templete/Content";
 import BigButton from "../../components/Button/BigButton";
+import axios from "axios";
 
 const EventEndedDetail = () => {
     const [page, setPage] = useState('');
+    const [pay, setPay] = useState("0");
+    const [people, setPeople] = useState("0");
 
     const event = useSelector((state: any) => state.event);
     const eventData: Event = event?.data;
@@ -23,13 +26,22 @@ const EventEndedDetail = () => {
         { title: "행사 분류", content: eventData.eventType },
         { title: "행사 기간", content: `${eventData.startDate} ~ ${eventData.endDate}` },
         { title: "행사 장소", content: eventData.place },
-        { title: "행사 코드", content: `${eventData.eventId}` },
-        { title: "행사 정보 이미지", content: eventData.eventImage },
+        { title: "행사 인원", content: `${people}명` },
+        { title: "총 임금", content: `${pay}원` },
     ]
 
     const dropdownList: FuncListProps[] = [
         { title: "행사 삭제", func: () => { navigate("/staff/delete") } },
     ]
+
+    useEffect(()=>{
+        axios.get(`/api/event/staff/${eventData.eventId}/status`)
+        .then((res)=>{
+            const data = res.data;
+            setPay(data.totalPay);
+            setPeople(data.countPart);
+        })
+    }, [])
 
     return (
         <>

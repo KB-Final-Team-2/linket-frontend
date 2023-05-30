@@ -10,6 +10,7 @@ import AttendToggle from "../../components/Button/AttendToggle";
 import Content from "../Templete/Content";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
+import {TbReload} from "react-icons/tb"
 
 const AttendDetail = () => {
     const event: Event = useSelector((state: any) => state.event?.data);
@@ -21,6 +22,7 @@ const AttendDetail = () => {
 
     const [startState, setStartState] = useState(false);
     const [endState, setEndState] = useState(false);
+    const [isReload, setIsReload] = useState(false);
 
     const handleUpdateStart = () => {
         dispatch(updateStaffStart({attDate:attendDate, attEventId:event?.eventId, attStartBnt:startState?"N":"Y"}))
@@ -46,6 +48,15 @@ const AttendDetail = () => {
         })
     }
 
+    const handleReload = () => {
+        setIsReload(true);
+        dispatch(getEventAttendList(event.eventId))
+        .then(unwrapResult)
+        .then(()=>{
+            setIsReload(false);
+        });
+    };
+
     useEffect(()=>{
         let tmpStartState = false;
         let tmpEndState = false;
@@ -65,13 +76,16 @@ const AttendDetail = () => {
                 <TableInfo title="행사명" content={event.eventName} />
                 <TableInfo title="출근일" content={attendDate.slice(0,10)} />
                 <div className="w-[330px] h-[40px] relative overflow-hidden border-b flex items-center text-xl">
-                    <div className="w-1/2 h-full flex items-center justify-center">
+                    <div className="w-fit h-full flex items-center justify-center px-2">
                         <div className="noselect">출근</div>
                         <AttendToggle state={startState} func={() => { handleUpdateStart() }} />
                     </div>
-                    <div className="w-1/2 h-full flex items-center justify-center">
+                    <div className="w-fit h-full flex items-center justify-center px-2">
                         <div className="noselect">퇴근</div>
                         <AttendToggle state={endState} func={() => { handleUpdateEnd() }} />
+                    </div>
+                    <div className="bg-accent-200 p-1 rounded-lg">
+                        <TbReload className={`${isReload&&"animate-spin"} cursor-pointer`} onClick={handleReload}/>
                     </div>
                 </div>
                 <div className="w-[331px] h-[519px] relative overflow-hidden">

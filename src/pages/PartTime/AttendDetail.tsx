@@ -11,8 +11,12 @@ import Content from "../Templete/Content";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import { HireWithEvent } from "../../interface/Hire";
+import { useState } from "react";
+import { TbReload } from "react-icons/tb";
 
 const AttendDetail = () => {
+    const [isReload, setIsReload] = useState(false);
+
     const user: User = useSelector((state: any) => state.auth?.data);
     const hire: HireWithEvent = useSelector((state:any)=>state.hire?.data);
     const attend = useSelector((state:any)=>state.attend);
@@ -49,6 +53,15 @@ const AttendDetail = () => {
         })
     }
 
+    const handleReload = () => {
+        setIsReload(true);
+        dispatch(getAttend({attEmail:attendData.attEmail, attHireId:attendData.attHireId, attDate:attendData.attDate}))
+        .then(unwrapResult)
+        .then(()=>{
+            setIsReload(false);
+        });
+    };
+
     return (
         <>
             <Header title="근태 관리" func={() => { dispatch(setAttend(INIT_ATTD)) }} />
@@ -63,6 +76,9 @@ const AttendDetail = () => {
                 <div className="w-full h-fit flex justify-evenly px-10 items-center py-10">
                     <Button title="출근" type={attendData.attStartBnt==="Y" ? "default" : "unable"} func={handleStart} loading={attend.loading} />
                     <Button title="퇴근" type={attendData.attEndBnt==="Y" ? "default" : "unable"} func={handleEnd} />
+                    <div className="bg-accent-200 p-1 rounded-lg">
+                        <TbReload className={`${isReload&&"animate-spin"} cursor-pointer`} onClick={handleReload}/>
+                    </div>
                 </div>
             </Content>
         </>
