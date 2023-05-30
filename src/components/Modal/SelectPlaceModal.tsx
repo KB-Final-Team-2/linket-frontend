@@ -71,8 +71,8 @@ const SelectPlaceModal = ({ onSelect }: props) => {
 
     return (
         <Modal>
-            <div className="w-[331px] h-full flex flex-col justify-start place-items-center">
-                <div className="w-full h-[50px] border-b border-white flex mt-10">
+            <div className="w-[290px] h-full flex flex-col justify-start place-items-center gap-2">
+                <div className="w-full h-[50px] border-b border-white flex mt-10 text-2xl">
                     <p className="w-[150px] h-full text-place-center">시/도</p>
                     <select
                         ref={regionRef}
@@ -84,8 +84,8 @@ const SelectPlaceModal = ({ onSelect }: props) => {
                         ))}
                     </select>
                 </div>
-                <div className="w-full h-[50px] border-b border-white flex mt-10">
-                    <p className="w-[150px] h-full text-place-center">시/군/구</p>
+                <div className="w-full h-[50px] border-b border-white flex text-2xl">
+                    <p className="w-[150px] h-full text-place-center ">시/군/구</p>
                     <select
                         ref={regionRef}
                         value={ckk}
@@ -99,7 +99,7 @@ const SelectPlaceModal = ({ onSelect }: props) => {
                         ))}
                     </select>
                 </div>
-                <div className="w-full h-[350px] bg-bg-100 flex flex-col">
+                <div className="w-full h-[350px] bg-bg-100 flex flex-col rounded-xl">
                     {placeList?.length === 0
                         ?
                         <CgSpinner className="animate-spin self-center"/>
@@ -108,7 +108,7 @@ const SelectPlaceModal = ({ onSelect }: props) => {
                             {placeList?.map((place: any, i) => (
                                 <div
                                     key={i}
-                                    className="w-full h-[70px]"
+                                    className="w-full h-[70px] text-lg"
                                     onClick={() => { onSelect({ id: place.mt10id, content:place.fcltynm }) }}
                                 >
                                     {place.fcltynm}
