@@ -13,7 +13,7 @@ const EventList = ({event}: props) => {
 
     return (
         <div
-            className="w-[331px] h-[60px] overflow-hidden flex border-b"
+            className={`w-full h-[60px] overflow-hidden flex border-b ${event.eventStatus==="Y"&&"text-primary-200"}`}
             // onClick={()=>{dispatch(getEvent(event.eventId))}}
             onClick={()=>{dispatch(setEvent(event))}}
             >

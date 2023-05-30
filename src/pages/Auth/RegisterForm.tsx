@@ -23,14 +23,14 @@ interface listProps {
 
 const RegistList = ({ title, data, setFunc }: listProps) => {
     return (
-        <div className="w-full h-[37px] overflow-hidden flex text-[15px] font-bold text-center text-white">
-            <div className="w-24 flex-shrink-0">
+        <div className="w-full h-fit overflow-hidden flex flex-col text-[15px] font-bold text-center text-white">
+            <div className="w-full h-fit flex-shrink-0 text-start px-4 py-1">
                 {title}
             </div>
             <input
                 type="text"
                 className="
-                    w-full h-[37px] rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold 
+                    w-full h-[30px] rounded-[9px] bg-[#c4c4c4]/[0.31] font-bold 
                     focus:outline-none focus:bg-[#c4c4c4]/[0.80] focus:caret-black/[0]
                 "
                 onChange={(e) => { setFunc(e.target.value) }}
@@ -68,7 +68,7 @@ const RegisterForm = (props: props) => {
             .then(unwrapResult)
             .then(() => {
                 setIsOk(true);
-            }).catch((err:Error)=>{
+            }).catch((err: Error) => {
                 alert(err.message);
             })
     }
@@ -80,7 +80,7 @@ const RegisterForm = (props: props) => {
                 .then(unwrapResult)
                 .then((res: any) => {
                     console.log(res);
-                    if(res==="fail")    alert("이미 등록된 이메일입니다.")
+                    if (res === "fail") alert("이미 등록된 이메일입니다.")
                     else {
                         setEmailCheck(res);
                         alert("이메일이 발송되었습니다. 확인 코드를 입력해주세요.")
@@ -93,7 +93,7 @@ const RegisterForm = (props: props) => {
     }
 
     const checkEmailCode = () => {
-        if(emailCode===emailCheck)  setIsCheck(true);
+        if (emailCode === emailCheck) setIsCheck(true);
         else {
             alert("잘못된 코드입니다.");
         }
@@ -104,83 +104,75 @@ const RegisterForm = (props: props) => {
     }, [passwordCheck])
 
     return (
-        <Templete>
-            <div className="w-[375px] h-[812px] relative overflow-hidden">
-                <RegisterHeader />
-                <div className="w-[375px] h-[540px] overflow-hidden flex flex-col">
-                    {isOk
-                        ?
-                        <>
-                            <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2 place-content-center">
-                                <p className="inline w-fit h-fit justify-center items-center text-lg">
-                                    회원 가입이 완료되었습니다.<br />
-                                    가입한 계정으로 로그인하시기 바랍니다.
-                                </p>
-                            </div>
-                            <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-center items-center px-10">
-                                <Button title="login" type="default" func={() => { navigate("/") }} />
-                            </div>
-                        </>
-                        :
-                        <>
-                            <div className="w-[375px] h-[50px] overflow-hidden">
-                                <p className="w-[373px] h-[30px] text-2xl font-bold text-center text-white">
-                                    회원정보를 입력해주세요.
-                                </p>
-                            </div>
-                            <div className="w-[375px] h-full overflow-hidden bg-background-dark flex flex-col justify-between items-start py-10 px-5 rounded-2xl">
-                                {viewInfo
-                                    ?
-                                    <>
-                                        <RegistList title="이름" data={userName} setFunc={(data: string) => { setName(data) }} />
-                                        <div className="w-[331px] h-[37px] overflow-hidden flex text-[15px] font-bold text-center text-white">
-                                            <div className=" w-24 flex-shrink-0">
-                                                생년월일
-                                            </div>
-                                            <input type="date" value={birthdate} onChange={(e) => { setBirthdate(e.target.value) }} />
+        <>
+            <RegisterHeader />
+            <div className="w-[375px] h-[540px] overflow-hidden flex flex-col">
+                {isOk
+                    ?
+                    <>
+                        <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2 place-content-center">
+                            <p className="inline w-fit h-fit justify-center items-center text-lg">
+                                회원 가입이 완료되었습니다.<br />
+                                가입한 계정으로 로그인하시기 바랍니다.
+                            </p>
+                        </div>
+                        <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-center items-center px-10">
+                            <Button title="login" type="default" func={() => { navigate("/") }} />
+                        </div>
+                    </>
+                    :
+                    <>
+                        <div className="w-full h-fit text-2xl font-bold text-center text-white">
+                            {props.role} 회원가입을 진행합니다.<br />
+                            회원정보를 입력해주세요.
+                        </div>
+                        <div className="w-full h-full overflow-hidden bg-background-dark flex flex-col justify-between items-start py-10 px-10 rounded-2xl">
+                            {viewInfo
+                                ?
+                                <>
+                                    <RegistList title="이름" data={userName} setFunc={(data: string) => { setName(data) }} />
+                                    <div className="w-full h-fit overflow-hidden flex flex-col text-[15px] font-bold text-center text-white">
+                                        <div className="w-full flex-shrink-0 text-start px-4 py-1">
+                                            생년월일
                                         </div>
-                                        <div className="w-[331px] h-[37px] overflow-hidden flex text-[15px] font-bold text-center text-white">
-                                            <div className=" w-24 flex-shrink-0">
-                                                성별
-                                            </div>
-                                            <div className="w-full h-[37px] relative flex justify-between px-5 overflow-hidden">
-                                                <SelectButton title="Man" func={() => setGender("M")} state={gender == "M"} />
-                                                <SelectButton title="Woman" func={() => setGender("W")} state={gender == "W"} />
-                                            </div>
+                                        <input type="date" value={birthdate} onChange={(e) => { setBirthdate(e.target.value) }} />
+                                    </div>
+                                    <div className="w-full h-fit overflow-hidden flex text-[15px] font-bold text-center text-white">
+                                        <div className="w-fit px-4 py-1 flex-shrink-0">
+                                            성별
                                         </div>
-                                        <div className="w-[331px] h-[37px] overflow-hidden flex text-[15px] font-bold text-center text-white">
-                                            <div className=" w-24 flex-shrink-0">
-                                                연락처
-                                            </div>
-                                            <input type="tel" value={phone} onChange={(e) => { setPhone(e.target.value) }} />
+                                        <div className="w-full h-[37px] relative flex justify-evenly overflow-hidden">
+                                            <SelectButton title="Man" func={() => setGender("M")} state={gender == "M"} />
+                                            <SelectButton title="Woman" func={() => setGender("W")} state={gender == "W"} />
                                         </div>
-                                        {props.role == "staff" && (<RegistList title="기업 코드" data={companyId} setFunc={(data: string) => { setCompanyId(data) }} />)}
-                                    </>
-                                    :
-                                    <>
-                                        <RegistList title="email" data={email} setFunc={(data: string) => { setEmail(data) }} />
-                                        <div
-                                            className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary-100 rounded-sm flex justify-center items-center text-sm"
-                                            onClick={() => { checkEmail() }}
-                                        >
-                                            email 인증
-                                        </div>
-                                        <RegistList title="email 확인" data={emailCode} setFunc={(data: string) => { checkEmail() }} />
-                                        <div className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary-100 rounded-sm flex justify-center items-center text-sm">코드 인증</div>
-                                        <RegistList title="비밀번호" data={password} setFunc={(data: string) => { setPassword(data) }} />
-                                        <RegistList title="비밀번호 확인" data={passwordCheck} setFunc={(data: string) => { setPasswordCheck(data) }} />
-                                    </>
-                                }
-                                <div className="w-full h-10 overflow-hidden flex justify-center items-center gap-10">
-                                    <Button title={viewInfo ? "회원가입" : "다음"} func={viewInfo ? () => { handleRegist() } : () => { setViewInfo(true) }} type="default" />
-                                    <Button title="뒤로 가기" func={viewInfo ? () => { setViewInfo(false) } : props.init} type="default" />
-                                </div>
+                                    </div>
+                                    <RegistList title="연락처" data={phone} setFunc={(data: string) => { setPhone(data) }} />
+                                    {props.role == "staff" && (<RegistList title="기업 코드" data={companyId} setFunc={(data: string) => { setCompanyId(data) }} />)}
+                                </>
+                                :
+                                <>
+                                    <RegistList title="email" data={email} setFunc={(data: string) => { setEmail(data) }} />
+                                    <div
+                                        className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary-100 rounded-sm flex justify-center items-center text-sm"
+                                        onClick={() => { checkEmail() }}
+                                    >
+                                        email 인증
+                                    </div>
+                                    <RegistList title="email 확인" data={emailCode} setFunc={(data: string) => { setEmailCode(data) }} />
+                                    <div className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary-100 rounded-sm flex justify-center items-center text-sm">코드 인증</div>
+                                    <RegistList title="비밀번호" data={password} setFunc={(data: string) => { setPassword(data) }} />
+                                    <RegistList title="비밀번호 확인" data={passwordCheck} setFunc={(data: string) => { setPasswordCheck(data) }} />
+                                </>
+                            }
+                            <div className="w-full h-10 overflow-hidden flex justify-center items-center gap-10">
+                                <Button title={viewInfo ? "회원가입" : "다음"} func={viewInfo ? () => { handleRegist() } : () => { setViewInfo(true) }} type="default" />
+                                <Button title="뒤로 가기" func={viewInfo ? () => { setViewInfo(false) } : props.init} type="default" />
                             </div>
-                        </>
-                    }
-                </div>
+                        </div>
+                    </>
+                }
             </div>
-        </Templete >
+        </>
     )
 }
 

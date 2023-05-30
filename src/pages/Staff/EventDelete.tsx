@@ -77,8 +77,9 @@ const EventDelete = () => {
                                     </span>
                                 </p>
                             </div>
-                            <div className="w-[331px] h-[202px] overflow-hidden flex justify-center items-center px-10">
-                                <Button title={"Delete"} type={"delete"} func={() => { handleDelete() }} loading={event.loading} />
+                            <div className="w-[331px] h-[202px] overflow-hidden flex justify-evenly items-center px-10">
+                                <Button title={"뒤로 가기"} type={"default"} func={() => { navigate(-1) }} loading={event.loading} />
+                                <Button title={"행사 삭제"} type={"delete"} func={() => { handleDelete() }} loading={event.loading} />
                             </div>
                         </div>
                     </>

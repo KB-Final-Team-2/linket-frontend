@@ -42,7 +42,7 @@ const EventContinueDetail = () => {
                         {eventData.eventDesc}
                     </p>
                 </div>
-                <div className="w-full h-[158px] flex flex-col flex-shrink-0 justify-between">
+                <div className="w-full h-[158px] flex flex-col flex-shrink-0 justify-evenly">
                     <Link to="/staff/hire" className="w-full h-16 text-place-center bg-black/30 text-white hover:bg-white/20 border-primary-100 border-4 rounded-2xl shadow-md">
                         공고 관리
                     </Link>

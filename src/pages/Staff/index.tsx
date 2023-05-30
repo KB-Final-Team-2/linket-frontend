@@ -47,7 +47,10 @@ const Staff = () => {
 									?
 									<CgSpinner className=" animate-spin m-auto" />
 									:
-									eventList?.map((event, i) => (<EventList key={i} event={event} />))
+									<>
+									{eventList?.filter((event)=>event.eventStatus==="Y").map((event, i) => (<EventList key={i} event={event} />))}
+									{eventList?.filter((event)=>event.eventStatus==="N").map((event, i) => (<EventList key={i} event={event} />))}
+									</>
 								}
 							</div>
 

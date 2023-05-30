@@ -8,6 +8,7 @@ import { getEventTicketList } from "../../redux/slice/ticketSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Content from "../Templete/Content";
 import { CgSpinner } from "react-icons/cg";
+import { FaFemale, FaMale } from "react-icons/fa";
 
 interface props {
     onRequestReturn: Function;
@@ -61,20 +62,20 @@ const EventStats = ({ onRequestReturn }: props) => {
                         :
                         <>
                             <div className="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 h-[60px] overflow-hidden border-b border-white">
-                                <div className="text-place-center self-stretch flex-grow-0 flex-shrink-0 w-[115px] relative overflow-hidden gap-2.5 border-r text-[15px] border-white">
+                                <div className="text-place-center self-stretch flex-grow-0 flex-shrink-0 w-[115px] relative overflow-hidden gap-2.5 border-r text-[15px] border-white font-bold">
                                     관람객 성별
                                 </div>
-                                <div className="text-place-center self-stretch relative overflow-hidden gap-2.5 border-r border-white text-[15px] font-bold text-center text-white flex-grow">
-                                    남성 {(gender[0] / eventTicketList?.length * 100).toFixed(2)}%
+                                <div className="text-place-center self-stretch relative overflow-hidden gap-2.5 border-r border-white text-[15px] font-bold text-center text-blue-400 flex-grow">
+                                    <FaMale/> {(gender[0] / eventTicketList?.length * 100).toFixed(2)}%
                                 </div>
-                                <div className="text-place-center self-stretch relative overflow-hidden gap-2.5 border-white text-[15px] font-bold text-center text-white flex-grow">
-                                    여성 {(gender[1] / eventTicketList?.length * 100).toFixed(2)}%
+                                <div className="text-place-center self-stretch relative overflow-hidden gap-2.5 border-white text-[15px] font-bold text-center text-pink-400 flex-grow">
+                                    <FaFemale/> {(gender[1] / eventTicketList?.length * 100).toFixed(2)}%
                                 </div>
                             </div>
                             <div className="flex flex-col justify-start items-start self-stretch flex-grow overflow-hidden">
                                 <div className="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 h-[30px] relative overflow-hidden border-b border-white text-[15px] font-bold text-left text-white">
                                     <p className="self-stretch flex-grow w-[330px] h-[30px] text-[15px] font-bold text-left text-white">
-                                        관람객 연령별
+                                        연령별
                                     </p>
                                 </div>
                                 <div className="flex justify-start items-start self-stretch flex-grow overflow-hidden">

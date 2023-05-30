@@ -11,7 +11,7 @@ const RoleList = ({ title, content, func }: ListProps) => {
             className="
             w-full h-[85px] overflow-hidden flex items-center justify-center transition-all duration-100 cursor-pointer
             bg-[#c4c4c4]/[0.31] hover:bg-primary-100 text-white hover:text-black
-             rounded-tl-[30px] rounded-tr-[10px] rounded-br-[30px] rounded-bl-[10px] shadow-xl
+             rounded-tl-[30px] rounded-tr-[10px] rounded-br-[30px] rounded-bl-[10px] shadow-md shadow-white hover:shadow-primary-300
             "
             onClick={() => { func && func(content) }}
         >
@@ -35,17 +35,17 @@ const Register = () => {
             {role == "" && (
                 <>
                     <RegisterHeader />
-                    <Content>
+                    <div className="w-[375px] h-[540px] overflow-hidden flex flex-col">
                         <div className="w-full h-full flex flex-col py-4 gap-4">
                             <div className="w-full h-fit overflow-hidden text-white text-2xl font-bold text-place-center">
-                                LINKET에 오신 것을 환영합니다!<br/>
+                                LINKET에 오신 것을 환영합니다!<br />
                                 계정 유형을 선택해주세요.
                             </div>
-                            <div className="flex flex-col w-full h-full overflow-hidden justify-evenly bg-bg-300 border-4 border-bg-200 rounded-2xl px-2">
+                            <div className="flex flex-col w-full h-full overflow-hidden justify-evenly bg-background-dark rounded-2xl px-2">
                                 {roleList?.map((v, i) => (<RoleList key={i} title={v.title} content={v.content} func={(role: string) => { setRole(role) }} />))}
                             </div>
                         </div>
-                    </Content>
+                    </div>
                 </>
             )}
             {role != "" && (<RegisterForm role={role} init={() => setRole("")} />)}
