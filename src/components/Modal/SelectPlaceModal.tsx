@@ -102,7 +102,7 @@ const SelectPlaceModal = ({ onSelect }: props) => {
                 <div className="w-full h-[350px] bg-bg-100 flex flex-col">
                     {placeList?.length === 0
                         ?
-                        <CgSpinner />
+                        <CgSpinner className="animate-spin self-center"/>
                         :
                         <>
                             {placeList?.map((place: any, i) => (
