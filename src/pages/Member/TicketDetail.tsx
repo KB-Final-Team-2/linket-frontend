@@ -86,8 +86,8 @@ const TicketDetail = () => {
                         />
                     </div>
                     <div className="w-[153px] h-[156px] overflow-hidden flex flex-col justify-center items-center gap-5">
-                        <Button title="Review" type={isReview ? "unable" : "default"} func={() => { navigate("/member/review") }} />
-                        <Button title="Delete" type="delete" func={() => { navigate("/member/delete") }} />
+                        <Button title="리뷰 작성" type={isReview ? "unable" : "default"} func={() => { navigate("/member/review") }} />
+                        <Button title="티켓 삭제" type="delete" func={() => { navigate("/member/delete") }} />
                     </div>
                 </div>
             </Content>

@@ -32,7 +32,7 @@ const ReviewList = ({ title, func, score }: FuncListProps & props) => {
             </div>
             <div className="flex justify-center items-center w-[331px] h-[45px] overflow-hidden gap-[15px]">
                 {scoreList?.map((num, i) => (
-                    <IoTicketSharp key={i} className={`${score >= num && "text-primary-100"} cursor-pointer text-3xl`} onClick={() => { func(num) }} />
+                    <IoTicketSharp key={i} className={`${score >= num ? "text-primary-100" : "text-primary-300"} cursor-pointer text-3xl`} onClick={() => { func(num) }} />
                 ))}
             </div>
         </div>
@@ -51,7 +51,7 @@ const TicketReview = () => {
     const [isOk, setIsOk] = useState(false);
 
     const user: User = useSelector((state: any) => state.auth.data);
-    const ticket = useSelector((state:any)=>state.ticket);
+    const ticket = useSelector((state: any) => state.ticket);
     const ticketData: TicketWithEvent = ticket.data;
     const review: Review = useSelector((state: any) => state.review?.data);
     const dispatch: any = useDispatch();
@@ -75,9 +75,9 @@ const TicketReview = () => {
 
         dispatch(registReview(review))
             .then(unwrapResult)
-            .then((res:string) => {
+            .then((res: string) => {
                 setIsOk(true);
-            }).catch((err:Error)=>{
+            }).catch((err: Error) => {
                 alert(err.message);
             })
     }
@@ -112,15 +112,15 @@ const TicketReview = () => {
                                         </div>
                                         <div className="flex justify-center items-center self-stretch flex-grow overflow-hidden gap-[15px] py-3">
                                             <textarea
-                                                className="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden gap-2.5 p-2.5 rounded-2xl bg-[#c4c4c4]/[0.31]  text-white"
+                                                className="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden gap-2.5 p-2.5 rounded-2xl bg-[#c4c4c4]/[0.31] text-white text-xl"
                                                 defaultValue={etc}
                                                 onChange={(e) => { setEtc(e.target.value) }}
                                             />
                                         </div>
                                     </div>
                                     <div className="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 h-[92px] relative overflow-hidden gap-[58px] p-2.5">
-                                        <Button title="return" type="default" func={() => { setViewEtc(false) }} />
-                                        <Button title="send" type="default" func={() => { handleRegist() }} loading={ticket.loading}/>
+                                        <Button title="이전" type="default" func={() => { setViewEtc(false) }} />
+                                        <Button title="리뷰 등록" type="default" func={() => { handleRegist() }} loading={ticket.loading} />
                                     </div>
                                 </div>
                                 :
@@ -132,7 +132,7 @@ const TicketReview = () => {
                                     <ReviewList title="행사 구성은 만족스러웠나요?" func={(score: number) => { setEventContent(score) }} score={eventContent} />
                                     <ReviewList title="행사 진행은 매끄러웠나요?" func={(score: number) => { setEventGo(score) }} score={eventGo} />
                                     <div className="flex justify-center items-center self-stretch w-full h-full">
-                                        <Button title={"Next"} type={"default"} func={() => { setViewEtc(true) }}/>
+                                        <Button title={"다음"} type={"default"} func={() => { setViewEtc(true) }} />
                                     </div>
                                 </div>
                             }

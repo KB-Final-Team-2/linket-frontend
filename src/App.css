@@ -44,6 +44,7 @@ input {
     font-size: 18px;
     line-height: 28px;
     outline: none;
+    border-radius: 10px;
 }
 
 input:focus {
