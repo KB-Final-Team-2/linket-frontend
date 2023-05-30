@@ -8,6 +8,7 @@ import { getEventTicketList } from "../../redux/slice/ticketSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Content from "../Templete/Content";
 import { CgSpinner } from "react-icons/cg";
+import { FaFemale, FaMale } from "react-icons/fa";
 
 interface props {
     onRequestReturn: Function;
@@ -61,20 +62,20 @@ const EventStats = ({ onRequestReturn }: props) => {
                         :
                         <>
                             <div className="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 h-[60px] overflow-hidden border-b border-white">
-                                <div className="text-place-center self-stretch flex-grow-0 flex-shrink-0 w-[115px] relative overflow-hidden gap-2.5 border-r text-[15px] border-white">
+                                <div className="text-place-center self-stretch flex-grow-0 flex-shrink-0 w-[115px] relative overflow-hidden gap-2.5 border-r text-base border-white font-bold">
                                     관람객 성별
                                 </div>
-                                <div className="text-place-center self-stretch relative overflow-hidden gap-2.5 border-r border-white text-[15px] font-bold text-center text-white flex-grow">
-                                    남성 {(gender[0] / eventTicketList?.length * 100).toFixed(2)}%
+                                <div className="text-place-center self-stretch relative overflow-hidden gap-2.5 border-r border-white text-base font-bold text-center text-blue-400 flex-grow">
+                                    <FaMale/> {(gender[0] / eventTicketList?.length * 100).toFixed(2)}%
                                 </div>
-                                <div className="text-place-center self-stretch relative overflow-hidden gap-2.5 border-white text-[15px] font-bold text-center text-white flex-grow">
-                                    여성 {(gender[1] / eventTicketList?.length * 100).toFixed(2)}%
+                                <div className="text-place-center self-stretch relative overflow-hidden gap-2.5 border-white text-base font-bold text-center text-pink-400 flex-grow">
+                                    <FaFemale/> {(gender[1] / eventTicketList?.length * 100).toFixed(2)}%
                                 </div>
                             </div>
                             <div className="flex flex-col justify-start items-start self-stretch flex-grow overflow-hidden">
-                                <div className="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 h-[30px] relative overflow-hidden border-b border-white text-[15px] font-bold text-left text-white">
-                                    <p className="self-stretch flex-grow w-[330px] h-[30px] text-[15px] font-bold text-left text-white">
-                                        관람객 연령별
+                                <div className="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 h-[30px] relative overflow-hidden border-b border-white text-base font-bold text-left text-white">
+                                    <p className="self-stretch flex-grow w-[330px] h-[30px] text-base font-bold text-left text-white pl-4">
+                                        연령별
                                     </p>
                                 </div>
                                 <div className="flex justify-start items-start self-stretch flex-grow overflow-hidden">
@@ -88,53 +89,53 @@ const EventStats = ({ onRequestReturn }: props) => {
                                             <div className="flex-grow-0 flex-shrink-0 w-full bg-stats-6" style={{ height: `${(age[5] / eventTicketList?.length) * 100}%` }} />
                                         </div>
                                     </div>
-                                    <div className="flex flex-col justify-start items-start self-stretch flex-grow overflow-hidden">
-                                        <div className="flex justify-start items-center self-stretch flex-grow overflow-hidden border-b border-white h-[53.67px]">
-                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-[15px] font-bold text-center text-white">
+                                    <div className="flex flex-col items-start self-stretch flex-grow overflow-hidden justify-evenly">
+                                        <div className="w-full h-fit py-4 flex justify-start items-center overflow-hidden bg-background-dark rounded-xl">
+                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-base font-bold text-center text-white">
                                                 10대 이하
                                             </p>
                                             <p className="flex-grow w-full h-fit text-base font-bold text-center text-stats-1">
-                                                {age[0]}<br />({(age[0] / eventTicketList?.length * 100).toFixed(2)}%)
+                                                {age[0]} 명 ({(age[0] / eventTicketList?.length * 100).toFixed(2)}%)
                                             </p>
                                         </div>
-                                        <div className="flex justify-start items-center self-stretch flex-grow overflow-hidden border-b border-white">
-                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-[15px] font-bold text-center text-white">
+                                        <div className="w-full h-fit py-4 flex justify-start items-center overflow-hidden bg-background-dark rounded-xl">
+                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-base font-bold text-center text-white">
                                                 20대
                                             </p>
                                             <p className="flex-grow w-full h-fit text-base font-bold text-center text-stats-2">
-                                                {age[1]}<br />({(age[1] / eventTicketList?.length * 100).toFixed(2)}%)
+                                                {age[1]} 명 ({(age[1] / eventTicketList?.length * 100).toFixed(2)}%)
                                             </p>
                                         </div>
-                                        <div className="flex justify-start items-center self-stretch flex-grow overflow-hidden border-b border-white">
-                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-[15px] font-bold text-center text-white">
+                                        <div className="w-full h-fit py-4 flex justify-start items-center overflow-hidden bg-background-dark rounded-xl">
+                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-base font-bold text-center text-white">
                                                 30대
                                             </p>
                                             <p className="flex-grow w-full h-fit text-base font-bold text-center text-stats-3">
-                                                {age[2]}<br />({(age[2] / eventTicketList?.length * 100).toFixed(2)}%)
+                                                {age[2]} 명 ({(age[2] / eventTicketList?.length * 100).toFixed(2)}%)
                                             </p>
                                         </div>
-                                        <div className="flex justify-start items-center self-stretch flex-grow overflow-hidden border-b border-white">
-                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-[15px] font-bold text-center text-white">
+                                        <div className="w-full h-fit py-4 flex justify-start items-center overflow-hidden bg-background-dark rounded-xl">
+                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-base font-bold text-center text-white">
                                                 40대
                                             </p>
                                             <p className="flex-grow w-full h-fit text-base font-bold text-center text-stats-4">
-                                                {age[3]}<br />({(age[3] / eventTicketList?.length * 100).toFixed(2)}%)
+                                                {age[3]} 명 ({(age[3] / eventTicketList?.length * 100).toFixed(2)}%)
                                             </p>
                                         </div>
-                                        <div className="flex justify-start items-center self-stretch flex-grow overflow-hidden border-b border-white">
-                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-[15px] font-bold text-center text-white">
+                                        <div className="w-full h-fit py-4 flex justify-start items-center overflow-hidden bg-background-dark rounded-xl">
+                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-base font-bold text-center text-white">
                                                 50대
                                             </p>
                                             <p className="flex-grow w-full h-fit text-base font-bold text-center text-stats-5">
-                                                {age[4]}<br />({(age[4] / eventTicketList?.length * 100).toFixed(2)}%)
+                                                {age[4]} 명 ({(age[4] / eventTicketList?.length * 100).toFixed(2)}%)
                                             </p>
                                         </div>
-                                        <div className="flex justify-start items-center self-stretch flex-grow overflow-hidden">
-                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-[15px] font-bold text-center text-white">
+                                        <div className="w-full h-fit py-4 flex justify-start items-center overflow-hidden bg-background-dark rounded-xl">
+                                            <p className="flex-grow-0 flex-shrink-0 w-[70px] h-fit text-base font-bold text-center text-white">
                                                 60대 이상
                                             </p>
                                             <p className="flex-grow w-full h-fit text-base font-bold text-center text-stats-6">
-                                                {age[5]}<br />({(age[5] / eventTicketList?.length * 100).toFixed(2)}%)
+                                                {age[5]} 명 ({(age[5] / eventTicketList?.length * 100).toFixed(2)}%)
                                             </p>
                                         </div>
                                     </div>

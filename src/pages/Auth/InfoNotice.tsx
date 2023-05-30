@@ -14,7 +14,7 @@ const InfoNotice = () => {
                 <Header title="공지사항" />
                 <Content>
                     {list?.map((v, i) => {
-                        return (<NextList key={i} title={v.content} func={() => { navigate(`/member/info/notice/${1234}`) }} />)
+                        return (<NextList key={i} title={v.content} func={() => { navigate(`/info/notice/${1234}`) }} />)
                     })}
                 </Content>
                 <NavBar role="member" state="3" />

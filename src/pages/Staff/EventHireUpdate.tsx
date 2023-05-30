@@ -56,14 +56,14 @@ const EventHireUpdate = () => {
             <Content>
                 <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2">
                     <RegistInput title={"공고명"} ref={workNameRef} value={hireData?.workName} />
-                    <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0 text-[15px] font-bold text-center text-white items-center">
+                    <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0 text-base font-bold text-center text-white items-center">
                         <p className="w-fit h-fit flex-shrink-0">
                             행사 시작일시
                         </p>
                         <input type="date" value={startDate} onChange={(e)=>setStartDate(e.target?.value)}/>
                     </div>
                     <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
-                        <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
+                        <p className="w-[115px] h-[37px] text-base font-bold text-center text-white">
                             행사 종료일시
                         </p>
                         <input type="date" value={startDate} onChange={(e)=>setStartDate(e.target?.value)}/>
@@ -72,7 +72,7 @@ const EventHireUpdate = () => {
                     <RegistInput title={"시급"} ref={payRef} value={`${hireData?.pay}`} />
                     <RegistInput title={"대표 문의처"} ref={inqRef} value={`${event?.eventInq}`} />
                     <div className="w-[330px] h-full overflow-hidden flex">
-                        <p className="w-[115px] h-[175px] text-[15px] font-bold text-center text-white">
+                        <p className="w-[115px] h-[175px] text-base font-bold text-center text-white">
                             사전 교육 정보
                         </p>
                         <textarea

@@ -26,7 +26,7 @@ const TicketList = ({ ticket }: props) => {
                 <div className="w-full h-full font-bold text-[#ffa559] truncate flex justify-start items-center">
                     {ticket.eventName}
                 </div>
-                <div className="w-full h-full font-bold text-base text-[#d9d9d9] flex justify-start items-center">
+                <div className="w-full h-full font-bold text-sm md:text-base text-[#d9d9d9] flex justify-start items-center">
                     {ticket.startDate}~{ticket.endDate}
                 </div>
             </div>

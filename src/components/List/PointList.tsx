@@ -6,7 +6,7 @@ const PointList = ({ content }: props) => {
     return (
         <div className="w-[331px] h-[37px] relative overflow-hidden">
             <div className="w-[331px] h-[37px] absolute left-0 top-0 overflow-hidden">
-                <p className="w-[331px] h-[37px] absolute left-0 top-0 text-[15px] font-bold text-left text-white">
+                <p className="w-[331px] h-[37px] absolute left-0 top-0 text-base font-bold text-left text-white">
                     {content}
                 </p>
             </div>

@@ -50,7 +50,7 @@ const HireSearch = ({ onRequestReturn }: props) => {
                 <div className="w-[330px] h-full overflow-hidden flex flex-col">
                     <div className="w-[331px] h-[324px] overflow-hidden flex flex-shrink-0 border-y">
                         <div className="w-[60px] h-[324px] overflow-hidden border-r flex flex-shrink-0 justify-center itmes-center">
-                            <p className="text-[15px] font-bold text-center text-white">
+                            <p className="text-base font-bold text-center text-white">
                                 행사 기간
                             </p>
                         </div>
@@ -83,7 +83,7 @@ const HireSearch = ({ onRequestReturn }: props) => {
                         </div>
                     </div>
                     <div className="w-[330px] h-[60px] overflow-hidden flex border-b flex-shrink-0">
-                        <div className="w-[60px] h-[60px] overflow-hidden border-r flex flex-shrink-0 justify-center items-center text-[15px] font-bold text-center text-white">
+                        <div className="w-[60px] h-[60px] overflow-hidden border-r flex flex-shrink-0 justify-center items-center text-base font-bold text-center text-white">
                             행사<br />종류
                         </div>
                         <div className="w-full h-[60px] overflow-hidden flex justify-between items-center px-4">

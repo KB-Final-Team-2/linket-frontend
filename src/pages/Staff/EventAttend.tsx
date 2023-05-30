@@ -23,12 +23,12 @@ const EventAttend = () => {
 
     useEffect(() => {
         dispatch(getEventAttendList(event.eventId))
-        .then(unwrapResult)
-        .then((res:any)=>{
-            console.log(res);
-        }).catch((err:Error)=>{
-            alert(err.message);
-        });
+            .then(unwrapResult)
+            .then((res: any) => {
+                console.log(res);
+            }).catch((err: Error) => {
+                alert(err.message);
+            });
     }, [])
 
     return (
@@ -38,14 +38,10 @@ const EventAttend = () => {
                 <>
                     <Header title="근태 관리" />
                     <Content>
-                        <div className="w-[331px] h-[37px] overflow-hidden">
-                            <TableInfo title={"행사명"} content={event.eventName} />
-                        </div>
-                        <div className="w-[331px] h-[580px] overflow-auto">
-                            {attendDays?.map((day, i) => {
-                                return (<NextList key={i} title={day.slice(0,10)} func={() => { dispatch(setDate((day))) }} />)
-                            })}
-                        </div>
+                        <TableInfo title={"행사명"} content={event.eventName} />
+                        {attendDays?.map((day, i) => {
+                            return (<NextList key={i} title={day.slice(0, 10)} func={() => { dispatch(setDate((day))) }} />)
+                        })}
                     </Content>
                 </>
                 :

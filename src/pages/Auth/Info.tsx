@@ -40,7 +40,7 @@ const Info = () => {
         <Templete>
             <IndexHeader title="내 정보" />
             <Content>
-                <div className="w-[331px] h-fit overflow-hidden border-y-2 border-white">
+                <div className="w-full h-fit overflow-hidden border-y-2 border-white">
                     <Link to="/info/user">
                         <InfoList title="내 정보">
                             <IoMdHappy />
@@ -55,7 +55,7 @@ const Info = () => {
                         </Link>
                     }
                 </div>
-                <div className="w-[331px] h-[100px] overflow-hidden border-b border-white">
+                <div className="w-full h-fit overflow-hidden border-b border-white">
                     <Link to="/info/FAQ">
                         <InfoList title="FAQ">
                             <FaRegCommentDots />
@@ -69,7 +69,7 @@ const Info = () => {
                     </Link>
                 </div>
                 <div
-                    className="w-[331px] h-[50px] overflow-hidden border-y cursor-pointer"
+                    className="w-full h-fit overflow-hidden border-y cursor-pointer"
                     onClick={() => { handleLogout() }}
                 >
                     <InfoList title="로그아웃">

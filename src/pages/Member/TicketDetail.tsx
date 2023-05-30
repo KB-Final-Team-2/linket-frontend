@@ -14,6 +14,7 @@ import { INIT_REVIEW, Review } from "../../interface/Review";
 import axios from "axios";
 import { XMLParser } from "fast-xml-parser";
 import Content from "../Templete/Content";
+import { FaMapMarkedAlt } from "react-icons/fa";
 
 const TicketDetail = () => {
     const [isReview, setIsReview] = useState(true);
@@ -51,32 +52,37 @@ const TicketDetail = () => {
         <>
             <Header title="티켓 상세" func={() => dispatch(setTicket(INIT_TICKET))} />
             <Content>
-                <div className="w-[331px] h-full overflow-hidden flex flex-col">
+                <div className="w-full h-full overflow-hidden flex flex-col">
                     <List title="행사명" content={ticket.eventName} />
                     <List title="행사 분류" content={ticket.eventType} />
                     <List title="행사 기간" content={`${ticket.startDate} ~ ${ticket.endDate}`} />
-                    <div className="w-[331px] h-[37px] overflow-hidden border-b border-white flex flex-shrink-0">
-                        <p className=" w-[115px] h-[37px] text-[15px] font-bold text-center text-white flex justify-center items-center flex-shrink-0 flex-grow-0">
+                    <div className="w-full h-fit overflow-hidden border-b border-white flex flex-shrink-0">
+                        <p className=" w-[115px] h-[37px] text-base font-bold text-white flex justify-center items-center flex-shrink-0 flex-grow-0">
                             행사 장소
                         </p>
-                        <p className="w-[135px] h-[37px] text-[15px] font-bold text-center text-white flex justify-center items-center flex-shrink-0 flex-grow-0">
+                        <p className="w-[180px] h-[37px] text-base font-bold text-white flex justify-start items-center flex-shrink-0 flex-grow-0">
                             {ticket.place}
                         </p>
-                        <Button title="위치" type="default" func={handlePlace} />
+                        <div
+                            className="w-8 h-8 rounded-md text-place-center text-primary-300 hover:text-primary-200 transition-all cursor-pointer"
+                            onClick={()=>{handlePlace()}}
+                            >
+                            <FaMapMarkedAlt />
+                        </div>
                     </div>
                     <List title="좌석" content={ticket.seat} />
                     <List title="url" content={ticket.link} />
-                    <div className="self-stretch w-[330px] h-full overflow-hidden border-b border-white flex items-center">
-                        <p className="w-[115px] h-fit text-[15px] font-bold text-center text-white">
+                    <div className="self-stretch w-full h-full overflow-hidden border-b border-white flex items-center">
+                        <p className="w-[115px] h-full text-base font-bold text-center text-white flex text-place-center">
                             행사 설명
                         </p>
-                        <p className="w-[215px] h-fit text-[15px] font-bold text-center text-white">
+                        <p className="w-[215px] h-full text-base font-bold text-center text-white flex text-place-center overflow-auto custom-toolbar">
                             {ticket.eventDesc}
                         </p>
                     </div>
                 </div>
-                <div className="flex justify-between items-center w-full h-[156px]">
-                    <div className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9]">
+                <div className="flex justify-between items-center w-full h-fit py-5 px-5">
+                    <div className="overflow-hidden bg-[#d9d9d9]">
                         <QRCode
                             size={128}
                             className="w-full h-full"
@@ -86,8 +92,8 @@ const TicketDetail = () => {
                         />
                     </div>
                     <div className="w-[153px] h-[156px] overflow-hidden flex flex-col justify-center items-center gap-5">
-                        <Button title="Review" type={isReview ? "unable" : "default"} func={() => { navigate("/member/review") }} />
-                        <Button title="Delete" type="delete" func={() => { navigate("/member/delete") }} />
+                        <Button title="리뷰 작성" type={isReview ? "unable" : "default"} func={() => { navigate("/member/review") }} />
+                        <Button title="티켓 삭제" type="delete" func={() => { navigate("/member/delete") }} />
                     </div>
                 </div>
             </Content>

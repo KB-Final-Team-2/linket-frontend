@@ -75,7 +75,7 @@ const EventRegister = () => {
             <Content>
                 <RegistInput title={"행사명"} ref={nameRef} value={eventData.eventName} />
                 <div className="w-[330px] h-[37px] overflow-hidden flex flex-shrink-0">
-                    <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white">
+                    <p className="w-[115px] h-[37px] text-base font-bold text-center text-white">
                         행사 분류
                     </p>
                     <div className="w-[215px] h-[37px] overflow-hidden flex gap-1">
@@ -88,7 +88,7 @@ const EventRegister = () => {
                 <RegistInput ref={endDateRef} title="행사 종료일" type="date" value={eventData.endDate} />
                 <div className="w-full h-fit flex flex-grow-0">
                     <div className="w-[250px] h-[37px] overflow-hidden flex flex-shrink-0 self-stretch">
-                        <p className="w-[115px] h-[37px] text-[15px] font-bold text-center text-white flex flex-shrink-0 justify-center items-center">
+                        <p className="w-[115px] h-[37px] text-base font-bold text-center text-white flex flex-shrink-0 justify-center items-center">
                             행사 장소
                         </p>
                         <input type={type} ref={placeRef} className="w-full h-[37px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31]" value={place.content} readOnly />
@@ -98,7 +98,7 @@ const EventRegister = () => {
                 <RegistInput title={"행사 정보 이미지"} ref={imageRef} value={eventData.eventImage} />
                 <RegistInput title={"행사 문의처"} ref={inqRef} value={eventData.eventInq} />
                 <div className="w-[330px] h-full overflow-hidden flex">
-                    <p className="w-[115px] h-[175px] text-[15px] font-bold text-center text-white">
+                    <p className="w-[115px] h-[175px] text-base font-bold text-center text-white">
                         행사 설명
                     </p>
                     <textarea

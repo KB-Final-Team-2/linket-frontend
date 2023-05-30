@@ -1,3 +1,5 @@
+import { Event } from "./Event";
+
 export interface Hire {
     hireId : number;
     hireEventId: number;

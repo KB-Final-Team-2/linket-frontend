@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import IndexHeader from "../../components/Header/IndexHeader";
 import NavBar from "../../components/NavBar/NavBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DUMMY_HIRE1, DUMMY_HIRE2, Hire, INIT_HIRE } from "../../interface/Hire";
 import HireList from "../../components/List/HiretList";
 import Templete from "../Templete";
@@ -13,6 +13,7 @@ import HireSearch from "./HireSearch";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Content from "../Templete/Content";
 import moment from "moment";
+import BigButton from "../../components/Button/BigButton";
 
 const PartTime = () => {
 	const [doSearch, setDoSearch] = useState(false);
@@ -21,6 +22,7 @@ const PartTime = () => {
 	const hire: Hire = useSelector((state: any) => state.hire.data);
 	const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
 	const dispatch: any = useDispatch();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		dispatch(getPartHireList(user.email))
@@ -41,24 +43,16 @@ const PartTime = () => {
 					<>
 						<IndexHeader title="User name" />
 						<Content>
-							<p className="w-full h-10 text-sm font-bold text-left align-middle text-primary-100-200">
+							<p className="w-full h-10 text-sm font-bold text-left align-middle text-primary-200 flex items-center border-b pl-3">
 								등록 공고
 							</p>
-							<div className="w-[331px] h-[384px] overflow-hidden">
+							<div className="w-full h-full overflow-hidden">
 								{hireList?.map((hire, i) => (
 									<HireList key={i} hire={hire} />
 								))}
 							</div>
-							<div className="w-full h-[156px] flex justify-between items-center mb-5">
-								<div
-									className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-place-center text-lg font-bold text-black"
-									onClick={() => { setDoSearch(true) }}
-								>
-									공고 검색
-								</div>
-								<Link to={`/part/register`} className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-place-center text-lg font-bold text-black">
-									새 공고 등록하기
-								</Link>
+							<div className="w-full h-fit flex justify-between items-center py-5">
+								<BigButton title="공고 등록" type="default" func={()=>{navigate("/part/register")}}/>
 							</div>
 						</Content>
 					</>

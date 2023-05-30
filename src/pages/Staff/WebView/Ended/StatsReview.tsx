@@ -61,11 +61,11 @@ const StatsReview = () => {
               <p className="w-fit h-fit text-2xl font-bold text-center text-white">
                 smile***
               </p>
-              <p className="w-fit h-fit text-[15px] font-bold text-center text-[#d9d9d9]">
+              <p className="w-fit h-fit text-base font-bold text-center text-[#d9d9d9]">
                 2023.02.03
               </p>
             </div>
-            <div className="w-[580px] h-[70px] overflow-auto text-[15px] font-bold text-left text-white px-2 py-1">
+            <div className="w-[580px] h-[70px] overflow-auto text-base font-bold text-left text-white px-2 py-1">
               이러다가 죽을 거 같아요!! 살려주세요!!
             </div>
           </div>

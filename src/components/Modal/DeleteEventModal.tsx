@@ -7,10 +7,10 @@ import { ListProps } from "../../interface/props";
 const ModalInfoList = ({ title, content }: ListProps) => {
     return (
         <div className="w-full h-12 overflow-hidden border-b border-white flex items-center justify-center px-5">
-            <p className="w-48 h-fit text-[15px] font-bold text-center text-white">
+            <p className="w-48 h-fit text-base font-bold text-center text-white">
                 {title}
             </p>
-            <p className="w-full h-fit text-[15px] font-bold text-center text-white">
+            <p className="w-full h-fit text-base font-bold text-center text-white">
                 {content}
             </p>
         </div>

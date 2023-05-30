@@ -21,7 +21,7 @@ const ReviewList = ({ title, func, score }: FuncListProps & props) => {
     return (
         <div className="w-[331px] h-[75px] overflow-hidden border-b border-white flex-shrink-0">
             <div className="flex justify-start items-start w-[331px] h-[30px] overflow-hidden gap-2.5 border-t-0 border-r-0 border-b border-l-0 border-white">
-                <p className="self-stretch flex-grow w-[331px] h-[30px] text-[15px] font-bold text-left text-[#d9d9d9]">
+                <p className="self-stretch flex-grow w-[331px] h-[30px] text-base font-bold text-left text-[#d9d9d9]">
                     {title}
                 </p>
             </div>
@@ -76,7 +76,7 @@ const InfoReviewDetail = () => {
                     ?
                     <div className="flex flex-col justify-start items-center w-[330px] h-[543px] overflow-hidden">
                         <div className="flex flex-col justify-start items-start self-stretch flex-grow overflow-hidden border-t-0 border-r-0 border-b border-l-0 border-white">
-                            <div className="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 h-[30px] relative overflow-hidden gap-2.5 border-t-0 border-r-0 border-b border-l-0 border-white text-[15px] font-bold text-left text-[#d9d9d9]">
+                            <div className="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 h-[30px] relative overflow-hidden gap-2.5 border-t-0 border-r-0 border-b border-l-0 border-white text-base font-bold text-left text-[#d9d9d9]">
                                 추가적인 의견이 있으시다면 작성해주세요(선택)
                             </div>
                             <div className="flex justify-center items-center self-stretch flex-grow overflow-hidden gap-[15px] py-3">
