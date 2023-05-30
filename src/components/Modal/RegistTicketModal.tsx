@@ -40,7 +40,7 @@ const RegistTicketModal = ({ isOpen, onRequestClose }: ticketModalProps) => {
 				</div>
 				<div className="w-full h-full px-5 flex flex-col justify-center gap-4">
 					<div className="w-full h-fit text-start">일련번호 입력</div>
-					<input value={serialNum} onChange={(e) => { setSerialNum(e.target?.value) }} />
+					<input value={serialNum} onChange={(e) => { setSerialNum(e.target?.value) }} placeholder="일련번호를 입력해주세요." />
 				</div>
 				<Button title="등록" type="default" func={() => { handleRegist() }} loading={ticket.loading} />
 			</div>

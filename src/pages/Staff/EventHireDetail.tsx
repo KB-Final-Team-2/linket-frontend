@@ -23,7 +23,7 @@ const EventHireDetail = () => {
         { title: "공고명", content: hire?.workName },
         { title: "근무기간", content: `${hire.workStartDay.split("-").slice(0, 3).join("-")} ~ ${hire.workStartDay.split("-").slice(0, 3).join("-")}` },
         { title: "근무시간", content: `${hire?.workHour}시간(일)` },
-        { title: "시급", content: `${hire?.pay}만원` },
+        { title: "시급", content: `${hire?.pay}원` },
         { title: "등록코드", content: `${hire?.hireId}` },
         { title: "문의처", content: `${event?.eventInq}` },
         { title: "등록일자", content: hire?.regDate },
