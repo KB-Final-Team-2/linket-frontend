@@ -37,7 +37,7 @@ export const checkDuplicate = createAsyncThunk("checkDuplicate", async (email: s
 
 export const confirmEmail = createAsyncThunk("confirmEmail", async (email: string, {rejectWithValue})=>{
     try {
-        const result = (await axios.post("/api/auth/check-mail/", { email })).data;
+        const result = (await axios.post("/api/auth/check-mail", {email})).data;
         return result;
     } catch (error) {
         rejectWithValue(error);

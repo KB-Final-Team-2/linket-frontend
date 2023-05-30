@@ -54,7 +54,7 @@ const EventHireChat = () => {
         <Templete>
             <Header title="채팅" />
             <Content>
-                <div className={`w-full h-full flex flex-col gap-2 overflow-auto custom-scrollbar ${isLoading&&"text-place-center"}`}>
+                <div className={`w-full h-full flex flex-col gap-2 overflow-auto custom-toolbar ${isLoading&&"text-place-center"}`}>
                     {isLoading
                         ?
                         <CgSpinner className="animate-spin" />
@@ -63,8 +63,8 @@ const EventHireChat = () => {
                             <MessageList key={i} email={chat.email} message={chat.message} />
                         ))}
                 </div>
-                <div className="w-full h-20 flex justify-start items-center">
-                    <input value={message} onChange={(e) => { setMessage(e.target.value) }} />
+                <div className="w-full h-20 flex justify-start items-center gap-2">
+                    <input className="w-full rounded-lg px-2 py-1" value={message} onChange={(e) => { setMessage(e.target.value) }} />
                     <Button title="send" type={message === "" ? "unable" : "default"} func={() => { handleSubmit() }} />
                 </div>
             </Content>
