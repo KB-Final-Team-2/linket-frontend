@@ -74,6 +74,7 @@ const RegisterForm = (props: props) => {
     }
 
     const checkEmail = () => {
+        console.log(email);
         if (email !== "") {
             dispatch(confirmEmail(email))
                 .then(unwrapResult)
@@ -164,7 +165,7 @@ const RegisterForm = (props: props) => {
                                         >
                                             email 인증
                                         </div>
-                                        <RegistList title="email 확인" data={emailCode} setFunc={(data: string) => { setEmailCode(data) }} />
+                                        <RegistList title="email 확인" data={emailCode} setFunc={(data: string) => { checkEmail() }} />
                                         <div className=" w-full h-[30px] bg-black/30 hover:bg-white/10 border border-primary-100 rounded-sm flex justify-center items-center text-sm">코드 인증</div>
                                         <RegistList title="비밀번호" data={password} setFunc={(data: string) => { setPassword(data) }} />
                                         <RegistList title="비밀번호 확인" data={passwordCheck} setFunc={(data: string) => { setPasswordCheck(data) }} />

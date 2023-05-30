@@ -20,17 +20,7 @@ const TicketPlace = () => {
     const [la, setLa] = useState(0);
     const [lo, setLo] = useState(0);
 
-    useEffect(()=>{
-        console.log(placeId);
-        axios.get(`http://www.kopis.or.kr/openApi/restful/prfplc/${placeId}?service=11653933ac2447da843868e7cb625bdb`)
-        .then((res)=>{
-            const parser = new XMLParser();
-            const data = parser.parse(res.data).dbs.db;
-            console.log(data);
-            setLa(data.la);
-            setLo(data.lo);
-        })
-
+    const handleMap = () => {
         let container = document.getElementById("map");
         let options = {
             center: new kakao.maps.LatLng(la, lo), // 지도 중심좌표
@@ -45,16 +35,29 @@ const TicketPlace = () => {
         });
 
         marker.setMap(map); // 마커 표시
+    }
 
-    },[placeId])
+    useEffect(()=>{
+        console.log(placeId);
+        axios.get(`http://www.kopis.or.kr/openApi/restful/prfplc/${placeId}?service=11653933ac2447da843868e7cb625bdb`)
+        .then((res)=>{
+            const parser = new XMLParser();
+            const data = parser.parse(res.data).dbs.db;
+            console.log(data);
+            setLa(data.la);
+            setLo(data.lo);
+            handleMap();
+        })
+
+    },[placeId]);
     
 
     return(
         <Templete>
             <Header title={"행사장 위치"} />
             <Content>
-                <div className="TicketPlace ">
-                    <div id="map" style={{width: "100vw", height: "100vh"}}>
+                <div className="TicketPlace h-full">
+                    <div id="map" style={{width: "100%", height: "100%"}}>
                         위도: {la}<br/>
                         경도: {lo}
                     </div>
