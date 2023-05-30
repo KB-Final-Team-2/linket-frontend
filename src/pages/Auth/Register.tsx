@@ -11,7 +11,7 @@ const RoleList = ({ title, content, func }: ListProps) => {
             className="
             w-full h-[85px] overflow-hidden flex items-center justify-center transition-all duration-100 cursor-pointer
             bg-[#c4c4c4]/[0.31] hover:bg-primary-100 text-white hover:text-black
-             rounded-tl-[30px] rounded-tr-[10px] rounded-br-[30px] rounded-bl-[10px] shadow-md shadow-white hover:shadow-primary-300
+             rounded-tl-[30px] rounded-tr-[10px] rounded-br-[30px] rounded-bl-[10px] shadow-md shadow-white hover:shadow-primary-300 ease-in-out
             "
             onClick={() => { func && func(content) }}
         >

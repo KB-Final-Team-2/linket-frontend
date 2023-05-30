@@ -34,9 +34,7 @@ const EventHire = () => {
                 <>
                     <Header title="공고 관리" list={[{ title: "공고 등록", func: () => { navigate("/staff/hire/regist") } }]} />
                     <Content>
-                        <div className="w-[331px] h-[37px] overflow-hidden">
-                            <TableInfo title={"행사명"} content={"KB IT's Your Life"} />
-                        </div>
+                        <TableInfo title={"행사명"} content={"KB IT's Your Life"} />
                         <div className="w-[331px] h-[580px] overflow-hidden">
                             {hireList?.map((hire, i) => {
                                 return (<NextList key={i} title={`${hire.workName}`} func={() => { handleHire(hire) }} />)

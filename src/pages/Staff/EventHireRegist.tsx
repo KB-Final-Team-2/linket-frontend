@@ -81,7 +81,7 @@ const EventHireRegist = () => {
                             <RegistInput title={"시급"} ref={payRef} />
                             <RegistInput title={"대표 문의처"} ref={inqRef} />
                             <div className="w-[330px] h-full overflow-hidden flex">
-                                <p className="w-[115px] h-[175px] text-[15px] font-bold text-center text-white">
+                                <p className="w-[115px] h-[175px] text-base font-bold text-center text-white">
                                     사전 교육 정보
                                 </p>
                                 <textarea ref={eduRef} className="w-[215px] h-[215px] overflow-hidden rounded-[9px] bg-[#c4c4c4]/[0.31] outline-none focus:bg-white/30 text-base p-2" />

@@ -9,6 +9,8 @@ import { checkDuplicate, confirmEmail, register } from "../../redux/slice/authSi
 import { useNavigate } from "react-router-dom";
 import Templete from "../Templete";
 import { unwrapResult } from "@reduxjs/toolkit";
+import logo_shadow from "../../img/logo_shadow.png"
+import BigButton from "../../components/Button/BigButton";
 
 interface props {
     role: string,
@@ -23,7 +25,7 @@ interface listProps {
 
 const RegistList = ({ title, data, setFunc }: listProps) => {
     return (
-        <div className="w-full h-fit overflow-hidden flex flex-col text-[15px] font-bold text-center text-white">
+        <div className="w-full h-fit overflow-hidden flex flex-col text-base font-bold text-center text-white">
             <div className="w-full h-fit flex-shrink-0 text-start px-4 py-1">
                 {title}
             </div>
@@ -110,14 +112,15 @@ const RegisterForm = (props: props) => {
                 {isOk
                     ?
                     <>
-                        <div className="w-[331px] h-full overflow-hidden flex flex-col gap-2 place-content-center">
-                            <p className="inline w-fit h-fit justify-center items-center text-lg">
+                        <div className="w-full h-full overflow-hidden flex flex-col gap-16 place-content-center">
+                            <img src={logo_shadow}/>
+                            <p className="w-full h-fit flex flex-col justify-center items-center text-2xl">
                                 회원 가입이 완료되었습니다.<br />
                                 가입한 계정으로 로그인하시기 바랍니다.
                             </p>
                         </div>
                         <div className="w-[330px] h-[140px] overflow-hidden flex flex-shrink-0 justify-center items-center px-10">
-                            <Button title="login" type="default" func={() => { navigate("/") }} />
+                            <BigButton title="LINKET 시작하기" type="default" func={() => { navigate("/") }} />
                         </div>
                     </>
                     :
@@ -131,13 +134,13 @@ const RegisterForm = (props: props) => {
                                 ?
                                 <>
                                     <RegistList title="이름" data={userName} setFunc={(data: string) => { setName(data) }} />
-                                    <div className="w-full h-fit overflow-hidden flex flex-col text-[15px] font-bold text-center text-white">
+                                    <div className="w-full h-fit overflow-hidden flex flex-col text-base font-bold text-center text-white">
                                         <div className="w-full flex-shrink-0 text-start px-4 py-1">
                                             생년월일
                                         </div>
                                         <input type="date" value={birthdate} onChange={(e) => { setBirthdate(e.target.value) }} />
                                     </div>
-                                    <div className="w-full h-fit overflow-hidden flex text-[15px] font-bold text-center text-white">
+                                    <div className="w-full h-fit overflow-hidden flex text-base font-bold text-center text-white">
                                         <div className="w-fit px-4 py-1 flex-shrink-0">
                                             성별
                                         </div>

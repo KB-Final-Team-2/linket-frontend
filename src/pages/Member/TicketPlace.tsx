@@ -13,18 +13,18 @@ declare global {
     }
 }
 
-const {kakao} = window;
+const { kakao } = window;
 
 const TicketPlace = () => {
     const [la, setLa] = useState("0");
     const [lo, setLo] = useState("0");
     const [searchParams] = useSearchParams();
-    const queryList : any[] = [...searchParams];
+    const queryList: any[] = [...searchParams];
 
     const handleMap = () => {
         let container = document.getElementById("map");
-        const tmpLa = queryList.filter((el)=>el[0]==="la")[0][1];
-        const tmpLo = queryList.filter((el)=>el[0]==="lo")[0][1];
+        const tmpLa = queryList.filter((el) => el[0] === "la")[0][1];
+        const tmpLo = queryList.filter((el) => el[0] === "lo")[0][1];
         setLa(tmpLa);
         setLo(tmpLo);
         console.log(queryList);
@@ -43,22 +43,15 @@ const TicketPlace = () => {
         marker.setMap(map); // 마커 표시
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         handleMap();
-    },[searchParams]);
+    }, [searchParams]);
 
-    return(
+    return (
         <Templete>
             <Header title={"행사장 위치"} />
-            <Content>
-                <div className="TicketPlace h-full">
-                    <div id="map" style={{width: "100%", height: "100%"}}>
-                        위도: {la}<br/>
-                        경도: {lo}
-                    </div>
-                </div>
-            </Content>
-            <NavBar state={"1"} role={"staff"}/>
+            <div id="map" style={{ width: "100%", height: "100%" }} />
+            <NavBar state={"1"} role={"staff"} />
         </Templete>
     )
 }

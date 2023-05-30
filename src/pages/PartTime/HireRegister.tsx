@@ -48,7 +48,7 @@ const HireRegister = () => {
                     :
                     <>
                         <div className="w-[330px] h-full overflow-hidden px-5">
-                            <p className="w-full h-10 text-[15px] font-bold text-left text-white flex items-center my-3 border-b">
+                            <p className="w-full h-10 text-base font-bold text-left text-white flex items-center my-3 border-b">
                                 공지된 공고 등록번호를 입력해주세요.
                             </p>
                             <input ref={inputRef} className="w-full h-[49px] overflow-hidden rounded-md flex" placeholder="000000" />

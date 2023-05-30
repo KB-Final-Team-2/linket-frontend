@@ -9,6 +9,7 @@ import { setHire } from "../../redux/slice/hireSlice";
 import Content from "../Templete/Content";
 import { useEffect, useState } from "react";
 import { _db, db } from "../../firebase";
+import BigButton from "../../components/Button/BigButton";
 
 const HireDetail = () => {
     const [isChat, setIsChat] = useState(false);
@@ -50,19 +51,17 @@ const HireDetail = () => {
                         return (<List key={i} title={v.title} content={v.content!} />)
                     })}
                     <div className="w-[330px] h-full overflow-auto border-b flex">
-                        <p className="w-[115px] h-full text-[15px] font-bold text-center text-white text-place-center">
+                        <p className="w-[115px] h-full text-base font-bold text-center text-white text-place-center">
                             사전 교육
                         </p>
-                        <p className="w-[215px] h-full text-[15px] font-bold text-center text-white text-place-center">
+                        <p className="w-[215px] h-full text-base font-bold text-center text-white text-place-center">
                             {hire.edu}
                         </p>
                     </div>
                 </div>
-                <div className="w-full h-[156px] flex flex-shrink-0 flex-grow-0">
-                    <Link to={`/part/attend`} className="w-[153px] h-[156px] overflow-hidden bg-[#d9d9d9] text-[15px] font-bold text-left text-black text-place-center flex-shrink-0">
-                        근태 관리
-                    </Link>
-                    <div className="w-[153px] h-[156px] overflow-hidden flex flex-col justify-center items-center gap-5">
+                <div className="w-full h-fit flex flex-col flex-shrink-0 flex-grow-0 gap-5 py-4 px-2">
+                    <BigButton title={"근태 관리"} type="default" func={()=>{navigate("/part/attend")}} />
+                    <div className="w-full h-fit overflow-hidden flex justify-evenly items-center gap-5">
                         <Button title={"Delete"} type={"delete"} func={() => { }} />
                         <Button title={"chat"} type={isChat?"default":"unable"} func={() => { navigate("/part/chat") }} />
                     </div>

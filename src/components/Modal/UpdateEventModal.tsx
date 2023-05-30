@@ -48,13 +48,13 @@ const UpdateEventModal = () => {
                 <div className="w-full h-full overflow-hidden flex flex-col py-5 justify-between gap-3">
                     <WebInfoInput title={"행사명"} ref={nameRef} value={eventData.eventName} />
                     <div className="w-full h-10 overflow-hidden flex items-center justify-center flex-shrink-0 px-5">
-                        <p className="w-48 h-fit text-[15px] font-bold text-center text-white flex justify-center items-center">
+                        <p className="w-48 h-fit text-base font-bold text-center text-white flex justify-center items-center">
                             행사 시작일
                         </p>
                         <input type="date" value={startDate} onChange={(e)=>setStartDate(e.target?.value)}/>
                     </div>
                     <div className="w-full h-10 overflow-hidden flex items-center justify-center flex-shrink-0 px-5">
-                        <p className="w-48 h-full text-[15px] font-bold text-center text-white flex justify-center items-center">
+                        <p className="w-48 h-full text-base font-bold text-center text-white flex justify-center items-center">
                             행사 종료일시
                         </p>
                         <input type="date" value={endDate} onChange={(e)=>setEndDate(e.target?.value)}/>
@@ -63,7 +63,7 @@ const UpdateEventModal = () => {
                     <WebInfoInput title={"행사 문의처"} ref={inqRef} value={eventData.eventInq} />
                     <WebInfoInput title={"행사 이미지"} ref={imageRef} value={eventData.eventImage} />
                     <div className="w-full h-10 overflow-hidden flex items-center justify-center flex-shrink-0 px-5">
-                        <p className="w-48 h-full text-[15px] font-bold text-center text-white">
+                        <p className="w-48 h-full text-base font-bold text-center text-white">
                             행사 분류
                         </p>
                         <div className="w-full h-full overflow-hidden flex items-center justify-between px-5">
@@ -71,12 +71,12 @@ const UpdateEventModal = () => {
                         </div>
                     </div>
                     <div className="w-full h-[150px] overflow-hidden flex flex-shrink-0 flex-grow-0 px-5">
-                        <p className="w-48 h-full text-[15px] font-bold text-center text-white">
+                        <p className="w-48 h-full text-base font-bold text-center text-white">
                             행사 설명
                         </p>
                         <textarea
                             ref={descRef}
-                            className="mx-5 w-full h-full overflow-hidden rounded-[9px] text-[15px] bg-[#c4c4c4]/[0.31] focus:outline-none focus:bg-[#c4c4c4]/[0.50] px-4 py-2"
+                            className="mx-5 w-full h-full overflow-hidden rounded-[9px] text-base bg-[#c4c4c4]/[0.31] focus:outline-none focus:bg-[#c4c4c4]/[0.50] px-4 py-2"
                             value={eventData.eventDesc}
                         />
                     </div>

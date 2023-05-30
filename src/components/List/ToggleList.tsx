@@ -17,7 +17,7 @@ const ToggleList = ({ title, content, state, open, close }: props) => {
                             onClick={() => { close() }}
                         >
                             <div
-                                className="w-[331px] h-[35px] overflow-hidden flex justify-start items-center pl-2 text-[15px] font-bold text-left text-white"
+                                className="w-[331px] h-[35px] overflow-hidden flex justify-start items-center pl-2 text-base font-bold text-left text-white"
                             >
                                 {title}
                             </div>
@@ -41,12 +41,12 @@ const ToggleList = ({ title, content, state, open, close }: props) => {
                             </div>
                         </div>
                         <div className="flex justify-start items-start w-[330px] h-[263px] overflow-hidden gap-2.5 p-2.5 bg-[#c4c4c4]/[0.31]">
-                            <p className="self-stretch flex-grow w-[310px] h-[243px] text-[15px] font-bold text-left text-white">
-                                <span className="self-stretch flex-grow w-[310px] h-[243px] text-[15px] font-bold text-left text-white">
+                            <p className="self-stretch flex-grow w-[310px] h-[243px] text-base font-bold text-left text-white">
+                                <span className="self-stretch flex-grow w-[310px] h-[243px] text-base font-bold text-left text-white">
                                     우린 그걸 허황된 소리라고 하기로 했어요.
                                 </span>
                                 <br />
-                                <span className="self-stretch flex-grow w-[310px] h-[243px] text-[15px] font-bold text-left text-white">
+                                <span className="self-stretch flex-grow w-[310px] h-[243px] text-base font-bold text-left text-white">
                                     앞으로 5월 27일 개발 마무리 전까지는 매일매일 열심히 할 생각 하시면 됩니다.
                                 </span>
                             </p>
@@ -58,7 +58,7 @@ const ToggleList = ({ title, content, state, open, close }: props) => {
                         onClick={() => { open() }}
                     >
                         <div className="w-[331px] h-[35px] overflow-hidden">
-                            <div className="w-[331px] h-[35px] overflow-hidden text-[15px] font-bold text-white flex flex-shrink-0 justify-start items-center px-2">
+                            <div className="w-[331px] h-[35px] overflow-hidden text-base font-bold text-white flex flex-shrink-0 justify-start items-center px-2">
                                 {title}
                             </div>
                         </div>

@@ -9,7 +9,7 @@ interface props {
 const WebInfoInput = forwardRef(({ title, value, type }: props, ref: ForwardedRef<HTMLInputElement>) => {
     return (
         <div className="w-full h-10 overflow-hidden flex items-center flex-shrink-0 flex-grow-0 px-5">
-            <p className=" w-48 h-fit text-[15px] font-bold text-center text-white">
+            <p className=" w-48 h-fit text-base font-bold text-center text-white">
                 {title}
             </p>
             <input
