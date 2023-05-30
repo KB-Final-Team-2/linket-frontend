@@ -22,18 +22,21 @@ const SelectPlaceModal = ({ onSelect }: props) => {
 
     const handleRegion = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const id = e.target.value;
+        const initCkk = RegionDetailList.filter((ckk) => ckk.id.slice(0, 2) === id)[0].id;
         setRegion(RegionList.filter((region) => region.id === id)[0]);
+        setCkk(initCkk)
         console.log(RegionList.filter((region) => region.id === id)[0])
         setPage(1);
+        handlePlaceList(initCkk);
     }
 
     const handleCkk = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setCkk(e.target.value);
         setPage(1);
-        handlePlaceList();
+        handlePlaceList(e.target?.value);
     }
 
-    const handlePlaceList = () => {
+    const handlePlaceList = (ckk:string) => {
         setLoading(true);
         axios.get(`https://www.kopis.or.kr/openApi/restful/prfplc?service=11653933ac2447da843868e7cb625bdb&cpage=${page}&rows=7&signgucodesub=${ckk}`)
             .then((res) => {
@@ -61,7 +64,7 @@ const SelectPlaceModal = ({ onSelect }: props) => {
     }
 
     useEffect(() => {
-        handlePlaceList();
+        handlePlaceList(ckk);
     }, [page])
 
     useEffect(() => {
@@ -100,12 +103,12 @@ const SelectPlaceModal = ({ onSelect }: props) => {
                     </select>
                 </div>
                 <div className="w-full h-[350px] bg-bg-100 flex flex-col rounded-xl">
-                    {placeList?.length === 0
+                    {loading
                         ?
                         <CgSpinner className="animate-spin self-center"/>
                         :
                         <>
-                            {placeList?.map((place: any, i) => (
+                            {placeList.length>0&&placeList?.map((place: any, i) => (
                                 <div
                                     key={i}
                                     className="w-full h-[70px] text-lg"
