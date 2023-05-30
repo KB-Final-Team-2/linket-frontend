@@ -19,7 +19,6 @@ const EventContinueDetail = () => {
         { title: "행사 기간", content: `${eventData.startDate} ~ ${eventData.endDate}` },
         { title: "행사 장소", content: eventData.place },
         { title: "행사 코드", content: `${eventData.eventId}` },
-        { title: "행사 이미지", content: eventData.eventImage },
     ]
 
     const dropdownList: FuncListProps[] = [

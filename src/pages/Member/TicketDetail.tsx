@@ -71,12 +71,11 @@ const TicketDetail = () => {
                         </div>
                     </div>
                     <List title="좌석" content={ticket.seat} />
-                    <List title="url" content={ticket.link} />
                     <div className="self-stretch w-full h-full overflow-hidden border-b border-white flex items-center">
                         <p className="w-[115px] h-full text-base font-bold text-center text-white flex text-place-center">
                             행사 설명
                         </p>
-                        <p className="w-[215px] h-full text-base font-bold text-center text-white flex text-place-center overflow-auto custom-toolbar">
+                        <p className="w-[215px] h-full text-base font-bold text-left text-white overflow-auto custom-toolbar">
                             {ticket.eventDesc}
                         </p>
                     </div>
