@@ -39,7 +39,7 @@ const TicketDetail = () => {
 
     const handlePlace = () => {
         console.log(ticket);
-        axios.get(`http://www.kopis.or.kr/openApi/restful/prfplc/${ticket.placeId}?service=11653933ac2447da843868e7cb625bdb`)
+        axios.get(`http://www.kopis.or.kr/openApi/restful/prfplc/${ticket.placeId}?service=${process.env.REACT_APP_KOPIS_API_KEY}`)
             .then((res) => {
                 const parser = new XMLParser();
                 const data = parser.parse(res.data).dbs.db;

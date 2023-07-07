@@ -69,16 +69,6 @@ const EventRegister = () => {
             })
     }
 
-    const getPlaceList = async () => {
-        const list = (
-            await axios.get(
-                `https://www.kopis.or.kr/openApi/restful/prfplc?
-                service=11653933ac2447da843868e7cb625bdb&cpage=1
-                &rows=1000`
-            )).data;
-
-    }
-
     return (
         <>
             <Templete>

@@ -38,7 +38,7 @@ const SelectPlaceModal = ({ onSelect }: props) => {
 
     const handlePlaceList = (ckk:string) => {
         setLoading(true);
-        axios.get(`https://www.kopis.or.kr/openApi/restful/prfplc?service=11653933ac2447da843868e7cb625bdb&cpage=${page}&rows=7&signgucodesub=${ckk}`)
+        axios.get(`https://www.kopis.or.kr/openApi/restful/prfplc?service=${process.env.REACT_APP_KOPIS_API_KEY}&cpage=${page}&rows=7&signgucodesub=${ckk}`)
             .then((res) => {
                 console.log(res.data);
                 const parser = new XMLParser();
