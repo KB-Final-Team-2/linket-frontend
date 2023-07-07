@@ -39,7 +39,7 @@ const TicketDetail = () => {
 
     const handlePlace = () => {
         console.log(ticket);
-        axios.get(`http://www.kopis.or.kr/openApi/restful/prfplc/${ticket.placeId}?service=11653933ac2447da843868e7cb625bdb`)
+        axios.get(`http://www.kopis.or.kr/openApi/restful/prfplc/${ticket.placeId}?service=${process.env.REACT_APP_KOPIS_API_KEY}`)
             .then((res) => {
                 const parser = new XMLParser();
                 const data = parser.parse(res.data).dbs.db;
@@ -71,12 +71,11 @@ const TicketDetail = () => {
                         </div>
                     </div>
                     <List title="좌석" content={ticket.seat} />
-                    <List title="url" content={ticket.link} />
                     <div className="self-stretch w-full h-full overflow-hidden border-b border-white flex items-center">
                         <p className="w-[115px] h-full text-base font-bold text-center text-white flex text-place-center">
                             행사 설명
                         </p>
-                        <p className="w-[215px] h-full text-base font-bold text-center text-white flex text-place-center overflow-auto custom-toolbar">
+                        <p className="w-[215px] h-full text-base font-bold text-left text-white overflow-auto custom-toolbar">
                             {ticket.eventDesc}
                         </p>
                     </div>

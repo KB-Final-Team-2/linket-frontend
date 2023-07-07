@@ -45,7 +45,7 @@ const EventRegister = () => {
             eventType: type,
             place: place.content|| eventData.place,
             placeId: place.id || eventData.placeId,
-            eventImage: imageRef.current?.value || eventData.eventImage,
+            eventImage: eventData.eventImage,
             eventInq: inqRef.current?.value || eventData.eventInq,
             eventDesc: descRef.current?.value || eventData.eventDesc,
             eventStatus: eventData.eventStatus,
@@ -95,7 +95,6 @@ const EventRegister = () => {
                     </div>
                     <Button title={"검색"} type={"default"} func={() => { dispatch(setSelectPlaceModal()) }} />
                 </div>
-                <RegistInput title={"행사 정보 이미지"} ref={imageRef} value={eventData.eventImage} />
                 <RegistInput title={"행사 문의처"} ref={inqRef} value={eventData.eventInq} />
                 <div className="w-[330px] h-full overflow-hidden flex">
                     <p className="w-[115px] h-[175px] text-base font-bold text-center text-white">

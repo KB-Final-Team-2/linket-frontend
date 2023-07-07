@@ -75,7 +75,7 @@ const AttendDetail = () => {
                 </div>
                 <div className="w-full h-fit flex justify-evenly px-10 items-center py-10">
                     <Button title="출근" type={attendData.attStartBnt==="Y" ? "default" : "unable"} func={handleStart} loading={attend.loading} />
-                    <Button title="퇴근" type={attendData.attEndBnt==="Y" ? "default" : "unable"} func={handleEnd} />
+                    <Button title="퇴근" type={attendData.attEndBnt==="Y" ? "default" : "unable"} func={handleEnd} loading={attend.loading}/>
                     <div className="bg-accent-200 p-1 rounded-lg">
                         <TbReload className={`${isReload&&"animate-spin"} cursor-pointer`} onClick={handleReload}/>
                     </div>

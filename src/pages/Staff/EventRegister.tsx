@@ -51,7 +51,7 @@ const EventRegister = () => {
             endDate: endDate.current?.value || today,
             place: place.content || "",
             placeId: place.id || "",
-            eventImage: imageRef.current?.value,
+            eventImage: "",
             eventInq: inqRef.current?.value || "",
             eventDesc: descRef.current?.value || "",
             link: "",
@@ -67,16 +67,6 @@ const EventRegister = () => {
             .catch((err: Error) => {
                 alert(err.message);
             })
-    }
-
-    const getPlaceList = async () => {
-        const list = (
-            await axios.get(
-                `https://www.kopis.or.kr/openApi/restful/prfplc?
-                service=11653933ac2447da843868e7cb625bdb&cpage=1
-                &rows=1000`
-            )).data;
-
     }
 
     return (
@@ -122,7 +112,6 @@ const EventRegister = () => {
                                     </div>
                                     <Button title={"검색"} type={"default"} func={() => { dispatch(setSelectPlaceModal()) }} />
                                 </div>
-                                <RegistInput title={"행사 정보 이미지"} ref={imageRef} />
                                 <RegistInput title={"행사 문의처"} ref={inqRef} />
                                 <div className="w-[330px] h-full overflow-hidden flex">
                                     <p className="w-[115px] h-[175px] text-base font-bold text-center text-white">
