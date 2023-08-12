@@ -13,9 +13,9 @@ const IndexHeader = ({title}:props) => {
             <div className="w-[331px] h-[30px] overflow-hidden" />
             <div className="w-[331px] h-[95px] overflow-hidden flex justify-between items-center">
                 <p className="w-[257px] h-[95px] text-3xl font-medium text-left text-white flex items-center">
-                    {user.role==="member"&&"김세건님, 반갑습니다."}
-                    {user.role==="staff"&&"문석진님, 반갑습니다."}
-                    {user.role==="part"&&"박도연님, 반갑습니다."}
+                    {user.role==="member"&&"사용자님, 반갑습니다."}
+                    {user.role==="staff"&&"관리자님, 반갑습니다."}
+                    {user.role==="part"&&"파트타이머님, 반갑습니다."}
                 </p>
                 <BiDotsVertical className="w-10 h-10 text-primary-100-200"/>
             </div>

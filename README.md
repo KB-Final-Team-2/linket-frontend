@@ -30,18 +30,29 @@ LINKET은 공연 관리 솔루션 서비스입니다.
 ## 📄 기능 설명
 * 링켓은 관객, 주최 측 직원, 파트타이머 세 종류의 사용자를 고려하여 구성하였고, 각 사용자는 아래의 기능을 사용할 수 있습니다.
 1. 관객: 티켓을 이용하여 행사에 참여하는 고객으로, 티켓 등록, 행사 정보 확인 및 행사장 위치 확인 서비스를 사용할 수 있습니다.
-    <details>
-    <summary> 티켓 등록</summary>
-    <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/ynTrHapfGZkBpbaYH5ZLQk_i_e86f057f5931.png?alt=media&token=8ef13e64-f10b-4950-b086-9bd193710f2e" />
-    </details>
-    <details>
-    <summary> 티켓 정보 조회</summary>
-    <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/xRIOuY6Qt9cW3YAfkkLeb1_i_011e15517726.png?alt=media&token=fd5a4f6e-baac-458b-899f-7ebf4e8405fc" />
-    </details>
-    <details>
-    <summary>행사장 위치 조회</summary>
-    <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/YSZLZ48gKABVvwLMOi96d0_i_380d0882af9e.png?alt=media&token=4b5a92c2-3c35-4796-af39-cf5835678282" />
-    </details>
+    <table>
+        <thead>
+            <th> 기능
+                <td style="text-align:center">티켓 등록</td>
+                <td style="text-align:center">티켓 정보 조회</td>
+                <td style="text-align:center">행사장 위치 조회</td>
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>화면</td>
+                <td>
+                    <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2010.07.43.png?alt=media&token=a57742ae-45f4-45e7-86bf-335b8d353483" />
+                </td>
+                <td>
+                    <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2010.13.21.png?alt=media&token=7a177fc8-92d4-4cc9-b917-8c45f5064d35" />
+                </td>
+                <td>
+                    <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2010.14.04.png?alt=media&token=5a62e4b3-95de-48ce-a148-a436340a8fef" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 2. 주최 측 직원: 행사를 주최하는 단체에 소속된 직원으로, 행사 등록-수정-삭제, 행사별 공고 등록-수정-삭제, 공고별 근태 관리 및 채팅 서비스를 사용할 수 있습니다.
     <details>
@@ -69,32 +80,43 @@ LINKET은 공연 관리 솔루션 서비스입니다.
     <details>
     <summary>행사별 공고 관리</summary>
         <table>
-                <thead>
-                    <th> 기능
-                        <td style="text-align:center">공고 등록</td>
-                        <td style="text-align:center">공고 전체 조회</td>
-                        <td style="text-align:center">공고 상세 조회</td>
-                        <td style="text-align:center">공고별 채팅</td>
-                    </th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>화면</td>
-                        <td>
-                            <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.45.46.png?alt=media&token=10abd8aa-0cb1-4889-9fe7-a3b8e720e1fc" />
-                        </td>
-                        <td>
-                            <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.45.32.png?alt=media&token=dd78f1f7-76e7-4553-9376-c67ca3799cfd" />
-                        </td>
-                        <td>
-                            <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.46.01.png?alt=media&token=d3715585-3f6b-4af9-b9c6-afe8ed400e7f" />
-                        </td>
-                        <td>
-                            <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2010.14.53.png?alt=media&token=356b953b-f658-4be0-81b7-0d7fcbe4bc6c" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <thead>
+                <th> 기능
+                    <td style="text-align:center">공고 등록</td>
+                    <td style="text-align:center">공고 전체 조회</td>
+                </th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>화면</td>
+                    <td>
+                        <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.45.46.png?alt=media&token=10abd8aa-0cb1-4889-9fe7-a3b8e720e1fc" />
+                    </td>
+                    <td>
+                        <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.45.32.png?alt=media&token=dd78f1f7-76e7-4553-9376-c67ca3799cfd" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <th> 기능
+                    <td style="text-align:center">공고 상세 조회</td>
+                    <td style="text-align:center">공고별 채팅</td>
+                </th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>화면</td>
+                    <td>
+                        <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.46.01.png?alt=media&token=d3715585-3f6b-4af9-b9c6-afe8ed400e7f" />
+                    </td>
+                    <td>
+                        <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2010.14.53.png?alt=media&token=356b953b-f658-4be0-81b7-0d7fcbe4bc6c" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </details>
     <details>
     <summary>행사별 근태 관리</summary>
@@ -141,36 +163,33 @@ LINKET은 공연 관리 솔루션 서비스입니다.
     </table>
     </details>
 3. 파트타이머: 행사 공고에 참여하는 아르바이트생으로, 공고 등록, 공고별 개인 근태 관리 및 채팅 서비스를 사용할 수 있습니다.
-    <details>
-    <summary>행사별 공고 관리</summary>
-        <table>
-                <thead>
-                    <th> 기능
-                        <td style="text-align:center">공고 등록</td>
-                        <td style="text-align:center">공고 조회</td>
-                        <td style="text-align:center">공고 공고 근태 관리</td>
-                        <td style="text-align:center">공고별 채팅</td>
-                    </th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>화면</td>
-                        <td>
-                            <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.51.11.png?alt=media&token=684a8146-8b9f-467b-babd-4efcfc9ce6d2" />
-                        </td>
-                        <td>
-                            <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.56.57.png?alt=media&token=95e15d3a-5efb-4074-9f3f-0547afc9b100" />
-                        </td>
-                        <td>
-                            <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.58.34.png?alt=media&token=01830f42-6b43-47ff-a224-51e80a123a8b" />
-                        </td>
-                        <td>
-                            <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.55.50.png?alt=media&token=78a60670-d752-4f08-8eda-1d9699ff7d41" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </details>
+    <table>
+        <thead>
+            <th> 기능
+                <td style="text-align:center">공고 등록</td>
+                <td style="text-align:center">공고 조회</td>
+                <td style="text-align:center">공고 공고 근태 관리</td>
+                <td style="text-align:center">공고별 채팅</td>
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>화면</td>
+                <td>
+                    <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.51.11.png?alt=media&token=684a8146-8b9f-467b-babd-4efcfc9ce6d2" />
+                </td>
+                <td>
+                    <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.56.57.png?alt=media&token=95e15d3a-5efb-4074-9f3f-0547afc9b100" />
+                </td>
+                <td>
+                    <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.58.34.png?alt=media&token=01830f42-6b43-47ff-a224-51e80a123a8b" />
+                </td>
+                <td>
+                    <img height="500" src="https://firebasestorage.googleapis.com/v0/b/linket-chat.appspot.com/o/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202023-08-12%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.55.50.png?alt=media&token=78a60670-d752-4f08-8eda-1d9699ff7d41" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 ## 🎬 실행 방법
 .env.example의 이름을 .env로 변경한 후에 동작할 환경변수들을 설장하여야 합니다.
