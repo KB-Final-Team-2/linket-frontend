@@ -5,9 +5,9 @@ import Templete from "../Templete";
 import Content from "../Templete/Content";
 import { User } from "../../interface/User";
 import { Hire } from "../../interface/Hire";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { arrayUnion, collection, doc } from "firebase/firestore";
+import { collection } from "firebase/firestore";
 import { _db, db } from "../../firebase";
 import Button from "../../components/Button/Button";
 import { ChatProps } from "../../interface/props";

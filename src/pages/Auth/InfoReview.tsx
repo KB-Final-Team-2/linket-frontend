@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/Header/Header";
 import Templete from "../Templete";
-import { INIT_REVIEW, ReviewWithEvent } from "../../interface/Review";
+import { ReviewWithEvent } from "../../interface/Review";
 import NextList from "../../components/List/NextList";
 import NavBar from "../../components/NavBar/NavBar";
 import { useEffect } from "react";

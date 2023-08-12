@@ -16,7 +16,7 @@ interface props {
     state: boolean;
 }
 
-const HireList = ({ hire, func, state }: props) => {
+const HireList = ({ hire, func }: props) => {
     return (
         <div
             className="w-[720px] h-[60px] overflow-hidden border-t-0 border-r-0 border-b border-l-0 border-white flex justify-between items-center hover:bg-white/50"

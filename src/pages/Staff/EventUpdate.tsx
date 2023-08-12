@@ -7,7 +7,7 @@ import Templete from "../Templete";
 import { useDispatch, useSelector } from "react-redux";
 import SelectButton from "../../components/Button/SelectButton";
 import { Event } from "../../interface/Event";
-import { getEvent, getEventList, updateEvent } from "../../redux/slice/eventSlice";
+import { getEvent, updateEvent } from "../../redux/slice/eventSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import Content from "../Templete/Content";

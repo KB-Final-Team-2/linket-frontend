@@ -5,8 +5,6 @@ import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
 import Templete from "../Templete";
-import { deleteEvent } from "../../redux/slice/eventSlice";
-import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Content from "../Templete/Content";

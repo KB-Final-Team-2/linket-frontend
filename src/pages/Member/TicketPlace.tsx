@@ -1,11 +1,8 @@
-import { useParams, useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import Header from "../../components/Header/Header"
 import NavBar from "../../components/NavBar/NavBar"
 import Templete from "../Templete"
-import Content from "../Templete/Content"
 import { useEffect, useState } from "react"
-import axios from "axios"
-import { XMLParser } from "fast-xml-parser"
 
 declare global {
     interface Window {

@@ -5,7 +5,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTicketList, registTicket } from "../../redux/slice/ticketSlice";
+import { registTicket } from "../../redux/slice/ticketSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { User } from "../../interface/User";
 import Content from "../Templete/Content";
@@ -14,7 +14,6 @@ const TicketRegister = () => {
     const [isOk, setIsOk] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const user: User = useSelector((state: any) => state.auth?.data);
     const ticket = useSelector((state:any)=>state.ticket);
     const dispatch: any = useDispatch();
     const navigate = useNavigate();

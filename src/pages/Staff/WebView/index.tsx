@@ -4,8 +4,7 @@ import NavButton from "../../../components/NavBar/WebNavButton";
 import EndedEvent from "./EndedEvent";
 
 import UpdateEventModal from "../../../components/Modal/UpdateEventModal";
-import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "../../../redux/slice/modalSlice";
+import { useSelector } from "react-redux";
 import CreateEventModal from "../../../components/Modal/CreateEventModal";
 import DeleteEventModal from "../../../components/Modal/DeleteEventModal";
 import CreateHireModal from "../../../components/Modal/CreateHireModal";
@@ -18,24 +17,9 @@ interface buttonInfo {
     state: string;
 }
 
-const modalStyle = {
-    overlay: {
-        position: 'fixed',
-        top:0,
-        bottom:0,
-        left:0,
-        right:0,
-    },
-    content:{
-        display:"flex",
-        flexDirection: 'column'
-    }
-}
-
 const WebView = () => {
     const [event, setEvent] = useState("continue");
     const modal = useSelector((state:any)=>state.modal.current);
-    const dispatch = useDispatch();
 
     const navList: buttonInfo[] = [{ text: "진행중인 행사", state: "continue" }, { text: "종료된 행사", state: "ended" }];
 

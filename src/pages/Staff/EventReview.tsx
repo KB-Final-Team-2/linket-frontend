@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Event } from "../../interface/Event";
 import Header from "../../components/Header/Header";
 import TableInfo from "../../components/Table/TableInfo";
-import { Review, ReviewWithUser } from "../../interface/Review";
+import { ReviewWithUser } from "../../interface/Review";
 import { useEffect } from "react";
 import { getEventReviewList } from "../../redux/slice/reviewSlice";
 import Content from "../Templete/Content";

@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { Event } from "../../../../interface/Event";
-import WebEventInfoList from "../../../../components/List/WebEventInfoList";
 import { useEffect, useState } from "react";
 import EventDetail from "./EventDetail";
 import StatsMember from "./StatsMember";
@@ -29,7 +28,6 @@ const EventInfo = () => {
     const navList = ["행사 상세", "관람객 통계", "리뷰 통계"];
 
     const event: Event = useSelector((state: any) => state.event?.data)
-    const eventList: Event[] = useSelector((state: any) => state.event.list);
 
     useEffect(() => {
         setState(0);

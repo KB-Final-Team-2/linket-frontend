@@ -1,18 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import IndexHeader from "../../components/Header/IndexHeader";
 import NavBar from "../../components/NavBar/NavBar";
-import { Link, useNavigate } from "react-router-dom";
-import { DUMMY_HIRE1, DUMMY_HIRE2, Hire, INIT_HIRE } from "../../interface/Hire";
+import { useNavigate } from "react-router-dom";
+import { Hire } from "../../interface/Hire";
 import HireList from "../../components/List/HiretList";
 import Templete from "../Templete";
 import { useEffect, useState } from "react";
 import { User } from "../../interface/User";
-import { getHire, getPartHireList, setHireList } from "../../redux/slice/hireSlice";
+import { getPartHireList } from "../../redux/slice/hireSlice";
 import HireDetail from "./HireDetail";
 import HireSearch from "./HireSearch";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Content from "../Templete/Content";
-import moment from "moment";
 import BigButton from "../../components/Button/BigButton";
 
 const PartTime = () => {

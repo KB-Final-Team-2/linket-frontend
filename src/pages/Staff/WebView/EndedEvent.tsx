@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setEvent } from "../../../redux/slice/eventSlice";
-import { AiOutlinePlus } from "react-icons/ai";
 import WebEventList from "../../../components/List/WebEventList";
 import EventInfo from "./Ended/EventInfo";
 import { Event } from "../../../interface/Event";
 
 const EndedEvent = () => {
     const [eventIdx, setEventIdx] = useState(-1);
-    const event: Event = useSelector((state: any) => state.event?.data)
     const eventList: Event[] = useSelector((state: any) => state.event.list);
     const dispatch = useDispatch();
 

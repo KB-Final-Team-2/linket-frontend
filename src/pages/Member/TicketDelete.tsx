@@ -4,10 +4,9 @@ import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
-import { Ticket, TicketWithEvent } from "../../interface/Ticket";
+import { TicketWithEvent } from "../../interface/Ticket";
 import { useDispatch, useSelector } from "react-redux";
-import { Event } from "../../interface/Event";
-import { deleteTicket, getTicketList } from "../../redux/slice/ticketSlice";
+import { deleteTicket } from "../../redux/slice/ticketSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { User } from "../../interface/User";
 import { useState } from "react";
@@ -15,7 +14,6 @@ import Content from "../Templete/Content";
 
 const TicketDelete = () => {
     const [isOk, setIsOk] = useState(false);
-    const user: User = useSelector((state: any) => state.auth?.data);
     const ticket = useSelector((state: any) => state.ticket);
     const ticketData: TicketWithEvent = ticket.data;
     const dispatch: any = useDispatch();

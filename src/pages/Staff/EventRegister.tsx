@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import RegistInput from "../../components/Input/RegisterInput";
@@ -11,14 +11,9 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import Content from "../Templete/Content";
 import { registEvent } from "../../redux/slice/eventSlice";
-import { RegionDetailList, RegionList, RegistEvent } from "../../interface/Event";
+import { RegistEvent } from "../../interface/Event";
 import moment from "moment";
 import { closeModal, setSelectPlaceModal } from "../../redux/slice/modalSlice";
-import axios from "axios";
-import { XMLParser } from "fast-xml-parser";
-import Modal from "../../components/Modal/Modal";
-import { CgSpinner } from "react-icons/cg";
-import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import SelectPlaceModal from "../../components/Modal/SelectPlaceModal";
 
 const EventRegister = () => {

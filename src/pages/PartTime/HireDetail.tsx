@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import List from "../../components/List/List";
 import { ListProps } from "../../interface/props";
 import { Hire, INIT_HIRE } from "../../interface/Hire";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setHire } from "../../redux/slice/hireSlice";
 import Content from "../Templete/Content";
 import { useEffect, useState } from "react";

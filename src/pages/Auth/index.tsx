@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DUMMY_MEMBER, DUMMY_PART, DUMMY_STAFF, INIT_USER, User } from "../../interface/User";
+import { INIT_USER, User } from "../../interface/User";
 import { Link, useNavigate } from "react-router-dom";
 import Templete from "../Templete";
 import { setUser } from "../../redux/slice/authSilce";
@@ -33,40 +33,6 @@ const Login = () => {
 		}).catch((err)=>{
 			console.log(err)
 		})
-		// const staff = {
-		// 	email: "staff",
-		// 	password: "1234",
-		// 	role: "staff",
-		// 	user: DUMMY_STAFF,
-		// };
-
-		// const member = {
-		// 	email: "member",
-		// 	password: "1234",
-		// 	role: "member",
-		// 	user: DUMMY_MEMBER,
-		// }
-
-		// const part = {
-		// 	email: "part",
-		// 	password: "1234",
-		// 	role: "part",
-		// 	user: DUMMY_PART,
-		// }
-
-		// const userList = [staff, member, part];
-
-		// const userData = userList.filter((el) => el.email === email && el.password === password)[0];
-		// if (userData !== undefined) {
-		// 	dispatch(setUser(userData.user));
-		// 	navigate(`/${userData.role}`);
-		// }
-	}
-
-	const testAuth = async () => {
-		// console.log(auth);
-		// await dispatch(logout());
-		// console.log("logout");
 	}
 
 	return (

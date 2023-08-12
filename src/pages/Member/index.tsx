@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import IndexHeader from "../../components/Header/IndexHeader";
 import NavBar from "../../components/NavBar/NavBar";
 import Templete from "../Templete";
@@ -8,17 +7,10 @@ import TicketList from "../../components/List/TicketList";
 import { getUserTicketList, registTicket, setTicket } from "../../redux/slice/ticketSlice";
 import TicketDetail from "./TicketDetail";
 import { useEffect, useState } from "react";
-import { getEvent, setEvent } from "../../redux/slice/eventSlice";
-import { DUMMY_EVENT1 } from "../../interface/Event";
 import { HiPlus } from "react-icons/hi";
 import Content from "../Templete/Content";
 import { CgSpinner } from "react-icons/cg";
 import Button from "../../components/Button/Button";
-import { BiCross } from "react-icons/bi";
-import { RxCross2 } from "react-icons/rx"
-import logo_origin_dark from "../../img/logo_origin_dark.png";
-import { unwrapResult } from "@reduxjs/toolkit";
-import logo_shadow from "../../img/logo_shadow.png"
 import RegistTicketModal from "../../components/Modal/RegistTicketModal";
 
 const Member = () => {
@@ -27,7 +19,6 @@ const Member = () => {
 	const user = useSelector((state: any) => state.auth.data);
 	const ticket = useSelector((state: any) => state.ticket);
 	const dispatch: any = useDispatch();
-	const navigate = useNavigate();
 	const ticketData: Ticket = ticket?.data;
 	const userTicketList: TicketWithEvent[] = ticket?.userTicketList;
 

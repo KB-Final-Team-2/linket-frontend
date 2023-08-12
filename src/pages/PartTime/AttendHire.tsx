@@ -4,10 +4,9 @@ import NextList from "../../components/List/NextList";
 import NavBar from "../../components/NavBar/NavBar";
 import TableInfo from "../../components/Table/TableInfo";
 import { Attend } from "../../interface/Attendance";
-import { useNavigate } from "react-router-dom";
 import Templete from "../Templete";
 import AttendDetail from "./AttendDetail";
-import { getAttendList, setAttend, setAttendList } from "../../redux/slice/attendSlice";
+import { getAttendList, setAttend } from "../../redux/slice/attendSlice";
 import { useEffect } from "react";
 import Content from "../Templete/Content";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -20,7 +19,6 @@ const AttendHire = () => {
     const attendData: Attend = attend.data;
     const attendList: Attend[] = attend?.list;
     const dispatch: any = useDispatch();
-    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getAttendList(hireData.hireId))

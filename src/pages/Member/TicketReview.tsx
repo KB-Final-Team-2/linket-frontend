@@ -6,13 +6,11 @@ import { User } from "../../interface/User";
 import Button from "../../components/Button/Button";
 import { IoTicketSharp } from "react-icons/io5"
 import TableInfo from "../../components/Table/TableInfo";
-import { Event } from "../../interface/Event";
 import { FuncListProps } from "../../interface/props";
 import { useState } from "react";
 import { RegistReview, Review } from "../../interface/Review";
-import { Ticket, TicketWithEvent } from "../../interface/Ticket";
-import { getTicket } from "../../redux/slice/ticketSlice";
-import { checkTicketReview, registReview } from "../../redux/slice/reviewSlice";
+import { TicketWithEvent } from "../../interface/Ticket";
+import { registReview } from "../../redux/slice/reviewSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import Content from "../Templete/Content";

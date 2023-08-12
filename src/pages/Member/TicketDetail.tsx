@@ -10,7 +10,6 @@ import QRCode from "react-qr-code";
 import { User } from "../../interface/User";
 import { checkTicketReview } from "../../redux/slice/reviewSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
-import { INIT_REVIEW, Review } from "../../interface/Review";
 import axios from "axios";
 import { XMLParser } from "fast-xml-parser";
 import Content from "../Templete/Content";

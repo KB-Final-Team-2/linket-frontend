@@ -6,18 +6,14 @@ import NavBar from "../../components/NavBar/NavBar";
 import { Event } from "../../interface/Event";
 import Templete from "../Templete";
 import { Hire } from "../../interface/Hire";
-import { deleteHire, setHire } from "../../redux/slice/hireSlice";
-import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Content from "../Templete/Content";
 
 const EventHireDelete = () => {
     const [isOk, setIsOk] = useState(false);
-    const event: Event = useSelector((state: any) => state.event?.data);
     const hire = useSelector((state: any) => state.hire);
     const hireData: Hire = hire?.data;
-    const dispatch: any = useDispatch();
     const navigate = useNavigate();
 
     const list = [

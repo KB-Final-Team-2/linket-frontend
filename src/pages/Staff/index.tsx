@@ -1,8 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import IndexHeader from "../../components/Header/IndexHeader";
 import EventList from "../../components/List/EventList";
 import NavBar from "../../components/NavBar/NavBar";
-import { DUMMY_EVENT1, DUMMY_EVENT2, Event, INIT_EVENT } from "../../interface/Event";
+import { Event } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
 import Templete from "../Templete";
 import EventContinueDetail from "./EventContinueDetail";

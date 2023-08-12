@@ -7,15 +7,12 @@ import { FuncListProps, ListProps } from "../../interface/props";
 import { Hire, INIT_HIRE } from "../../interface/Hire";
 import { setHire } from "../../redux/slice/hireSlice";
 import Content from "../Templete/Content";
-import Button from "../../components/Button/Button";
 import { _db, db } from "../../firebase";
-import { setDoc } from "firebase/firestore";
 import BigButton from "../../components/Button/BigButton";
 
 const EventHireDetail = () => {
     const event: Event = useSelector((state: any) => state.event?.data);
     const hire: Hire = useSelector((state: any) => state.hire?.data);
-    const hireList: Hire[] = useSelector((state: any) => state.hire?.list);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const list: ListProps[] = [

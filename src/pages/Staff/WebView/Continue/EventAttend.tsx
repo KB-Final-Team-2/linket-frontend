@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import AttendToggle from "../../../../components/Button/AttendToggle";
 import { Attend } from "../../../../interface/Attendance";
-import { updateStaffStart } from "../../../../redux/slice/attendSlice";
 
 interface props {
     attend: Attend;
@@ -38,7 +37,6 @@ const AttendList = ({ attend }: props) => {
 const EventAttend = () => {
     const attend = useSelector((state: any) => state.attend);
     const attendList: Attend[] = useSelector((state:any)=>state.attend?.list);
-    const dispatch : any = useDispatch();
 
     const handleStart = () => {
         // dispatch(updateStaffStart({attDate: attendDate, attEventId:event.eventId, attStartBtn:!attend.startState}))

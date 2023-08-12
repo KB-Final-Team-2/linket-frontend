@@ -5,18 +5,15 @@ import TableInfo from "../../components/Table/TableInfo";
 import Templete from "../Templete";
 import { Event } from "../../interface/Event";
 import { useDispatch, useSelector } from "react-redux";
-import { Attend, INIT_ATTD } from "../../interface/Attendance";
 import AttendDetail from "./EventAttendDetail";
-import { getEventAttendList, setAttend, setDate } from "../../redux/slice/attendSlice";
-import { useEffect, useState } from "react";
+import { getEventAttendList, setDate } from "../../redux/slice/attendSlice";
+import { useEffect } from "react";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Content from "../Templete/Content";
 
 const EventAttend = () => {
     const event: Event = useSelector((state: any) => state.event?.data);
     const attend = useSelector((state: any) => state.attend);
-    const attendData: Attend = attend.data;
-    const attendList: Attend[] = attend.list;
     const attendDays: string[] = attend.days;
     const attendDate: string = attend.date;
     const dispatch: any = useDispatch();

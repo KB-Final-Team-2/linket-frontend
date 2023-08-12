@@ -9,7 +9,6 @@ import Button from "../../components/Button/Button";
 import { getAttend, setAttend, updatePartEnd, updatePartStart } from "../../redux/slice/attendSlice";
 import Content from "../Templete/Content";
 import { unwrapResult } from "@reduxjs/toolkit";
-import { useNavigate } from "react-router-dom";
 import { HireWithEvent } from "../../interface/Hire";
 import { useState } from "react";
 import { TbReload } from "react-icons/tb";
